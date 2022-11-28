@@ -1,9 +1,10 @@
 # Info général
 
 ## Pour commencer
+Il faut avoir une version de php8.0 minimum(https://php.tutorials24x7.com/blog/how-to-install-php-7-on-windows) et installer vite avec  $npm install vite. Pour installer le projet une fois pris de github faire $composer update et $composer install.
 Pour tester le code il faut se rendre à la racine du projet et partir le front end et le back end de l'app.
 - front:
-<pre>$ npm run serve</pre>
+<pre>$ npm run dev</pre>
 - back:
 <pre>$ php artisan serve</pre>
 
