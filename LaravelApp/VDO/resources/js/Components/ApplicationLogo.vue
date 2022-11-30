@@ -1,6 +1,8 @@
 <template>
-   <h1 class="logo--example"> Logo VDO </h1>
-
+  
+    <div class="logo">
+        <img src="../../assets/Logo_PW2_v2.svg" alt="logo VDO">
+    </div>
 
     
 </template>
