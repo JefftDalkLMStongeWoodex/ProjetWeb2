@@ -17,7 +17,4 @@
     <body class="font-sans antialiased">
         @inertia
     </body>
-    <script>
-        const lang = 'balls'
-    </script>
 </html>
