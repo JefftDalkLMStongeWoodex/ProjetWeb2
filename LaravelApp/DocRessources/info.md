@@ -9,7 +9,7 @@ Pour tester le code il faut se rendre à la racine du projet et partir le front 
 <pre>$ php artisan serve</pre>
 
 ## Structure
-On utilise **Laravel** pour tout ce qui est routage et intéraction avec la bd. Tandis qu'on utilise **Vue** pour les vues. **Inertia** est une librairie qui permet de connecter le back et le front ensemble, en passant les parmètres **Laravel** à **Vue**.
+On utilise **Laravel** pour tout ce qui est routtage et intéraction avec la bd. Tandis qu'on utilise **Vue** pour les vues. **Inertia** est une librairie qui permet de connecter le back et le front ensemble, en passant les parmètres **Laravel** à **Vue**.
 
 # Liens
 >Ici vous pouvez trouver des ressources pour comprendre le stack techno en plus de profondeur n'hésiter pas d'ajouter des liens de doc interessants pour le projet.
