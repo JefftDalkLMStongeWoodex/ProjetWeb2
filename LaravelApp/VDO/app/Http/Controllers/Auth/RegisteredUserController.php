@@ -38,7 +38,13 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'first_name' => '',
+            'first_name' => 'required|string|max:255',
+            'anniversaire' => 'nullable|date',
+            'adresse' => 'required|string|max:45',
+            'code_postal' => 'required|string|max:45|regex:"^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$"',
+            'telephone' => 'required|string|regex:"^[(][0-9]{1,3}[)]\s[\d]{3}-[\d]{4}$"|max:45',
+            'telephone_portable' => 'nullable|string|regex:"^[(][0-9]{1,3}[)]\s[\d]{3}-[\d]{4}$"|max:45',
+            'villes_id' => 'required|exists:villes,id',
         ]);
 
         $user = User::create([
