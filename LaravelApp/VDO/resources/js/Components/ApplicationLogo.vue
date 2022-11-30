@@ -1,7 +1,7 @@
 <template>
   
     <div class="logo">
-        <img src="../../assets/Logo_PW2_v2.svg" alt="logo VDO">
+        <img src="../../assets/Logo_PW2_v1.svg" alt="logo VDO">
     </div>
 
     
@@ -9,9 +9,11 @@
 
 <style scoped>
 
-.logo--example {
-    background-color:   var( --main-color);
-    padding: 0.50rem;
+.logo {
+  
+    min-height: 5vh;
+    min-width: 14vw;
+    margin-bottom: 8rem;
 }
 
 </style>
