@@ -8,6 +8,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
 const form = useForm({
     name: '',
+    first_name: 'balls',
     email: '',
     password: '',
     password_confirmation: '',
@@ -40,6 +41,119 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.name" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="first_name" value="First Name" />
+
+                <TextInput
+                    id="first_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.first_name"
+                    required
+                    autofocus
+                    autocomplete="first_name"
+                    name="first_name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.first_name" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="anniversaire" value="Anniversaire" />
+
+                <TextInput
+                    id="anniversaire"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.anniversaire"
+                    required
+                    autofocus
+                    autocomplete="anniversaire"
+                />
+
+                <InputError class="mt-2" :message="form.errors.anniversaire" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="adresse" value="Adresse" />
+
+                <TextInput
+                    id="adresse"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.adresse"
+                    required
+                    autofocus
+                    autocomplete="adresse"
+                />
+
+                <InputError class="mt-2" :message="form.errors.adresse" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="code_postal" value="Code Postal" />
+
+                <TextInput
+                    id="code_postal"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.code_postal"
+                    required
+                    autofocus
+                    autocomplete="code_postal"
+                />
+
+                <InputError class="mt-2" :message="form.errors.code_postal" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="telephone" value="Telephone" />
+
+                <TextInput
+                    id="telephone"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.telephone"
+                    required
+                    autofocus
+                    autocomplete="telephone"
+                />
+
+                <InputError class="mt-2" :message="form.errors.telephone" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="telephone_portable" value="Telephone Portable" />
+
+                <TextInput
+                    id="telephone_portable"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.telephone_portable"
+                    required
+                    autofocus
+                    autocomplete="telephone_portable"
+                />
+
+                <InputError class="mt-2" :message="form.errors.telephone_portable" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="villes_id" value="Id Ville" />
+
+                <TextInput
+                    id="villes_id"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.villes_id"
+                    required
+                    autofocus
+                    autocomplete="villes_id"
+                />
+
+                <InputError class="mt-2" :message="form.errors.villes_id" />
             </div>
 
             <div class="mt-4">
