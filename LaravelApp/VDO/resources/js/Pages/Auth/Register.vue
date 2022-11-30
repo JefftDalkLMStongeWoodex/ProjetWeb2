@@ -8,9 +8,16 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
 const form = useForm({
     name: '',
-    first_name: 'balls',
+    first_name: '',
     email: '',
-    password: '',
+    anniversaire:'',
+    adresse:'',
+    code_postal:'',
+    telephone:'',
+    telephone_portable:'',
+    villes_id:'',
+    privileges_id:'',
+    password:'',
     password_confirmation: '',
     terms: false,
 });
@@ -65,7 +72,7 @@ const submit = () => {
 
                 <TextInput
                     id="anniversaire"
-                    type="text"
+                    type="date"
                     class="mt-1 block w-full"
                     v-model="form.anniversaire"
                     required
@@ -84,7 +91,6 @@ const submit = () => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.adresse"
-                    required
                     autofocus
                     autocomplete="adresse"
                 />
@@ -132,7 +138,6 @@ const submit = () => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.telephone_portable"
-                    required
                     autofocus
                     autocomplete="telephone_portable"
                 />
