@@ -1,5 +1,5 @@
 <template>
-   <h1 class="logo--example"> Logo </h1>
+   <h1 class="logo--example"> Logo VDO </h1>
 
 
     
