@@ -91,7 +91,6 @@ const submit = () => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.adresse"
-                    required
                     autofocus
                     autocomplete="adresse"
                 />
@@ -139,7 +138,6 @@ const submit = () => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.telephone_portable"
-                    required
                     autofocus
                     autocomplete="telephone_portable"
                 />
