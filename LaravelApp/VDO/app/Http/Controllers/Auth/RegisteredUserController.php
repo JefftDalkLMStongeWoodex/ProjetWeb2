@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
+use App\Models\Ville;
 
 class RegisteredUserController extends Controller
 {
@@ -21,7 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Auth/Register');
+        $villes = Ville::all();
+        return Inertia::render('Auth/Register', ['villes' => $villes]);
     }
 
     /**
