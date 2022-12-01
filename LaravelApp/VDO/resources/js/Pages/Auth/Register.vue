@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import Select from '@/Components/Select.vue';
 
 const form = useForm({
     name: '',
@@ -146,6 +147,20 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
+                <InputLabel for="villes_id" value="Ville" />
+
+                <Select
+                :options = "$attrs.villes"
+                id="villes_id"
+                class="mt-1 block w-full"
+                v-model="form.villes_id"
+                required
+                autofocus
+                />
+                <InputError class="mt-2" :message="form.errors.villes_id" />
+            </div>
+
+            <!-- <div class="mt-4">
                 <InputLabel for="villes_id" value="Id Ville" />
 
                 <TextInput
@@ -159,7 +174,7 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.villes_id" />
-            </div>
+            </div> -->
 
             <div class="mt-4">
                 <InputLabel for="email" value="Email" />
