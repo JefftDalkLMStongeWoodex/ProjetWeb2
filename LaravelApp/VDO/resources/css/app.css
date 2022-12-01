@@ -5,5 +5,12 @@
 :root {
     --couleur-principale: #EA7024;
     --couleur-secondaire: #0D0F21;
- 
+    --couleur-blanc: #ffffff;
+    --espacement-wrapper: 0 8vw;
+    --police-titre: 'Archivo Black', sans-serif;
+    --police-texte: 'Lato', sans-serif;
   }
+
+.wrapper {
+  padding: var(--espacement-wrapper);
+}
