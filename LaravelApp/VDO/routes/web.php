@@ -34,7 +34,7 @@ Route::get('/accueil', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('accueil');
 
 
 
