@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\VoitureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('/about', function () {
     return Inertia::render('About', [
         'canLogin' => Route::has('login'),
@@ -38,7 +40,10 @@ Route::get('/about', function () {
 
 
 
-Route::get('/lang/{locale}', [LocalizationController::class, 'index']);
+
+
+Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -51,3 +56,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/dashboard/voitures', [VoitureController::class, 'index'])->middleware(['auth', 'verified'])->name('voiture.index');
