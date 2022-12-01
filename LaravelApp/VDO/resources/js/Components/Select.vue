@@ -3,7 +3,9 @@
 
 <template>
     <select>
-        <option value="1">Balls</option>
+        <slot v-for="option in $attrs.options">
+        <option  :value="option.id"> {{option.nom}}</option>
+        </slot>
     </select>
 </template>
 
