@@ -1,15 +1,19 @@
 <template>
-   <h1 class="logo--example"> Logo VDO </h1>
-
+  
+    <div class="logo">
+        <img src="../../assets/Logo_PW2_v1.svg" alt="logo VDO">
+    </div>
 
     
 </template>
 
 <style scoped>
 
-.logo--example {
-    background-color:   var( --main-color);
-    padding: 0.50rem;
+.logo {
+  
+    min-height: 5vh;
+    min-width: 14vw;
+    margin-bottom: 8rem;
 }
 
 </style>

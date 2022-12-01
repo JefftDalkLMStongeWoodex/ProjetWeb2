@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --main-color: hotpink;
-    --pane-padding: 5px 42px;
+    --couleur-principale: #EA7024;
+    --couleur-secondaire: #0D0F21;
+ 
   }

@@ -19,7 +19,7 @@ use App\Http\Controllers\VoitureController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Homepage', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -27,7 +27,23 @@ Route::get('/', function () {
     ]);
 });
 
+
+
+Route::get('/about', function () {
+    return Inertia::render('About', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+
+
+
+
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

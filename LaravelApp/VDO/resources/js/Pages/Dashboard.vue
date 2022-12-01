@@ -1,22 +1,51 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import SidebarVue from '@/Components/Sidebar.vue';
+
 import { Head } from '@inertiajs/inertia-vue3';
 </script>
 
 <template>
     <Head title="Dashboard" />
 
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>
-        </template>
+   <div class="flex"> 
+        <SidebarVue />
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">You're logged in!</div>
+        <AuthenticatedLayout>
+
+            <div class="application">      
+                <div class="contenu--tableau-de-bord ">
+
+                    <h2 class="titre--page">Dashboard</h2>
+                    <div class="py-12">
+                        <div class="">
+                            <div class="">
+                                <div class="">You're logged in!</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </AuthenticatedLayout>
+
+        </AuthenticatedLayout>
+    </div> 
 </template>
+<style scoped>
+
+.contenu--tableau-de-bord {
+    flex: 1 1 0;
+    margin: 3em;
+    line-height: 1.5;
+    font-weight: 500;
+   }
+
+
+   .titre--page{
+    font-weight: bold;
+    font-size: x-large;
+   
+    
+}
+
+
+</style>
