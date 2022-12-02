@@ -232,13 +232,8 @@ const submit = () => {
                     {{langRegister.deja_creer}}
                 </Link>
 
-                
-
-            <div class="flex  mt-4">
-                    <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    {{langRegister.creer}}
-               
-
+                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                {{langRegister.creer}}
                 </PrimaryButton>
             </div>
         </form>
