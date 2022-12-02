@@ -160,22 +160,6 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.villes_id" />
             </div>
 
-            <!-- <div class="mt-4">
-                <InputLabel for="villes_id" value="Id Ville" />
-
-                <TextInput
-                    id="villes_id"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.villes_id"
-                    required
-                    autofocus
-                    autocomplete="villes_id"
-                />
-
-                <InputError class="mt-2" :message="form.errors.villes_id" />
-            </div> -->
-
             <div class="mt-4">
                 <InputLabel for="email" value="Email" />
 
