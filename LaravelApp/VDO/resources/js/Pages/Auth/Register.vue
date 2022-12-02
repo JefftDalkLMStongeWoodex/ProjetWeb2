@@ -34,6 +34,19 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
+        <div class="flex items-center justify-end mt-4">
+          <p>     Vous avez deja un compte? 
+            <Link
+                :href="route('login')"
+                class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+            >
+                Connectez-vous
+          </Link>
+        </p>
+        </div>
+
+
+
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="name" value="Name" />
@@ -205,16 +218,10 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    :href="route('login')"
-                    class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                >
-                    Already registered?
-                </Link>
+            <div class="flex  mt-4">
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    S'inscrire
                 </PrimaryButton>
             </div>
         </form>
