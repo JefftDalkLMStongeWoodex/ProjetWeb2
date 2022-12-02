@@ -16,3 +16,18 @@
 .wrapper {
   padding: var(--espacement-wrapper);
 }
+
+/*  https://type-scale.com/*/
+
+h2{
+  font-size: 2rem; 
+}
+
+/* Titre mobile */
+
+@media screen and (max-width: 880px){
+  h2{
+    font-size: 1.5rem; 
+  }
+  
+}

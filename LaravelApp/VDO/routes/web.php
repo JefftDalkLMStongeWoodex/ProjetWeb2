@@ -39,22 +39,14 @@ Route::get('/accueil', function () {
 })->name('accueil');
 
 
+Route::get('/apropos', function () {return Inertia::render('APropos'); })->name('apropos');
 
-Route::get('/about', function () {
-    return Inertia::render('About', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/catalogue', function() { return Inertia::render('Catalogue'); })->name('catalogue');
 
-
-
+Route::get('/contact', function() { return Inertia::render('Contact'); })->name('contact');
 
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
-
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

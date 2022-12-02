@@ -1,20 +1,66 @@
 <script setup>
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import voitureFormulaire from '/resources/assets/voitureFormulaire.jpeg';
 import { Link } from '@inertiajs/inertia-vue3';
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-        <div>
-            <Link href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
-            </Link>
-        </div>
+    <div class="conteneur ">
+        <div class="conteneur-formulaire wrapper ">
+            <div class="">
+               
+        
+                <div class="formulaire">
+                    <slot />
+                </div>
+        
+            </div>
+    
+            <div class="image">
+                <img :src="voitureFormulaire" alt="voiture formulaire de creation de compte">
+            </div>
+    
+    
 
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg"
-        >
-            <slot />
         </div>
+        
     </div>
 </template>
+<style scoped>
+
+.conteneur{
+    display: flex;
+    background: var(--couleur-secondaire);
+    
+}
+
+
+
+.conteneur-formulaire{
+    display: grid;
+    margin: 2rem;
+	grid-template-columns: 1fr 1fr;
+	justify-content: center;
+	align-items: center;
+}
+
+.formulaire{
+    padding: 85px 40px;
+}
+
+.image{
+    width: 100%;
+    padding: 25px 20px;
+}
+
+@media screen and (max-width: 1024px){
+	.conteneur-formulaire{
+		grid-template-columns: 1fr;
+	}
+	.image{
+		height: 200px;
+	}
+}
+
+
+</style>

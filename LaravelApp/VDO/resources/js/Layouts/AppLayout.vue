@@ -37,7 +37,12 @@ defineProps({
                                 <NavLink class="header__lien" :href="route('register')">{{lang.lien_inscription}}</NavLink>
                                 <NavLink class="header__lien" :href="route('login')">{{lang.lien_connexion}}</NavLink>
                             </template>
+                            <NavLink class="header__lang" :href="route('lang', 'en')">EN</NavLink>
+                            <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
                         </div>
+                    </div>
+                    <div class="header__langSelect">
+                        
                     </div>
                 </div>
             </nav>
@@ -69,6 +74,7 @@ defineProps({
     background-color: lightgrey;
 }
 
+/* affichage icone menu burger */
 /* .gachette::before {
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='18' viewBox='0 0 27 18'%3E%3Cpath fill='white' d='M4.5,27h27V24H4.5Zm0-7.5h27v-3H4.5ZM4.5,9v3h27V9Z' transform='translate(-4.5 -9)'/%3E%3C/svg%3E");
     text-transform: uppercase;
@@ -76,6 +82,12 @@ defineProps({
     width: 100%;
     height: 100%;
 } */
+
+.header__langSelect {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
 
 .header__conteneur {
     display: flex;
@@ -90,6 +102,7 @@ defineProps({
     background-color: var(--couleur-secondaire);
     overflow: auto;
 }
+
 .header__liens {
     display: flex;
     flex-direction: column;
