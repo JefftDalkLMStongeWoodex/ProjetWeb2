@@ -30,6 +30,7 @@ import { Link } from '@inertiajs/inertia-vue3';
 
 .conteneur{
     display: flex;
+    background: var(--couleur-secondaire);
     
 }
 
