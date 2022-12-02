@@ -5,16 +5,12 @@ import { Link } from '@inertiajs/inertia-vue3';
 </script>
 
 <template>
-    <div class="conteneur">
-        <div class="conteneur-formulaire">
-            <div class="formulaire">
-                <div>
-                    <Link href="/">
-                        <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
-                    </Link>
-                </div>
+    <div class="conteneur ">
+        <div class="conteneur-formulaire wrapper ">
+            <div class="">
+               
         
-                <div class="">
+                <div class="formulaire">
                     <slot />
                 </div>
         
@@ -53,6 +49,17 @@ import { Link } from '@inertiajs/inertia-vue3';
 
 .image{
     width: 100%;
-    padding: 25px 40px;
+    padding: 25px 20px;
 }
+
+@media screen and (max-width: 1024px){
+	.conteneur-formulaire{
+		grid-template-columns: 1fr;
+	}
+	.image{
+		height: 200px;
+	}
+}
+
+
 </style>
