@@ -10,6 +10,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 defineProps({
     canResetPassword: Boolean,
     status: String,
+    langLogin: Object,
 });
 
 const form = useForm({
