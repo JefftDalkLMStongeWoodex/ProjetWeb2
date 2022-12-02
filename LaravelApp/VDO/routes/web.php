@@ -27,6 +27,15 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/accueil', function () {
+    return Inertia::render('Accueil', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('accueil');
+
 
 
 Route::get('/about', function () {
@@ -58,3 +67,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/dashboard/voitures', [VoitureController::class, 'index'])->middleware(['auth', 'verified'])->name('voiture.index');
+
+Route::get('/catalogue', function() { return Inertia::render('Catalogue'); })->name('catalogue');

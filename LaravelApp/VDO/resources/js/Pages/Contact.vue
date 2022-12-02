@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/inertia-vue3';
 
 <template>
 
-  <Head title="Contacter-nous" />
+  <Head title="Contactez-nous" />
 
   <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
     <h1>Ceci est ma page contacter-nous</h1>
