@@ -21,6 +21,7 @@ const showingNavigationDropdown = ref(false);
                         </a>
                         <div class="header__liens">
                             <NavLink class="header__lien" :href="route('catalogue')">Trouver votre voiture</NavLink>
+                            <NavLink class="header__lien" href="/apropos">A propos de Vdo </NavLink>
                             <NavLink class="header__lien" href="/contact">Contactez-nous</NavLink>
                             <template v-if="$page.props.auth.user">
                                 <NavLink class="header__lien" :href="route('dashboard')">Tableau de bord</NavLink>
