@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Lang;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -22,8 +23,12 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
+        $langRegister = Lang::get('register');
         $villes = Ville::all();
-        return Inertia::render('Auth/Register', ['villes' => $villes]);
+        return Inertia::render('Auth/Register', [
+            'villes' => $villes,
+            'langRegister' => $langRegister
+        ]);
     }
 
     /**

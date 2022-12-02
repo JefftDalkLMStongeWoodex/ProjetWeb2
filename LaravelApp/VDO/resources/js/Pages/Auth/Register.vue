@@ -23,6 +23,11 @@ const form = useForm({
     terms: false,
 });
 
+defineProps({
+    villes: Object,
+    langRegister: Object
+})
+
 const submit = () => {
     form.post(route('register'), {
         onFinish: () => form.reset('password', 'password_confirmation'),
@@ -49,7 +54,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" :value="langRegister.name" />
 
                 <TextInput
                     id="name"
@@ -65,7 +70,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="first_name" value="First Name" />
+                <InputLabel for="first_name" :value="langRegister.first_name" />
 
                 <TextInput
                     id="first_name"
@@ -82,7 +87,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="anniversaire" value="Anniversaire" />
+                <InputLabel for="anniversaire" :value="langRegister.anniversaire" />
 
                 <TextInput
                     id="anniversaire"
@@ -98,7 +103,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="adresse" value="Adresse" />
+                <InputLabel for="adresse" :value="langRegister.adresse" />
 
                 <TextInput
                     id="adresse"
@@ -113,7 +118,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="code_postal" value="Code Postal" />
+                <InputLabel for="code_postal" :value="langRegister.code_postal" />
 
                 <TextInput
                     id="code_postal"
@@ -129,7 +134,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="telephone" value="Telephone" />
+                <InputLabel for="telephone" :value="langRegister.telephone" />
 
                 <TextInput
                     id="telephone"
@@ -145,7 +150,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="telephone_portable" value="Telephone Portable" />
+                <InputLabel for="telephone_portable" :value="langRegister.telephone_portable" />
 
                 <TextInput
                     id="telephone_portable"
@@ -160,10 +165,10 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="villes_id" value="Ville" />
+                <InputLabel for="villes_id" :value="langRegister.villes" />
 
                 <Select
-                :options = "$attrs.villes"
+                :options = "villes"
                 id="villes_id"
                 class="mt-1 block w-full"
                 v-model="form.villes_id"
@@ -174,7 +179,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" :value="langRegister.email" />
 
                 <TextInput
                     id="email"
@@ -189,7 +194,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" :value="langRegister.password" />
 
                 <TextInput
                     id="password"
@@ -204,7 +209,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                <InputLabel for="password_confirmation" :value="langRegister.password" />
 
                 <TextInput
                     id="password_confirmation"
@@ -218,10 +223,22 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="flex  mt-4">
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    S'inscrire
+            <div class="flex items-center justify-end mt-4">
+                <Link
+                    :href="route('login')"
+                    class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                >
+                    {{langRegister.deja_creer}}
+                </Link>
+
+                
+
+            <div class="flex  mt-4">
+                    <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    {{langRegister.creer}}
+               
+
                 </PrimaryButton>
             </div>
         </form>
