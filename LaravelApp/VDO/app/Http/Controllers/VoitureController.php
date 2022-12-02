@@ -18,7 +18,8 @@ class VoitureController extends Controller
     public function index()
     {
         $langVoiture = Lang::get('voiture');
-        $voitures = Voiture::all();
+        $modeleVoiture = new Voiture;
+        $voitures = $modeleVoiture->selectVoitureTableauDeBord();
         return Inertia::render('Dashboard/Voiture', [
             'langVoiture' => $langVoiture,
             'voitures' => $voitures
