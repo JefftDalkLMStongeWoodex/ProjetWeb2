@@ -5,11 +5,12 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
+    langAppLayout: Object,
 });
 </script>
 <template>
-    <Head title="Accueil" />
-    <AppLayout>
+    <Head />
+    <AppLayout :lang="langAppLayout">
         <div>
             <h1>Ceci est ma page d'accueil</h1>
         </div>
