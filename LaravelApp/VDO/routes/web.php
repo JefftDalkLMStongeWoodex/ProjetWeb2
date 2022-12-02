@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\VoitureController;
+use Illuminate\Support\Facades\Lang;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::get('/accueil', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'langAppLayout' => Lang::get('app_layout'),
     ]);
 })->name('accueil');
 
