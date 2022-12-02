@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-    <select @change="handleChange" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+    <select @change="handleChange" class="boite-saisie">
         <option  value=""></option>
         <slot v-for="option in $props.options" :key="option.id">
         <option  :value="option.id"> {{option.nom}}</option>
@@ -27,4 +27,20 @@ export default {
 </template>
 
 <style scoped>
+.boite-saisie{
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-blanc);
+    border-color:  var(--couleur-blanc);
+}
+
+.boite-saisie option{
+    color: var(--couleur-blanc);
+
+}
+.boite-saisie:focus {
+    border: 0.5px solid var(--couleur-principale);
+  }
+
+
+
 </style>
