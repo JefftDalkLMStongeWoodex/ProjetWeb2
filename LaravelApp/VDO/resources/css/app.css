@@ -14,3 +14,9 @@
 .wrapper {
   padding: var(--espacement-wrapper);
 }
+
+/* Convertisseure de rem ; https://codebeautify.org/px-to-rem-converter*/
+
+h2{
+  font-size: 2rem; 
+}
