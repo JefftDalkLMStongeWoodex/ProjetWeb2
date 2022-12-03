@@ -13,4 +13,8 @@ class Modele extends Model
         'nom',
         'constructeurs_id'
     ];
+
+    public function constructeur() {
+        return $this->hasOne('App\Models\Constructeur', 'id', 'constructeurs_id');
+    }
 }

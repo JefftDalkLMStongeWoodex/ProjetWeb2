@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\VoitureController;
+use Illuminate\Support\Facades\Lang;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::get('/accueil', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'langAppLayout' => Lang::get('app_layout'),
     ]);
 })->name('accueil');
 
@@ -47,7 +49,9 @@ Route::get('/contact', function() { return Inertia::render('Contact'); })->name(
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+        'langDashboard' => Lang::get('dashboard'),
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -60,3 +64,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/dashboard/voitures', [VoitureController::class, 'index'])->middleware(['auth', 'verified'])->name('voiture.index');
 
+Route::get('/catalogue', function() { 
+    return Inertia::render('Catalogue', [
+        'langAppLayout' => Lang::get('app_layout'),
+    ]); 
+})->name('catalogue');

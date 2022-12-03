@@ -11,5 +11,7 @@ return [
     'code_postal' => 'Code postal',
     'telephone' => 'Numéro de téléphone',
     'telephone_portable' => 'Numéro de cellulaire',
-    'villes' => 'Ville'
+    'villes' => 'Ville', 
+    'titre' => 'Créer un compte',
+    'connectez_vous' => 'Connectez-vous!'
 ];
