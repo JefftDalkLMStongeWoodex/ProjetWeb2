@@ -11,5 +11,8 @@ return [
     'code_postal' => 'Postal code',
     'telephone' => 'Phone number',
     'telephone_portable' => 'Cellphone number',
-    'villes' => 'City'
+    'villes' => 'City',
+    'titre' => 'Create an account',
+    'deja_un_compte' => 'Already registered?',
+    'connectez_vous' => 'Log in!'
 ];
