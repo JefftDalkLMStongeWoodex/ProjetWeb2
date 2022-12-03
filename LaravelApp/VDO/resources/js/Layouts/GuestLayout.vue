@@ -31,7 +31,6 @@ import { Link } from '@inertiajs/inertia-vue3';
 .conteneur{
     display: flex;
     background: var(--couleur-secondaire);
-    height: 100%;
 }
 
 .conteneur-formulaire{
@@ -43,7 +42,7 @@ import { Link } from '@inertiajs/inertia-vue3';
 }
 
 .formulaire{
-    padding: 85px 40px;
+    padding: 40px 40px;
 }
 
 .image{
@@ -56,9 +55,9 @@ import { Link } from '@inertiajs/inertia-vue3';
 		grid-template-columns: 1fr;
 	}
 	.image{
-		height: 200px;
+		width: 100%;
+        overflow: hidden;
+        order: -1;
 	}
 }
-
-
 </style>

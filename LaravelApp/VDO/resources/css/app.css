@@ -30,8 +30,3 @@ h2{
     font-size: 1.5rem; 
   }
 }
-
-body, html, #app {
-  height: 100%;
-  overflow: hidden;
-}
