@@ -1,7 +1,7 @@
 <?php
 return[
     'voiture' => 'Voitures',
-    'logout' => 'déconnexion',
+    'logout' => 'Déconnexion',
     'titre' => 'Tableau de bord',
     'texte' => 'Vous êtes connectés!'
 ];

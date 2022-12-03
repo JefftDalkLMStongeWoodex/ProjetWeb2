@@ -22,7 +22,8 @@ class VoitureController extends Controller
         $voitures = $modeleVoiture->selectVoitureTableauDeBord();
         return Inertia::render('Dashboard/Voiture', [
             'langVoiture' => $langVoiture,
-            'voitures' => $voitures
+            'voitures' => $voitures,
+            'langDashboard' => Lang::get('dashboard'),
         ]);
     }
 

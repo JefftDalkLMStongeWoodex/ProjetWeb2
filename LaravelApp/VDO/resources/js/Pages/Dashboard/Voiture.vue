@@ -5,7 +5,8 @@ import chevronDroit from '/resources/assets/icones/material-chevron-right-white.
 
 defineProps({
     voitures: Object,
-    langVoiture: Object
+    langVoiture: Object,
+    langDashboard: Object
 });
 </script>
 
@@ -13,7 +14,7 @@ defineProps({
 
         <Head :title="langVoiture.head_titre"/>
         <div class="flex">
-            <SidebarVue />
+            <SidebarVue :lang="langDashboard"/>
             <div class="voitures__conteneur">
                 <h1>{{langVoiture.titre.toUpperCase()}}</h1>
                 <div class="tableau__conteneur">
