@@ -11,8 +11,14 @@ defineProps({
 <template>
     <Head />
     <AppLayout :lang="langAppLayout">
-        <div>
+        <div class="conteneur_accueil">
             <h1>Ceci est ma page d'accueil</h1>
         </div>
     </AppLayout>
 </template>
+<style scoped>
+.conteneur_accueil {
+    margin-bottom: auto;
+    background-color: var(--couleur-blanc);
+}
+</style>
