@@ -1,51 +1,45 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import SidebarVue from '@/Components/Sidebar.vue';
-
 import { Head } from '@inertiajs/inertia-vue3';
+
+defineProps({
+    langDashboard: Object,
+})
 </script>
 
 <template>
     <Head title="Dashboard" />
-
-   <div class="flex"> 
-        <SidebarVue />
-
+    <div class="flex"> 
+        <SidebarVue :lang="langDashboard"/>
         <AuthenticatedLayout>
-
             <div class="application">      
                 <div class="contenu--tableau-de-bord ">
 
-                    <h2 class="titre--page">Dashboard</h2>
+                    <h2 class="titre--page">{{langDashboard.titre}}</h2>
                     <div class="py-12">
                         <div class="">
                             <div class="">
-                                <div class="">You're logged in!</div>
+                                <div class="">{{langDashboard.texte}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </AuthenticatedLayout>
     </div> 
 </template>
 <style scoped>
-
 .contenu--tableau-de-bord {
     flex: 1 1 0;
     margin: 3em;
     line-height: 1.5;
     font-weight: 500;
-   }
-
-
-   .titre--page{
-    font-weight: bold;
-    font-size: x-large;
-   
-    
+    color: var(--couleur-secondaire);
 }
 
-
+.titre--page{
+    font-weight: bold;
+    font-size: x-large;
+}
 </style>
