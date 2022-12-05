@@ -41,9 +41,6 @@ defineProps({
                             <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
                         </div>
                     </div>
-                    <div class="header__langSelect">
-                        
-                    </div>
                 </div>
             </nav>
         </header>
