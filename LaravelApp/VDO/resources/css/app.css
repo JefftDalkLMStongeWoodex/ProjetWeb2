@@ -6,6 +6,8 @@
     --couleur-principale: #EA7024;
     --couleur-secondaire: #0D0F21;
     --couleur-blanc: #ffffff;
+    --couleur-blanc-opacite-50: rgba(255, 255, 255, 0.5);
+    --couleur-blanc-opacite-30: rgba(255, 255, 255, 0.3);
     --espacement-wrapper: 0 8vw;
     --police-titre: 'Archivo Black', sans-serif;
     --police-texte: 'Lato', sans-serif;
@@ -27,5 +29,4 @@ h2{
   h2{
     font-size: 1.5rem; 
   }
-  
 }
