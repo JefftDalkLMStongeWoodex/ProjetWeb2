@@ -2,6 +2,7 @@
 import { Head } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
 import chevronDroit from '/resources/assets/icones/material-chevron-right-white.svg';
+import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
 
 defineProps({
     voitures: Object,
@@ -13,8 +14,12 @@ defineProps({
 <template>
 
         <Head :title="langVoiture.head_titre"/>
+
+        <TableauDeBordLayout>
         <div class="flex">
             <SidebarVue :lang="langDashboard"/>
+        
+
             <div class="voitures__conteneur">
                 <h1>{{langVoiture.titre.toUpperCase()}}</h1>
                 <div class="tableau__conteneur">
@@ -40,7 +45,10 @@ defineProps({
                     </table>
                 </div>
             </div>    
+
+    
         </div>
+    </TableauDeBordLayout>
 </template>
 <style scoped>
 h1 {

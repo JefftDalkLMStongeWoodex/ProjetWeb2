@@ -1,5 +1,5 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
 import SidebarVue from '@/Components/Sidebar.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 
@@ -10,9 +10,12 @@ defineProps({
 
 <template>
     <Head title="Dashboard" />
+    <TableauDeBordLayout> 
     <div class="flex"> 
         <SidebarVue :lang="langDashboard"/>
-        <AuthenticatedLayout>
+
+      
+            
             <div class="application">      
                 <div class="contenu--tableau-de-bord ">
 
@@ -26,8 +29,9 @@ defineProps({
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+     
     </div> 
+</TableauDeBordLayout>
 </template>
 <style scoped>
 .contenu--tableau-de-bord {
