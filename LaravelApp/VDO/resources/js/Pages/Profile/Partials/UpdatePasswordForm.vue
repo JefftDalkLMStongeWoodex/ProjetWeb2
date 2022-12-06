@@ -9,6 +9,11 @@ import { ref } from 'vue';
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
 
+const props = defineProps({
+    lang:  Object,
+});
+
+
 const form = useForm({
     current_password: '',
     password: '',
@@ -36,16 +41,16 @@ const updatePassword = () => {
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">Update Password</h2>
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100"> {{lang.password_title}}</h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                Ensure your account is using a long, random password to stay secure.
+                {{lang.password_description}}
             </p>
         </header>
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="current_password" value="Current Password" />
+                <InputLabel for="current_password" :value="lang.current_password" />
 
                 <TextInput
                     id="current_password"
@@ -60,7 +65,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <InputLabel for="password" value="New Password" />
+                <InputLabel for="password" :value="lang.new_password" />
 
                 <TextInput
                     id="password"
@@ -75,7 +80,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                <InputLabel for="password_confirmation" :value="lang.confirm_password" />
 
                 <TextInput
                     id="password_confirmation"
@@ -89,7 +94,7 @@ const updatePassword = () => {
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton :disabled="form.processing"> {{lang.save_button}} </PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">Saved.</p>
