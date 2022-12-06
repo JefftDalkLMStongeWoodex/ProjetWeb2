@@ -138,12 +138,13 @@ const submit = () => {
             <div class="mt-4">
                 <InputLabel for="villes_id" :value="langRegister.villes" />
                 <Select
-                :options = "villes"
-                id="villes_id"
-                class="mt-1 block w-full"
-                v-model="form.villes_id"
-                required
-                autofocus
+                    :options = "villes"
+                    colonneAffichee = "nom"
+                    id="villes_id"
+                    class="mt-1 block w-full"
+                    v-model="form.villes_id"
+                    required
+                    autofocus
                 />
                 <InputError class="mt-2" :message="form.errors.villes_id" />
             </div>
@@ -198,7 +199,7 @@ const submit = () => {
     font-family: var(--police-titre);
     color: var(--couleur-principale);
     padding: 1rem 0 ;
-   
+
 }
 
 p {
