@@ -57,7 +57,7 @@ defineProps({
                     <dd>{{langVoiture.statut}}</dd>
                         <dt>{{voiture.statut["nom"]}}</dt>
                 </template>        
-                <dd>{{langVoiture.utilisateur_reservation}}</dd>
+                <dd v-if="(voiture.statut['id'] == 2)">{{langVoiture.utilisateur_reservation}}</dd>
                     <dd v-if="(voiture.utilisateur !==null)">{{voiture.utilisateur.email}}</dd>
                 <dd>{{langVoiture.description}}</dd>
                     <dt>{{voiture.description}}</dt>
