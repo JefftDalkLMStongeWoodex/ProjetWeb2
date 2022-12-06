@@ -76,8 +76,9 @@ class VoitureController extends Controller
             'carburants_id' => 'exists:carburants,id',
             'etats_id' => 'exists:etats,id',
             'statut_voitures_id' => 'exists:statut_voitures,id',
-            'reservation_users_id' => 'exists:users,id|nullable',
+            'reservation_users_id' => 'exists:users,id|nullable|required_if:statut_voitures_id,2',
             'description' => 'string|nullable',
+            'description_en' => 'string|nullable'
         ]);
 
         $voiture = Voiture::create([
@@ -94,6 +95,7 @@ class VoitureController extends Controller
             'statut_voitures_id' => $request->statut_voitures_id,
             'reservation_users_id' => $request->reservation_users_id,
             'description' => $request->description,
+            'description_en' => $request->description_en
         ]);
 
         return redirect(route('voiture.index'));
@@ -167,8 +169,9 @@ class VoitureController extends Controller
             'carburants_id' => 'exists:carburants,id',
             'etats_id' => 'exists:etats,id',
             'statut_voitures_id' => 'exists:statut_voitures,id',
-            'reservation_users_id' => 'exists:users,id|nullable',
+            'reservation_users_id' => 'exists:users,id|nullable|required_if:statut_voitures_id,2',
             'description' => 'string|nullable',
+            'description_en' => 'string|nullable',
         ]);
 
         $voiture->update([
@@ -185,6 +188,7 @@ class VoitureController extends Controller
             'statut_voitures_id' => $request->statut_voitures_id,
             'reservation_users_id' => $request->reservation_users_id,
             'description' => $request->description,
+            'description_en' => $request->description_en,
         ]);
 
         return redirect(route('voiture.show', $voiture->id));

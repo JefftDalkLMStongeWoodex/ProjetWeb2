@@ -35,6 +35,7 @@ const form = useForm({
     statut_voitures_id: props.voiture.statut_voitures_id,
     reservation_users_id: props.voiture.reservation_users_id,
     description: props.voiture.description,
+    description_en: props.voiture.description_en,
 });
 
 const update = () => {
@@ -201,6 +202,17 @@ const update = () => {
                         v-model="form.description"
                     />
                     <InputError :message="form.errors.description" />
+                </div>
+                <div>
+                    <InputLabel for="description_en" :value="langVoiture.description_en" />
+                    <textarea 
+                        id="description_en" 
+                        name="description_en" 
+                        cols="50"
+                        :placeholder="langVoiture.description_placeholder" 
+                        v-model="form.description_en"
+                    />
+                    <InputError :message="form.errors.description_en" />
                 </div>
                 <div>
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

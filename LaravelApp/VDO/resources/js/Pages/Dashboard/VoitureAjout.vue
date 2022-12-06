@@ -189,7 +189,8 @@ const submit = () => {
                         id="description" 
                         name="description" 
                         cols="50"
-                        :placeholder="langVoiture.description_placeholder" 
+                        :placeholder="langVoiture.description_placeholder"
+                        v-model="form.description" 
                     />
                     <InputError :message="form.errors.description" />
                 </div>
@@ -199,7 +200,8 @@ const submit = () => {
                         id="description_en" 
                         name="description_en" 
                         cols="50"
-                        :placeholder="langVoiture.description_placeholder" 
+                        :placeholder="langVoiture.description_placeholder"
+                        v-model="form.description_en" 
                     />
                     <InputError :message="form.errors.description_en" />
                 </div>

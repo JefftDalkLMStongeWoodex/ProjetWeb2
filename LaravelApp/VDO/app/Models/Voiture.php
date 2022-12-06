@@ -16,6 +16,7 @@ class Voiture extends Model
         'prix_paye',
         'kilometrage',
         'description',
+        'description_en',
         'date_heure_reservation',
         'corps_id',
         'modeles_id',
