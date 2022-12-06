@@ -61,7 +61,7 @@ class Voiture extends Model
     }
 
     public function utilisateur () {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->hasOne('App\Models\User', 'id', 'reservation_users_id');
     }
 
     public function selectVoitureTableauDeBord() {
