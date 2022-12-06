@@ -45,7 +45,6 @@ Route::get('/catalogue', function() { return Inertia::render('Catalogue'); })->n
 
 Route::get('/contact', function() { return Inertia::render('Contact'); })->name('contact');
 
-
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
 
 Route::get('/dashboard', function () {
