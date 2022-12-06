@@ -61,7 +61,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/dashboard/voitures', [VoitureController::class, 'index'])->middleware(['auth', 'verified'])->name('voiture.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard/voitures', [VoitureController::class, 'index'])->name('voiture.index');
+    Route::get('/dashboard/voitures/ajout', [VoitureController::class, 'create'])->name('voiture.create');
+    Route::post('/dashboard/voitures/ajout', [VoitureController::class, 'store'])->name('voiture.store');
+});
 
 Route::get('/catalogue', function() { 
     return Inertia::render('Catalogue', [

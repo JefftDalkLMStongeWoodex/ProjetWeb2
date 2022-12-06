@@ -1,7 +1,8 @@
 <script setup>
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
 import chevronDroit from '/resources/assets/icones/material-chevron-right-white.svg';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
     voitures: Object,
@@ -17,6 +18,11 @@ defineProps({
             <SidebarVue :lang="langDashboard"/>
             <div class="voitures__conteneur">
                 <h1>{{langVoiture.titre.toUpperCase()}}</h1>
+                <Link :href="route('voiture.create')">
+                    <PrimaryButton>
+                        {{langVoiture.ajout}}
+                    </PrimaryButton>
+                </Link>
                 <div class="tableau__conteneur">
                     <table class="tableau">
                         <thead class="tableau__en-tete">

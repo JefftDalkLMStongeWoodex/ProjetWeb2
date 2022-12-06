@@ -5,15 +5,16 @@ export default {
             type: Array,
             default: () => []
         },
+        colonneAffichee: String,
         value:{
             default: ''
         }
     },
     methods: {
         handleChange(e) {
-            this.$emit('update:modelValue',e.target.value);
+            this.$emit('update:modelValue', e.target.value);
         }
-    }
+    },
 }
 </script>
 
@@ -21,7 +22,7 @@ export default {
     <select @change="handleChange" class="boite-saisie">
         <option  value=""></option>
         <slot v-for="option in $props.options" :key="option.id">
-        <option  :value="option.id"> {{option.nom}}</option>
+        <option  :value="option.id">{{$page.props.lang.locale == "en" ? option[colonneAffichee + "_en"] : option[colonneAffichee]}}</option>
         </slot>
     </select>
 </template>
