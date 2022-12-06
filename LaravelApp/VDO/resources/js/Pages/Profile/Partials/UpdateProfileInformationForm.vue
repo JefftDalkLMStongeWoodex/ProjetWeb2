@@ -9,6 +9,7 @@ import { ref } from 'vue';
 const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
+    lang:  Object,
 });
 
 const user = usePage().props.value.auth.user;
@@ -22,16 +23,16 @@ const form = useForm({
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">Profile Information</h2>
-
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100"> {{lang.profil_title}}</h2>
+        
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                Update your account's profile information and email address.
+                {{lang.profil_description}}
             </p>
         </header>
 
         <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" :value="lang.name" />
 
                 <TextInput
                     id="name"
@@ -47,7 +48,7 @@ const form = useForm({
             </div>
 
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" :value="lang.email" />
 
                 <TextInput
                     id="email"
@@ -83,7 +84,7 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton :disabled="form.processing">   {{lang.save_button}}</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">Saved.</p>

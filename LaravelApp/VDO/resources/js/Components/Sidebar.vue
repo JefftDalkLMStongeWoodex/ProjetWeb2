@@ -31,6 +31,15 @@ const props = defineProps(['href', 'active', 'lang']);
                 <NavLink :href="route('logout')" method="post" as="button">
                     {{lang.logout}}
                 </NavLink>
+
+                <NavLink :href="route('profile.edit')">
+                    Profile 
+                </NavLink>
+
+                <NavLink class="header__lang" :href="route('lang', 'en')">EN</NavLink>
+                <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
+
+
             </nav>
         </div>
     </aside>
