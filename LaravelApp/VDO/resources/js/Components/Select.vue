@@ -6,6 +6,7 @@ export default {
             default: () => []
         },
         colonneAffichee: String,
+        optionSelectionnee: [Number, String],
         value:{
             default: ''
         }
@@ -22,7 +23,7 @@ export default {
     <select @change="handleChange" class="boite-saisie">
         <option  value=""></option>
         <slot v-for="option in $props.options" :key="option.id">
-        <option  :value="option.id">{{$page.props.lang.locale == "en" ? option[colonneAffichee + "_en"] : option[colonneAffichee]}}</option>
+            <option :value="option.id" :selected="(option.id == optionSelectionnee)">{{$page.props.lang.locale == "en" ? option[colonneAffichee + "_en"] : option[colonneAffichee]}}</option>
         </slot>
     </select>
 </template>
@@ -40,8 +41,5 @@ export default {
 }
 .boite-saisie:focus {
     border: 0.5px solid var(--couleur-principale);
-  }
-
-
-
+}
 </style>

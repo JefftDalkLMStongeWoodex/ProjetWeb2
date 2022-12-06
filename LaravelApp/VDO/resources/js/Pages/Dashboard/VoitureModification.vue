@@ -7,7 +7,8 @@ import { Head, useForm } from '@inertiajs/inertia-vue3';
 import Select from '@/Components/Select.vue';
 import SidebarVue from '@/Components/Sidebar.vue';
 
-defineProps({
+const props = defineProps({
+    voiture: Object,
     modeles: Object,
     corps: Object,
     transmissions: Object,
@@ -21,38 +22,39 @@ defineProps({
 })
 
 const form = useForm({
-    modeles_id: '',
-    annee: '',
-    prix_paye: '',
-    date_arrivee: '',
-    kilometrage: '',
-    corps_id: '',
-    transmissions_id: '',
-    groupe_motopropulseurs_id: '',
-    carburants_id: '',
-    etats_id: '',
-    statut_voitures_id: '',
-    reservation_users_id: '',
-    description: '',
-    description_en: '',
+    modeles_id: props.voiture.modeles_id,
+    annee: props.voiture.annee,
+    prix_paye: props.voiture.prix_paye,
+    date_arrivee: props.voiture.date_arrivee,
+    kilometrage: props.voiture.kilometrage,
+    corps_id: props.voiture.corps_id,
+    transmissions_id: props.voiture.transmissions_id,
+    groupe_motopropulseurs_id: props.voiture.groupe_motopropulseurs_id,
+    carburants_id: props.voiture.carburants_id,
+    etats_id: props.voiture.etats_id,
+    statut_voitures_id: props.voiture.statut_voitures_id,
+    reservation_users_id: props.voiture.reservation_users_id,
+    description: props.voiture.description,
+    description_en: props.voiture.description_en,
 });
 
-const submit = () => {
-    form.post(route('voiture.store'), { preserveState: true });
+const update = () => {
+    form.put(route('voiture.update', props.voiture), { preserveState: true });
 };
 </script>
 
 <template>
-    <Head :title="langVoiture.ajout" />
+    <Head :title="langVoiture.modifier_titre" />
     <div class="flex">
         <SidebarVue :lang="langDashboard "/>
         <div>
-            <h1>{{langVoiture.ajout}}</h1>
-            <form @submit.prevent="submit">
+            <h1>{{langVoiture.modifier_titre}}</h1>
+            <form @submit.prevent="update">
                 <div>
                     <InputLabel for="modeles_id" :value="langVoiture.modele" />
                     <Select 
                         :options="modeles" 
+                        :optionSelectionnee="form.modeles_id"
                         colonneAffichee="nom"
                         id="modeles_id"
                         v-model="form.modeles_id"
@@ -69,7 +71,7 @@ const submit = () => {
                         :max="new Date().getFullYear()"
                         step="1"
                         v-model="form.annee"
-                        autocomplate="annee"
+                        autocomplete="annee"
                     />
                     <InputError :message="form.errors.annee" />
                 </div>
@@ -81,7 +83,7 @@ const submit = () => {
                         step="0.01"
                         min="0"
                         v-model="form.prix_paye"
-                        autocomplate="prix_paye"
+                        autocomplete="prix_paye"
                     />
                     <InputError :message="form.errors.prix_paye" />
                 </div>
@@ -91,7 +93,7 @@ const submit = () => {
                         id="date_arrivee"
                         type="date"
                         v-model="form.date_arrivee"
-                        autocomplate="date_arrivee"
+                        autocomplete="date_arrivee"
                     />
                     <InputError :message="form.errors.date_arrivee" />
                 </div>
@@ -103,14 +105,15 @@ const submit = () => {
                         step="1"
                         min="0"
                         v-model="form.kilometrage"
-                        autocomplate="kilometrage"
+                        autocomplete="kilometrage"
                     />
                     <InputError :message="form.errors.kilometrage" />
                 </div>
                 <div>
                     <InputLabel for="corps_id" :value="langVoiture.corps" />
                     <Select 
-                        :options ="corps" 
+                        :options="corps" 
+                        :optionSelectionnee="form.corps_id"
                         colonneAffichee = "type"
                         id="corps_id"
                         v-model="form.corps_id"
@@ -122,6 +125,7 @@ const submit = () => {
                     <InputLabel for="transmissions_id" :value="langVoiture.transmission" />
                     <Select 
                         :options ="transmissions" 
+                        :optionSelectionnee="form.transmissions_id"
                         colonneAffichee = "type"
                         id="transmissions_id"
                         v-model="form.transmissions_id"
@@ -133,6 +137,7 @@ const submit = () => {
                     <InputLabel for="groupe_motopropulseurs_id" :value="langVoiture.groupe_motopropulseur" />
                     <Select 
                         :options ="groupeMotopropulseurs" 
+                        :optionSelectionnee="form.groupe_motopropulseurs_id"
                         colonneAffichee = "type"
                         id="groupe_motopropulseurs_id"
                         v-model="form.groupe_motopropulseurs_id"
@@ -144,6 +149,7 @@ const submit = () => {
                     <InputLabel for="carburants_id" :value="langVoiture.carburant" />
                     <Select 
                         :options ="carburants" 
+                        :optionSelectionnee="form.carburants_id"
                         colonneAffichee = "type"
                         id="carburants_id"
                         v-model="form.carburants_id"
@@ -155,6 +161,7 @@ const submit = () => {
                     <InputLabel for="etats_id" :value="langVoiture.etat" />
                     <Select 
                         :options ="etats" 
+                        :optionSelectionnee="form.etats_id"
                         colonneAffichee = "nom"
                         id="etats_id"
                         v-model="form.etats_id"
@@ -166,6 +173,7 @@ const submit = () => {
                     <InputLabel for="statut_voitures_id" :value="langVoiture.statut" />
                     <Select 
                         :options ="statuts" 
+                        :optionSelectionnee="form.statut_voitures_id"
                         colonneAffichee = "nom"
                         id="statut_voitures_id"
                         v-model="form.statut_voitures_id"
@@ -177,6 +185,7 @@ const submit = () => {
                     <InputLabel for="reservation_users_id" :value="langVoiture.utilisateur_reservation" />
                     <Select 
                         :options ="users" 
+                        :optionSelectionnee="form.reservation_users_id"
                         colonneAffichee = "email"
                         id="reservation_users_id"
                         v-model="form.reservation_users_id"
@@ -189,8 +198,8 @@ const submit = () => {
                         id="description" 
                         name="description" 
                         cols="50"
-                        :placeholder="langVoiture.description_placeholder"
-                        v-model="form.description" 
+                        :placeholder="langVoiture.description_placeholder" 
+                        v-model="form.description"
                     />
                     <InputError :message="form.errors.description" />
                 </div>
@@ -200,14 +209,14 @@ const submit = () => {
                         id="description_en" 
                         name="description_en" 
                         cols="50"
-                        :placeholder="langVoiture.description_placeholder"
-                        v-model="form.description_en" 
+                        :placeholder="langVoiture.description_placeholder" 
+                        v-model="form.description_en"
                     />
                     <InputError :message="form.errors.description_en" />
                 </div>
                 <div>
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    {{langVoiture.soumettre}}
+                    {{langVoiture.modifier_soumettre}}
                 </PrimaryButton>
                 </div>
             </form>

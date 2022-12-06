@@ -16,6 +16,7 @@ class Voiture extends Model
         'prix_paye',
         'kilometrage',
         'description',
+        'description_en',
         'date_heure_reservation',
         'corps_id',
         'modeles_id',
@@ -61,7 +62,7 @@ class Voiture extends Model
     }
 
     public function utilisateur () {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->hasOne('App\Models\User', 'id', 'reservation_users_id');
     }
 
     public function selectVoitureTableauDeBord() {

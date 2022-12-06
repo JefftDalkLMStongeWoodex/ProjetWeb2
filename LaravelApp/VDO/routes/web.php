@@ -65,6 +65,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/voitures', [VoitureController::class, 'index'])->name('voiture.index');
     Route::get('/dashboard/voitures/ajout', [VoitureController::class, 'create'])->name('voiture.create');
     Route::post('/dashboard/voitures/ajout', [VoitureController::class, 'store'])->name('voiture.store');
+    Route::get('/dashboard/voitures/detail/{voiture}', [VoitureController::class, 'show'])->name('voiture.show');
+    Route::get('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'edit'])->name("voiture.edit");
+    Route::put('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'update'])->name("voiture.update");
+    Route::delete('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'destroy'])->name("voiture.destroy");
 });
 
 Route::get('/catalogue', function() { 

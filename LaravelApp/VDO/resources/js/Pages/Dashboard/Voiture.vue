@@ -42,12 +42,12 @@ defineProps({
                         </thead>
                         <tbody>
                             <tr class="tableau__rangee" v-for="voiture in voitures" :key="voiture.id">
-                                <td class="tableau__cellule">{{voiture.id}}</td>
-                                <td class="tableau__cellule">{{voiture.constructeur}}</td>
-                                <td class="tableau__cellule">{{voiture.modele }}</td>
-                                <td class="tableau__cellule">{{voiture.prix_paye ? `${voiture.prix_paye} $` : langVoiture.non_disponible}}</td>
-                                <td class="tableau__cellule">{{$page.props.lang.locale == "en" ? voiture.statut_en : voiture.statut}}</td>
-                                <td class="tableau__cellule"><img class="" :src="chevronDroit"></td>
+                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{voiture.id}}</Link></td>
+                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{voiture.constructeur}}</Link></td>
+                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{voiture.modele }}</Link></td>
+                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{voiture.prix_paye ? `${voiture.prix_paye} $` : langVoiture.non_disponible}}</Link></td>
+                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{$page.props.lang.locale == "en" ? voiture.statut_en : voiture.statut}}</Link></td>
+                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)"><img class="" :src="chevronDroit"></Link></td>
                             </tr>
                         </tbody>
                     </table>
@@ -92,5 +92,10 @@ h1 {
 
 .tableau__cellule {
     border-top: var(--couleur-blanc-opacite-30) solid 1px;
+}
+
+.tableau__cellule a {
+    display: flex;
+    align-items: center;
 }
 </style>
