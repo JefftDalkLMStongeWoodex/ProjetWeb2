@@ -34,6 +34,7 @@ const form = useForm({
     statut_voitures_id: '',
     reservation_users_id: '',
     description: '',
+    description_en: '',
 });
 
 const submit = () => {
@@ -193,6 +194,16 @@ const submit = () => {
                     <InputError :message="form.errors.description" />
                 </div>
                 <div>
+                    <InputLabel for="description_en" :value="langVoiture.description_en" />
+                    <textarea 
+                        id="description_en" 
+                        name="description_en" 
+                        cols="50"
+                        :placeholder="langVoiture.description_placeholder" 
+                    />
+                    <InputError :message="form.errors.description_en" />
+                </div>
+                <div>
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     {{langVoiture.soumettre}}
                 </PrimaryButton>
@@ -206,7 +217,6 @@ const submit = () => {
     font-family: var(--police-titre);
     color: var(--couleur-principale);
     padding: 1rem 0 ;
-
 }
 
 p {
