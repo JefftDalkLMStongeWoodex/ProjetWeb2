@@ -8,6 +8,8 @@ return[
     'statut' => 'Statut',
     'non_disponible' => 'Non disponible',
     'ajout' => 'Ajouter une voiture',
+    'modifier_titre' => 'Modifier une voiture',
+    'modifier_soumettre' => 'Mettre à jour',
     'annee' => 'Année',
     'prix_paye' => 'Prix payé',
     'date_arrivee' => 'Date d\'arrivée',
@@ -20,7 +22,9 @@ return[
     'statut' => 'Statut',
     'utilisateur_reservation' => 'Réservé par', 
     'description' => 'Description',
-    'description_placeholder' => 'Entrez ici toute information jugée pertinente qui n\'etant pas couverte par le formulaire ci-haut.',
-    'soumettre' => 'Soumettre'
+    'description_en' => 'Description (anglais)',
+    'description_placeholder' => 'Entrez ici toute information jugée pertinente n\'étant pas couverte par le formulaire ci-haut.',
+    'soumettre' => 'Soumettre',
+    'titre_detail' => 'Détail de la voiture'
 ];
 ?>
