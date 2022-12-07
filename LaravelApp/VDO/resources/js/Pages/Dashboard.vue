@@ -14,8 +14,6 @@ defineProps({
     <div class="flex"> 
         <SidebarVue :lang="langDashboard"/>
 
-      
-            
             <div class="application">      
                 <div class="contenu--tableau-de-bord ">
 
