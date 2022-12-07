@@ -22,7 +22,7 @@ defineProps({
 <template>
   <Head title="Catalogue" />
   <AppLayout :lang="langAppLayout">
-    <aside class="barre-des-filtres">
+    <aside class="filtre-conteneur">
         <h3 class="">Filtres</h3>
         <SousMenu>
           <template slot="toggler">
@@ -36,7 +36,7 @@ defineProps({
         </SousMenu>
       </aside>
 
-      <section class="catalogue wrapper">
+      <section class="catalogue">
         <h4 class="">CATALOGUE DES VEHICULES</h4>
         <select class="tri">
             <option value="" disabled selected>Trier par</option>
@@ -50,15 +50,47 @@ defineProps({
         <div class="catalogue__grid">
             <div class="tuile-vehicule">
               <div class="tuile-vehicule__img-wrapper">
-                <img src="" alt="" class="tuile-vehicule-img">
+                <img src="../../assets/kiaForte2015.jpg" class="tuile-vehicule-img"/>
               </div>
               <h5 class="">
-
+                2015 Kia Forte LX
               </h5>
               <div class="tuile-vehicule__details">
                   <span>79 364 km</span>
               </div>
-
+            </div>
+            <div class="tuile-vehicule">
+              <div class="tuile-vehicule__img-wrapper">
+                <img src="../../assets/kiaForte2015.jpg" class="tuile-vehicule-img"/>
+              </div>
+              <h5 class="">
+                2015 Kia Forte LX
+              </h5>
+              <div class="tuile-vehicule__details">
+                  <span>79 364 km</span>
+              </div>
+            </div>
+            <div class="tuile-vehicule">
+              <div class="tuile-vehicule__img-wrapper">
+                <img src="../../assets/kiaForte2015.jpg" class="tuile-vehicule-img"/>
+              </div>
+              <h5 class="">
+                2015 Kia Forte LX
+              </h5>
+              <div class="tuile-vehicule__details">
+                  <span>79 364 km</span>
+              </div>
+            </div>
+            <div class="tuile-vehicule">
+              <div class="tuile-vehicule__img-wrapper">
+                <img src="../../assets/kiaForte2015.jpg" class="tuile-vehicule-img"/>
+              </div>
+              <h5 class="">
+                2015 Kia Forte LX
+              </h5>
+              <div class="tuile-vehicule__details">
+                  <span>79 364 km</span>
+              </div>
             </div>
         </div>
     </section>
@@ -68,12 +100,45 @@ defineProps({
 </template>
 
 <style>
-.barre-des-filtres {
+.filtre-conteneur {
   position: fixed; 
-  left: 0;
   height: 100%;
-  width: 305px;
   background-color: var(--couleur-principale);
+}
+
+.catalogue__grid {
+  display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+	gap: 10px;
+  margin-top: 1rem;
+}
+
+.tuile-vehicule {
+  border: solid 1px var(--couleur-secondaire);
+  border-radius: 8px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.tuile-vehicule-img {
+  aspect-ratio: 4/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.tuile-vehicule__details {
+
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center center;
 }
 </style>
 
@@ -87,10 +152,9 @@ defineProps({
     <section>
       <div class="flex justify-between">
         <h1 class="text-3xl mb-6">Catalogue</h1>
-
         <input type="search" placeholder="Search"/>
       </div>
-     
+
     </section>
 
 

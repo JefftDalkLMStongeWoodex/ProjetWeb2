@@ -11,6 +11,7 @@
     --espacement-wrapper: 0 8vw;
     --police-titre: 'Archivo Black', sans-serif;
     --police-texte: 'Lato', sans-serif;
+    --card-width: 30ch;
   }
 
 .wrapper {
