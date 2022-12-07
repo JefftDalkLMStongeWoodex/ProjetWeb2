@@ -4,6 +4,15 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 
 defineProps({
   langAppLayout: Object,
+  langCatalogue: Object,
+  voitures: Object,
+  modele: Object,
+  constructeur: Object,
+  corps: Object,
+  transmissions: Object,
+  groupeMotopropulseurs: Object,
+  carburants: Object,
+  etats: Object,
 })
 </script>
 
