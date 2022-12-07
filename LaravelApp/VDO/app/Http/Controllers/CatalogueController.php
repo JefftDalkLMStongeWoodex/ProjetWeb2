@@ -19,8 +19,10 @@ class CatalogueController extends Controller
 {
     //
     function index(){
-        $voitures = Voiture::where('statut_voitures_id', '1')->get('id', 'annee', 'prix_paye', 'kilometrage', 'corps_id','modeles_id', 'transmissions_id', 'groupe_motopropulseurs_id', 'carburants_id', 'commandes_id', 'etats_id');
-
+        $voitures = Voiture::where('statut_voitures_id', '1')->get(['id', 'annee', 'prix_paye', 'kilometrage', 'corps_id','modeles_id', 'transmissions_id', 'groupe_motopropulseurs_id', 'carburants_id', 'commandes_id', 'etats_id']);
+        foreach($voitures as $voiture) {
+            $voiture['prix_paye'] *= 1.25;
+        }
         return Inertia::render('Catalogue', [
             'langAppLayout' => Lang::get('app_layout'),
             'langCatalogue' => Lang::get('catalogue'),
