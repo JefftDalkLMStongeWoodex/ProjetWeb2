@@ -72,6 +72,5 @@ Route::middleware('auth')->group(function () {
     Route::put('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'update'])->name("voiture.update");
     Route::delete('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'destroy'])->name("voiture.destroy");
 
-    Route::get('/dashboard/voitures/ajoutImage', [ImageController::class, 'create'])->name('image.create');
-    Route::post('/dashboard/voitures/ajoutImage', [ImageController::class, 'store'])->name('image.store');
+    Route::get('/dashboard/voitures/ajoutImage/{voiture}', [ImageController::class, 'create'])->name('image.create');
 });
