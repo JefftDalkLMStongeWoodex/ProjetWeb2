@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
-
+use Lang;
 class ProfileController extends Controller
 {
     /**
@@ -22,6 +22,8 @@ class ProfileController extends Controller
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
+            'langProfil' => Lang::get('profil'),
+            'langDashboard' => Lang::get('dashboard'),
         ]);
     }
 
@@ -41,7 +43,10 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        return Redirect::route('profile.edit' , [
+            'langProfil' => Lang::get('profil'),
+            'langDashboard' => Lang::get('dashboard'),
+        ]);
     }
 
     /**
