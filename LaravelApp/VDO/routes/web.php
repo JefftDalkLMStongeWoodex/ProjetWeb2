@@ -71,9 +71,3 @@ Route::middleware('auth')->group(function () {
     Route::put('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'update'])->name("voiture.update");
     Route::delete('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'destroy'])->name("voiture.destroy");
 });
-
-Route::get('/catalogue', function() { 
-    return Inertia::render('Catalogue', [
-        'langAppLayout' => Lang::get('app_layout'),
-    ]); 
-})->name('catalogue');
