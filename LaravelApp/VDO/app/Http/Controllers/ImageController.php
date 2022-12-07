@@ -11,7 +11,7 @@ class ImageController extends Controller
     //
     function create(){
         $langAjoutImage = Lang::get('ajout_image');
-        return Inertia::render('Dashboard/AjoutImage',[
+        return Inertia::render('Dashboard/ImageAjout',[
             'langAjoutImage' => $langAjoutImage,
         ]);
     }
