@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\VoitureController;
+use App\Http\Controllers\CatalogueController;
 use Illuminate\Support\Facades\Lang;
 
 /*
@@ -41,7 +42,7 @@ Route::get('/accueil', function () {
 
 Route::get('/apropos', function () {return Inertia::render('APropos'); })->name('apropos');
 
-Route::get('/catalogue', function() { return Inertia::render('Catalogue'); })->name('catalogue');
+Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
 
 Route::get('/contact', function() { return Inertia::render('Contact'); })->name('contact');
 
@@ -70,9 +71,3 @@ Route::middleware('auth')->group(function () {
     Route::put('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'update'])->name("voiture.update");
     Route::delete('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'destroy'])->name("voiture.destroy");
 });
-
-Route::get('/catalogue', function() { 
-    return Inertia::render('Catalogue', [
-        'langAppLayout' => Lang::get('app_layout'),
-    ]); 
-})->name('catalogue');
