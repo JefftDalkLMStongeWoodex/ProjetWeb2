@@ -1,0 +1,35 @@
+<script>
+export default {
+ name: 'FlecheDroite',
+}
+</script>
+
+<template>
+  <svg
+  class="optionFiltre__fleche"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10.5858 6.34317L12 4.92896L19.0711 12L12 19.0711L10.5858 17.6569L16.2427 12L10.5858 6.34317Z"
+      fill="currentColor"
+    />
+  </svg>
+</template>
+
+
+
+<style scoped>
+.optionFiltre__fleche {
+  font-size: 0;
+  transform: rotate(0deg);
+  transition: transform 200ms ease-in-out;
+  padding-right: 3px;
+}
+.optionFiltre__fleche:active {
+  transform: rotate(90deg);
+}
+</style>
