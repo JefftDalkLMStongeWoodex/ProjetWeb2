@@ -19,23 +19,21 @@ const classes = computed(() =>
 <style scoped>
 .menu__aside {
     background-color: var( --couleur-secondaire);
+    color: white;
     align-items: center;
-    line-height: 2.5rem;
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: #e5e7eb;
-   text-align: left;
+   
+    
+   
+
+   
 }
 
 
 .menu__aside:hover
 {
     color: var( --couleur-principale);
-    border-bottom: #e5e7eb , 4px ;
-    width: 100%;
+   
+    
 }
-
-
 
 </style>

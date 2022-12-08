@@ -19,9 +19,10 @@ defineProps({
         <Head :title="langVoiture.head_titre"/>
 
         <TableauDeBordLayout>
-        <div class="flex">
-            <SidebarVue :lang="langDashboard"/>
-        
+            <template #header>
+                <SidebarVue :lang="langDashboard"/>
+             </template>
+
 
             <div class="voitures__conteneur">
                 <h1>{{langVoiture.titre.toUpperCase()}}</h1>
@@ -54,8 +55,6 @@ defineProps({
                 </div>
             </div>    
 
-    
-        </div>
     </TableauDeBordLayout>
 </template>
 <style scoped>
@@ -70,12 +69,14 @@ h1 {
     flex-grow: 1;
     font-family: var(--police-texte);
     padding: 3rem 2rem 0rem 2rem;
+   
 }
 
 .tableau__conteneur {
     border: var(--couleur-blanc-opacite-50) solid 1px;
     border-radius: 0.375rem;
     margin-top: 2rem;
+   
 }
 .tableau {
     white-space: nowrap;
