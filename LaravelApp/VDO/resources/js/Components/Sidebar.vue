@@ -19,7 +19,7 @@ const props = defineProps(['href', 'active', 'lang']);
 
 
             <nav class="nav">
-                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                <NavLink :href="route('dashboard')" :active="route().current('dashboard') ">
                  
                     <!--  Menu ferme  -->
                     <span v-if="collapsed"> <i class="fa fa-home" /> </span>
@@ -103,11 +103,26 @@ aside div nav {
     transition: 0.2s linear;
   }
 
-
-
-@media (max-width: 768px) {
-    aside div nav {
-        position: fixed;
-    }
+  .menu__aside {
+    background-color: var( --couleur-secondaire);
+    align-items: center;
+    line-height: 2.5rem;
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+   text-align: left;
 }
+
+
+.menu__aside:hover
+{
+    color: var( --couleur-principale);
+    border-bottom: #e5e7eb , 4px ;
+    width: 100%;
+}
+
+
+
+
 </style>
