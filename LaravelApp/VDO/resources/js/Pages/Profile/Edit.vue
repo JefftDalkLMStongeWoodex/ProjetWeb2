@@ -22,10 +22,9 @@ defineProps({
 
     
     <TableauDeBordLayout>
-    <div class="flex  ">
-    
+        <template #header>
             <SidebarVue :lang="langDashboard"/>
-
+         </template>
         <div class="flex"> 
             <div class=" py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -54,7 +53,7 @@ defineProps({
                 </div>
             </div>
         </div>
-    </div>
+
     </TableauDeBordLayout>
 </template>
 <style scoped>

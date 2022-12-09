@@ -12,7 +12,28 @@ const classes = computed(() =>
 </script>
 
 <template>
-    <Link :href="href" :class="classes">
+    <Link :href="href" class="menu__aside">
         <slot />
     </Link>
 </template>
+<style scoped>
+.menu__aside {
+    background-color: var( --couleur-secondaire);
+    color: white;
+    align-items: center;
+   
+    
+   
+
+   
+}
+
+
+.menu__aside:hover
+{
+    color: var( --couleur-principale);
+   
+    
+}
+
+</style>

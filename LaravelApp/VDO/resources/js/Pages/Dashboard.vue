@@ -11,9 +11,11 @@ defineProps({
 <template>
     <Head title="Dashboard" />
     <TableauDeBordLayout> 
-    <div class="flex"> 
-        <SidebarVue :lang="langDashboard"/>
-
+   
+        <template #header>
+            <SidebarVue :lang="langDashboard"/>         
+        </template>
+            
             <div class="application">      
                 <div class="contenu--tableau-de-bord ">
 
@@ -28,7 +30,6 @@ defineProps({
                 </div>
             </div>
      
-    </div> 
 </TableauDeBordLayout>
 </template>
 <style scoped>
@@ -40,8 +41,5 @@ defineProps({
     color: var(--couleur-secondaire);
 }
 
-.titre--page{
-    font-weight: bold;
-    font-size: x-large;
-}
+
 </style>
