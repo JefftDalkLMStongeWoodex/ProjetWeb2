@@ -53,6 +53,8 @@ Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voi
 
 Route::get('/voiture/panier/{voiture}', [PanierAchatController::class, 'panier'])->name('voiture.panier');
 
+Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
+
 
 
 Route::get('/dashboard', function () {

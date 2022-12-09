@@ -65,6 +65,36 @@ class PanierAchatController extends Controller
         ]);
     }
 
+      /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Voiture  $voiture
+     * @return \Illuminate\Http\Response
+     */
+    public function fiche(Voiture $voiture)
+    {
+       
+        $voiture->modele;
+        $voiture->corps;
+        $voiture->transmission;
+        $voiture->groupeMotopropulseur;
+        $voiture->carburant;
+        $voiture->etat;
+        $voiture->statut;
+        $voiture->utilisateur;
+        
+        return Inertia::render('voiture/fiche', [
+            'voiture' => $voiture,
+            'langVoiture' => Lang::get('voiture'),
+            'langDashboard' => Lang::get('dashboard'),
+        ]);
+    }
+
+
+
+
+
+
 }
 
 

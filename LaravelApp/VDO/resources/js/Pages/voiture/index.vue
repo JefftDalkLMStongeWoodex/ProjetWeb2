@@ -42,9 +42,15 @@ defineProps({
                     <Link :href="route('voiture.panier', voiture.id)"> Add to cart {{voiture.id}} </Link>
                 </div>
 
+                <div class="">                    
+                    <Link :href="route('voiture.fiche', voiture.id)"> Fiche produit {{voiture.id}} </Link>
+                </div>
 
             </div>
             </div>
+
+
+
     </section>
 
 
