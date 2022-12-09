@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\PanierAchatController;
 use Illuminate\Support\Facades\Lang;
 
 /*
@@ -47,6 +48,12 @@ Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue
 Route::get('/contact', function() { return Inertia::render('Contact'); })->name('contact');
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
+
+Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voiture.index');
+
+Route::get('/voiture/panier', [PanierAchatController::class, 'panier'])->name('voiture.panier');
+
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [
