@@ -51,7 +51,7 @@ Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('la
 
 Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voiture.index');
 
-Route::get('/voiture/panier', [PanierAchatController::class, 'panier'])->name('voiture.panier');
+Route::get('/voiture/panier/{voiture}', [PanierAchatController::class, 'panier'])->name('voiture.panier');
 
 
 

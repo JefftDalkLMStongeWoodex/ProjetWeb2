@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Voiture;
 use App\Models\Modele;
 use App\Models\Constructeur;
@@ -10,7 +9,9 @@ use App\Models\Transmission;
 use App\Models\Corps;
 use App\Models\GroupeMotopropulseur;
 use App\Models\Carburant;
+use App\Models\User;
 use App\Models\Etat;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 use Lang;
@@ -47,6 +48,7 @@ class PanierAchatController extends Controller
      */
     public function panier(Voiture $voiture)
     {
+       
         $voiture->modele;
         $voiture->corps;
         $voiture->transmission;
