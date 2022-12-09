@@ -46,11 +46,15 @@ const submit = () => {
     <Head :title="langVoiture.ajout" />
     <div class="flex">
         <SidebarVue :lang="langDashboard "/>
-        <div>
-            <h1>{{langVoiture.ajout}}</h1>
+        <div class="wrapper">
+            <h2 class="titre-contenu">{{langVoiture.ajout}}</h2>
             <form @submit.prevent="submit">
-                <div>
-                    <InputLabel for="modeles_id" :value="langVoiture.modele" />
+                <section class="large-group">
+                    <div class="small-group">
+                    <InputLabel
+                     for="modeles_id" 
+                     class="label"
+                     :value="langVoiture.modele" />
                     <Select 
                         :options="modeles" 
                         colonneAffichee="nom"
@@ -60,8 +64,11 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.modeles_id" />
                 </div>
-                <div>
-                    <InputLabel for="annee" :value="langVoiture.annee" />
+                <div class="small-group">
+                    <InputLabel 
+                    class="label"
+                    for="annee" 
+                    :value="langVoiture.annee" />
                     <TextInput 
                         id="annee"
                         type="number"
@@ -73,8 +80,11 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.annee" />
                 </div>
-                <div>
-                    <InputLabel for="prix_paye" :value="langVoiture.prix_paye" />
+                <div class="small-group">
+                    <InputLabel 
+                    class="label"
+                    for="prix_paye" 
+                    :value="langVoiture.prix_paye" />
                     <TextInput 
                         id="prix_paye"
                         type="number"
@@ -85,8 +95,10 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.prix_paye" />
                 </div>
-                <div>
-                    <InputLabel for="date_arrivee" :value="langVoiture.date_arrivee" />
+                <div class="small-group">
+                    <InputLabel
+                    class="label"
+                    for="date_arrivee" :value="langVoiture.date_arrivee" />
                     <TextInput 
                         id="date_arrivee"
                         type="date"
@@ -95,8 +107,8 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.date_arrivee" />
                 </div>
-                <div>
-                    <InputLabel for="kilometrage" :value="langVoiture.kilometrage" />
+                <div class="small-group">
+                    <InputLabel  class="label" for="kilometrage" :value="langVoiture.kilometrage" />
                     <TextInput 
                         id="kilometrage"
                         type="number"
@@ -107,8 +119,8 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.kilometrage" />
                 </div>
-                <div>
-                    <InputLabel for="corps_id" :value="langVoiture.corps" />
+                <div class="small-group">
+                    <InputLabel class="label" for="corps_id" :value="langVoiture.corps" />
                     <Select 
                         :options ="corps" 
                         colonneAffichee = "type"
@@ -118,8 +130,9 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.corps_id" />
                 </div>
-                <div>
-                    <InputLabel for="transmissions_id" :value="langVoiture.transmission" />
+                <div class="small-group">
+                    <InputLabel  class="label"
+                    for="transmissions_id" :value="langVoiture.transmission" />
                     <Select 
                         :options ="transmissions" 
                         colonneAffichee = "type"
@@ -129,8 +142,9 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.transmissions_id" />
                 </div>
-                <div>
-                    <InputLabel for="groupe_motopropulseurs_id" :value="langVoiture.groupe_motopropulseur" />
+                <div class="small-group">
+                    <InputLabel class="label"
+                    for="groupe_motopropulseurs_id" :value="langVoiture.groupe_motopropulseur" />
                     <Select 
                         :options ="groupeMotopropulseurs" 
                         colonneAffichee = "type"
@@ -140,8 +154,8 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.groupe_motopropulseurs_id" />
                 </div>
-                <div>
-                    <InputLabel for="carburants_id" :value="langVoiture.carburant" />
+                <div class="small-group">
+                    <InputLabel class="label" for="carburants_id" :value="langVoiture.carburant" />
                     <Select 
                         :options ="carburants" 
                         colonneAffichee = "type"
@@ -151,8 +165,8 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.carburants_id" />
                 </div>
-                <div>
-                    <InputLabel for="etats_id" :value="langVoiture.etat" />
+                <div class="small-group">
+                    <InputLabel class="label" for="etats_id" :value="langVoiture.etat" />
                     <Select 
                         :options ="etats" 
                         colonneAffichee = "nom"
@@ -162,8 +176,8 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.etats_id" />
                 </div>
-                <div>
-                    <InputLabel for="statut_voitures_id" :value="langVoiture.statut" />
+                <div class="small-group">
+                    <InputLabel class="label" for="statut_voitures_id" :value="langVoiture.statut" />
                     <Select 
                         :options ="statuts" 
                         colonneAffichee = "nom"
@@ -174,7 +188,8 @@ const submit = () => {
                     <InputError :message="form.errors.statut_voitures_id" />
                 </div>
                 <div v-if="form.statut_voitures_id == 2">
-                    <InputLabel for="reservation_users_id" :value="langVoiture.utilisateur_reservation" />
+                    <InputLabel class="label"
+                    for="reservation_users_id" :value="langVoiture.utilisateur_reservation" />
                     <Select 
                         :options ="users" 
                         colonneAffichee = "email"
@@ -183,8 +198,8 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.reservation_users_id" />
                 </div>
-                <div>
-                    <InputLabel for="description" :value="langVoiture.description" />
+                <div class="textarea-div">
+                    <InputLabel class="label" for="description" :value="langVoiture.description" />
                     <textarea 
                         id="description" 
                         name="description" 
@@ -194,8 +209,8 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.description" />
                 </div>
-                <div>
-                    <InputLabel for="description_en" :value="langVoiture.description_en" />
+                <!-- <div class="small-group">
+                    <InputLabel class="label" for="description_en" :value="langVoiture.description_en" />
                     <textarea 
                         id="description_en" 
                         name="description_en" 
@@ -204,17 +219,63 @@ const submit = () => {
                         v-model="form.description_en" 
                     />
                     <InputError :message="form.errors.description_en" />
+                </div> -->
+                <div class="btnSoumettre">
+                    <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        {{langVoiture.soumettre}}
+                    </PrimaryButton>
                 </div>
-                <div>
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    {{langVoiture.soumettre}}
-                </PrimaryButton>
-                </div>
+                </section>
+                
             </form>
         </div>
     </div>
 </template>
 <style scoped>
+
+@media screen and (min-width: 700px) {
+	.large-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+	}
+	
+	.small-group {
+		width: 45%;
+	}
+
+
+}
+.label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.textarea-div {
+	width: 100%;
+}
+
+textarea {
+    width:100%; 
+    height: 150px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.btnSoumettre {
+   width: 100%;
+   
+}
+.titre-contenu {
+    text-align: center;
+    text-transform: uppercase;
+}
 .titre {
     font-family: var(--police-titre);
     color: var(--couleur-principale);
