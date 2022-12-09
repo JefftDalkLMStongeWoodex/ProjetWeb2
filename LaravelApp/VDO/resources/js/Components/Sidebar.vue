@@ -15,11 +15,11 @@ const props = defineProps(['href', 'active', 'lang']);
                 <LogoVersion2 />
             </Link>
         </div>
-        <div class="menu-laterale">
+        <div class="menu_laterale">
 
 
             <nav class="nav">
-                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                <NavLink :href="route('dashboard')" :active="route().current('dashboard') ">
                  
                     <!--  Menu ferme  -->
                     <span v-if="collapsed"> <i class="fa fa-home" /> </span>
@@ -73,41 +73,74 @@ const props = defineProps(['href', 'active', 'lang']);
 </template>
 
 <style scoped>
-.aside {
-    background-color: var( --couleur-secondaire);
-}
-.logo {
-    align-items: center;
-}
 
+
+    
 aside div nav {
     display: flex;
     flex-direction: column;
-    color: white;
-    font-size: 18px;
-    padding: 0rem 4rem 2rem;
-    overflow: hidden;
-    min-height: 100vh;
-    transition: 0.2s ease-out;
-    width: calc(2rem+32px);
+    text-align: center;
+    width:100%;
+    padding: 15px;
+    line-height: 2.2rem;
 
 }
 
-.collapse-icon {
-    position: absolute;
-    bottom: 0;
-    padding: 0.75em;
-  
-    color: rgba(255, 255, 255, 0.7);
-  
-    transition: 0.2s linear;
-  }
 
+@media (min-width: 900px) {
 
-
-@media (max-width: 768px) {
-    aside div nav {
-        position: fixed;
+    .aside {
+        background-color: var( --couleur-secondaire);
     }
+    .logo {
+        align-items: center;
+    }
+    
+    aside div nav {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        font-size: 18px;
+        padding: 0rem 4rem 2rem;
+        overflow: hidden;
+        min-height: 100vh;
+        transition: 0.2s ease-out;
+        width: calc(2rem+32px);
+    
+    }
+    
+    .collapse-icon {
+        position: absolute;
+        bottom: 0;
+        padding: 0.75em;
+      
+        color: rgba(255, 255, 255, 0.7);
+      
+        transition: 0.2s linear;
+      }
+    
+      .menu__aside {
+        background-color: var( --couleur-secondaire);
+        align-items: center;
+        line-height: 2.5rem;
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: #e5e7eb;
+       text-align: left;
+    }
+    
+    
+    .menu__aside:hover
+    {
+        color: var( --couleur-principale);
+        border-bottom: #e5e7eb , 4px ;
+        width: 100%;
+    }
+    
+    
 }
+
+
+
 </style>
