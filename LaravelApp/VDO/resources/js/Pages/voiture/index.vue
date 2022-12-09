@@ -19,21 +19,12 @@ defineProps({
 
 
 
-
-
 </script>
 
 <template>
   <Head title="Catalogue" />
 
-   
-
-     
-  
-    <section class="catalogue" v-for="voiture in voitures" :key="voiture.id">
-
-    
-        
+    <section class="catalogue" v-for="voiture in voitures" :key="voiture.id">    
         <div class="catalogue__grid">
             <div class="tuile-vehicule">
                 <div class="tuile-vehicule__img-wrapper">
@@ -48,7 +39,7 @@ defineProps({
                     <span> prix :  {{voiture.prix_paye}}    </span>
                 </div>
                 <div class="">
-                    <Link :href="route('voiture.cart', voiture.id)"> Add to cart {{voiture.id}} </Link>
+                    <Link :href="route('voiture.panier', voiture.id)"> Add to cart {{voiture.id}} </Link>
                 </div>
 
 

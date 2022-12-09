@@ -15,7 +15,7 @@ use Inertia\Inertia;
 
 use Lang;
 
-class PannierAchatController extends Controller
+class PanierAchatController extends Controller
 {
     //
     function index(){
@@ -45,7 +45,7 @@ class PannierAchatController extends Controller
      * @param  \App\Models\Voiture  $voiture
      * @return \Illuminate\Http\Response
      */
-    public function cart(Voiture $voiture)
+    public function panier(Voiture $voiture)
     {
         $voiture->modele;
         $voiture->corps;
@@ -56,7 +56,7 @@ class PannierAchatController extends Controller
         $voiture->statut;
         $voiture->utilisateur;
         
-        return Inertia::render('voiture/cart', [
+        return Inertia::render('voiture/panier', [
             'voiture' => $voiture,
             'langVoiture' => Lang::get('voiture'),
             'langDashboard' => Lang::get('dashboard'),
