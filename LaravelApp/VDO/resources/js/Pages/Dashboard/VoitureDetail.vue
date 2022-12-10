@@ -64,6 +64,7 @@ defineProps({
                 <dd>{{langVoiture.description_en}}</dd>
                     <dt>{{voiture.description_en}}</dt>
             </dl>
+            <Link :href="route('image.index', voiture.id)">Consulter les images associées à cette voiture</Link>
             <Link :href="route('voiture.edit', voiture)">
                 <SecondaryButton>Modifier</SecondaryButton>
             </Link>
