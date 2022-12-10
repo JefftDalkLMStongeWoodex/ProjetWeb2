@@ -1,26 +1,26 @@
 <script setup>
 import { Head } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import Tuile from '@/Components/Tuile.vue';
+import SectionFiltres from '@/Components/SectionFiltres.vue';
+import FiltreMinMax from '@/Components/FiltreMinMax.vue';
+import Select from '@/Components/Select.vue';
 
-import FlecheDroite from '@/Components/FlecheDroite.vue';
-
-defineProps({
+const props = defineProps({
   langAppLayout: Object,
   langCatalogue: Object,
   voitures: Object,
-  modele: Object,
-  constructeur: Object,
+  modeles: Object,
+  constructeurs: Object,
   corps: Object,
   transmissions: Object,
   groupeMotopropulseurs: Object,
   carburants: Object,
   etats: Object,
 })
-
+console.log(props.voitures);
 </script>
-
 <template>
-
   <Head title="Catalogue" />
   <AppLayout :lang="langAppLayout">
     <section class="catalogue">
@@ -32,72 +32,45 @@ defineProps({
               <div class="filtreSidebar__reset">Rénitialiser</div>
             </div>
             <div class="filtreSidebar__contenu">
-              <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Marque</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div>
-
-
-              <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Modele</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div>
-
-
-              <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Prix</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div>
-
-              <div class="optionFiltre">
+              <SectionFiltres
+              :options = "$props.constructeurs"
+              titre = 'Constructeurs'
+              colonneAffichee = 'nom'
+              />
+              <SectionFiltres
+              :options = "$props.groupeMotopropulseurs"
+              titre = 'Groupe Motopropulseurs'
+              colonneAffichee = 'type'
+              />
+              <SectionFiltres
+              :options = "$props.corps"
+              titre = 'Corps'
+              colonneAffichee = 'type'
+              />
+              <SectionFiltres
+              :options = "$props.transmissions"
+              titre = 'Transmission'
+              colonneAffichee = 'type'
+              />
+              <SectionFiltres
+              :options = "$props.carburants"
+              titre = 'Carburants'
+              colonneAffichee = 'type'
+              />
+              <SectionFiltres
+              :options = "$props.etats"
+              titre = 'États'
+              colonneAffichee = 'nom'
+              />
+              <FiltreMinMax
+              nom = 'Prix' 
+              untite = '$'
+              />
+              <FiltreMinMax
+              nom = 'Kilometrage' 
+              untite = 'km'
+              />
+              <!-- <div class="optionFiltre">
                 <div class="optionFiltre__entete">
                   <div class="optionFiltre__titre">
                     <h6>
@@ -116,8 +89,7 @@ defineProps({
                       <Input type="checkbox"/>
                     </div>
                 </div>
-              </div>
-
+              </div> -->
             </div>
           </div>
         </div>
@@ -127,107 +99,27 @@ defineProps({
         <div class="catalogue__contenu__tri">
           <select>
             <option value="" disabled selected>Trier par :</option>
-            <option>Prix: bas à élevés</option>
-            <option>Prix: élevés à bas</option>
-            <option>Année: croissante</option>
-            <option>Année: décroissante</option>
-            <option>KM: bas à élevés</option>
-            <option>KM: élevés à bas</option>
+            <option value="1">Prix: bas à élevés</option>
+            <option value="2">Prix: élevés à bas</option>
+            <option value="3">Année: croissante</option>
+            <option value="4">Année: décroissante</option>
+            <option value="5">KM: bas à élevés</option>
+            <option value="6">KM: élevés à bas</option>
           </select>
         </div>
-       
         <div class="catalogue__grid">
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
+          <slot v-for="voiture in $props.voitures">
+            <Tuile
+            :data = "voiture"
+            />
+          </slot>
         </div>
-
       </section>
-
     </section>
-
   </AppLayout>
-
 </template>
 
 <style>
-
 .catalogue {
   display: flex;
   align-items: flex-start;

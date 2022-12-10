@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Lang;
 
 /*
@@ -70,4 +71,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'edit'])->name("voiture.edit");
     Route::put('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'update'])->name("voiture.update");
     Route::delete('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'destroy'])->name("voiture.destroy");
+
+    Route::get('/dashboard/voitures/ajoutImage/{voiture}', [ImageController::class, 'create'])->name('image.create');
 });
