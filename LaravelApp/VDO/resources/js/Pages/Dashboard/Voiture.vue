@@ -1,17 +1,26 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
+import Tableau from '@/Components/Tableau.vue';
 import chevronDroit from '/resources/assets/icones/material-chevron-right-white.svg';
 
 import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 
-defineProps({
+const props = defineProps({
     voitures: Object,
     langVoiture: Object,
     langDashboard: Object
 });
+
+const tableau_th = [
+    'ID',
+    props.langVoiture.constructeur,
+    props.langVoiture.modele,
+    props.langVoiture.prix_paye,
+    props.langVoiture.statut
+]
 </script>
 
 <template>
@@ -21,7 +30,7 @@ defineProps({
         <TableauDeBordLayout>
             <template #header>
                 <SidebarVue :lang="langDashboard"/>
-             </template>
+            </template>
 
 
             <div class="voitures__conteneur">
@@ -31,30 +40,13 @@ defineProps({
                         {{langVoiture.ajout}}
                     </PrimaryButton>
                 </Link>
-                <div class="tableau__conteneur">
-                    <table class="tableau">
-                        <thead class="tableau__en-tete">
-                            <th class="en-tete__cellule">ID</th>
-                            <th class="en-tete__cellule">{{langVoiture.constructeur}}</th>
-                            <th class="en-tete__cellule">{{langVoiture.modele}}</th>
-                            <th class="en-tete__cellule">{{langVoiture.prix_paye}}</th>
-                            <th class="en-tete__cellule">{{langVoiture.statut}}</th>
-                            <th></th>
-                        </thead>
-                        <tbody>
-                            <tr class="tableau__rangee" v-for="voiture in voitures" :key="voiture.id">
-                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{voiture.id}}</Link></td>
-                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{voiture.constructeur}}</Link></td>
-                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{voiture.modele }}</Link></td>
-                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{voiture.prix_paye ? `${voiture.prix_paye} $` : langVoiture.non_disponible}}</Link></td>
-                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)">{{$page.props.lang.locale == "en" ? voiture.statut_en : voiture.statut}}</Link></td>
-                                <td class="tableau__cellule"><Link :href="route('voiture.show', voiture.id)"><img class="" :src="chevronDroit"></Link></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <Tableau 
+                    :tableau = voitures
+                    :tableau_th = tableau_th
+                    :route_detail = true
+                    route_nom = "voiture.show"
+                />
             </div>    
-
     </TableauDeBordLayout>
 </template>
 <style scoped>
@@ -69,34 +61,5 @@ h1 {
     flex-grow: 1;
     font-family: var(--police-texte);
     padding: 3rem 2rem 0rem 2rem;
-   
-}
-
-.tableau__conteneur {
-    border: var(--couleur-blanc-opacite-50) solid 1px;
-    border-radius: 0.375rem;
-    margin-top: 2rem;
-   
-}
-.tableau {
-    white-space: nowrap;
-    width: 100%;
-}
-
-.tableau__rangee, .tableau__en-tete {
-    text-align: left;
-}
-
-.tableau__cellule, .en-tete__cellule {
-    padding: 0.5rem;
-}
-
-.tableau__cellule {
-    border-top: var(--couleur-blanc-opacite-30) solid 1px;
-}
-
-.tableau__cellule a {
-    display: flex;
-    align-items: center;
 }
 </style>
