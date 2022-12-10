@@ -7,7 +7,7 @@ export default {
         },
         modele:{
             type: String,
-            default: () => ''
+            default: ''
         },
         value:{
             default: ''
