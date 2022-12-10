@@ -65,9 +65,11 @@ class Voiture extends Model
         return $this->hasOne('App\Models\User', 'id', 'reservation_users_id');
     }
 
-    public function selectVoitureTableauDeBord() {
+    public function selectVoitureTableauDeBord($locale) {
+        $colonne_statut = "";
+        ($locale == "en") ? ($colonne_statut = "statut_voitures.nom_en") : ($colonne_statut = "statut_voitures.nom");
         return DB::select(
-            'SELECT voitures.id as id, modeles.nom as modele, constructeurs.nom as constructeur, prix_paye, statut_voitures.nom as statut, statut_voitures.nom_en as statut_en 
+            'SELECT voitures.id as id, modeles.nom as modele, constructeurs.nom as constructeur, prix_paye, ' . $colonne_statut  . ' as statut
             FROM voitures  
             JOIN modeles ON voitures.modeles_id = modeles.id 
             JOIN constructeurs ON modeles.constructeurs_id = constructeurs.id 
