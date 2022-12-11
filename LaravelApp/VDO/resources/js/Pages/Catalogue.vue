@@ -1,10 +1,11 @@
 <script setup>
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head, useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Tuile from '@/Components/Tuile.vue';
 import SectionFiltres from '@/Components/SectionFiltres.vue';
 import FiltreMinMax from '@/Components/FiltreMinMax.vue';
 import Select from '@/Components/Select.vue';
+
 
 const props = defineProps({
   langAppLayout: Object,
@@ -18,7 +19,24 @@ const props = defineProps({
   carburants: Object,
   etats: Object,
 })
-console.log(props.voitures);
+
+// const form = useForm({
+//   modeles: '',
+//   constructeurs: '',
+//   corps: '',
+//   transmissions: '',
+//   groupeMotopropulseurs: '',
+//   carburants: '',
+//   etats: '',
+//   kilometrage: {
+//     min:'',
+//     max:''
+//   },
+//   prix: {
+//     min:'',
+//     max:''
+//   },
+// })
 </script>
 <template>
   <Head title="Catalogue" />
@@ -32,64 +50,54 @@ console.log(props.voitures);
               <div class="filtreSidebar__reset">Rénitialiser</div>
             </div>
             <div class="filtreSidebar__contenu">
+              
               <SectionFiltres
               :options = "$props.constructeurs"
               titre = 'Constructeurs'
               colonneAffichee = 'nom'
+              
               />
               <SectionFiltres
               :options = "$props.groupeMotopropulseurs"
               titre = 'Groupe Motopropulseurs'
               colonneAffichee = 'type'
+              
               />
               <SectionFiltres
               :options = "$props.corps"
               titre = 'Corps'
               colonneAffichee = 'type'
+              
               />
               <SectionFiltres
               :options = "$props.transmissions"
               titre = 'Transmission'
               colonneAffichee = 'type'
+              
               />
               <SectionFiltres
               :options = "$props.carburants"
               titre = 'Carburants'
               colonneAffichee = 'type'
+              
               />
               <SectionFiltres
               :options = "$props.etats"
               titre = 'États'
               colonneAffichee = 'nom'
+              
               />
               <FiltreMinMax
               nom = 'Prix' 
               untite = '$'
+              
               />
               <FiltreMinMax
               nom = 'Kilometrage' 
               untite = 'km'
+              
               />
-              <!-- <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Transmission</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div> -->
+            
             </div>
           </div>
         </div>

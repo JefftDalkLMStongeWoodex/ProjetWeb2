@@ -14,8 +14,8 @@ export default {
     <details>
         <summary><strong>{{nom}}</strong></summary>
         <div class="min-max-filter">
-            <input type="text" class="min-max-filter__input" :placeholder="$props.unite+' min'" aria-label="Montant minimum">
-            <input type="text" class="min-max-filter__input" :placeholder="$props.unite+' max'" aria-label="Montant maximum">
+            <input name="min" type="text" class="min-max-filter__input" :placeholder="$props.unite+' min'" aria-label="Montant minimum">
+            <input name="min" type="text" class="min-max-filter__input" :placeholder="$props.unite+' max'" aria-label="Montant maximum">
         </div>
     </details>
 </template>

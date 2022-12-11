@@ -1,5 +1,10 @@
 <script>
 export default {
+    data() {
+        return {
+            checkedValues : []
+        }
+    },
     props:{
         titre: {
             type: String,
@@ -11,20 +16,15 @@ export default {
         },
         colonneAffichee: String,
     },
-    methods: {
-        handleChange(e) {
-            this.$emit('update:modelValue', e.target.value);
-        }
-    },
 }
 </script>
 <template>
     <details>
         <summary><strong>{{titre}}</strong></summary>
         <ul>
-            <li v-for="option in options" class="filter">
-            <input type="checkbox" :name="option" id="option">
-            {{$page.props.lang.locale == "en" && option[colonneAffichee + "_en"]!=null ? option[colonneAffichee + "_en"] : option[colonneAffichee]}}
+            <li v-for="option in options">
+            <input type="checkbox" :name="option[colonneAffichee]" :id="option[colonneAffichee]" v-model="checkedValues"  :value="option[colonneAffichee]">
+            <label :for="option[colonneAffichee]">{{$page.props.lang.locale == "en" && option[colonneAffichee + "_en"]!=null ? option[colonneAffichee + "_en"] : option[colonneAffichee]}}</label>
             </li>
         </ul>
     </details>
