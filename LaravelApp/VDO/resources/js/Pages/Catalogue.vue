@@ -28,7 +28,7 @@ const form = useForm({
   groupeMotopropulseurs:[],
   carburants:[],
   etats:[],
-  kilometrage: {
+  kilometrage:{
     min:'',
     max:''
   },
@@ -90,12 +90,12 @@ const form = useForm({
                 <FiltreMinMax
                 nom = 'Prix' 
                 untite = '$'
-                v-model = "form.kilometrage"
+                v-model = "form.prix"
                 />
                 <FiltreMinMax
                 nom = 'Kilometrage' 
                 untite = 'km'
-                v-model = "form.prix"
+                v-model = "form.kilometrage"
                 />
               </form>
             </div>

@@ -17,7 +17,7 @@ export default {
         colonneAffichee: String,
     },
     methods: {
-        handleChange(e) {
+        handleChange() {
             this.$emit('update:modelValue', this.$data.checkedValues);
         }
     },
