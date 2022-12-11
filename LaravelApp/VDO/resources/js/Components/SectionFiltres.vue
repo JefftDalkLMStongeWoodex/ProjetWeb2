@@ -16,6 +16,11 @@ export default {
         },
         colonneAffichee: String,
     },
+    methods: {
+        handleChange(e) {
+            this.$emit('update:modelValue', this.$data.checkedValues);
+        }
+    },
 }
 </script>
 <template>
@@ -23,7 +28,7 @@ export default {
         <summary><strong>{{titre}}</strong></summary>
         <ul>
             <li v-for="option in options">
-            <input type="checkbox" :name="option[colonneAffichee]" :id="option[colonneAffichee]" v-model="checkedValues"  :value="option[colonneAffichee]">
+            <input type="checkbox" :name="option[colonneAffichee]" :id="option[colonneAffichee]" v-model="checkedValues"  :value="option[colonneAffichee]" @change="handleChange">
             <label :for="option[colonneAffichee]">{{$page.props.lang.locale == "en" && option[colonneAffichee + "_en"]!=null ? option[colonneAffichee + "_en"] : option[colonneAffichee]}}</label>
             </li>
         </ul>
