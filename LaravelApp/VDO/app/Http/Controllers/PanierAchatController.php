@@ -83,6 +83,9 @@ class PanierAchatController extends Controller
         $voiture->statut;
         $voiture->utilisateur;
         
+        $voiture['imagePrincipale'] = $voiture->imagePrincipale($voiture->id);
+        $voiture['images'] = $voiture->images($voiture->id);
+
         return Inertia::render('voiture/fiche', [
             'voiture' => $voiture,
             'langVoiture' => Lang::get('voiture'),
