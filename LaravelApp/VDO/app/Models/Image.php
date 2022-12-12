@@ -32,7 +32,7 @@ class Image extends Model
         return DB::select(
             'SELECT id, ' . $colonne_nom . ', chemin, ' . $colonne_alt . ', image_principale, voitures_id
             FROM images
-            WHERE voitures_id = 2'
+            WHERE voitures_id = ' . $idVoiture
         );
     }
 }
