@@ -8,9 +8,9 @@ import AppelAction from '@/Components/SectionAppelAction.vue';
 
 
 defineProps({
-    langAppLayout: Object,
+  langAppLayout: Object,
   langCatalogue: Object,
-  voitures: Object,
+  voiture: Object,
   modele: Object,
   constructeur: Object,
   corps: Object,
@@ -37,9 +37,11 @@ defineProps({
                 </div>
                 <div class="grid_item grid_item2">   
                      <div> 
-                        <Fiche/>
-                    
+                        <Fiche :detailVoiture="voiture"   />
+
+    
                     </div>
+                   
                 </div>
 
                 <div class="grid_item grid_item3">  <Specifications/>   </div>
