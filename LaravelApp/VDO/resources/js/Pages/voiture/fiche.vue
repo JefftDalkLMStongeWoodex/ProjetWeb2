@@ -1,6 +1,10 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
-
+import Fiche from '@/Components/voiture/Fiche.vue';
+import Galerie from '@/Components/voiture/Galerie.vue';
+import Specifications from '@/Components/voiture/Specifications.vue';
+import Equipement from '@/Components/voiture/Equipement.vue';
+import AppelAction from '@/Components/SectionAppelAction.vue'; 
 
 
 defineProps({
@@ -27,21 +31,22 @@ defineProps({
         <section>
             <div class="grid">
                 <div class="grid_item grid_item1"> 
+                    <Galerie/>
                     <div> <img src="" alt=""></div>
                  
                 </div>
                 <div class="grid_item grid_item2">   
                      <div> 
-                        <h3> Nom de voiture </h3>
-                        <p>  Description Produits boss </p>
+                        <Fiche/>
+                    
                     </div>
                 </div>
 
-                <div class="grid_item grid_item3"> 3 Spec</div>
-                <div class="grid_item grid_item4">4 Equipement</div>
+                <div class="grid_item grid_item3">  <Specifications/>   </div>
+                <div class="grid_item grid_item4"><Equipement/> </div>
 
                    
-                <div class="grid_item grid_item12"> 12:Vous avez des questions </div>
+                <div class="grid_item grid_item12"> <AppelAction/>  </div>
             </div>
         </section>
 
