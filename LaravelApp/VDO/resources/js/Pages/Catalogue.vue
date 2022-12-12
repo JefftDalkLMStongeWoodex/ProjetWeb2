@@ -62,6 +62,7 @@ const tri = () => {
       break;
   }
 }
+
 function filtreVoitures(filtre) {
   const data = props.voitures.filter(
     (voiture) => {
@@ -127,68 +128,68 @@ function resetForm(){
         <div class="catalogue__sidebar__contenu">
           <div class="filtreSidebar">
             <div class="filtreSidebar__entete">
-              <h4 class="filtreSidebar__titre">Filtres</h4>
-              <div class="filtreSidebar__reset" @click="resetForm">Rénitialiser</div>
+              <h4 class="filtreSidebar__titre">{{langCatalogue.filtres}}</h4>
+              <div class="filtreSidebar__reset" @click="resetForm">{{langCatalogue.renitialiser}}</div>
             </div>
             <div class="filtreSidebar__contenu">
               <form action="">
                 <SectionFiltres
                 :options = "$props.constructeurs"
-                titre = 'Constructeurs'
+                :titre = "langCatalogue.constructeurs"
                 colonneAffichee = 'nom'
                 v-model = "form.constructeurs"
                 @change="filtreVoitures('constructeurs')"
                 />
                 <SectionFiltres
                 :options = "$props.groupeMotopropulseurs"
-                titre = 'Groupe Motopropulseurs'
+                :titre = "langCatalogue.motoprop"
                 colonneAffichee = 'type'
                 v-model = "form.groupeMotopropulseurs"
                 @change="filtreVoitures('groupeMotopropulseurs')"
                 />
                 <SectionFiltres
                 :options = "$props.corps"
-                titre = 'Corps'
+                :titre = "langCatalogue.corps"
                 colonneAffichee = 'type'
                 v-model = "form.corps"
                 @change="filtreVoitures('corps')"
                 />
                 <SectionFiltres
                 :options = "$props.transmissions"
-                titre = 'Transmission'
+                :titre = "langCatalogue.transmission"
                 colonneAffichee = 'type'
                 v-model = "form.transmissions"
                 @change="filtreVoitures('transmissions')"
                 />
                 <SectionFiltres
                 :options = "$props.carburants"
-                titre = 'Carburants'
+                :titre = "langCatalogue.carburants"
                 colonneAffichee = 'type'
                 v-model = "form.carburants"
                 @change="filtreVoitures('carburants')"
                 />
                 <SectionFiltres
                 :options = "$props.etats"
-                titre = 'États'
+                :titre = "langCatalogue.etats"
                 colonneAffichee = 'nom'
                 v-model = "form.etats"
                 @change="filtreVoitures('etats')"
                 />
                 <FiltreMinMax
-                nom = 'Prix' 
-                untite = '$'
+                :titre = "langCatalogue.prix"
+                unite = '$'
                 v-model = "form.prix"
                 @change="porteVoitures('prix')"
                 />
                 <FiltreMinMax
-                nom = 'Année' 
+                :titre = "langCatalogue.annee"
                 untite = ''
                 v-model = "form.annee"
                 @change="porteVoitures('annee')"
                 />
                 <FiltreMinMax
-                nom = 'Kilometrage' 
-                untite = 'km'
+                :titre = "langCatalogue.kilometrage"
+                unite = 'km'
                 v-model = "form.kilometrage"
                 @change="porteVoitures('kilometrage')"
                 />
@@ -198,16 +199,15 @@ function resetForm(){
         </div>
       </aside>
       <section class="catalogue__contenu">
-        <h4 class="">CATALOGUE DES VEHICULES</h4>
         <div class="catalogue__contenu__tri">
           <select v-model.number="form.tri" @change="tri">
-            <option value="" disabled selected>Trier par :</option>
-            <option value="1">Prix: bas à élevés</option>
-            <option value="2">Prix: élevés à bas</option>
-            <option value="3">Année: croissante</option>
-            <option value="4">Année: décroissante</option>
-            <option value="5">KM: bas à élevés</option>
-            <option value="6">KM: élevés à bas</option>
+            <option value="" disabled selected>{{langCatalogue.trierPar}}</option>
+            <option value="1">{{langCatalogue.trierPrixASC}}</option>
+            <option value="2">{{langCatalogue.trierPrixDSC}}</option>
+            <option value="3">{{langCatalogue.trierAnneeASC}}</option>
+            <option value="4">{{langCatalogue.trierAnneeDSC}}</option>
+            <option value="5">{{langCatalogue.trierKmASC}}</option>
+            <option value="6">{{langCatalogue.trierKmDSC}}</option>
           </select>
         </div>
         <div class="catalogue__grid">
