@@ -13,22 +13,40 @@ defineProps({
 </script>
 
 <template>
-    <Head :title="langVoiture.ajout" />
+    <Head :title="langVoiture.detail" />
     <div class="flex">
         <SidebarVue :lang="langDashboard "/>
-        <div>
+        <div class="wrapper">
             <h1>{{langVoiture.titre_detail.toUpperCase()}}</h1>
             <dl>
-                <dd>{{langVoiture.modele}}</dd>
-                    <dt>{{voiture.modele["nom"]}}</dt>
-                <dd>{{langVoiture.annee}}</dd>
-                    <dt>{{voiture.annee}}</dt>
-                <dd>{{langVoiture.prix_paye}}</dd>
-                    <dt>{{voiture.prix_paye}}$</dt>
-                <dd>{{langVoiture.date_arrivee}}</dd>
-                    <dt>{{voiture.date_arrivee}}</dt>
-                <dd>{{langVoiture.kilometrage}}</dd>
-                    <dt>{{voiture.kilometrage}}</dt>
+                <table>
+                    <thead>
+                        <tr>
+                            <dd>{{langVoiture.modele}}</dd>
+                        </tr>
+                        <tr>
+                            <dd>{{langVoiture.annee}}</dd>
+                        </tr>
+                        <tr>
+                            <dd>{{langVoiture.prix_paye}}</dd>
+                        </tr>
+                        <tr>
+                            <dd>{{langVoiture.date_arrivee}}</dd>
+                        </tr>
+                        <tr>
+                            <dd>{{langVoiture.kilometrage}}</dd>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><dt>{{voiture.modele["nom"]}}</dt></tr>
+                        <tr><dt>{{voiture.annee}}</dt></tr>
+                        <tr><dt>{{voiture.prix_paye}}$</dt></tr>
+                        <tr><dt>{{voiture.date_arrivee}}</dt></tr>
+                        <tr><dt>{{voiture.kilometrage}}</dt></tr>
+                    </tbody>
+                </table>
+                
+                
                 <template v-if="$page.props.lang.locale == 'en'">
                     <dd>{{langVoiture.corps}}</dd>
                         <dt>{{voiture.corps["type_en"]}}</dt>
