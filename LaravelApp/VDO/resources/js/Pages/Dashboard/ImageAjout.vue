@@ -139,7 +139,6 @@ const submit = () => {
 		width: 45%;
 	}
 
-
 }
 .label {
     display: block;
@@ -178,10 +177,8 @@ textarea {
 
 p {
     color:  var(--couleur-blanc);
-    
 }
 p a{
-    color:  var(--couleur-principale);
-    
+    color:  var(--couleur-principale);  
 }
 </style>

@@ -4,7 +4,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 
 
 defineProps({
-    langAppLayout: Object,
+  langAppLayout: Object,
   langCatalogue: Object,
   voitures: Object,
   modele: Object,
