@@ -17,7 +17,7 @@ defineProps({
     <div class="flex">
         <SidebarVue :lang="langDashboard" />
         <div class="wrapper">
-            <h1 class="titre">{{ langVoiture.titre_detail.toUpperCase() }}</h1>
+            <h2 class="titre">{{ langVoiture.titre_detail.toUpperCase() }}</h2>
             <h4>{{ langVoiture.detail_technique }}</h4>
             <hr>
             <table class="fiche">
@@ -206,7 +206,6 @@ defineProps({
 
 .titre {
     font-family: var(--police-titre);
-    font-size: ;
     padding: 1rem 0;
 }
 

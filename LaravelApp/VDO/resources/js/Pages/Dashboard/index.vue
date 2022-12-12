@@ -14,6 +14,8 @@ defineProps({
     <div class="flex"> 
         <SidebarVue :lang="langDashboard"/>
 
+      
+            
             <div class="application">      
                 <div class="contenu--tableau-de-bord ">
 
@@ -43,21 +45,5 @@ defineProps({
 .titre--page{
     font-weight: bold;
     font-size: x-large;
-}
-
-@media (min-width: 900px) {
-
-    body{
-        display: flex;
-        min-height: 100vh;
-        flex-direction: row;
-    }
-    
-    .conteneur{
-    flex-grow: 1;
-    min-height: 100%;
-    display: flex;
-    
-    }
 }
 </style>
