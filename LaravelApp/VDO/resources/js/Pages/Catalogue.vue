@@ -5,7 +5,6 @@ import Tuile from '@/Components/Tuile.vue';
 import SectionFiltres from '@/Components/SectionFiltres.vue';
 import FiltreMinMax from '@/Components/FiltreMinMax.vue';
 import Select from '@/Components/Select.vue';
-import { computed } from '@vue/reactivity';
 
 const props = defineProps({
   langAppLayout: Object,
@@ -67,10 +66,34 @@ function filtreVoitures(filtre) {
   const data = props.voitures.filter(
     (voiture) => {
       let bool = false
-      console.log(form[filtre]);
-      for(let f of form[filtre]){
-        if (voiture.constructeur == f){
-          bool = true;
+      if(form[filtre].length===0) {
+        bool = true
+      }
+      else{
+        for(let f of form[filtre]) {
+          if (voiture[filtre] == f) {
+            bool = true
+          }
+        }
+      }
+      return bool
+    }
+  )
+  console.log(data);
+}
+
+function porteVoitures(filtre) {
+  const data = props.voitures.filter(
+    (voiture)=>{
+      let bool = true
+      if(form[filtre].min !== '') {
+        if(voiture[filtre]<form[filtre].min){
+          bool = false
+        }
+      }
+      if(form[filtre].max!=='') {
+        if(voiture[filtre]>form[filtre].max) {
+          bool = false
         }
       }
       return bool
@@ -92,6 +115,9 @@ function triVoitures(propriete, ordre) {
   })
 }
 
+function resetForm(){
+  form.reset();
+}
 </script>
 <template>
   <Head title="Catalogue" />
@@ -102,7 +128,7 @@ function triVoitures(propriete, ordre) {
           <div class="filtreSidebar">
             <div class="filtreSidebar__entete">
               <h4 class="filtreSidebar__titre">Filtres</h4>
-              <div class="filtreSidebar__reset">Rénitialiser</div>
+              <div class="filtreSidebar__reset" @click="resetForm">Rénitialiser</div>
             </div>
             <div class="filtreSidebar__contenu">
               <form action="">
@@ -118,40 +144,53 @@ function triVoitures(propriete, ordre) {
                 titre = 'Groupe Motopropulseurs'
                 colonneAffichee = 'type'
                 v-model = "form.groupeMotopropulseurs"
+                @change="filtreVoitures('groupeMotopropulseurs')"
                 />
                 <SectionFiltres
                 :options = "$props.corps"
                 titre = 'Corps'
                 colonneAffichee = 'type'
                 v-model = "form.corps"
+                @change="filtreVoitures('corps')"
                 />
                 <SectionFiltres
                 :options = "$props.transmissions"
                 titre = 'Transmission'
                 colonneAffichee = 'type'
                 v-model = "form.transmissions"
+                @change="filtreVoitures('transmissions')"
                 />
                 <SectionFiltres
                 :options = "$props.carburants"
                 titre = 'Carburants'
                 colonneAffichee = 'type'
                 v-model = "form.carburants"
+                @change="filtreVoitures('carburants')"
                 />
                 <SectionFiltres
                 :options = "$props.etats"
                 titre = 'États'
                 colonneAffichee = 'nom'
                 v-model = "form.etats"
+                @change="filtreVoitures('etats')"
                 />
                 <FiltreMinMax
                 nom = 'Prix' 
                 untite = '$'
                 v-model = "form.prix"
+                @change="porteVoitures('prix')"
+                />
+                <FiltreMinMax
+                nom = 'Année' 
+                untite = ''
+                v-model = "form.annee"
+                @change="porteVoitures('annee')"
                 />
                 <FiltreMinMax
                 nom = 'Kilometrage' 
                 untite = 'km'
                 v-model = "form.kilometrage"
+                @change="porteVoitures('kilometrage')"
                 />
               </form>
             </div>
