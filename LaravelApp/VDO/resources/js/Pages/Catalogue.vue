@@ -6,6 +6,7 @@ import SectionFiltres from '@/Components/SectionFiltres.vue';
 import FiltreMinMax from '@/Components/FiltreMinMax.vue';
 import Select from '@/Components/Select.vue';
 
+
 const props = defineProps({
   langAppLayout: Object,
   langCatalogue: Object,
@@ -20,6 +21,21 @@ const props = defineProps({
 })
 
 const form = useForm({
+  modeles:[],
+  constructeurs:[],
+  corps:[],
+  transmissions:[],
+  groupeMotopropulseurs:[],
+  carburants:[],
+  etats:[],
+  kilometrage:{
+    min:'',
+    max:''
+  },
+  prix: {
+    min:'',
+    max:''
+  },
   tri: ''
 })
 
@@ -49,7 +65,7 @@ const tri = () => {
   }
 }
 
-function tri($propriete, $ordre) {
+function triVoitures($propriete, $ordre) {
 
 }
 
@@ -66,64 +82,54 @@ function tri($propriete, $ordre) {
               <div class="filtreSidebar__reset">Rénitialiser</div>
             </div>
             <div class="filtreSidebar__contenu">
-              <SectionFiltres
-              :options = "$props.constructeurs"
-              titre = 'Constructeurs'
-              colonneAffichee = 'nom'
-              />
-              <SectionFiltres
-              :options = "$props.groupeMotopropulseurs"
-              titre = 'Groupe Motopropulseurs'
-              colonneAffichee = 'type'
-              />
-              <SectionFiltres
-              :options = "$props.corps"
-              titre = 'Corps'
-              colonneAffichee = 'type'
-              />
-              <SectionFiltres
-              :options = "$props.transmissions"
-              titre = 'Transmission'
-              colonneAffichee = 'type'
-              />
-              <SectionFiltres
-              :options = "$props.carburants"
-              titre = 'Carburants'
-              colonneAffichee = 'type'
-              />
-              <SectionFiltres
-              :options = "$props.etats"
-              titre = 'États'
-              colonneAffichee = 'nom'
-              />
-              <FiltreMinMax
-              nom = 'Prix' 
-              untite = '$'
-              />
-              <FiltreMinMax
-              nom = 'Kilometrage' 
-              untite = 'km'
-              />
-              <!-- <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Transmission</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div> -->
+              <form action="">
+                <SectionFiltres
+                :options = "$props.constructeurs"
+                titre = 'Constructeurs'
+                colonneAffichee = 'nom'
+                v-model = "form.constructeurs"
+                />
+                <SectionFiltres
+                :options = "$props.groupeMotopropulseurs"
+                titre = 'Groupe Motopropulseurs'
+                colonneAffichee = 'type'
+                v-model = "form.groupeMotopropulseurs"
+                />
+                <SectionFiltres
+                :options = "$props.corps"
+                titre = 'Corps'
+                colonneAffichee = 'type'
+                v-model = "form.corps"
+                />
+                <SectionFiltres
+                :options = "$props.transmissions"
+                titre = 'Transmission'
+                colonneAffichee = 'type'
+                v-model = "form.transmissions"
+                />
+                <SectionFiltres
+                :options = "$props.carburants"
+                titre = 'Carburants'
+                colonneAffichee = 'type'
+                v-model = "form.carburants"
+                />
+                <SectionFiltres
+                :options = "$props.etats"
+                titre = 'États'
+                colonneAffichee = 'nom'
+                v-model = "form.etats"
+                />
+                <FiltreMinMax
+                nom = 'Prix' 
+                untite = '$'
+                v-model = "form.prix"
+                />
+                <FiltreMinMax
+                nom = 'Kilometrage' 
+                untite = 'km'
+                v-model = "form.kilometrage"
+                />
+              </form>
             </div>
           </div>
         </div>
