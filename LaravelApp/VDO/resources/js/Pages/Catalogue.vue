@@ -80,7 +80,7 @@ function filtreVoitures(filtre) {
       return bool
     }
   )
-  console.log(data);
+  props.voitures = data;
 }
 
 function porteVoitures(filtre) {
@@ -100,7 +100,7 @@ function porteVoitures(filtre) {
       return bool
     }
     )
-  console.log(data);
+    props.voitures = data;
 }
 
 function triVoitures(propriete, ordre) {
@@ -119,6 +119,16 @@ function triVoitures(propriete, ordre) {
 function resetForm(){
   form.reset();
 }
+
+function displayFiltres(){
+  document.querySelector('.catalogue__sidebar').style.display = 'flex'
+  console.log(document.querySelector('.catalogue__sidebar').style.display)
+}
+
+function hideFiltres(){
+  document.querySelector('.catalogue__sidebar').style.display = 'none'
+}
+
 </script>
 <template>
   <Head title="Catalogue" />
@@ -130,6 +140,9 @@ function resetForm(){
             <div class="filtreSidebar__entete">
               <h4 class="filtreSidebar__titre">{{langCatalogue.filtres}}</h4>
               <div class="filtreSidebar__reset" @click="resetForm">{{langCatalogue.renitialiser}}</div>
+              <button @click = "hideFiltres" id="bouttonFermer">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
             </div>
             <div class="filtreSidebar__contenu">
               <form action="">
@@ -199,6 +212,9 @@ function resetForm(){
         </div>
       </aside>
       <section class="catalogue__contenu">
+        <button @click = "displayFiltres" id="bouttonOuvrir">
+          <i class="fa-solid fa-filter"></i>
+        </button>
         <div class="catalogue__contenu__tri">
           <select v-model.number="form.tri" @change="tri">
             <option value="" disabled selected>{{langCatalogue.trierPar}}</option>
@@ -261,6 +277,8 @@ function resetForm(){
   transition: opacity 200ms ease-in-out;
   overflow-y: auto;
   position: relative;
+  width: inherit;
+  padding-left: 2em;
 }
 
 .catalogue__contenu__tri {
@@ -320,8 +338,20 @@ function resetForm(){
 } */
 
 .catalogue__contenu {
-  flex-basis: 80ch;
-	flex-grow: 5;
+  padding-left: 0.6rem;
+}
+
+.catalogue__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+
+.catalogue__grid__tuile {
+  border: solid 1px var(--couleur-secondaire);
+  border-radius: 8px;
   padding-top: 1rem;
 }
 
@@ -341,6 +371,7 @@ img {
   object-position: center center;
 }
 
+
 @media screen and (max-width: 1439px) {
   .catalogue__sidebar {
     width: 340px;
@@ -355,9 +386,19 @@ img {
 @media screen and (max-width: 1024px) {
   .catalogue__sidebar {
     width: 100%;
-    position: relative;
-    height: auto;
-    overflow-y: initial;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: var(--couleur-blanc);
+  }
+  #bouttonOuvrir{
+    display: inline;
+  }
+  #bouttonFermer{
+    display: inline;
   }
 }
 </style>

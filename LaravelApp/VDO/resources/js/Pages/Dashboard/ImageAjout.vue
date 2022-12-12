@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
+import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
 
 const props = defineProps({
     langImage: Object,
@@ -29,10 +30,14 @@ const submit = () => {
 </script>
 
 <template>
-    <Head :title="langImage.ajout" />
-    <div class="flex">
-        <SidebarVue :lang="langDashboard "/>
-        <div class="wrapper">
+    
+    <TableauDeBordLayout class=" image_voiture">
+        <Head :title="langImage.ajout" />
+        <template #header>
+            <SidebarVue :lang="langDashboard"/>
+        </template>
+        <div class="wrapper ">
+            <div class="formulaire_conteneur">
             <h2 class="titre-contenu">{{langImage.ajout}}</h2>
             <small>{{langImage.idVoiture}}: {{idVoiture}}</small>
             <form @submit.prevent="submit">
@@ -124,9 +129,29 @@ const submit = () => {
                 
             </form>
         </div>
-    </div>
+        </div>
+    </TableauDeBordLayout>
 </template>
 <style scoped>
+
+
+
+.image_voiture{
+
+    background-color: #0d0f21f3;
+  
+}
+.formulaire_conteneur{
+    background-color: var(--couleur-secondaire);
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: white;
+ 
+
+   
+}
+
 
 @media screen and (min-width: 700px) {
 	.large-group {
@@ -135,19 +160,47 @@ const submit = () => {
         justify-content: space-between;
 	}
 	
+
+    .image_voiture{
+        margin-top: 0em ;
+        background-color: #0d0f21f3;
+      
+    }
+    
 	.small-group {
 		width: 45%;
 	}
+<<<<<<< HEAD
+=======
+
+
+
+    
+    .formulaire_conteneur{
+        background-color: var(--couleur-secondaire);
+        padding: 2rem;
+        color: WHITE;
+       
+    }
+
+
+
+>>>>>>> 92b279eef23b68cfc36213939f73ca7242e6d0fc
 }
 .label {
     display: block;
     margin-bottom: 5px;
+    color:  var(--couleur-blanc);
 }
 
 input:not([type = checkbox]), select {
     width: 100%;
     margin-bottom: 10px;
     border-radius: 8px;
+    background-color: var(--couleur-principale) ;
+    padding: 0.5rem
+    
+    ;
 }
 
 .textarea-div {

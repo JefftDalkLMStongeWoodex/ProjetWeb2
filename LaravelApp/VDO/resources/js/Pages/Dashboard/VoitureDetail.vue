@@ -3,6 +3,8 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
+import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
+
 
 defineProps({
     voiture: Object,
@@ -14,6 +16,17 @@ defineProps({
 
 <template>
     <Head :title="langVoiture.detail" />
+
+    <TableauDeBordLayout>
+        <template #header>
+            <SidebarVue :lang="langDashboard"/>
+        </template>
+        <div class="wrapper detail ">
+            <h1>{{langVoiture.titre_detail.toUpperCase()}}</h1>
+            <dl>
+                <table>
+                    <thead>
+
     <div class="flex">
         <SidebarVue :lang="langDashboard" />
         <div class="wrapper">
@@ -56,7 +69,7 @@ defineProps({
                         </tr>
 
 
-                        <tr>
+         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.transmission }}</th>
                             <td class="fiche__detail__corps">{{ voiture.transmission["type_en"] }}</td>
                         </tr>
@@ -186,7 +199,7 @@ defineProps({
                 </Link>
             </div>
         </div>
-    </div>
+    </TableauDeBordLayout>
 </template>
 <style scoped>
 .fiche {
@@ -249,4 +262,10 @@ p {
         font-size: 1.3rem;
     }
 }
+.detail{
+
+    margin-bottom: 2rem;
+
+}
+
 </style>

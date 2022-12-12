@@ -25,6 +25,7 @@ const showingNavigationDropdown = ref(false);
 <style scoped>
 body {
     flex-direction: column;
+
 }
 
 .barre_latérale {
@@ -38,10 +39,13 @@ body {
         flex-direction: row;
     }
 
-    .conteneur {
-        flex-grow: 1;
-        min-height: 100%;
-        display: flex;
+    
+    .conteneur{
+    flex-grow: 1;
+    min-height: 100%;
+    display: flex;
+    
+
     }
 }
 </style>
