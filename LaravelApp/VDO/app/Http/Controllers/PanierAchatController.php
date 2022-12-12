@@ -60,6 +60,7 @@ class PanierAchatController extends Controller
         
         return Inertia::render('voiture/panier', [
             'voiture' => $voiture,
+            'langAppLayout' => Lang::get('app_layout'),
             'langVoiture' => Lang::get('voiture'),
             'langDashboard' => Lang::get('dashboard'),
         ]);
@@ -73,7 +74,6 @@ class PanierAchatController extends Controller
      */
     public function fiche(Voiture $voiture)
     {
-       
         $voiture->modele;
         $voiture->corps;
         $voiture->transmission;
@@ -85,11 +85,13 @@ class PanierAchatController extends Controller
         
         $voiture['imagePrincipale'] = $voiture->imagePrincipale($voiture->id);
         $voiture['images'] = $voiture->images($voiture->id);
-
+        
         return Inertia::render('voiture/fiche', [
             'voiture' => $voiture,
             'langVoiture' => Lang::get('voiture'),
             'langDashboard' => Lang::get('dashboard'),
+            'langCatalogue' => Lang::get('catalogue'),
+            'langAppLayout' => Lang::get('app_layout'),
         ]);
     }
 
