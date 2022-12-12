@@ -5,7 +5,7 @@ import Tuile from '@/Components/Tuile.vue';
 import SectionFiltres from '@/Components/SectionFiltres.vue';
 import FiltreMinMax from '@/Components/FiltreMinMax.vue';
 import Select from '@/Components/Select.vue';
-
+import { computed } from '@vue/reactivity';
 
 const props = defineProps({
   langAppLayout: Object,
@@ -43,7 +43,6 @@ const tri = () => {
   switch (form.tri) {
     case 1:
       console.log("Prix: bas à élevés")
-      
       break;
     case 2:
       console.log("Prix: élevés à bas")
@@ -64,6 +63,20 @@ const tri = () => {
       break;
   }
 }
+function filtreVoitures() {
+  const data = props.voitures.filter(
+    (voiture) => {
+      let bool = false
+      for(let filtre of form.constructeurs){
+        if (voiture.constructeur == filtre){
+          bool = true;
+        }
+      }
+      return bool
+    }
+  )
+  console.log(data);
+}
 
 function triVoitures($propriete, $ordre) {
 
@@ -82,7 +95,7 @@ function triVoitures($propriete, $ordre) {
               <div class="filtreSidebar__reset">Rénitialiser</div>
             </div>
             <div class="filtreSidebar__contenu">
-              <form action="">
+              <form action="" @change="filtreVoitures">
                 <SectionFiltres
                 :options = "$props.constructeurs"
                 titre = 'Constructeurs'
@@ -148,7 +161,7 @@ function triVoitures($propriete, $ordre) {
           </select>
         </div>
         <div class="catalogue__grid">
-          <slot v-for="voiture in $props.voitures">
+          <slot v-for="voiture in props.voitures">
             <Tuile
             :data = "voiture"
             />
