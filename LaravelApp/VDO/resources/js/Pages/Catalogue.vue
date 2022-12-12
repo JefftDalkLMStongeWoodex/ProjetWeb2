@@ -37,7 +37,7 @@ const form = useForm({
   },
   tri: ''
 })
-console.log(props.voitures);
+
 const tri = () => {
   switch (form.tri) {
     case 1:
@@ -115,6 +115,9 @@ function triVoitures(propriete, ordre) {
   })
 }
 
+function resetForm(){
+  form.reset();
+}
 </script>
 <template>
   <Head title="Catalogue" />
@@ -125,7 +128,7 @@ function triVoitures(propriete, ordre) {
           <div class="filtreSidebar">
             <div class="filtreSidebar__entete">
               <h4 class="filtreSidebar__titre">Filtres</h4>
-              <div class="filtreSidebar__reset">Rénitialiser</div>
+              <div class="filtreSidebar__reset" @click="resetForm">Rénitialiser</div>
             </div>
             <div class="filtreSidebar__contenu">
               <form action="">
