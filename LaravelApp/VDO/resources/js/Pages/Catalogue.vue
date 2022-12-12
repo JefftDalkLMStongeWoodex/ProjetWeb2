@@ -306,7 +306,7 @@ function hideFiltres(){
 
 
 .catalogue__contenu {
-  
+  padding-top: 1em;
 }
 
 .catalogue__grid {
@@ -314,10 +314,6 @@ function hideFiltres(){
   grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
   gap: 10px;
   margin-top: 1rem;
-}
-
-.wrapper{
- padding: unset;
 }
 
 .catalogue__grid__tuile {
@@ -404,6 +400,7 @@ img {
     height: 100vh;
     width: 100%;
     top: 0;
+    left: 0;
     display: none;
     background-color: var(--couleur-blanc);
   }
