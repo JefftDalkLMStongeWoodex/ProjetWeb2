@@ -172,6 +172,7 @@ const submit = () => {
 	}
 
 
+
     
     .formulaire_conteneur{
         background-color: var(--couleur-secondaire);
@@ -179,6 +180,7 @@ const submit = () => {
         color: WHITE;
        
     }
+
 
 
 }
@@ -224,10 +226,8 @@ textarea {
 
 p {
     color:  var(--couleur-blanc);
-    
 }
 p a{
-    color:  var(--couleur-principale);
-    
+    color:  var(--couleur-principale);  
 }
 </style>

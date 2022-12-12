@@ -50,10 +50,10 @@ const submit = () => {
         </template>
         
         <div class="wrapper">
-            <h2 class="titre-contenu">{{langVoiture.ajout}}</h2>
+            <h2 class="titre">{{langVoiture.ajout}}</h2>
             <form @submit.prevent="submit">
-                <section class="large-group">
-                    <div class="small-group">
+                <section class="champs">
+                    <div class="champs__option ">
                     <InputLabel
                         for="modeles_id" 
                         class="label"
@@ -67,7 +67,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.modeles_id" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel 
                     class="label"
                     for="annee" 
@@ -83,7 +83,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.annee" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel 
                     class="label"
                     for="prix_paye" 
@@ -98,7 +98,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.prix_paye" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel
                     class="label"
                     for="date_arrivee" :value="langVoiture.date_arrivee" />
@@ -110,7 +110,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.date_arrivee" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel  class="label" for="kilometrage" :value="langVoiture.kilometrage" />
                     <TextInput 
                         id="kilometrage"
@@ -122,7 +122,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.kilometrage" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel class="label" for="corps_id" :value="langVoiture.corps" />
                     <Select 
                         :options ="corps" 
@@ -133,7 +133,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.corps_id" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel  class="label"
                     for="transmissions_id" :value="langVoiture.transmission" />
                     <Select 
@@ -145,7 +145,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.transmissions_id" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel class="label"
                     for="groupe_motopropulseurs_id" :value="langVoiture.groupe_motopropulseur" />
                     <Select 
@@ -157,7 +157,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.groupe_motopropulseurs_id" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel class="label" for="carburants_id" :value="langVoiture.carburant" />
                     <Select 
                         :options ="carburants" 
@@ -168,7 +168,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.carburants_id" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel class="label" for="etats_id" :value="langVoiture.etat" />
                     <Select 
                         :options ="etats" 
@@ -179,7 +179,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.etats_id" />
                 </div>
-                <div class="small-group">
+                <div class="champs__option ">
                     <InputLabel class="label" for="statut_voitures_id" :value="langVoiture.statut" />
                     <Select 
                         :options ="statuts" 
@@ -201,7 +201,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.reservation_users_id" />
                 </div>
-                <div class="textarea-div">
+                <div class="champs__descriptif">
                     <InputLabel class="label" for="description" :value="langVoiture.description" />
                     <textarea 
                         id="description" 
@@ -212,7 +212,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.description" />
                 </div>
-                <div class="small-group">
+                <div class="champs__descriptif">
                     <InputLabel class="label" for="description_en" :value="langVoiture.description_en" />
                     <textarea 
                         id="description_en" 
@@ -223,7 +223,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.description_en" />
                 </div>
-                <div class="btnSoumettre">
+                <div class="champs__Soumettre">
                     <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         {{langVoiture.soumettre}}
                     </PrimaryButton>
@@ -236,22 +236,20 @@ const submit = () => {
 </template>
 <style scoped>
 
-
-
 @media screen and (min-width: 700px) {
-	.large-group {
+	.champs {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
 	}
 	
+
     
 	.small-group {
+
 		width: 45%;
 	}
 
-
-}
 .label {
     display: block;
     margin-bottom: 5px;
@@ -263,7 +261,7 @@ input, select {
     border-radius: 8px;
 }
 
-.textarea-div {
+.champs__descriptif {
 	width: 100%;
 }
 
@@ -274,20 +272,23 @@ textarea {
     margin-bottom: 10px;
 }
 
-.btnSoumettre {
+.champs__Soumettre {
    width: 100%;
    margin-bottom: 2rem;
    
 }
-.titre-contenu {
+/* .titre-contenu {
     text-align: center;
     text-transform: uppercase;
-}
+} */
+
 .titre {
     font-family: var(--police-titre);
-    color: var(--couleur-principale);
+    text-transform: uppercase;
+    color: var(--couleur-secondaire);
     padding: 1rem 0 ;
 }
+
 
 p {
     color:  var(--couleur-blanc);

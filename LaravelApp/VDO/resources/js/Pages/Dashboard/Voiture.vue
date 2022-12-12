@@ -32,9 +32,8 @@ const tableau_th = [
                 <SidebarVue :lang="langDashboard"/>
             </template>
 
-
             <div class="voitures__conteneur">
-                <h1>{{langVoiture.titre.toUpperCase()}}</h1>
+                <h2 class="titre">{{langVoiture.titre}}</h2>
                 <Link :href="route('voiture.create')">
                     <PrimaryButton>
                         {{langVoiture.ajout}}
@@ -50,9 +49,9 @@ const tableau_th = [
     </TableauDeBordLayout>
 </template>
 <style scoped>
-h1 {
-    font-size: 36px;
+.titre {
     font-family: var(--police-titre);
+    text-transform: uppercase;
 }
 .voitures__conteneur {
     background-color: var(--couleur-secondaire);

@@ -62,6 +62,7 @@ const tri = () => {
       break;
   }
 }
+
 function filtreVoitures(filtre) {
   const data = props.voitures.filter(
     (voiture) => {
@@ -79,7 +80,7 @@ function filtreVoitures(filtre) {
       return bool
     }
   )
-  console.log(data);
+  props.voitures = data;
 }
 
 function porteVoitures(filtre) {
@@ -99,7 +100,7 @@ function porteVoitures(filtre) {
       return bool
     }
     )
-  console.log(data);
+    props.voitures = data;
 }
 
 function triVoitures(propriete, ordre) {
@@ -118,6 +119,16 @@ function triVoitures(propriete, ordre) {
 function resetForm(){
   form.reset();
 }
+
+function displayFiltres(){
+  document.querySelector('.catalogue__sidebar').style.display = 'flex'
+  console.log(document.querySelector('.catalogue__sidebar').style.display)
+}
+
+function hideFiltres(){
+  document.querySelector('.catalogue__sidebar').style.display = 'none'
+}
+
 </script>
 <template>
   <Head title="Catalogue" />
@@ -127,68 +138,71 @@ function resetForm(){
         <div class="catalogue__sidebar__contenu">
           <div class="filtreSidebar">
             <div class="filtreSidebar__entete">
-              <h4 class="filtreSidebar__titre">Filtres</h4>
-              <div class="filtreSidebar__reset" @click="resetForm">Rénitialiser</div>
+              <h4 class="filtreSidebar__titre">{{langCatalogue.filtres}}</h4>
+              <div class="filtreSidebar__reset" @click="resetForm">{{langCatalogue.renitialiser}}</div>
+              <button @click = "hideFiltres" id="bouttonFermer">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
             </div>
             <div class="filtreSidebar__contenu">
               <form action="">
                 <SectionFiltres
                 :options = "$props.constructeurs"
-                titre = 'Constructeurs'
+                :titre = "langCatalogue.constructeurs"
                 colonneAffichee = 'nom'
                 v-model = "form.constructeurs"
                 @change="filtreVoitures('constructeurs')"
                 />
                 <SectionFiltres
                 :options = "$props.groupeMotopropulseurs"
-                titre = 'Groupe Motopropulseurs'
+                :titre = "langCatalogue.motoprop"
                 colonneAffichee = 'type'
                 v-model = "form.groupeMotopropulseurs"
                 @change="filtreVoitures('groupeMotopropulseurs')"
                 />
                 <SectionFiltres
                 :options = "$props.corps"
-                titre = 'Corps'
+                :titre = "langCatalogue.corps"
                 colonneAffichee = 'type'
                 v-model = "form.corps"
                 @change="filtreVoitures('corps')"
                 />
                 <SectionFiltres
                 :options = "$props.transmissions"
-                titre = 'Transmission'
+                :titre = "langCatalogue.transmission"
                 colonneAffichee = 'type'
                 v-model = "form.transmissions"
                 @change="filtreVoitures('transmissions')"
                 />
                 <SectionFiltres
                 :options = "$props.carburants"
-                titre = 'Carburants'
+                :titre = "langCatalogue.carburants"
                 colonneAffichee = 'type'
                 v-model = "form.carburants"
                 @change="filtreVoitures('carburants')"
                 />
                 <SectionFiltres
                 :options = "$props.etats"
-                titre = 'États'
+                :titre = "langCatalogue.etats"
                 colonneAffichee = 'nom'
                 v-model = "form.etats"
                 @change="filtreVoitures('etats')"
                 />
                 <FiltreMinMax
-                nom = 'Prix' 
-                untite = '$'
+                :titre = "langCatalogue.prix"
+                unite = '$'
                 v-model = "form.prix"
                 @change="porteVoitures('prix')"
                 />
                 <FiltreMinMax
-                nom = 'Année' 
+                :titre = "langCatalogue.annee"
                 untite = ''
                 v-model = "form.annee"
                 @change="porteVoitures('annee')"
                 />
                 <FiltreMinMax
-                nom = 'Kilometrage' 
-                untite = 'km'
+                :titre = "langCatalogue.kilometrage"
+                unite = 'km'
                 v-model = "form.kilometrage"
                 @change="porteVoitures('kilometrage')"
                 />
@@ -198,16 +212,18 @@ function resetForm(){
         </div>
       </aside>
       <section class="catalogue__contenu">
-        <h4 class="">CATALOGUE DES VEHICULES</h4>
+        <button @click = "displayFiltres" id="bouttonOuvrir">
+          <i class="fa-solid fa-filter"></i>
+        </button>
         <div class="catalogue__contenu__tri">
           <select v-model.number="form.tri" @change="tri">
-            <option value="" disabled selected>Trier par :</option>
-            <option value="1">Prix: bas à élevés</option>
-            <option value="2">Prix: élevés à bas</option>
-            <option value="3">Année: croissante</option>
-            <option value="4">Année: décroissante</option>
-            <option value="5">KM: bas à élevés</option>
-            <option value="6">KM: élevés à bas</option>
+            <option value="" disabled selected>{{langCatalogue.trierPar}}</option>
+            <option value="1">{{langCatalogue.trierPrixASC}}</option>
+            <option value="2">{{langCatalogue.trierPrixDSC}}</option>
+            <option value="3">{{langCatalogue.trierAnneeASC}}</option>
+            <option value="4">{{langCatalogue.trierAnneeDSC}}</option>
+            <option value="5">{{langCatalogue.trierKmASC}}</option>
+            <option value="6">{{langCatalogue.trierKmDSC}}</option>
           </select>
         </div>
         <div class="catalogue__grid">
@@ -244,6 +260,8 @@ function resetForm(){
   transition: opacity 200ms ease-in-out;
   overflow-y: auto;
   position: relative;
+  width: inherit;
+  padding-left: 2em;
 }
 
 .filtreSidebar {
@@ -288,7 +306,7 @@ function resetForm(){
 
 
 .catalogue__contenu {
-  padding-left: 0.6rem;
+  
 }
 
 .catalogue__grid {
@@ -298,6 +316,9 @@ function resetForm(){
   margin-top: 1rem;
 }
 
+.wrapper{
+ padding: unset;
+}
 
 .catalogue__grid__tuile {
   border: solid 1px var(--couleur-secondaire);
@@ -342,6 +363,26 @@ img {
   object-position: center center;
 }
 
+#bouttonOuvrir{
+  background-color: var(--couleur-secondaire);
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  width: 60px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  color: var(--couleur-blanc);
+  display: none;
+}
+
+#bouttonFermer{
+  background-color:var(--couleur-secondaire);
+  width: 50px;
+  border-radius: 15px;
+  aspect-ratio: 1/1;
+  color: var(--couleur-blanc);
+  display: none;
+}
 
 @media screen and (max-width: 1439px) {
   .catalogue__sidebar {
@@ -359,9 +400,18 @@ img {
 @media screen and (max-width: 1024px) {
   .catalogue__sidebar {
     width: 100%;
-    position: relative;
-    height: auto;
-    overflow-y: initial;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    display: none;
+    background-color: var(--couleur-blanc);
+  }
+  #bouttonOuvrir{
+    display: inline;
+  }
+  #bouttonFermer{
+    display: inline;
   }
 }
 </style>

@@ -42,12 +42,11 @@ Route::get('/accueil', function () {
     ]);
 })->name('accueil');
 
-
-Route::get('/apropos', function () {return Inertia::render('APropos'); })->name('apropos');
+// Route::get('/apropos', function () {return Inertia::render('APropos'); })->name('apropos');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
 
-Route::get('/contact', function() { return Inertia::render('Contact'); })->name('contact');
+// Route::get('/contact', function() { return Inertia::render('Contact'); })->name('contact');
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
 
@@ -56,8 +55,6 @@ Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voi
 Route::get('/voiture/panier/{voiture}', [PanierAchatController::class, 'panier'])->name('voiture.panier');
 
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
-
-
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [

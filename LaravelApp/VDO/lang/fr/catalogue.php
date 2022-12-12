@@ -1,4 +1,21 @@
 <?php
 return [
-    'test' => 'couilles'
+    'filtres' => 'Filtres',
+    'renitialiser' => 'Réinitialiser',
+    'constructeurs' => 'Fabriquant',
+    'motoprop' => 'Groupe motopropulseur',
+    'corps' => 'Corps',
+    'transmission' => 'Transmission',
+    'carburants' => 'Carburant',
+    'etats' => 'État',
+    'prix' => 'Prix',
+    'annee' => 'Année',
+    'kilometrage' => 'Kilométrage',
+    'trierPar' => 'Trier par:',
+    'trierPrixASC' => 'Prix: bas à élevé',
+    'trierPrixDSC' => 'Prix: élevé à bas',
+    'trierAnneeASC' => 'Année: bas à élevé',
+    'trierAnneeDSC' => 'Année: élevé à bas',
+    'trierKmASC' => 'Km: bas à élevé',
+    'trierKmDSC' => 'Km: élevé à bas',
 ];
