@@ -66,13 +66,12 @@ function filtreVoitures(filtre) {
   const data = props.voitures.filter(
     (voiture) => {
       let bool = false
-      console.log(form[filtre].length);
-      if(form[filtre].length===0){
+      if(form[filtre].length===0) {
         bool = true
       }
       else{
-        for(let f of form[filtre]){
-          if (voiture[filtre] == f){
+        for(let f of form[filtre]) {
+          if (voiture[filtre] == f) {
             bool = true
           }
         }
@@ -80,6 +79,26 @@ function filtreVoitures(filtre) {
       return bool
     }
   )
+  console.log(data);
+}
+
+function porteVoitures(filtre) {
+  const data = props.voitures.filter(
+    (voiture)=>{
+      let bool = true
+      if(form[filtre].min !== '') {
+        if(voiture[filtre]<form[filtre].min){
+          bool = false
+        }
+      }
+      if(form[filtre].max!=='') {
+        if(voiture[filtre]>form[filtre].max) {
+          bool = false
+        }
+      }
+      return bool
+    }
+    )
   console.log(data);
 }
 
@@ -156,11 +175,19 @@ function triVoitures(propriete, ordre) {
                 nom = 'Prix' 
                 untite = '$'
                 v-model = "form.prix"
+                @change="porteVoitures('prix')"
+                />
+                <FiltreMinMax
+                nom = 'Année' 
+                untite = ''
+                v-model = "form.annee"
+                @change="porteVoitures('annee')"
                 />
                 <FiltreMinMax
                 nom = 'Kilometrage' 
                 untite = 'km'
                 v-model = "form.kilometrage"
+                @change="porteVoitures('kilometrage')"
                 />
               </form>
             </div>
