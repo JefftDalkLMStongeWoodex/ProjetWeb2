@@ -47,10 +47,11 @@ const update = () => {
     <Head :title="langVoiture.modifier_titre" />
     <div class="flex">
         <SidebarVue :lang="langDashboard "/>
-        <div>
+        <div class="wrapper">
             <h1>{{langVoiture.modifier_titre}}</h1>
             <form @submit.prevent="update">
-                <div>
+                <section class="large-group">
+                    <div class="small-group">
                     <InputLabel for="modeles_id" :value="langVoiture.modele" />
                     <Select 
                         :options="modeles" 
@@ -61,169 +62,215 @@ const update = () => {
                         required
                     />
                     <InputError :message="form.errors.modeles_id" />
-                </div>
-                <div>
-                    <InputLabel for="annee" :value="langVoiture.annee" />
-                    <TextInput 
-                        id="annee"
-                        type="number"
-                        min="1900"
-                        :max="new Date().getFullYear()"
-                        step="1"
-                        v-model="form.annee"
-                        autocomplete="annee"
-                    />
-                    <InputError :message="form.errors.annee" />
-                </div>
-                <div>
-                    <InputLabel for="prix_paye" :value="langVoiture.prix_paye" />
-                    <TextInput 
-                        id="prix_paye"
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        v-model="form.prix_paye"
-                        autocomplete="prix_paye"
-                    />
-                    <InputError :message="form.errors.prix_paye" />
-                </div>
-                <div>
-                    <InputLabel for="date_arrivee" :value="langVoiture.date_arrivee" />
-                    <TextInput 
-                        id="date_arrivee"
-                        type="date"
-                        v-model="form.date_arrivee"
-                        autocomplete="date_arrivee"
-                    />
-                    <InputError :message="form.errors.date_arrivee" />
-                </div>
-                <div>
-                    <InputLabel for="kilometrage" :value="langVoiture.kilometrage" />
-                    <TextInput 
-                        id="kilometrage"
-                        type="number"
-                        step="1"
-                        min="0"
-                        v-model="form.kilometrage"
-                        autocomplete="kilometrage"
-                    />
-                    <InputError :message="form.errors.kilometrage" />
-                </div>
-                <div>
-                    <InputLabel for="corps_id" :value="langVoiture.corps" />
-                    <Select 
-                        :options="corps" 
-                        :optionSelectionnee="form.corps_id"
-                        colonneAffichee = "type"
-                        id="corps_id"
-                        v-model="form.corps_id"
-                        required
-                    />
-                    <InputError :message="form.errors.corps_id" />
-                </div>
-                <div>
-                    <InputLabel for="transmissions_id" :value="langVoiture.transmission" />
-                    <Select 
-                        :options ="transmissions" 
-                        :optionSelectionnee="form.transmissions_id"
-                        colonneAffichee = "type"
-                        id="transmissions_id"
-                        v-model="form.transmissions_id"
-                        required
-                    />
-                    <InputError :message="form.errors.transmissions_id" />
-                </div>
-                <div>
-                    <InputLabel for="groupe_motopropulseurs_id" :value="langVoiture.groupe_motopropulseur" />
-                    <Select 
-                        :options ="groupeMotopropulseurs" 
-                        :optionSelectionnee="form.groupe_motopropulseurs_id"
-                        colonneAffichee = "type"
-                        id="groupe_motopropulseurs_id"
-                        v-model="form.groupe_motopropulseurs_id"
-                        required
-                    />
-                    <InputError :message="form.errors.groupe_motopropulseurs_id" />
-                </div>
-                <div>
-                    <InputLabel for="carburants_id" :value="langVoiture.carburant" />
-                    <Select 
-                        :options ="carburants" 
-                        :optionSelectionnee="form.carburants_id"
-                        colonneAffichee = "type"
-                        id="carburants_id"
-                        v-model="form.carburants_id"
-                        required
-                    />
-                    <InputError :message="form.errors.carburants_id" />
-                </div>
-                <div>
-                    <InputLabel for="etats_id" :value="langVoiture.etat" />
-                    <Select 
-                        :options ="etats" 
-                        :optionSelectionnee="form.etats_id"
-                        colonneAffichee = "nom"
-                        id="etats_id"
-                        v-model="form.etats_id"
-                        required
-                    />
-                    <InputError :message="form.errors.etats_id" />
-                </div>
-                <div>
-                    <InputLabel for="statut_voitures_id" :value="langVoiture.statut" />
-                    <Select 
-                        :options ="statuts" 
-                        :optionSelectionnee="form.statut_voitures_id"
-                        colonneAffichee = "nom"
-                        id="statut_voitures_id"
-                        v-model="form.statut_voitures_id"
-                        required
-                    />
-                    <InputError :message="form.errors.statut_voitures_id" />
-                </div>
-                <div v-if="form.statut_voitures_id == 2">
-                    <InputLabel for="reservation_users_id" :value="langVoiture.utilisateur_reservation" />
-                    <Select 
-                        :options ="users" 
-                        :optionSelectionnee="form.reservation_users_id"
-                        colonneAffichee = "email"
-                        id="reservation_users_id"
-                        v-model="form.reservation_users_id"
-                    />
-                    <InputError :message="form.errors.reservation_users_id" />
-                </div>
-                <div>
-                    <InputLabel for="description" :value="langVoiture.description" />
-                    <textarea 
-                        id="description" 
-                        name="description" 
-                        cols="50"
-                        :placeholder="langVoiture.description_placeholder" 
-                        v-model="form.description"
-                    />
-                    <InputError :message="form.errors.description" />
-                </div>
-                <div>
-                    <InputLabel for="description_en" :value="langVoiture.description_en" />
-                    <textarea 
-                        id="description_en" 
-                        name="description_en" 
-                        cols="50"
-                        :placeholder="langVoiture.description_placeholder" 
-                        v-model="form.description_en"
-                    />
-                    <InputError :message="form.errors.description_en" />
-                </div>
-                <div>
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    {{langVoiture.modifier_soumettre}}
-                </PrimaryButton>
-                </div>
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="annee" :value="langVoiture.annee" />
+                        <TextInput 
+                            id="annee"
+                            type="number"
+                            min="1900"
+                            :max="new Date().getFullYear()"
+                            step="1"
+                            v-model="form.annee"
+                            autocomplete="annee"
+                        />
+                        <InputError :message="form.errors.annee" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="prix_paye" :value="langVoiture.prix_paye" />
+                        <TextInput 
+                            id="prix_paye"
+                            type="number"
+                            step="0.01"
+                            min="0"
+                            v-model="form.prix_paye"
+                            autocomplete="prix_paye"
+                        />
+                        <InputError :message="form.errors.prix_paye" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="date_arrivee" :value="langVoiture.date_arrivee" />
+                        <TextInput 
+                            id="date_arrivee"
+                            type="date"
+                            v-model="form.date_arrivee"
+                            autocomplete="date_arrivee"
+                        />
+                        <InputError :message="form.errors.date_arrivee" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="kilometrage" :value="langVoiture.kilometrage" />
+                        <TextInput 
+                            id="kilometrage"
+                            type="number"
+                            step="1"
+                            min="0"
+                            v-model="form.kilometrage"
+                            autocomplete="kilometrage"
+                        />
+                        <InputError :message="form.errors.kilometrage" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="corps_id" :value="langVoiture.corps" />
+                        <Select 
+                            :options="corps" 
+                            :optionSelectionnee="form.corps_id"
+                            colonneAffichee = "type"
+                            id="corps_id"
+                            v-model="form.corps_id"
+                            required
+                        />
+                        <InputError :message="form.errors.corps_id" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="transmissions_id" :value="langVoiture.transmission" />
+                        <Select 
+                            :options ="transmissions" 
+                            :optionSelectionnee="form.transmissions_id"
+                            colonneAffichee = "type"
+                            id="transmissions_id"
+                            v-model="form.transmissions_id"
+                            required
+                        />
+                        <InputError :message="form.errors.transmissions_id" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="groupe_motopropulseurs_id" :value="langVoiture.groupe_motopropulseur" />
+                        <Select 
+                            :options ="groupeMotopropulseurs" 
+                            :optionSelectionnee="form.groupe_motopropulseurs_id"
+                            colonneAffichee = "type"
+                            id="groupe_motopropulseurs_id"
+                            v-model="form.groupe_motopropulseurs_id"
+                            required
+                        />
+                        <InputError :message="form.errors.groupe_motopropulseurs_id" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="carburants_id" :value="langVoiture.carburant" />
+                        <Select 
+                            :options ="carburants" 
+                            :optionSelectionnee="form.carburants_id"
+                            colonneAffichee = "type"
+                            id="carburants_id"
+                            v-model="form.carburants_id"
+                            required
+                        />
+                        <InputError :message="form.errors.carburants_id" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="etats_id" :value="langVoiture.etat" />
+                        <Select 
+                            :options ="etats" 
+                            :optionSelectionnee="form.etats_id"
+                            colonneAffichee = "nom"
+                            id="etats_id"
+                            v-model="form.etats_id"
+                            required
+                        />
+                        <InputError :message="form.errors.etats_id" />
+                    </div>
+                    <div class="small-group">
+                        <InputLabel for="statut_voitures_id" :value="langVoiture.statut" />
+                        <Select 
+                            :options ="statuts" 
+                            :optionSelectionnee="form.statut_voitures_id"
+                            colonneAffichee = "nom"
+                            id="statut_voitures_id"
+                            v-model="form.statut_voitures_id"
+                            required
+                        />
+                        <InputError :message="form.errors.statut_voitures_id" />
+                    </div>
+                    <div class="small-group" v-if="form.statut_voitures_id == 2">
+                        <InputLabel for="reservation_users_id" :value="langVoiture.utilisateur_reservation" />
+                        <Select 
+                            :options ="users" 
+                            :optionSelectionnee="form.reservation_users_id"
+                            colonneAffichee = "email"
+                            id="reservation_users_id"
+                            v-model="form.reservation_users_id"
+                        />
+                        <InputError :message="form.errors.reservation_users_id" />
+                    </div>
+                    <div class="textarea-div">
+                        <InputLabel for="description" :value="langVoiture.description" />
+                        <textarea 
+                            id="description" 
+                            name="description" 
+                            cols="50"
+                            :placeholder="langVoiture.description_placeholder" 
+                            v-model="form.description"
+                        />
+                        <InputError :message="form.errors.description" />
+                    </div>
+                    <!-- <div class="textarea-div">
+                        <InputLabel for="description_en" :value="langVoiture.description_en" />
+                        <textarea 
+                            id="description_en" 
+                            name="description_en" 
+                            cols="50"
+                            :placeholder="langVoiture.description_placeholder" 
+                            v-model="form.description_en"
+                        />
+                        <InputError :message="form.errors.description_en" />
+                    </div> -->
+                    <div class="btnSoumettre">
+                    <PrimaryButton class="" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        {{langVoiture.modifier_soumettre}}
+                    </PrimaryButton>
+                    </div>
+
+                </section>
+                
             </form>
         </div>
     </div>
 </template>
 <style scoped>
+@media screen and (min-width: 700px) {
+	.large-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+	}
+	
+	.small-group {
+		width: 45%;
+	}
+
+
+}
+.label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.textarea-div {
+	width: 100%;
+}
+
+textarea {
+    width:100%; 
+    height: 150px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.btnSoumettre {
+   width: 100%;
+   
+}
+.titre-contenu {
+    text-align: center;
+    text-transform: uppercase;
+}
 .titre {
     font-family: var(--police-titre);
     color: var(--couleur-principale);
