@@ -80,7 +80,7 @@ function filtreVoitures(filtre) {
       return bool
     }
   )
-  console.log(data);
+  props.voitures = data;
 }
 
 function porteVoitures(filtre) {
@@ -100,7 +100,7 @@ function porteVoitures(filtre) {
       return bool
     }
     )
-  console.log(data);
+    props.voitures = data;
 }
 
 function triVoitures(propriete, ordre) {
@@ -119,6 +119,16 @@ function triVoitures(propriete, ordre) {
 function resetForm(){
   form.reset();
 }
+
+function displayFiltres(){
+  document.querySelector('.catalogue__sidebar').style.display = 'flex'
+  console.log(document.querySelector('.catalogue__sidebar').style.display)
+}
+
+function hideFiltres(){
+  document.querySelector('.catalogue__sidebar').style.display = 'none'
+}
+
 </script>
 <template>
   <Head title="Catalogue" />
@@ -130,6 +140,9 @@ function resetForm(){
             <div class="filtreSidebar__entete">
               <h4 class="filtreSidebar__titre">{{langCatalogue.filtres}}</h4>
               <div class="filtreSidebar__reset" @click="resetForm">{{langCatalogue.renitialiser}}</div>
+              <button @click = "hideFiltres" id="bouttonFermer">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
             </div>
             <div class="filtreSidebar__contenu">
               <form action="">
@@ -199,6 +212,9 @@ function resetForm(){
         </div>
       </aside>
       <section class="catalogue__contenu">
+        <button @click = "displayFiltres" id="bouttonOuvrir">
+          <i class="fa-solid fa-filter"></i>
+        </button>
         <div class="catalogue__contenu__tri">
           <select v-model.number="form.tri" @change="tri">
             <option value="" disabled selected>{{langCatalogue.trierPar}}</option>
@@ -244,6 +260,8 @@ function resetForm(){
   transition: opacity 200ms ease-in-out;
   overflow-y: auto;
   position: relative;
+  width: inherit;
+  padding-left: 2em;
 }
 
 .filtreSidebar {
@@ -288,7 +306,7 @@ function resetForm(){
 
 
 .catalogue__contenu {
-  padding-left: 0.6rem;
+  
 }
 
 .catalogue__grid {
@@ -298,6 +316,9 @@ function resetForm(){
   margin-top: 1rem;
 }
 
+.wrapper{
+ padding: unset;
+}
 
 .catalogue__grid__tuile {
   border: solid 1px var(--couleur-secondaire);
@@ -342,6 +363,26 @@ img {
   object-position: center center;
 }
 
+#bouttonOuvrir{
+  background-color: var(--couleur-secondaire);
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  width: 60px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  color: var(--couleur-blanc);
+  display: none;
+}
+
+#bouttonFermer{
+  background-color:var(--couleur-secondaire);
+  width: 50px;
+  border-radius: 15px;
+  aspect-ratio: 1/1;
+  color: var(--couleur-blanc);
+  display: none;
+}
 
 @media screen and (max-width: 1439px) {
   .catalogue__sidebar {
@@ -359,9 +400,18 @@ img {
 @media screen and (max-width: 1024px) {
   .catalogue__sidebar {
     width: 100%;
-    position: relative;
-    height: auto;
-    overflow-y: initial;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    display: none;
+    background-color: var(--couleur-blanc);
+  }
+  #bouttonOuvrir{
+    display: inline;
+  }
+  #bouttonFermer{
+    display: inline;
   }
 }
 </style>
