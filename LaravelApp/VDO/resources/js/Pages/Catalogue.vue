@@ -63,18 +63,19 @@ const tri = () => {
       break;
   }
 }
-function filtreVoitures() {
+function filtreVoitures(filtre) {
   const data = props.voitures.filter(
     (voiture) => {
       let bool = false
-      for(let filtre of form.constructeurs){
-        if (voiture.constructeur == filtre){
+      console.log(form[filtre]);
+      for(let f of form[filtre]){
+        if (voiture.constructeur == f){
           bool = true;
         }
       }
       return bool
     }
-  )
+    )
   console.log(data);
 }
 
@@ -95,12 +96,13 @@ function triVoitures($propriete, $ordre) {
               <div class="filtreSidebar__reset">Rénitialiser</div>
             </div>
             <div class="filtreSidebar__contenu">
-              <form action="" @change="filtreVoitures">
+              <form action="">
                 <SectionFiltres
                 :options = "$props.constructeurs"
                 titre = 'Constructeurs'
                 colonneAffichee = 'nom'
                 v-model = "form.constructeurs"
+                @change="filtreVoitures('constructeurs')"
                 />
                 <SectionFiltres
                 :options = "$props.groupeMotopropulseurs"
