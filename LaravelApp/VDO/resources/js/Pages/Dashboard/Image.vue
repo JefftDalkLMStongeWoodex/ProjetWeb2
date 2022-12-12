@@ -37,6 +37,7 @@ const tableau_th = [
             <Tableau
                 :tableau = images
                 :tableau_th = tableau_th
+                colonne_image = true
             />
         </div>
     </TableauDeBordLayout>
