@@ -1,0 +1,52 @@
+<script>
+export default {
+    data() {
+        return {
+            porte:{
+                min:'',
+                max:''
+            }
+        }
+    },
+    props:{
+        unite:{
+            default: ''
+        },
+        nom:{
+            default: ''
+        }
+    },
+    methods:{
+        handleChange() {
+            this.$emit('update:modelValue', this.$data.porte);
+        }
+    }
+}
+</script>
+<template>
+    <details>
+        <summary><strong>{{nom}}</strong></summary>
+        <div class="min-max-filter">
+            <input name="min" type="text" class="min-max-filter__input" :placeholder="$props.unite+' min'" aria-label="Montant minimum" v-model="porte.min" @input="handleChange">
+            <input name="max" type="text" class="min-max-filter__input" :placeholder="$props.unite+' max'" aria-label="Montant maximum" v-model="porte.max" @input="handleChange">
+        </div>
+    </details>
+</template>
+<style scoped>
+details summary{
+    cursor: pointer;
+}
+.min-max-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.min-max-filter__input {
+    width: 5ch;
+    height: 1.5rem;
+    padding: 2px;
+    padding-left: 1ch;
+}
+</style>

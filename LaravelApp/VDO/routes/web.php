@@ -8,6 +8,8 @@ use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\PanierAchatController;
+use App\Http\Controllers\ImageController;
+
 use Illuminate\Support\Facades\Lang;
 
 /*
@@ -79,4 +81,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'edit'])->name("voiture.edit");
     Route::put('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'update'])->name("voiture.update");
     Route::delete('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'destroy'])->name("voiture.destroy");
+});
+
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard/images/{idVoiture}', [ImageController::class, 'index'])->name('image.index');
+    Route::get('/dashboard/images/ajout/{idVoiture}', [ImageController::class, 'create'])->name('image.create');
+    Route::post('/dashboard/images/ajout/{idVoiture}', [ImageController::class, 'store'])->name('image.store');
 });

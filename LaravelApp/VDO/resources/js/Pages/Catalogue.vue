@@ -1,15 +1,18 @@
 <script setup>
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head, useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import Tuile from '@/Components/Tuile.vue';
+import SectionFiltres from '@/Components/SectionFiltres.vue';
+import FiltreMinMax from '@/Components/FiltreMinMax.vue';
+import Select from '@/Components/Select.vue';
+import { computed } from '@vue/reactivity';
 
-import FlecheDroite from '@/Components/FlecheDroite.vue';
-
-defineProps({
+const props = defineProps({
   langAppLayout: Object,
   langCatalogue: Object,
   voitures: Object,
-  modele: Object,
-  constructeur: Object,
+  modeles: Object,
+  constructeurs: Object,
   corps: Object,
   transmissions: Object,
   groupeMotopropulseurs: Object,
@@ -17,10 +20,80 @@ defineProps({
   etats: Object,
 })
 
+const form = useForm({
+  modeles:[],
+  constructeurs:[],
+  corps:[],
+  transmissions:[],
+  groupeMotopropulseurs:[],
+  carburants:[],
+  etats:[],
+  kilometrage:{
+    min:'',
+    max:''
+  },
+  prix: {
+    min:'',
+    max:''
+  },
+  tri: ''
+})
+
+const tri = () => {
+  switch (form.tri) {
+    case 1:
+      triVoitures("prix", "asc")
+      break;
+    case 2:
+      triVoitures("prix", "desc")
+      break;
+    case 3:
+      triVoitures("annee", "asc")
+      break;
+    case 4:
+      triVoitures("annee", "desc")
+      break;
+    case 5:
+      triVoitures("kilometrage", "asc")
+      break;
+    case 6:
+      triVoitures("kilometrage", "desc")
+      break;  
+    default:
+      break;
+  }
+}
+function filtreVoitures(filtre) {
+  const data = props.voitures.filter(
+    (voiture) => {
+      let bool = false
+      console.log(form[filtre]);
+      for(let f of form[filtre]){
+        if (voiture.constructeur == f){
+          bool = true;
+        }
+      }
+      return bool
+    }
+    )
+  console.log(data);
+}
+
+function triVoitures(propriete, ordre) {
+  props.voitures.sort(function(a, b) {
+    if (ordre == "asc") {
+      if (a[propriete] < b[propriete]) return -1
+      if (a[propriete] > b[propriete]) return 1
+      return 0
+    } else if (ordre == "desc") {
+      if (a[propriete] < b[propriete]) return 1
+      if (a[propriete] > b[propriete]) return -1
+    }
+  })
+}
+
 </script>
-
 <template>
-
   <Head title="Catalogue" />
   <AppLayout :lang="langAppLayout">
     <section class="catalogue">
@@ -32,92 +105,55 @@ defineProps({
               <div class="filtreSidebar__reset">Rénitialiser</div>
             </div>
             <div class="filtreSidebar__contenu">
-              <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Marque</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div>
-
-
-              <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Modele</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div>
-
-
-              <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Prix</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div>
-
-              <div class="optionFiltre">
-                <div class="optionFiltre__entete">
-                  <div class="optionFiltre__titre">
-                    <h6>
-                      <span>Transmission</span>
-                   </h6>
-                  </div>
-                  <div>
-                    <FlecheDroite />                
-                  </div>
-                </div>
-                <div class="optionFiltre__contenu">
-                  <div class="">
-                    <label for=""></label>
-                  </div>
-                    <div class="">
-                      <Input type="checkbox"/>
-                    </div>
-                </div>
-              </div>
-
+              <form action="">
+                <SectionFiltres
+                :options = "$props.constructeurs"
+                titre = 'Constructeurs'
+                colonneAffichee = 'nom'
+                v-model = "form.constructeurs"
+                @change="filtreVoitures('constructeurs')"
+                />
+                <SectionFiltres
+                :options = "$props.groupeMotopropulseurs"
+                titre = 'Groupe Motopropulseurs'
+                colonneAffichee = 'type'
+                v-model = "form.groupeMotopropulseurs"
+                />
+                <SectionFiltres
+                :options = "$props.corps"
+                titre = 'Corps'
+                colonneAffichee = 'type'
+                v-model = "form.corps"
+                />
+                <SectionFiltres
+                :options = "$props.transmissions"
+                titre = 'Transmission'
+                colonneAffichee = 'type'
+                v-model = "form.transmissions"
+                />
+                <SectionFiltres
+                :options = "$props.carburants"
+                titre = 'Carburants'
+                colonneAffichee = 'type'
+                v-model = "form.carburants"
+                />
+                <SectionFiltres
+                :options = "$props.etats"
+                titre = 'États'
+                colonneAffichee = 'nom'
+                v-model = "form.etats"
+                />
+                <FiltreMinMax
+                nom = 'Prix' 
+                untite = '$'
+                v-model = "form.prix"
+                />
+                <FiltreMinMax
+                nom = 'Kilometrage' 
+                untite = 'km'
+                v-model = "form.kilometrage"
+                />
+              </form>
             </div>
           </div>
         </div>
@@ -125,109 +161,29 @@ defineProps({
       <section class="catalogue__contenu">
         <h4 class="">CATALOGUE DES VEHICULES</h4>
         <div class="catalogue__contenu__tri">
-          <select>
+          <select v-model.number="form.tri" @change="tri">
             <option value="" disabled selected>Trier par :</option>
-            <option>Prix: bas à élevés</option>
-            <option>Prix: élevés à bas</option>
-            <option>Année: croissante</option>
-            <option>Année: décroissante</option>
-            <option>KM: bas à élevés</option>
-            <option>KM: élevés à bas</option>
+            <option value="1">Prix: bas à élevés</option>
+            <option value="2">Prix: élevés à bas</option>
+            <option value="3">Année: croissante</option>
+            <option value="4">Année: décroissante</option>
+            <option value="5">KM: bas à élevés</option>
+            <option value="6">KM: élevés à bas</option>
           </select>
         </div>
-       
         <div class="catalogue__grid">
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="catalogue__grid__tuile">
-            <div class="catalogue__grid__tuile__img-wrapper">
-              <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
-            </div>
-            <div class="catalogue__grid__tuile__details">
-              <p class="catalogue__grid__tuile_texte"> 2015 Kia Forte LX </p>
-              <div class="catalogue__grid__spans">
-                <span>$13,499 km</span>
-                <span>79 364 km</span>
-              </div>
-            </div>
-          </div>
+          <slot v-for="voiture in props.voitures">
+            <Tuile
+            :data = "voiture"
+            />
+          </slot>
         </div>
-
       </section>
-
     </section>
-
   </AppLayout>
-
 </template>
 
 <style>
-
 .catalogue {
   display: flex;
   align-items: flex-start;
@@ -369,7 +325,4 @@ img {
     overflow-y: initial;
   }
 }
-
-
-
 </style>
