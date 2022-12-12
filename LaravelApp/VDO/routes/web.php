@@ -23,16 +23,16 @@ use Illuminate\Support\Facades\Lang;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Homepage', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/homepage', function () {
+//     return Inertia::render('Homepage', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
-Route::get('/accueil', function () {
+Route::get('/', function () {
     return Inertia::render('Accueil', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
