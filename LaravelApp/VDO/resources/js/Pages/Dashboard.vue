@@ -44,6 +44,4 @@ defineProps({
     text-transform: uppercase;
 }
 
-
-
 </style>

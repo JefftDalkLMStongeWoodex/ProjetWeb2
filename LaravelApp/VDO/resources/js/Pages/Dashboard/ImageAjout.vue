@@ -170,6 +170,8 @@ const submit = () => {
 	.small-group {
 		width: 45%;
 	}
+<<<<<<< HEAD
+=======
 
 
 
@@ -183,6 +185,7 @@ const submit = () => {
 
 
 
+>>>>>>> 92b279eef23b68cfc36213939f73ca7242e6d0fc
 }
 .label {
     display: block;

@@ -241,72 +241,8 @@ function hideFiltres(){
 <style>
 .catalogue {
   display: flex;
-  align-items: flex-start;
-}
-
-.catalogue__sidebar {
-  width: 360px;
-  flex-shrink: 0;
-  border-right:  1px solid rgba(128, 128, 128, 0.175);;
-  position: sticky;
-  height: 100vh;
-  z-index: 1;
-  transition: all 200ms ease;
-}
-
-.catalogue__sidebar__contenu {
-  position: relative;
-  height: 100%;
-  transition: opacity 200ms ease-in-out;
-  overflow-y: auto;
-  position: relative;
-  width: inherit;
-  padding-left: 2em;
-}
-
-.filtreSidebar {
-  width: 100%;
-  height:100%;
-}
-
-.filtreSidebar__entete {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  padding: 20px 25px 20px;
-}
-
-.optionFiltre {
-  border-top: 0.04rem solid rgba(128, 128, 128, 0.175);
-}
-
-.optionFiltre__entete {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 20px 30px;
-}
-
-
-.optionFiltre__titre {
-  margin: 0;
-  padding-right: 1.25rem;
-  flex-grow: 1;
-}
-
-.optionFiltre__contenu {
-  padding: 0 30px;
-  height: auto;
-  opacity: 1;
-  overflow: visible;
-  transition: opacity 200ms ease-in-out,overflow 200ms ease-in-out 300ms;
-}
-
-
-.catalogue__contenu {
-  padding-top: 1em;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .catalogue__grid {
@@ -327,18 +263,29 @@ function hideFiltres(){
   justify-content: space-between;
 }
 
-.vehicule-img {
-  aspect-ratio: 4/3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+.catalogue__sidebar {
+  flex-basis: 20ch;
+	flex-grow: 1;
+    top: 0;
+    padding-top: 1rem;
+    align-self: flex-start;
+    background-color: inherit;
+}
+
+.catalogue__sidebar__contenu {
+  height: 100%;
+  transition: opacity 200ms ease-in-out;
+  overflow-y: auto;
+  position: relative;
+  width: inherit;
+  padding-left: 2em;
 }
 
 .catalogue__contenu__tri {
   display: flex;
   flex-direction: row-reverse;
 }
+
 .catalogue__grid__tuile__details {
   margin: 0;
   padding: 0px 15px;
@@ -352,6 +299,71 @@ function hideFiltres(){
   margin-left: 25px;
 }
 
+/* .filtreSidebar {
+
+} */
+
+/* .filtreSidebar__entete {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 20px 25px 20px;
+} */
+
+/* .optionFiltre {
+  border-top: 0.04rem solid rgba(128, 128, 128, 0.175);
+} */
+
+/* .optionFiltre__entete {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+} */
+
+/* .optionFiltre__titre {
+  margin: 0;
+  padding-right: 1.25rem;
+  flex-grow: 1;
+} */
+
+/* .optionFiltre__contenu {
+  padding: 0 30px;
+  height: auto;
+  opacity: 1;
+  overflow: visible;
+  transition: opacity 200ms ease-in-out,overflow 200ms ease-in-out 300ms;
+} */
+
+.catalogue__contenu {
+  padding-left: 0.6rem;
+}
+
+.catalogue__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+
+.catalogue__grid__tuile {
+  border: solid 1px var(--couleur-secondaire);
+  border-radius: 8px;
+  padding-top: 1rem;
+}
+
+
+.vehicule-img {
+  aspect-ratio: 4/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
 
 img {
   width: 100%;
@@ -359,37 +371,15 @@ img {
   object-position: center center;
 }
 
-#bouttonOuvrir{
-  background-color: var(--couleur-secondaire);
-  position: fixed;
-  bottom: 10%;
-  right: 10%;
-  width: 60px;
-  border-radius: 50%;
-  aspect-ratio: 1/1;
-  color: var(--couleur-blanc);
-  display: none;
-}
-
-#bouttonFermer{
-  background-color:var(--couleur-secondaire);
-  width: 50px;
-  border-radius: 15px;
-  aspect-ratio: 1/1;
-  color: var(--couleur-blanc);
-  display: none;
-}
 
 @media screen and (max-width: 1439px) {
   .catalogue__sidebar {
     width: 340px;
     flex-shrink: 0;
-    border-right:  1px solid gray;
     position: sticky;
     height: 100vh;
     z-index: 1;
     transition: all 200ms ease;
-    
   }
 }
 
