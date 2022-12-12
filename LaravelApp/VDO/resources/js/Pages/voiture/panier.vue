@@ -60,9 +60,7 @@ defineProps({
     <div class="pannier__entete"></div>
 
 
-
     <div class="prix_total"> 
-      
             <table>
                 <tr>
                     <td>Sous-total</td>
