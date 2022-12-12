@@ -60,25 +60,23 @@ defineProps({
 }
 
 .gachette {
-    /* appearance: none;
-    -moz-appearance: none; */
+    all: unset;
+    appearance: none;
+    -moz-appearance: none;
     position: absolute;
     top: 20px;
     right: 20px;
     z-index: 1;
     cursor: pointer;
-    padding: 5px;
-    background-color: lightgrey;
 }
 
-/* affichage icone menu burger */
-/* .gachette::before {
+.gachette::before {
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='18' viewBox='0 0 27 18'%3E%3Cpath fill='white' d='M4.5,27h27V24H4.5Zm0-7.5h27v-3H4.5ZM4.5,9v3h27V9Z' transform='translate(-4.5 -9)'/%3E%3C/svg%3E");
     text-transform: uppercase;
     font-weight: 700;
     width: 100%;
     height: 100%;
-} */
+}
 
 .header__langSelect {
     display: flex;

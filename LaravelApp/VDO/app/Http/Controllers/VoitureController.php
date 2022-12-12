@@ -27,7 +27,7 @@ class VoitureController extends Controller
     {
         $langVoiture = Lang::get('voiture');
         $modeleVoiture = new Voiture;
-        $voitures = $modeleVoiture->selectVoitureTableauDeBord();
+        $voitures = $modeleVoiture->selectVoitureTableauDeBord(session()->get('locale'));
         return Inertia::render('Dashboard/Voiture', [
             'langVoiture' => $langVoiture,
             'voitures' => $voitures,

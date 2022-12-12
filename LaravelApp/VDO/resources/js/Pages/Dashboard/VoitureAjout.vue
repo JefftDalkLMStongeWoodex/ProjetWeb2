@@ -52,9 +52,9 @@ const submit = () => {
                 <section class="large-group">
                     <div class="small-group">
                     <InputLabel
-                     for="modeles_id" 
-                     class="label"
-                     :value="langVoiture.modele" />
+                        for="modeles_id" 
+                        class="label"
+                        :value="langVoiture.modele" />
                     <Select 
                         :options="modeles" 
                         colonneAffichee="nom"
@@ -209,7 +209,7 @@ const submit = () => {
                     />
                     <InputError :message="form.errors.description" />
                 </div>
-                <!-- <div class="small-group">
+                <div class="small-group">
                     <InputLabel class="label" for="description_en" :value="langVoiture.description_en" />
                     <textarea 
                         id="description_en" 
@@ -219,7 +219,7 @@ const submit = () => {
                         v-model="form.description_en" 
                     />
                     <InputError :message="form.errors.description_en" />
-                </div> -->
+                </div>
                 <div class="btnSoumettre">
                     <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         {{langVoiture.soumettre}}

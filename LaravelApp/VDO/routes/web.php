@@ -7,6 +7,9 @@ use Inertia\Inertia;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\PanierAchatController;
+use App\Http\Controllers\ImageController;
+
 use Illuminate\Support\Facades\Lang;
 
 /*
@@ -48,6 +51,14 @@ Route::get('/contact', function() { return Inertia::render('Contact'); })->name(
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
 
+Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voiture.index');
+
+Route::get('/voiture/panier/{voiture}', [PanierAchatController::class, 'panier'])->name('voiture.panier');
+
+Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
+
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [
         'langDashboard' => Lang::get('dashboard'),
@@ -70,4 +81,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'edit'])->name("voiture.edit");
     Route::put('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'update'])->name("voiture.update");
     Route::delete('/dashboard/voitures/modifier/{voiture}', [VoitureController::class, 'destroy'])->name("voiture.destroy");
+});
+
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard/images/{idVoiture}', [ImageController::class, 'index'])->name('image.index');
+    Route::get('/dashboard/images/ajout/{idVoiture}', [ImageController::class, 'create'])->name('image.create');
+    Route::post('/dashboard/images/ajout/{idVoiture}', [ImageController::class, 'store'])->name('image.store');
 });
