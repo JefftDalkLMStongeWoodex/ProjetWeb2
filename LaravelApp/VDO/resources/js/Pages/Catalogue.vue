@@ -36,7 +36,39 @@ const form = useForm({
     min:'',
     max:''
   },
+  tri: ''
 })
+
+const tri = () => {
+  switch (form.tri) {
+    case 1:
+      console.log("Prix: bas à élevés")
+      
+      break;
+    case 2:
+      console.log("Prix: élevés à bas")
+      break;
+    case 3:
+      console.log("Année: croissante")
+      break;
+    case 4:
+      console.log("Année: décroissante")
+      break;
+    case 5:
+      console.log("KM: bas à élevés")
+      break;
+    case 6:
+      console.log("KM: élevés à bas")
+      break;  
+    default:
+      break;
+  }
+}
+
+function triVoitures($propriete, $ordre) {
+
+}
+
 </script>
 <template>
   <Head title="Catalogue" />
@@ -105,7 +137,7 @@ const form = useForm({
       <section class="catalogue__contenu">
         <h4 class="">CATALOGUE DES VEHICULES</h4>
         <div class="catalogue__contenu__tri">
-          <select>
+          <select v-model.number="form.tri" @change="tri">
             <option value="" disabled selected>Trier par :</option>
             <option value="1">Prix: bas à élevés</option>
             <option value="2">Prix: élevés à bas</option>
