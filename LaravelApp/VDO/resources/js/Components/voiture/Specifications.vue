@@ -1,5 +1,5 @@
 <script setup>
-  import TuileIcon from  '@/Components/TruileIcon.vue';
+  import TuileIcon from  '@/Components/TuileIcon.vue';
   import km from '/resources/assets/icones/kilometrage.svg';
 
   const props = defineProps(['specifications', 'active', 'lang']);
@@ -10,9 +10,8 @@
         <section class="wrapper specification"> 
           <h1 style="">SPÉCIFICATIONS  </h1>
             <div class="grid  ">
-                <div class="grid_item grid_item1"> 
-                                
-                   <TuileIcon>
+                <div class="grid_item grid_item1">                                 
+                  <TuileIcon>
                     <!--  Icon -->
                         <template #icon>
                           <img :src="km" alt="logo VDO">
@@ -21,9 +20,7 @@
                       <template #contenu>
                     KM
                     </template>
-
-                   </TuileIcon>              
-                
+                  </TuileIcon>              
                 </div>
                 <div class="grid_item grid_item2">  2  </div>
                 <div class="grid_item grid_item3">   3 </div>
