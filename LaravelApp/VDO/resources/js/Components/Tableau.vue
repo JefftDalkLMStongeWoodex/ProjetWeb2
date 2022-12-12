@@ -49,8 +49,9 @@ defineProps({
         border: var(--couleur-blanc-opacite-50) solid 1px;
         border-radius: 0.375rem;
         margin-top: 2rem;
-    
+        overflow-x: auto;
     }
+    
     .tableau {
         white-space: nowrap;
         width: 100%;
