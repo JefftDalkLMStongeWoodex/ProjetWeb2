@@ -19,11 +19,41 @@ class CatalogueController extends Controller
 {
     //
     function index(){
-        $voitures = Voiture::where('statut_voitures_id', '1')->join('modeles', function($join) {
+        $voitures = Voiture::where('statut_voitures_id', '1')
+        ->join('modeles', function($join) {
             $join->on('voitures.modeles_id','=','modeles.id')->join('constructeurs', function($join){
                 $join->on('modeles.constructeurs_id','=','constructeurs.id');
             });
-        })->get(['voitures.id','voitures.prix_paye AS prix','voitures.kilometrage','voitures.annee','modeles.nom AS modele','constructeurs.nom as constructeur','voitures.corps_id']);
+        })
+        ->join('groupe_motopropulseurs', function($join) {
+            $join->on('voitures.groupe_motopropulseurs_id','=','groupe_motopropulseurs.id');
+        })
+        ->join('transmissions', function($join) {
+            $join->on('voitures.transmissions_id','=','transmissions.id');
+        })
+        ->join('carburants', function($join) {
+            $join->on('voitures.carburants_id','=','carburants.id');
+        })
+        ->join('corps', function($join) {
+            $join->on('voitures.corps_id','=','corps.id');
+        })
+        ->join('etats', function($join) {
+            $join->on('voitures.etats_id','=','etats.id');
+        })
+        ->get([
+            'voitures.id',
+            'voitures.prix_paye AS prix',
+            'voitures.kilometrage',
+            'voitures.annee',
+            'modeles.nom AS modeles',
+            'constructeurs.nom AS constructeurs',
+            'carburants.type AS carburants',
+            'groupe_motopropulseurs.type AS groupeMotopropulseurs',
+            'transmissions.type AS transmissions',
+            'corps.type AS corps',
+            'etats.nom AS etats',
+        ]);
+
         // On ajout un taux de 25% pour la  marge de profit
         foreach($voitures as $voiture) {
             $voiture['prix'] *= 1.25;
