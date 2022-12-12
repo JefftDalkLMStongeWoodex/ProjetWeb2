@@ -1,8 +1,9 @@
 <script setup>
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
+import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
 
 defineProps({
     voiture: Object,
@@ -14,6 +15,7 @@ defineProps({
 
 <template>
     <Head :title="langVoiture.detail" />
+    <TableauDeBordLayout> 
     <div class="flex">
         <SidebarVue :lang="langDashboard" />
         <div class="wrapper">
@@ -27,56 +29,46 @@ defineProps({
                             <th class="fiche__detail__entete">{{ langVoiture.modele }}</th>
                             <td class="fiche__detail__corps">{{ voiture.modele["nom"] }}</td>
                         </tr>
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.annee }}</th>
                             <td class="fiche__detail__corps">{{ voiture.annee }}</td>
                         </tr>
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.prix_paye }}</th>
                             <td class="fiche__detail__corps">{{ voiture.prix_paye }}$</td>
 
                         </tr>
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.date_arrivee }}</th>
                             <td class="fiche__detail__corps">{{ voiture.date_arrivee }}</td>
                         </tr>
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.kilometrage }}</th>
                             <td class="fiche__detail__corps">{{ voiture.kilometrage }}</td>
 
                         </tr>
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.corps }}</th>
                             <td class="fiche__detail__corps">{{ voiture.corps["type_en"] }}</td>
                         </tr>
 
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.transmission }}</th>
                             <td class="fiche__detail__corps">{{ voiture.transmission["type_en"] }}</td>
                         </tr>
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.groupe_motopropulseur }}</th>
                             <td class="fiche__detail__corps">{{ voiture.groupe_motopropulseur["type_en"] }}</td>
                         </tr>
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.carburant }}</th>
                             <td class="fiche__detail__corps"> {{ voiture.carburant["type_en"] }}</td>
                         </tr>
 
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.etat }}</th>
                             <td class="fiche__detail__corps"> {{ voiture.etat["nom_en"] }}</td>
                         </tr>
-
                         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.statut }}</th>
                             <td class="fiche__detail__corps">{{ voiture.statut["nom_en"] }}</td>
@@ -178,6 +170,7 @@ defineProps({
             </div>
         </div>
     </div>
+    </TableauDeBordLayout> 
 </template>
 <style scoped>
 .fiche {
@@ -206,7 +199,6 @@ defineProps({
 
 .titre {
     font-family: var(--police-titre);
-    font-size: ;
     padding: 1rem 0;
 }
 
