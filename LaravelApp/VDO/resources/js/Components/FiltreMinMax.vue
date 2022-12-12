@@ -12,7 +12,7 @@ export default {
         unite:{
             default: ''
         },
-        nom:{
+        titre:{
             default: ''
         }
     },
@@ -25,7 +25,7 @@ export default {
 </script>
 <template>
     <details>
-        <summary><strong>{{nom}}</strong></summary>
+        <summary><strong>{{titre}}</strong></summary>
         <div class="min-max-filter">
             <input name="min" type="text" class="min-max-filter__input" :placeholder="$props.unite+' min'" aria-label="Montant minimum" v-model="porte.min" @input="handleChange">
             <input name="max" type="text" class="min-max-filter__input" :placeholder="$props.unite+' max'" aria-label="Montant maximum" v-model="porte.max" @input="handleChange">
