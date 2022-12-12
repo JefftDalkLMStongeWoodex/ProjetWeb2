@@ -42,22 +42,22 @@ const form = useForm({
 const tri = () => {
   switch (form.tri) {
     case 1:
-      console.log("Prix: bas à élevés")
+      triVoitures("prix", "asc")
       break;
     case 2:
-      console.log("Prix: élevés à bas")
+      triVoitures("prix", "desc")
       break;
     case 3:
-      console.log("Année: croissante")
+      triVoitures("annee", "asc")
       break;
     case 4:
-      console.log("Année: décroissante")
+      triVoitures("annee", "desc")
       break;
     case 5:
-      console.log("KM: bas à élevés")
+      triVoitures("kilometrage", "asc")
       break;
     case 6:
-      console.log("KM: élevés à bas")
+      triVoitures("kilometrage", "desc")
       break;  
     default:
       break;
@@ -79,8 +79,17 @@ function filtreVoitures(filtre) {
   console.log(data);
 }
 
-function triVoitures($propriete, $ordre) {
-
+function triVoitures(propriete, ordre) {
+  props.voitures.sort(function(a, b) {
+    if (ordre == "asc") {
+      if (a[propriete] < b[propriete]) return -1
+      if (a[propriete] > b[propriete]) return 1
+      return 0
+    } else if (ordre == "desc") {
+      if (a[propriete] < b[propriete]) return 1
+      if (a[propriete] > b[propriete]) return -1
+    }
+  })
 }
 
 </script>
@@ -316,7 +325,4 @@ img {
     overflow-y: initial;
   }
 }
-
-
-
 </style>
