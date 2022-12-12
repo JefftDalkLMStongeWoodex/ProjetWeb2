@@ -18,7 +18,8 @@ export default {
 <template>
     <div class="catalogue__grid__tuile">
         <div class="catalogue__grid__tuile__img-wrapper">
-            <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
+            <img v-if="data.imagePrincipale[0] != null" :src="`/storage/${data.imagePrincipale[0].chemin}`" class="vehicule-img" />
+            <img v-else src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
         </div>
         <div class="catalogue__grid__tuile__details">
             <p class="catalogue__grid__tuile_texte">{{data.annee}} {{data.constructeur}} {{data.modele}}</p>
