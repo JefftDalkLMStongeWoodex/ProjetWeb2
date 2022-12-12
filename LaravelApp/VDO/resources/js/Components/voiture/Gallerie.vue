@@ -2,8 +2,15 @@
     import { onMounted } from 'vue'
 
     const props = defineProps({
-        images: Array,
-        imagePrincipale: Object
+        images: {
+            type: Array,
+            default: null
+        },
+        imagePrincipale: {
+            type: Object,
+            default: null
+        },
+        lang: Object
     })
 
     onMounted(() => {
@@ -28,9 +35,9 @@
     }
 </script>
 <template>
-    <div class="auction__gallery">
-        <img 
-            class="auction__img" 
+    <div v-if="(images.length > 0)" class="auction__gallery">
+        <img
+            class="auction__img auction__img-grosse" 
             :src="`/storage/${images[imageSelectionnee].chemin}`" 
             :alt="$page.props.lang.locale == 'en' ? imagePrincipale.alt_en : imagePrincipale.alt" 
             data-main-photo
@@ -44,6 +51,9 @@
             :class="{'active' : index === imageSelectionnee}"
         >
     </div>
+    <div v-else>
+        {{lang.aucune_image_dispo}}
+    </div>
 </template>
 
 <style scoped>
@@ -55,6 +65,10 @@
     grid-column: 1/13;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, min-content);
+}
+
+.auction__img-grosse {
+    width: 100%;
 }
 
 @media only screen and (min-width: 1024px) {
