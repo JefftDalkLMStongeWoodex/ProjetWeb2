@@ -5,8 +5,6 @@ const showingNavigationDropdown = ref(false);
 
 <template>
 <body>
-   
- 
         <!-- Page Heading -->
         <header class="barre_latérale" v-if="$slots.header">
              <nav class="header__navigation">
@@ -33,8 +31,6 @@ const showingNavigationDropdown = ref(false);
 </template>
 <style scoped>
 
-
-
 body{
     flex-direction: column;
 
@@ -44,7 +40,6 @@ body{
     background-color: var(--couleur-secondaire);
 }
 
-
 @media (min-width: 900px) {
 
     body{
@@ -52,8 +47,6 @@ body{
         min-height: 100vh;
         flex-direction: row;
     }
-    
-    
     
     .conteneur{
     flex-grow: 1;

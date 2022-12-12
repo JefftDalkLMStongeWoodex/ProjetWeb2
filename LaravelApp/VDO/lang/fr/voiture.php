@@ -25,6 +25,10 @@ return[
     'description_en' => 'Description (anglais)',
     'description_placeholder' => 'Entrez ici toute information jugée pertinente n\'étant pas couverte par le formulaire ci-haut.',
     'soumettre' => 'Soumettre',
-    'titre_detail' => 'Détail de la voiture'
+    'titre_detail' => 'Détail de la voiture',
+    'detail_technique' => 'Détail Technique',
+    'detail_image' => 'Consulter les images associées à cette voiture ',
+    'modifier' => 'Modifier ',
+    'supprimer' => 'supprimer',
 ];
 ?>
