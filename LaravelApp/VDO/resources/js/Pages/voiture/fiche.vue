@@ -44,8 +44,8 @@ defineProps({
                    
                 </div>
 
-                <div class="grid_item grid_item3">  <Specifications/>   </div>
-                <div class="grid_item grid_item4"><Equipement/> </div>
+                <div class="grid_item grid_item3">  <Specifications :Specifications="voiture" />   </div>
+           
 
                    
                 <div class="grid_item grid_item12"> <AppelAction/>  </div>
@@ -59,9 +59,7 @@ defineProps({
 </template>
 
 <style>
-body{
-    font-family: sans-serif;
-}
+
 
 .grid{
     display: grid;
@@ -92,12 +90,7 @@ body{
 
 
 .grid_item3{
-    grid-column: col 1 / span 6;
-}
-
-
-.grid_item4{
-    grid-column: col 7 / span 6;
+    grid-column: col 1 / span 12;
 }
 
 
