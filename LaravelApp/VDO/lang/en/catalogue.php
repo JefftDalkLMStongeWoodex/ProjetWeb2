@@ -1,4 +1,5 @@
 <?php
 return [
-    'test' => 'balls'
+    'test' => 'balls',
+    'aucune_image_dispo' => 'No images available'
 ];
