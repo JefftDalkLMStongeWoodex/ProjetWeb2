@@ -1,7 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import Fiche from '@/Components/voiture/Fiche.vue';
-import Galerie from '@/Components/voiture/Galerie.vue';
+import Gallerie from '@/Components/voiture/Gallerie.vue';
 import Specifications from '@/Components/voiture/Specifications.vue';
 import Equipement from '@/Components/voiture/Equipement.vue';
 import AppelAction from '@/Components/SectionAppelAction.vue'; 
@@ -18,6 +18,7 @@ defineProps({
   groupeMotopropulseurs: Object,
   carburants: Object,
   etats: Object,
+  voiture: Object
 });
 
 
@@ -31,7 +32,7 @@ defineProps({
         <section>
             <div class="grid">
                 <div class="grid_item grid_item1"> 
-                    <Galerie/>
+                    <Gallerie :imagePrincipale="voiture.imagePrincipale[0]" :images="voiture.images"/>
                     <div> <img src="" alt=""></div>
                  
                 </div>
