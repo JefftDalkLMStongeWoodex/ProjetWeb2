@@ -10,6 +10,7 @@ const props = defineProps(['href', 'active', 'lang']);
 
 <template>
     <aside class="aside" :style="{ width: sidebarWidth }">
+   
         <div class="logo">
             <Link :href="route('accueil')">
                 <LogoVersion2 />
@@ -17,8 +18,9 @@ const props = defineProps(['href', 'active', 'lang']);
         </div>
         <div class="menu_laterale">
 
+            <input class="gachette" type="checkbox">
 
-            <nav class="nav">
+            <nav class="nav header__conteneur ">
                 <NavLink :href="route('dashboard')" :active="route().current('dashboard') ">
                  
                     <!--  Menu ferme  -->
@@ -87,15 +89,63 @@ aside div nav {
 }
 
 
-@media (min-width: 900px) {
+.gachette {
+    all: unset;
+    appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    cursor: pointer;
+}
 
+
+.header__conteneur {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    overflow: auto;
+    background-color: var(--couleur-secondaire);
+}
+.gachette::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='18' viewBox='0 0 27 18'%3E%3Cpath fill='white' d='M4.5,27h27V24H4.5Zm0-7.5h27v-3H4.5ZM4.5,9v3h27V9Z' transform='translate(-4.5 -9)'/%3E%3C/svg%3E");
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+}
+
+input.gachette:not(:checked) ~ .header__conteneur {
+    opacity: 0;
+    pointer-events: none;
+}
+.collapse-icon{
+    display: none;
+
+}
+@media (min-width: 900px) {
+   
     .aside {
         background-color: var( --couleur-secondaire);
     }
     .logo {
         align-items: center;
     }
+    input.gachette:not(:checked) ~ .header__conteneur {
+        opacity: 100%;
+        pointer-events: auto;
+    }
+  
+    .gachette {
+        display: none;
+    }
+
+    .collapse-icon{
+        display:flex ;
     
+    }
+
     aside div nav {
         display: flex;
         flex-direction: column;
@@ -107,6 +157,12 @@ aside div nav {
         transition: 0.2s ease-out;
         width: calc(2rem+32px);
     
+    }
+
+    .header__conteneur {
+        
+        position: static;
+     
     }
     
     .collapse-icon {
@@ -128,6 +184,7 @@ aside div nav {
         border-style: solid;
         border-color: #e5e7eb;
        text-align: left;
+       
     }
     
     

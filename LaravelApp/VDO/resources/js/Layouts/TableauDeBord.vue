@@ -37,6 +37,7 @@ const showingNavigationDropdown = ref(false);
 
 body{
     flex-direction: column;
+    
 
 
 }
@@ -52,8 +53,6 @@ body{
         min-height: 100vh;
         flex-direction: row;
     }
-    
-    
     
     .conteneur{
     flex-grow: 1;

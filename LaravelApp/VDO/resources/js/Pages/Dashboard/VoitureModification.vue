@@ -6,6 +6,8 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/inertia-vue3';
 import Select from '@/Components/Select.vue';
 import SidebarVue from '@/Components/Sidebar.vue';
+import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
+
 
 const props = defineProps({
     voiture: Object,
@@ -45,9 +47,12 @@ const update = () => {
 
 <template>
     <Head :title="langVoiture.modifier_titre" />
-    <div class="flex">
-        <SidebarVue :lang="langDashboard "/>
-        <div class="wrapper">
+
+    <TableauDeBordLayout>
+        <template #header>
+            <SidebarVue :lang="langDashboard"/>
+        </template>
+        <div class="wrapper voiture_modifier">
             <h1>{{langVoiture.modifier_titre}}</h1>
             <form @submit.prevent="update">
                 <section class="large-group">
@@ -225,7 +230,7 @@ const update = () => {
                 
             </form>
         </div>
-    </div>
+    </TableauDeBordLayout>
 </template>
 <style scoped>
 @media screen and (min-width: 700px) {
@@ -284,5 +289,9 @@ p {
 p a{
     color:  var(--couleur-principale);
     
+}
+.voiture_modifier{
+
+    margin-bottom: 2rem;
 }
 </style>
