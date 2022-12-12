@@ -2,7 +2,7 @@
 return[
     'email' => 'Courriel',
     'password' => 'Mot de passe',
-    'login' => 'Connection',
+    'login' => 'Connexion',
     'remember' => 'Se souvenir de moi',
     'forgot' => 'Oublier votre mot de passe?'
 ];

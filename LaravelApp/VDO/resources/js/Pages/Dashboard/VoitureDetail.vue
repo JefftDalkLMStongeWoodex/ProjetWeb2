@@ -151,6 +151,9 @@ defineProps({
                     {{ voiture.utilisateur.email }}
                     <p class="">{{ voiture.description_en }} </p>
                 </template>
+                <template v-else>
+                    <p class="">{{langVoiture.description_aucun }}</p>
+                </template>
             </template>
 
             <template v-else-if="$page.props.lang.locale == 'fr'">
@@ -160,18 +163,24 @@ defineProps({
                     {{ voiture.utilisateur.email }}
                     <p class="">{{ voiture.description }}</p>
                 </template>
+                <template v-else>
+                    <p class="">{{langVoiture.description_aucun }}</p>
+                </template>
             </template>
+          
 
             <div class="lien-images">
                 <Link :href="route('image.index', voiture.id)">
                 {{ langVoiture.detail_image }}
                 </Link>
+                <span>
+                    <i class="fa-solid fa-arrow-right fa-fade"></i>
+              </span>
             </div>
             <div class="lien-actions">
                 <Link :href="route('voiture.edit', voiture)">
                 <SecondaryButton>{{langVoiture.modifier}}</SecondaryButton>
                 </Link>
-
                 <Link>
                 <DangerButton>{{langVoiture.supprimer}}</DangerButton>
                 </Link>
@@ -215,10 +224,13 @@ defineProps({
 }
 
 .lien-images {
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    gap: 5px;
 }
 
-.lien-images:hover {
+.lien-images:hover{
     color: var(--couleur-principale);
     transition: all 0.3s ease;
 }
@@ -236,6 +248,5 @@ p {
     h4 {
         font-size: 1.3rem;
     }
-	
 }
 </style>

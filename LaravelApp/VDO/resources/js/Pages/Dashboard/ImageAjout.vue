@@ -138,7 +138,6 @@ const submit = () => {
 	.small-group {
 		width: 45%;
 	}
-
 }
 .label {
     display: block;
