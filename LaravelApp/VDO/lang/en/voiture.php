@@ -23,8 +23,13 @@ return[
     'utilisateur_reservation' => 'Reserved by',
     'description' => 'Description',
     'description_en' => 'Description (english)',
+    'description_aucun' => 'No description',
     'description_placeholder' => 'Add any important details not specified by the above form.',
     'soumettre' => 'Submit',
-    'titre_detail' => 'Car detail'
+    'titre_detail' => 'Car detail',
+    'detail_technique' => 'Technical Detail',
+    'detail_image' => 'Consult the images associated with this car',
+    'modifier' => 'Update ',
+    'supprimer' => 'Delete',
 ];
 ?>

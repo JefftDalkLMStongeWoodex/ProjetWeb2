@@ -11,7 +11,7 @@ defineProps({
 <template>
     <Head title="Dashboard" />
     <TableauDeBordLayout> 
-   
+
         <template #header>
             <SidebarVue :lang="langDashboard"/>         
         </template>
@@ -19,7 +19,7 @@ defineProps({
             <div class="application">      
                 <div class="contenu--tableau-de-bord ">
 
-                    <h2 class="titre--page">{{langDashboard.titre}}</h2>
+                    <h2 class="titre">{{langDashboard.titre}}</h2>
                     <div class="py-12">
                         <div class="">
                             <div class="">
@@ -29,7 +29,6 @@ defineProps({
                     </div>
                 </div>
             </div>
-     
 </TableauDeBordLayout>
 </template>
 <style scoped>
@@ -40,6 +39,9 @@ defineProps({
     font-weight: 500;
     color: var(--couleur-secondaire);
 }
-
+.titre {
+    font-family: var(--police-titre);
+    text-transform: uppercase;
+}
 
 </style>

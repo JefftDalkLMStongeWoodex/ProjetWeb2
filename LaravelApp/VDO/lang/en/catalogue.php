@@ -1,5 +1,22 @@
 <?php
 return [
-    'test' => 'balls',
-    'aucune_image_dispo' => 'No images available'
+    'aucune_image_dispo' => 'No images available',
+    'filtres' => 'Filters',
+    'renitialiser' => 'Reset',
+    'constructeurs' => 'Make',
+    'motoprop' => 'Drivetrain',
+    'corps' => 'Body type',
+    'transmission' => 'Transmission',
+    'carburants' => 'Fuel type',
+    'etats' => 'State',
+    'prix' => 'Price',
+    'annee' => 'Year',
+    'kilometrage' => 'Kilometres',
+    'trierPar' => 'Sort by:',
+    'trierPrixASC' => 'Price: low to high',
+    'trierPrixDSC' => 'Price: high to low',
+    'trierAnneeASC' => 'Year: low to high',
+    'trierAnneeDSC' => 'Year: high to low',
+    'trierKmASC' => 'Km: low to high',
+    'trierKmDSC' => 'Km: high to low',
 ];
