@@ -80,7 +80,7 @@ function filtreVoitures(filtre) {
       return bool
     }
   )
-  props.voitures = data;
+  console.log(data);
 }
 
 function porteVoitures(filtre) {
@@ -100,7 +100,7 @@ function porteVoitures(filtre) {
       return bool
     }
     )
-    props.voitures = data;
+    console.log(data);
 }
 
 function triVoitures(propriete, ordre) {
@@ -122,7 +122,6 @@ function resetForm(){
 
 function displayFiltres(){
   document.querySelector('.catalogue__sidebar').style.display = 'flex'
-  console.log(document.querySelector('.catalogue__sidebar').style.display)
 }
 
 function hideFiltres(){
@@ -274,7 +273,6 @@ function hideFiltres(){
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
   padding: 20px 25px 20px;
 }
 
