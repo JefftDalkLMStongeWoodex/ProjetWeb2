@@ -75,4 +75,21 @@ class Voiture extends Model
             JOIN constructeurs ON modeles.constructeurs_id = constructeurs.id 
             JOIN statut_voitures ON voitures.statut_voitures_id = statut_voitures.id');
     }
+
+    public function images($idVoiture) {
+        return DB::select(
+            'SELECT *
+            FROM images
+            WHERE voitures_id = ' . $idVoiture
+        );
+    }
+
+    public function imagePrincipale($idVoiture) {
+        return DB::select(
+            'SELECT *
+            FROM images
+            WHERE voitures_id = ' . $idVoiture . '
+            AND image_principale = 1'
+        );
+    }
 }

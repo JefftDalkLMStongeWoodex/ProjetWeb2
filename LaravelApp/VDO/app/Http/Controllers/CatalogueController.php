@@ -57,7 +57,9 @@ class CatalogueController extends Controller
         // On ajout un taux de 25% pour la  marge de profit
         foreach($voitures as $voiture) {
             $voiture['prix'] *= 1.25;
+            $voiture['imagePrincipale'] = $voiture->imagePrincipale($voiture['id']);
         }
+        
         return Inertia::render('Catalogue', [
             'langAppLayout' => Lang::get('app_layout'),
             'langCatalogue' => Lang::get('catalogue'),

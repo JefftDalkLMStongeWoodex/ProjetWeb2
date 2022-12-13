@@ -44,7 +44,7 @@ body {
     flex-grow: 1;
     min-height: 100%;
     display: flex;
-    
+    width: 100%;
 
     }
 }

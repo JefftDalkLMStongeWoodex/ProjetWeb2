@@ -1,5 +1,6 @@
 <?php
 return [
+    'aucune_image_dispo' => 'No images available',
     'filtres' => 'Filters',
     'renitialiser' => 'Reset',
     'constructeurs' => 'Make',

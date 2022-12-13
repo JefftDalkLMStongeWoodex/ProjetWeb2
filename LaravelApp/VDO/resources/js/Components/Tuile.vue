@@ -21,7 +21,8 @@ export default {
 <template>
     <Link class="catalogue__grid__tuile" :href="route('voiture.fiche',data.id)">
         <div class="catalogue__grid__tuile__img-wrapper">
-            <img src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
+            <img v-if="data.imagePrincipale[0] != null" :src="`/storage/${data.imagePrincipale[0].chemin}`" class="vehicule-img" />
+            <img v-else src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
         </div>
         <div class="catalogue__grid__tuile__details">
             <p class="catalogue__grid__tuile_texte">{{data.annee}} {{data.constructeurs}} {{data.modeles}}</p>

@@ -1,61 +1,47 @@
 <script setup>
-import { Head, Link } from '@inertiajs/inertia-vue3';
 import Fiche from '@/Components/voiture/Fiche.vue';
-import Galerie from '@/Components/voiture/Galerie.vue';
+import Gallerie from '@/Components/voiture/Gallerie.vue';
 import Specifications from '@/Components/voiture/Specifications.vue';
-import Equipement from '@/Components/voiture/Equipement.vue';
 import AppelAction from '@/Components/SectionAppelAction.vue'; 
-
+import AppLayout from '@/Layouts/AppLayout.vue';
 
 defineProps({
-  langAppLayout: Object,
-  langCatalogue: Object,
-  voiture: Object,
-  modele: Object,
-  constructeur: Object,
-  corps: Object,
-  transmissions: Object,
-  groupeMotopropulseurs: Object,
-  carburants: Object,
-  etats: Object,
+    langAppLayout: Object,
+    langCatalogue: Object,
+    voiture: Object,
+    modele: Object,
+    constructeur: Object,
+    corps: Object,
+    transmissions: Object,
+    groupeMotopropulseurs: Object,
+    carburants: Object,
+    etats: Object,
+    voiture: Object,
 });
-
-
-
 </script>
-
 <template>
-  
-    <body>
-        <h1 style="">Fiche Produit </h1>
+    <AppLayout :lang="langAppLayout">
         <section>
+            <h1>Fiche Produit</h1>
             <div class="grid">
                 <div class="grid_item grid_item1"> 
-                    <Galerie/>
+                    <Gallerie :imagePrincipale="voiture.imagePrincipale[0]" :images="voiture.images" :lang="langCatalogue"/>
                     <div> <img src="" alt=""></div>
-                 
                 </div>
                 <div class="grid_item grid_item2">   
-                     <div> 
+                    <div> 
                         <Fiche :detailVoiture="voiture"   />
-
-    
                     </div>
-                   
                 </div>
-
-                <div class="grid_item grid_item3">  <Specifications :Specifications="voiture" />   </div>
-           
-
-                   
-                <div class="grid_item grid_item12"> <AppelAction/>  </div>
+                <!-- <div class="grid_item grid_item3">  
+                    <Specifications :Specifications="voiture" />   
+                </div> -->
+                <div class="grid_item grid_item12"> 
+                    <AppelAction/>  
+                </div>
             </div>
-        </section>
-
-
-        
-    </body>
-
+        </section>  
+    </AppLayout>
 </template>
 
 <style>
@@ -71,11 +57,11 @@ defineProps({
 
 
 .grid_item{
-    background-color: #eee;
+    /* background-color: #eee; */
     text-transform: uppercase;
     padding: 1em;
     font-size: 15px;
-    outline: 1px red dashed;
+    /* outline: 1px red dashed; */
 
 }
 .grid_item1  {

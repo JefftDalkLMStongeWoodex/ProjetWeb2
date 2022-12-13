@@ -1,5 +1,6 @@
 <?php
 return [
+    'aucune_image_dispo' => 'Aucune image disponible',
     'filtres' => 'Filtres',
     'renitialiser' => 'Réinitialiser',
     'constructeurs' => 'Fabriquant',

@@ -6,8 +6,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/inertia-vue3';
-import iconeBurger from '/resources/assets/icones/material-menu-white.svg'
-
+import iconeBurger from '/resources/assets/icones/material-menu-white.svg';
 const showingNavigationDropdown = ref(false);
 
 defineProps({
@@ -16,9 +15,10 @@ defineProps({
 </script>
 
 <template>
-    <div>
+    <div class="layout__conteneur">
+
         <!-- Page Heading -->
-        <header>
+        <header class="header">
             <nav class="header__navigation">
                 <div class="wrapper">
                     <input class="gachette" type="checkbox">
@@ -44,17 +44,71 @@ defineProps({
                 </div>
             </nav>
         </header>
-
+    
         <!-- Page Content -->
-        <main>
+        <main class="content">
             <div class="wrapper">
                 <slot />
             </div>
         </main>
+    
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__conteneur wrapper ">
+                <div class="footer__logo">
+                    <a :href="route('accueil')" aria-label="Lien vers page d'accueil">
+                        <LogoVersion2 :href="route('accueil')" class="footer__logo"/>
+                    </a>
+                </div>
+                <div class="footer__liens">
+                    <h4>{{lang.explorer}}</h4>
+                    <div class="footer__liste-liens">
+                        <NavLink class="footer__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
+                        <template v-if="$page.props.auth.user">
+                            <NavLink class="footer__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
+                            <NavLink class="footer__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
+                        </template>
+                        <template v-else>
+                            <NavLink class="footer__lien" :href="route('register')">{{lang.lien_inscription}}</NavLink>
+                            <NavLink class="footer__lien" :href="route('login')">{{lang.lien_connexion}}</NavLink>
+                        </template>
+                    </div>
+                    
+                </div>
+                <div class="footer__joindre">
+                    <h4>{{lang.joindre_titre}}</h4>
+                    <div class="footer__liste-liens">
+                        <NavLink class="footer__lien" :href="route('catalogue')">{{lang.contact_titre}}</NavLink>
+                        <NavLink class="footer__lien" :href="route('catalogue')">(514) 584-4546</NavLink>
+                        <NavLink class="footer__lien" :href="route('catalogue')">info@vdo.ca</NavLink>
+                    </div>
+                </div>   
+            </div>
+        </footer>
     </div>
-
 </template>
 <style scoped>
+.layout__conteneur {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.header {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.content {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.footer {
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
 .header__navigation {
     background-color: var(--couleur-secondaire);
 }
@@ -110,12 +164,50 @@ defineProps({
     max-width: 200px;
 }
 
+.footer__logo {
+    min-width: 170px;
+    max-width: 200px;
+}
+
+
 input.gachette:not(:checked) ~ .header__conteneur {
     opacity: 0;
     pointer-events: none;
 }
 
+.footer__conteneur{
+    background-color: var(--couleur-secondaire);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.footer__joindre h4, .footer__liens h4 {
+    text-align: center;
+}
+
+.footer__liste-liens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 @media (min-width: 900px) {
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+    
+    article {
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 100%;
+    }
+
     input.gachette:not(:checked) ~ .header__conteneur {
         opacity: 100%;
         pointer-events: auto;
@@ -145,10 +237,47 @@ input.gachette:not(:checked) ~ .header__conteneur {
     .header__liens {
         display: block;
         font-size: 18px;
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: row;
     }
 
     .gachette {
         display: none;
     }
+
+
+    .footer__conteneur{
+        background-color: var(--couleur-secondaire);
+        display: flex;
+        flex-direction: row;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .footer__liste-liens{
+        display: flex;
+        flex-direction: column;    
+        align-items: flex-start;    
+    }
+
+    .footer__joindre{
+        display: flex;
+        flex-direction: column;        
+    }
+
+    .footer__joindre h4, .footer__liens h4{
+        text-align: left;
+    }
+
+    .footer__logo {
+        min-width: 325px;
+        max-width: 380px;
+    }
+    
 }
 </style>

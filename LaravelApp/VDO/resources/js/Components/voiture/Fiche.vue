@@ -2,14 +2,19 @@
  import PrimaryButton from '@/Components/PrimaryButton.vue';
 
  const props = defineProps(['detailVoiture', 'active', 'lang']);
-
-
-
 </script>
-
+<script>
+    export default {
+        computed: {
+            prix () {
+                return this.detailVoiture.prix_paye * 1.25 
+            }
+        }
+    }
+</script>
 <template>
   <h3>  {{detailVoiture.modele.nom}}   {{detailVoiture.corps.type}}  </h3>
-  <h4>{{detailVoiture.prix_paye}} $ ddd </h4>
+  <h4>{{prix}} $ </h4>
 
 <p> {{detailVoiture.description}} </p>
 

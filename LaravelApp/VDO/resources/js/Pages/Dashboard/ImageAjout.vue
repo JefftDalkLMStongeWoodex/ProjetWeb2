@@ -170,8 +170,6 @@ const submit = () => {
 	.small-group {
 		width: 45%;
 	}
-<<<<<<< HEAD
-=======
 
 
 
@@ -185,7 +183,6 @@ const submit = () => {
 
 
 
->>>>>>> 92b279eef23b68cfc36213939f73ca7242e6d0fc
 }
 .label {
     display: block;
@@ -197,10 +194,8 @@ input:not([type = checkbox]), select {
     width: 100%;
     margin-bottom: 10px;
     border-radius: 8px;
-    background-color: var(--couleur-principale) ;
-    padding: 0.5rem
-    
-    ;
+    background-color: var(--couleur-principale);
+    padding: 0.5rem;
 }
 
 .textarea-div {

@@ -1,203 +1,181 @@
 <script setup>
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
 import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
-
 
 defineProps({
     voiture: Object,
     langVoiture: Object,
     langDashboard: Object
 })
-
 </script>
-
 <template>
     <Head :title="langVoiture.detail" />
-
     <TableauDeBordLayout>
         <template #header>
             <SidebarVue :lang="langDashboard"/>
         </template>
-        <div class="wrapper detail ">
-            <h1>{{langVoiture.titre_detail.toUpperCase()}}</h1>
-            <dl>
-                <table>
-                    <thead>
+        <div class="flex">    
+            <div class="wrapper detail">
+                <h4 class="titre">{{ langVoiture.titre_detail.toUpperCase() }}</h4>
+                <hr>
+                <table class="fiche">
+                    <template v-if="$page.props.lang.locale == 'en'">
+                        <tbody class="fiche__detail">
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.modele }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.modele["nom"] }}</td>
+                            </tr>
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.annee }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.annee }}</td>
+                            </tr>
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.prix_paye }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.prix_paye }}$</td>
 
-    <div class="flex">
-        <SidebarVue :lang="langDashboard" />
-        <div class="wrapper">
-            <h2 class="titre">{{ langVoiture.titre_detail.toUpperCase() }}</h2>
-            <h4>{{ langVoiture.detail_technique }}</h4>
-            <hr>
-            <table class="fiche">
+                            </tr>
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.date_arrivee }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.date_arrivee }}</td>
+                            </tr>
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.kilometrage }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.kilometrage }}</td>
+
+                            </tr>
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.corps }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.corps["type_en"] }}</td>
+                            </tr>
+
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.transmission }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.transmission["type_en"] }}</td>
+                            </tr>
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.groupe_motopropulseur }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.groupe_motopropulseur["type_en"] }}</td>
+                            </tr>
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.carburant }}</th>
+                                <td class="fiche__detail__corps"> {{ voiture.carburant["type_en"] }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.etat }}</th>
+                                <td class="fiche__detail__corps"> {{ voiture.etat["nom_en"] }}</td>
+                            </tr>
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.statut }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.statut["nom_en"] }}</td>
+                            </tr>
+                        </tbody>
+                    </template>
+                    <template v-else="$page.props.lang.locale == 'fr'">
+                        <tbody class="fiche__detail">
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.modele }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.modele["nom"] }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.annee }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.annee }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.prix_paye }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.prix_paye }}$</td>
+
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.date_arrivee }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.date_arrivee }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.kilometrage }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.kilometrage }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.corps }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.corps["type"] }}</td>
+                            </tr>
+
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.transmission }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.transmission["type"] }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.groupe_motopropulseur }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.groupe_motopropulseur["type"] }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.carburant }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.carburant["type"] }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.etat }}</th>
+                                <td class="fiche__detail__corps"> {{ voiture.etat["nom"] }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="fiche__detail__entete">{{ langVoiture.statut }}</th>
+                                <td class="fiche__detail__corps">{{ voiture.statut["nom"] }}</td>
+                            </tr>
+                        </tbody>
+                    </template>
+                </table>
                 <template v-if="$page.props.lang.locale == 'en'">
-                    <tbody class="fiche__detail">
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.modele }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.modele["nom"] }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.annee }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.annee }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.prix_paye }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.prix_paye }}$</td>
-
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.date_arrivee }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.date_arrivee }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.kilometrage }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.kilometrage }}</td>
-
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.corps }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.corps["type_en"] }}</td>
-                        </tr>
-
-
-         <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.transmission }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.transmission["type_en"] }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.groupe_motopropulseur }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.groupe_motopropulseur["type_en"] }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.carburant }}</th>
-                            <td class="fiche__detail__corps"> {{ voiture.carburant["type_en"] }}</td>
-                        </tr>
-
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.etat }}</th>
-                            <td class="fiche__detail__corps"> {{ voiture.etat["nom_en"] }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.statut }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.statut["nom_en"] }}</td>
-                        </tr>
-                    </tbody>
+                    <h5>{{ langVoiture.description_en }}</h5>
+                    <template v-if="(voiture.statut['id'] == 2 && voiture.utilisateur !== null)">
+                        {{ langVoiture.utilisateur_reservation }}:
+                        {{ voiture.utilisateur.email }}
+                        <p class="">{{ voiture.description_en }} </p>
+                    </template>
+                    <template v-else>
+                        <p class="">{{langVoiture.description_aucun }}</p>
+                    </template>
                 </template>
-                <template v-else-if="$page.props.lang.locale == 'fr'">
-                    <tbody class="fiche__detail">
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.modele }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.modele["nom"] }}</td>
-                        </tr>
 
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.annee }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.annee }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.prix_paye }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.prix_paye }}$</td>
-
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.date_arrivee }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.date_arrivee }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.kilometrage }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.kilometrage }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.corps }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.corps["type"] }}</td>
-                        </tr>
-
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.transmission }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.transmission["type"] }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.groupe_motopropulseur }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.groupe_motopropulseur["type"] }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.carburant }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.carburant["type"] }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.etat }}</th>
-                            <td class="fiche__detail__corps"> {{ voiture.etat["nom"] }}</td>
-                        </tr>
-
-                        <tr>
-                            <th class="fiche__detail__entete">{{ langVoiture.statut }}</th>
-                            <td class="fiche__detail__corps">{{ voiture.statut["nom"] }}</td>
-                        </tr>
-                    </tbody>
+                <template v-else="$page.props.lang.locale == 'fr'">
+                    <h5>{{ langVoiture.description }}</h5>
+                    <template v-if="(voiture.statut['id'] == 2 && voiture.utilisateur !== null)">
+                        {{ langVoiture.utilisateur_reservation }}:
+                        {{ voiture.utilisateur.email }}
+                        <p class="">{{ voiture.description }}</p>
+                    </template>
+                    <template v-else>
+                        <p class="">{{langVoiture.description_aucun }}</p>
+                    </template>
                 </template>
-            </table>
-            <template v-if="$page.props.lang.locale == 'en'">
-                <h5>{{ langVoiture.description_en }}</h5>
-                <template v-if="(voiture.statut['id'] == 2 && voiture.utilisateur !== null)">
-                    {{ langVoiture.utilisateur_reservation }}:
-                    {{ voiture.utilisateur.email }}
-                    <p class="">{{ voiture.description_en }} </p>
-                </template>
-                <template v-else>
-                    <p class="">{{langVoiture.description_aucun }}</p>
-                </template>
-            </template>
-
-            <template v-else-if="$page.props.lang.locale == 'fr'">
-                <h5>{{ langVoiture.description }}</h5>
-                <template v-if="(voiture.statut['id'] == 2 && voiture.utilisateur !== null)">
-                    {{ langVoiture.utilisateur_reservation }}:
-                    {{ voiture.utilisateur.email }}
-                    <p class="">{{ voiture.description }}</p>
-                </template>
-                <template v-else>
-                    <p class="">{{langVoiture.description_aucun }}</p>
-                </template>
-            </template>
-          
-
-            <div class="lien-images">
-                <Link :href="route('image.index', voiture.id)">
-                {{ langVoiture.detail_image }}
-                </Link>
-                <span>
-                    <i class="fa-solid fa-arrow-right fa-fade"></i>
-              </span>
-            </div>
-            <div class="lien-actions">
-                <Link :href="route('voiture.edit', voiture)">
-                <SecondaryButton>{{langVoiture.modifier}}</SecondaryButton>
-                </Link>
-                <Link>
-                <DangerButton>{{langVoiture.supprimer}}</DangerButton>
-                </Link>
-            </div>
+                <div class="lien-images">
+                    <Link :href="route('image.index', voiture.id)">
+                    {{ langVoiture.detail_image }}
+                    </Link>
+                    <span>
+                        <i class="fa-solid fa-arrow-right fa-fade"></i>
+                    </span>
+                </div>
+                <div class="lien-actions">
+                    <Link :href="route('voiture.edit', voiture)">
+                    <SecondaryButton>{{langVoiture.modifier}}</SecondaryButton>
+                    </Link>
+                    <Link>
+                    <DangerButton>{{langVoiture.supprimer}}</DangerButton>
+                    </Link>
+                </div>
+        </div>
         </div>
     </TableauDeBordLayout>
 </template>

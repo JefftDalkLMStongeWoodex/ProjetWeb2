@@ -7,6 +7,9 @@ return[
     'lien_tableau_de_bord' => 'Tableau de bord',
     'lien_deconnexion' => 'Déconnexion',
     'lien_connexion' => 'Connexion',
-    'lien_inscription' => 'Inscription'
+    'lien_inscription' => 'Inscription',
+    'explorer' => 'Explorer',
+    'joindre_titre' => 'Nous joindre',
+    'contact_titre' => 'Contactez-nous',
 ];
 ?>

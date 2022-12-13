@@ -37,6 +37,7 @@ const tableau_th = [
             <Tableau
                 :tableau = images
                 :tableau_th = tableau_th
+                colonne_image = true
             />
         </div>
     </TableauDeBordLayout>
@@ -49,5 +50,6 @@ const tableau_th = [
     flex-grow: 1;
     font-family: var(--police-texte);
     padding: 3rem 2rem 0rem 2rem;
+    width: 100%;
 }
 </style>
