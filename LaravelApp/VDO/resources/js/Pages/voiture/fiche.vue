@@ -33,9 +33,9 @@ defineProps({
                         <Fiche :detailVoiture="voiture"   />
                     </div>
                 </div>
-                <div class="grid_item grid_item3">  
+                <!-- <div class="grid_item grid_item3">  
                     <Specifications :Specifications="voiture" />   
-                </div>
+                </div> -->
                 <div class="grid_item grid_item12"> 
                     <AppelAction/>  
                 </div>
@@ -57,11 +57,11 @@ defineProps({
 
 
 .grid_item{
-    background-color: #eee;
+    /* background-color: #eee; */
     text-transform: uppercase;
     padding: 1em;
     font-size: 15px;
-    outline: 1px red dashed;
+    /* outline: 1px red dashed; */
 
 }
 .grid_item1  {
