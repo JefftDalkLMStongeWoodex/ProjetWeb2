@@ -51,8 +51,8 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         if ($request->image_principale) {
-            $testImagePrincipale = Image::where('image_principale', '1')->get();
-            if ($testImagePrincipale->count() >= 1) {
+            $testImagePrincipale = Image::where('image_principale', '==', '1')->where('voitures_id', '==', $request->voitures_id)->count();
+            if ($testImagePrincipale >= 1) {
                 return Inertia::render('Dashboard/ImageAjout', [
                     'erreur_image' => 'Une image principale existe déjà pour cette voiture.',
                     'langImage' => Lang::get('image'),
