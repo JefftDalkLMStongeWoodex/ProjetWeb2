@@ -50,6 +50,7 @@ defineProps({
         border-radius: 0.375rem;
         margin-top: 2rem;
         overflow-x: auto;
+        width: 100%;
     }
     
     .tableau {
