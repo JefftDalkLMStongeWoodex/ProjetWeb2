@@ -75,7 +75,7 @@ defineProps({
                             </tr>
                         </tbody>
                     </template>
-                    <template v-else-if="$page.props.lang.locale == 'fr'">
+                    <template v-else="$page.props.lang.locale == 'fr'">
                         <tbody class="fiche__detail">
                             <tr>
                                 <th class="fiche__detail__entete">{{ langVoiture.modele }}</th>
@@ -148,7 +148,7 @@ defineProps({
                     </template>
                 </template>
 
-                <template v-else-if="$page.props.lang.locale == 'fr'">
+                <template v-else="$page.props.lang.locale == 'fr'">
                     <h5>{{ langVoiture.description }}</h5>
                     <template v-if="(voiture.statut['id'] == 2 && voiture.utilisateur !== null)">
                         {{ langVoiture.utilisateur_reservation }}:
