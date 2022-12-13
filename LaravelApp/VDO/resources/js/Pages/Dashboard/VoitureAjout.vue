@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/inertia-vue3';
 import Select from '@/Components/Select.vue';
 import SidebarVue from '@/Components/Sidebar.vue';
-
+import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
 defineProps({
     modeles: Object,
     corps: Object,
@@ -44,8 +44,11 @@ const submit = () => {
 
 <template>
     <Head :title="langVoiture.ajout" />
-    <div class="flex">
-        <SidebarVue :lang="langDashboard "/>
+    <TableauDeBordLayout>
+        <template #header>
+            <SidebarVue :lang="langDashboard"/>
+        </template>
+        
         <div class="wrapper">
             <h2 class="titre">{{langVoiture.ajout}}</h2>
             <form @submit.prevent="submit">
@@ -229,9 +232,10 @@ const submit = () => {
                 
             </form>
         </div>
-    </div>
+    </TableauDeBordLayout>
 </template>
 <style scoped>
+
 @media screen and (min-width: 700px) {
 	.champs {
         display: flex;
@@ -239,10 +243,16 @@ const submit = () => {
         justify-content: space-between;
 	}
 	
-	.champs__option {
+
+    
+	.small-group {
+
 		width: 45%;
 	}
 
+.label {
+    display: block;
+    margin-bottom: 5px;
 }
 
 input, select {
@@ -264,6 +274,7 @@ textarea {
 
 .champs__Soumettre {
    width: 100%;
+   margin-bottom: 2rem;
    
 }
 /* .titre-contenu {

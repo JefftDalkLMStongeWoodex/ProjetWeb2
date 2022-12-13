@@ -3,6 +3,8 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
+import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
+
 
 defineProps({
     voiture: Object,
@@ -14,6 +16,17 @@ defineProps({
 
 <template>
     <Head :title="langVoiture.detail" />
+
+    <TableauDeBordLayout>
+        <template #header>
+            <SidebarVue :lang="langDashboard"/>
+        </template>
+        <div class="wrapper detail ">
+            <h1>{{langVoiture.titre_detail.toUpperCase()}}</h1>
+            <dl>
+                <table>
+                    <thead>
+
     <div class="flex">
         <SidebarVue :lang="langDashboard" />
         <div class="wrapper">
@@ -56,7 +69,7 @@ defineProps({
                         </tr>
 
 
-                        <tr>
+         <tr>
                             <th class="fiche__detail__entete">{{ langVoiture.transmission }}</th>
                             <td class="fiche__detail__corps">{{ voiture.transmission["type_en"] }}</td>
                         </tr>
@@ -151,6 +164,9 @@ defineProps({
                     {{ voiture.utilisateur.email }}
                     <p class="">{{ voiture.description_en }} </p>
                 </template>
+                <template v-else>
+                    <p class="">{{langVoiture.description_aucun }}</p>
+                </template>
             </template>
 
             <template v-else-if="$page.props.lang.locale == 'fr'">
@@ -160,24 +176,30 @@ defineProps({
                     {{ voiture.utilisateur.email }}
                     <p class="">{{ voiture.description }}</p>
                 </template>
+                <template v-else>
+                    <p class="">{{langVoiture.description_aucun }}</p>
+                </template>
             </template>
+          
 
             <div class="lien-images">
                 <Link :href="route('image.index', voiture.id)">
                 {{ langVoiture.detail_image }}
                 </Link>
+                <span>
+                    <i class="fa-solid fa-arrow-right fa-fade"></i>
+              </span>
             </div>
             <div class="lien-actions">
                 <Link :href="route('voiture.edit', voiture)">
                 <SecondaryButton>{{langVoiture.modifier}}</SecondaryButton>
                 </Link>
-
                 <Link>
                 <DangerButton>{{langVoiture.supprimer}}</DangerButton>
                 </Link>
             </div>
         </div>
-    </div>
+    </TableauDeBordLayout>
 </template>
 <style scoped>
 .fiche {
@@ -215,10 +237,13 @@ defineProps({
 }
 
 .lien-images {
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    gap: 5px;
 }
 
-.lien-images:hover {
+.lien-images:hover{
     color: var(--couleur-principale);
     transition: all 0.3s ease;
 }
@@ -236,6 +261,11 @@ p {
     h4 {
         font-size: 1.3rem;
     }
-	
 }
+.detail{
+
+    margin-bottom: 2rem;
+
+}
+
 </style>
