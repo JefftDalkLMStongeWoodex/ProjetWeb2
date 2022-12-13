@@ -242,13 +242,11 @@ const submit = () => {
         flex-wrap: wrap;
         justify-content: space-between;
 	}
-	
 
-    
-	.small-group {
-
-		width: 45%;
+	.champs__option {
+        width: 45%;
 	}
+}
 
 .label {
     display: block;
@@ -273,9 +271,8 @@ textarea {
 }
 
 .champs__Soumettre {
-   width: 100%;
-   margin-bottom: 2rem;
-   
+    width: 100%;
+    margin-bottom: 2rem;
 }
 /* .titre-contenu {
     text-align: center;
