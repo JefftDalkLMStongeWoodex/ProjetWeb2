@@ -59,12 +59,6 @@ const showingNavigationDropdown = ref(false);
     height: 100%;
 }
 
-.header__langSelect {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 10px;
-}
-
 .header__conteneur {
     display: flex;
     flex-direction: column;

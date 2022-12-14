@@ -58,7 +58,10 @@ defineProps({
 </template>
 <style scoped>
 
-
+.conteneur{
+    display: flex;
+    background: var(--couleur-secondaire-leger)
+}
 .conteneur-formulaire{
     grid-template-columns: 1fr;
 }
@@ -67,12 +70,30 @@ defineProps({
     overflow: hidden;
     order: -1;
 }
+.formulaire{
+    padding: 40px 40px;
+    margin-bottom: 2rem;
+}
+
+
+.header {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+
+.footer {
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.header__navigation {
+    background-color: var(--couleur-secondaire);
+}
+
 
 @media (min-width: 900px) {
-	.conteneur{
-        display: flex;
-        background: var(--couleur-secondaire-leger)
-    }
+
     
     .conteneur-formulaire{
         display: grid;
@@ -82,9 +103,6 @@ defineProps({
         align-items: center;
     }
     
-    .formulaire{
-        padding: 40px 40px;
-    }
     
     .image{
         width: 100%;
