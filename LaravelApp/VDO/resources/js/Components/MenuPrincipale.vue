@@ -14,54 +14,31 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
+
     <input class="gachette" type="checkbox">
-                    <a :href="route('accueil')" aria-label="Lien vers page d'accueil">
-                        <LogoVersion2 :href="route('accueil')" class="header__logo"/>
-                    </a>
-                    <div class="header__conteneur">
-                        <div class="header__liens">
-                            <NavLink class="header__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
-                            <!-- <NavLink class="header__lien" href="/contact">{{lang.lien_contact}}</NavLink> -->
-                            <template v-if="$page.props.auth.user">
-                                <NavLink class="header__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
-                                <NavLink class="header__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
-                            </template>
-                            <template v-else>
-                                <NavLink class="header__lien" :href="route('register')">{{lang.lien_inscription}}</NavLink>
-                                <NavLink class="header__lien" :href="route('login')">{{lang.lien_connexion}}</NavLink>
-                            </template>
-                            <NavLink class="header__lang" :href="route('lang', 'en')">EN</NavLink>
-                            <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
-                        </div>
-                    </div>
+    <a :href="route('accueil')" aria-label="Lien vers page d'accueil">
+        <LogoVersion2 :href="route('accueil')" class="header__logo"/>
+    </a>
+    <div class="header__conteneur">
+        <div class="header__liens">
+            <NavLink class="header__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
+            <!-- <NavLink class="header__lien" href="/contact">{{lang.lien_contact}}</NavLink> -->
+            <template v-if="$page.props.auth.user">
+                <NavLink class="header__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
+                <NavLink class="header__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
+            </template>
+            <template v-else>
+                <NavLink class="header__lien" :href="route('register')">{{lang.lien_inscription}}</NavLink>
+                <NavLink class="header__lien" :href="route('login')">{{lang.lien_connexion}}</NavLink>
+            </template>
+            <NavLink class="header__lang" :href="route('lang', 'en')">EN</NavLink>
+            <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
+        </div>
+    </div>
+                
 </template>
 
 <style scoped>
-
-.layout__conteneur {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-}
-
-.header {
-    grid-row-start: 1;
-    grid-row-end: 2;
-}
-
-.content {
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.footer {
-    grid-row-start: 3;
-    grid-row-end: 4;
-}
-
-.header__navigation {
-    background-color: var(--couleur-secondaire);
-}
 
 .gachette {
     all: unset;
@@ -114,36 +91,12 @@ const showingNavigationDropdown = ref(false);
     max-width: 200px;
 }
 
-.footer__logo {
-    min-width: 170px;
-    max-width: 200px;
-}
-
 
 input.gachette:not(:checked) ~ .header__conteneur {
     opacity: 0;
     pointer-events: none;
 }
 
-.footer__conteneur{
-    background-color: var(--couleur-secondaire);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-}
-
-.footer__joindre h4, .footer__liens h4 {
-    text-align: center;
-}
-
-.footer__liste-liens {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 @media (min-width: 900px) {
     html, body {
@@ -163,15 +116,7 @@ input.gachette:not(:checked) ~ .header__conteneur {
         pointer-events: auto;
     }
 
-    .wrapper {
-        display: flex;
-    }
-
-    .header__navigation {
-        background-color: var(--couleur-secondaire);
-        color: var(--couleur-blanc);
-        text-decoration: none;
-    }
+  
     
     .header__conteneur {
         align-items: center;
@@ -197,37 +142,6 @@ input.gachette:not(:checked) ~ .header__conteneur {
     }
 
 
-    .footer__conteneur{
-        background-color: var(--couleur-secondaire);
-        display: flex;
-        flex-direction: row;
-        color: white;
-        justify-content: center;
-        align-items: center;
-        gap: 4rem;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-
-    .footer__liste-liens{
-        display: flex;
-        flex-direction: column;    
-        align-items: flex-start;    
-    }
-
-    .footer__joindre{
-        display: flex;
-        flex-direction: column;        
-    }
-
-    .footer__joindre h4, .footer__liens h4{
-        text-align: left;
-    }
-
-    .footer__logo {
-        min-width: 325px;
-        max-width: 380px;
-    }
     
 }
 
