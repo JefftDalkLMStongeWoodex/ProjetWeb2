@@ -117,8 +117,10 @@ function triVoitures(propriete, ordre) {
     }
   })
 }
-function resetForm() {
-  form.reset();
+function reinitialisationForm() {
+  form.reset()
+  voitures = props.voitures
+  moteurRendu()
 }
 function displayFiltres() {
   document.querySelector('.catalogue__sidebar').style.display = 'flex'
@@ -136,13 +138,13 @@ function hideFiltres() {
           <div class="filtreSidebar">
             <div class="filtreSidebar__entete">
               <h4 class="filtreSidebar__titre">{{langCatalogue.filtres}}</h4>
-              <div class="filtreSidebar__reset" @click="resetForm">{{langCatalogue.renitialiser}}</div>
               <button @click = "hideFiltres" id="bouttonFermer">
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </div>
             <div class="filtreSidebar__contenu">
               <form action="">
+                <input type="reset" :value="langCatalogue.renitialiser" @click="reinitialisationForm">
                 <SectionFiltres
                 :options = "$props.constructeurs"
                 :titre = "langCatalogue.constructeurs"
