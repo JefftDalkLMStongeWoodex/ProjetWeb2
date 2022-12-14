@@ -19,4 +19,10 @@ return [
     'trierAnneeDSC' => 'Année: élevé à bas',
     'trierKmASC' => 'Km: bas à élevé',
     'trierKmDSC' => 'Km: élevé à bas',
+    'reserve' => 'Réserver en ligne',
+    'achat' => 'Acheter en ligne',
+    'contacter'=> 'Contacter-nous',
+    'question'=> 'Vous avez des questions ?',
+    'telephoner'=> 'Telephoner',
+    'discuter'=> 'Discuter',
 ];
