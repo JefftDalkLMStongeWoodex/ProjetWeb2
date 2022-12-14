@@ -5,7 +5,6 @@ import Tuile from '@/Components/Tuile.vue';
 import SectionFiltres from '@/Components/SectionFiltres.vue';
 import FiltreMinMax from '@/Components/FiltreMinMax.vue';
 import Select from '@/Components/Select.vue';
-
 const props = defineProps({
   langAppLayout: Object,
   langCatalogue: Object,
@@ -18,7 +17,6 @@ const props = defineProps({
   carburants: Object,
   etats: Object,
 })
-
 const form = useForm({
   modeles:[],
   constructeurs:[],
@@ -37,7 +35,6 @@ const form = useForm({
   },
   tri: ''
 })
-
 const tri = () => {
   switch (form.tri) {
     case 1:
@@ -62,7 +59,6 @@ const tri = () => {
       break;
   }
 }
-
 function filtreVoitures(filtre) {
   const data = props.voitures.filter(
     (voiture) => {
@@ -82,7 +78,6 @@ function filtreVoitures(filtre) {
   )
   console.log(data);
 }
-
 function porteVoitures(filtre) {
   const data = props.voitures.filter(
     (voiture)=>{
@@ -102,7 +97,6 @@ function porteVoitures(filtre) {
     )
     console.log(data);
 }
-
 function triVoitures(propriete, ordre) {
   props.voitures.sort(function(a, b) {
     if (ordre == "asc") {
@@ -115,19 +109,15 @@ function triVoitures(propriete, ordre) {
     }
   })
 }
-
 function resetForm(){
   form.reset();
 }
-
 function displayFiltres(){
   document.querySelector('.catalogue__sidebar').style.display = 'flex'
 }
-
 function hideFiltres(){
   document.querySelector('.catalogue__sidebar').style.display = 'none'
 }
-
 </script>
 <template>
   <Head title="Catalogue" />
@@ -236,21 +226,18 @@ function hideFiltres(){
     </section>
   </AppLayout>
 </template>
-
 <style>
 .catalogue {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
-
 .catalogue__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
   gap: 10px;
   margin-top: 1rem;
 }
-
 .catalogue__grid__tuile {
   border: solid 1px var(--couleur-secondaire);
   border-radius: 8px;
@@ -261,7 +248,6 @@ function hideFiltres(){
   gap: 1rem;
   justify-content: space-between;
 }
-
 .catalogue__sidebar {
   flex-basis: 20ch;
 	flex-grow: 1;
@@ -270,7 +256,6 @@ function hideFiltres(){
     align-self: flex-start;
     background-color: inherit;
 }
-
 .catalogue__sidebar__contenu {
   height: 100%;
   transition: opacity 200ms ease-in-out;
@@ -279,25 +264,20 @@ function hideFiltres(){
   width: inherit;
   padding-left: 2em;
 }
-
 .catalogue__contenu__tri {
   display: flex;
   flex-direction: row-reverse;
 }
-
 .catalogue__grid__tuile__details {
   margin: 0;
   padding: 0px 15px;
 }
-
 .catalogue__grid__spans {
   font-size: 20px;
 }
-
 .catalogue__grid__spans span + span  {
   margin-left: 25px;
 }
-
 /* .filtreSidebar {
 
 } */
@@ -338,22 +318,17 @@ function hideFiltres(){
 .catalogue__contenu {
   padding-left: 0.6rem;
 }
-
 .catalogue__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
   gap: 10px;
   margin-top: 1rem;
 }
-
-
 .catalogue__grid__tuile {
   border: solid 1px var(--couleur-secondaire);
   border-radius: 8px;
   padding-top: 1rem;
 }
-
-
 .vehicule-img {
   aspect-ratio: 4/3;
   display: flex;
@@ -361,15 +336,11 @@ function hideFiltres(){
   align-items: center;
   overflow: hidden;
 }
-
-
 img {
   width: 100%;
   object-fit: contain;
   object-position: center center;
 }
-
-
 @media screen and (max-width: 1439px) {
   .catalogue__sidebar {
     width: 340px;
@@ -380,7 +351,6 @@ img {
     transition: all 200ms ease;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .catalogue__sidebar {
     width: 100%;
@@ -392,10 +362,10 @@ img {
     display: none;
     background-color: var(--couleur-blanc);
   }
-  #bouttonOuvrir{
+  #bouttonOuvrir {
     display: inline;
   }
-  #bouttonFermer{
+  #bouttonFermer {
     display: inline;
   }
 }
