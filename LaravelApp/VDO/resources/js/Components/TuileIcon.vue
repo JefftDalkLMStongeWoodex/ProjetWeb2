@@ -25,25 +25,47 @@ export default {
 
 .tuile_icon{
     display: flex;
+    
 }
+
 .icon{
-    background-color: var(--couleur-principale);
-    width: 20%;
-    padding: 0.2rem;
+    background-color: var(--couleur-secondaire);
+    width: 25%;
+    padding: 0.65rem;
     text-align: center;
     font-size: 1.5rem;
+    color: white;
+    padding-left: 1rem;
+    margin: 0rem;
+    padding-top: 1.4rem;
+   
 }
 
-.icon img{
-   color: white;
+
+
+@media (min-width: 900px) {
+
+    .icon{
+        width: 20%;
+       
+    }
+    
+    
+    
+    
+    
+    .tuile_contenu{
+        text-align: center;
+        width: 100%;
+        color: var(--couleur-principale);
+        font-size: 2rem ;
+        font-weight: bold;
+        padding-top: 0.8rem;
+    
+    
+    }
+
 }
 
 
-
-.tuile_contenu{
-text-align: center;
-background-color: red ;
-width: 100%;
-
-}
 </style>

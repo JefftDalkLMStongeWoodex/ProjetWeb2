@@ -33,9 +33,11 @@ defineProps({
                         <Fiche :detailVoiture="voiture"   />
                     </div>
                 </div>
-                <!-- <div class="grid_item grid_item3">  
+
+                 <div class="grid_item grid_item3">  
                     <Specifications :Specifications="voiture" />   
-                </div> -->
+                </div>
+                 
                 <div class="grid_item grid_item12"> 
                     <AppelAction/>  
                 </div>
