@@ -27,7 +27,8 @@ class RegisteredUserController extends Controller
         $villes = Ville::all();
         return Inertia::render('Auth/Register', [
             'villes' => $villes,
-            'langRegister' => $langRegister
+            'langRegister' => $langRegister,
+            'langAppLayout' => Lang::get('app_layout'),
         ]);
     }
 
