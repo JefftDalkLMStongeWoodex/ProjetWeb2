@@ -109,13 +109,13 @@ function triVoitures(propriete, ordre) {
     }
   })
 }
-function resetForm(){
+function resetForm() {
   form.reset();
 }
-function displayFiltres(){
+function displayFiltres() {
   document.querySelector('.catalogue__sidebar').style.display = 'flex'
 }
-function hideFiltres(){
+function hideFiltres() {
   document.querySelector('.catalogue__sidebar').style.display = 'none'
 }
 </script>
