@@ -5,6 +5,7 @@ import { Link } from '@inertiajs/inertia-vue3';
 </script>
 
 <template>
+    
     <div class="conteneur ">
         <div class="conteneur-formulaire wrapper ">
             <div class="">

@@ -10,67 +10,34 @@ import iconeBurger from '/resources/assets/icones/material-menu-white.svg';
 import MenuPrincipaleVue from '@/Components/MenuPrincipale.vue';
 const showingNavigationDropdown = ref(false);
 
-defineProps({
-    lang: Object,
-});
+ const props = defineProps(['detailVoiture', 'active', 'lang']);
 </script>
 
 <template>
-    <div class="layout__conteneur">
-
-        <!-- Page Heading -->
-        <header class="header">
-            <nav class="header__navigation">
-                <div class="wrapper">
-                    <MenuPrincipaleVue :lang="lang"  />
-                    
-                </div>
-            </nav>
-        </header>
-    
-        <!-- Page Content -->
-        <main class="content">
-            <div class="wrapper">
-                <slot />
-            </div>
-        </main>
-    
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer__conteneur wrapper ">
-                <div class="footer__logo">
+    <input class="gachette" type="checkbox">
                     <a :href="route('accueil')" aria-label="Lien vers page d'accueil">
-                        <LogoVersion2 :href="route('accueil')" class="footer__logo"/>
+                        <LogoVersion2 :href="route('accueil')" class="header__logo"/>
                     </a>
-                </div>
-                <div class="footer__liens">
-                    <h4>{{lang.explorer}}</h4>
-                    <div class="footer__liste-liens">
-                        <NavLink class="footer__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
-                        <template v-if="$page.props.auth.user">
-                            <NavLink class="footer__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
-                            <NavLink class="footer__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
-                        </template>
-                        <template v-else>
-                            <NavLink class="footer__lien" :href="route('register')">{{lang.lien_inscription}}</NavLink>
-                            <NavLink class="footer__lien" :href="route('login')">{{lang.lien_connexion}}</NavLink>
-                        </template>
+                    <div class="header__conteneur">
+                        <div class="header__liens">
+                            <NavLink class="header__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
+                            <!-- <NavLink class="header__lien" href="/contact">{{lang.lien_contact}}</NavLink> -->
+                            <template v-if="$page.props.auth.user">
+                                <NavLink class="header__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
+                                <NavLink class="header__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
+                            </template>
+                            <template v-else>
+                                <NavLink class="header__lien" :href="route('register')">{{lang.lien_inscription}}</NavLink>
+                                <NavLink class="header__lien" :href="route('login')">{{lang.lien_connexion}}</NavLink>
+                            </template>
+                            <NavLink class="header__lang" :href="route('lang', 'en')">EN</NavLink>
+                            <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
+                        </div>
                     </div>
-                    
-                </div>
-                <div class="footer__joindre">
-                    <h4>{{lang.joindre_titre}}</h4>
-                    <div class="footer__liste-liens">
-                        <NavLink class="footer__lien" :href="route('catalogue')">{{lang.contact_titre}}</NavLink>
-                        <NavLink class="footer__lien" :href="route('catalogue')">(514) 584-4546</NavLink>
-                        <NavLink class="footer__lien" :href="route('catalogue')">info@vdo.ca</NavLink>
-                    </div>
-                </div>   
-            </div>
-        </footer>
-    </div>
 </template>
+
 <style scoped>
+
 .layout__conteneur {
     min-height: 100vh;
     display: grid;
@@ -263,4 +230,6 @@ input.gachette:not(:checked) ~ .header__conteneur {
     }
     
 }
+
+
 </style>
