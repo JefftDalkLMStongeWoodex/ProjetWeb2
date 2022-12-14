@@ -1,10 +1,11 @@
 <script setup>
-import { Head, useForm } from '@inertiajs/inertia-vue3';
-import AppLayout from '@/Layouts/AppLayout.vue';
-import Tuile from '@/Components/Tuile.vue';
-import SectionFiltres from '@/Components/SectionFiltres.vue';
-import FiltreMinMax from '@/Components/FiltreMinMax.vue';
-import Select from '@/Components/Select.vue';
+import { Head, useForm } from '@inertiajs/inertia-vue3'
+import { ref } from 'vue'
+import AppLayout from '@/Layouts/AppLayout.vue'
+import Tuiles from '@/Components/Tuiles.vue'
+import SectionFiltres from '@/Components/SectionFiltres.vue'
+import FiltreMinMax from '@/Components/FiltreMinMax.vue'
+import Select from '@/Components/Select.vue'
 const props = defineProps({
   langAppLayout: Object,
   langCatalogue: Object,
@@ -17,6 +18,11 @@ const props = defineProps({
   carburants: Object,
   etats: Object,
 })
+let voitures = props.voitures
+const clefTuiles = ref(0)
+const moteurRendu = () => {
+  clefTuiles.value += 1;
+};
 const form = useForm({
   modeles:[],
   constructeurs:[],
@@ -39,28 +45,28 @@ const tri = () => {
   switch (form.tri) {
     case 1:
       triVoitures("prix", "asc")
-      break;
+      break
     case 2:
       triVoitures("prix", "desc")
-      break;
+      break
     case 3:
       triVoitures("annee", "asc")
       break;
     case 4:
       triVoitures("annee", "desc")
-      break;
+      break
     case 5:
       triVoitures("kilometrage", "asc")
-      break;
+      break
     case 6:
       triVoitures("kilometrage", "desc")
-      break;  
+      break
     default:
-      break;
+      break
   }
 }
 function filtreVoitures(filtre) {
-  const data = props.voitures.filter(
+  const newData = props.voitures.filter(
     (voiture) => {
       let bool = false
       if(form[filtre].length===0) {
@@ -76,10 +82,11 @@ function filtreVoitures(filtre) {
       return bool
     }
   )
-  console.log(data);
+  voitures = newData
+  moteurRendu()
 }
 function porteVoitures(filtre) {
-  const data = props.voitures.filter(
+  const newData = props.voitures.filter(
     (voiture)=>{
       let bool = true
       if(form[filtre].min !== '') {
@@ -94,8 +101,9 @@ function porteVoitures(filtre) {
       }
       return bool
     }
-    )
-    console.log(data);
+  )
+  voitures = newData
+  moteurRendu();
 }
 function triVoitures(propriete, ordre) {
   props.voitures.sort(function(a, b) {
@@ -109,13 +117,15 @@ function triVoitures(propriete, ordre) {
     }
   })
 }
-function resetForm(){
-  form.reset();
+function reinitialisationForm() {
+  form.reset()
+  voitures = props.voitures
+  moteurRendu()
 }
-function displayFiltres(){
+function displayFiltres() {
   document.querySelector('.catalogue__sidebar').style.display = 'flex'
 }
-function hideFiltres(){
+function hideFiltres() {
   document.querySelector('.catalogue__sidebar').style.display = 'none'
 }
 </script>
@@ -128,13 +138,13 @@ function hideFiltres(){
           <div class="filtreSidebar">
             <div class="filtreSidebar__entete">
               <h4 class="filtreSidebar__titre">{{langCatalogue.filtres}}</h4>
-              <div class="filtreSidebar__reset" @click="resetForm">{{langCatalogue.renitialiser}}</div>
               <button @click = "hideFiltres" id="bouttonFermer">
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </div>
             <div class="filtreSidebar__contenu">
               <form action="">
+                <input type="reset" :value="langCatalogue.renitialiser" @click="reinitialisationForm">
                 <SectionFiltres
                 :options = "$props.constructeurs"
                 :titre = "langCatalogue.constructeurs"
@@ -216,11 +226,10 @@ function hideFiltres(){
           </select>
         </div>
         <div class="catalogue__grid">
-          <slot v-for="voiture in props.voitures">
-            <Tuile
-            :data = "voiture"
-            />
-          </slot>
+          <Tuiles
+          :data = "voitures"
+          :key = "clefTuiles"
+          />
         </div>
       </section>
     </section>
