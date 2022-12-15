@@ -36,4 +36,42 @@ export default {
     </slot>
 </template>
 <style scoped>
+    .catalogue__grid__tuile__details {
+        margin: 0;
+        padding: 0px 15px;
+    }
+
+    .catalogue__grid__spans {
+        font-size: 20px;
+    }
+
+    .catalogue__grid__spans span + span  {
+        margin-left: 25px;
+    }
+
+    .vehicule-img {
+        aspect-ratio: 4/3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        object-position: center center;
+    }
+
+    .catalogue__grid__tuile {
+        border: solid 1px var(--couleur-secondaire);
+        border-radius: 8px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: space-between;
+    }
 </style>
