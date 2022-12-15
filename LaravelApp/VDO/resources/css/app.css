@@ -64,6 +64,6 @@ body, #app {
   min-height: 100vh;
 }
 
-html, body {
+/* html, body {
   overflow-x: hidden;
-}
+} */

@@ -1,5 +1,6 @@
 <script setup>
   import PrimaryButton from '@/Components/PrimaryButton.vue';
+  const props = defineProps(['lang']);
 
 </script>
 
@@ -8,10 +9,10 @@
   <div class="AppelAction">
 
     <div class="titre">
-      <h3> Vous avez des questions ? </h3> </div> 
+      <h3> {{ lang.question }} </h3> </div> 
     <div class="Bouton_fiche"> 
-      <PrimaryButton> Telephoner </PrimaryButton>
-    <PrimaryButton> Discuter </PrimaryButton>
+      <PrimaryButton> {{ lang.telephoner }} </PrimaryButton>
+    <PrimaryButton> {{ lang.discuter }}</PrimaryButton>
 
     </div>
 

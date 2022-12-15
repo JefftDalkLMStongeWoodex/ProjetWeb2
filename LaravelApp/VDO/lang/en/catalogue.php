@@ -19,4 +19,10 @@ return [
     'trierAnneeDSC' => 'Year: high to low',
     'trierKmASC' => 'Km: low to high',
     'trierKmDSC' => 'Km: high to low',
+    'reserve' => 'Book online',
+    'achat' => 'Buy online',
+    'contacter' => 'Contact us',
+    'question'=> 'You have questions ?',
+    'telephoner'=> 'Call',
+    'discuter'=> 'Discuss',
 ];

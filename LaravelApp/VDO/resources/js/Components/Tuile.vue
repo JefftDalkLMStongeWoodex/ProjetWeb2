@@ -34,4 +34,31 @@ export default {
     </Link>
 </template>
 <style scoped>
+    .catalogue__grid__tuile__details {
+        margin: 0;
+        padding: 0px 15px;
+    }
+
+    .catalogue__grid__spans {
+        font-size: 20px;
+    }
+
+    .catalogue__grid__spans span + span  {
+        margin-left: 25px;
+    }
+
+    .vehicule-img {
+        aspect-ratio: 4/3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        object-position: center center;
+    }
 </style>

@@ -38,4 +38,8 @@ export default {
 details summary{
     cursor: pointer;
 }
+
+input {
+    margin-right: 0.3em;
+}
 </style>
