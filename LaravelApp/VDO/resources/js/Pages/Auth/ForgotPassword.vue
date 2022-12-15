@@ -8,6 +8,7 @@ import { Head, useForm } from '@inertiajs/inertia-vue3';
 
 defineProps({
     status: String,
+    langAppLayout: Object,
 });
 
 const form = useForm({
@@ -20,8 +21,8 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Forgot Password" />
+    <GuestLayout :lang="langAppLayout">
+                <Head title="Forgot Password" />
 
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
             Forgot your password? No problem. Just let us know your email address and we will email you a password reset

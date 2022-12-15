@@ -34,9 +34,11 @@ defineProps({
                         <Fiche :detailVoiture="voiture" :lang="langCatalogue" />
                     </div>
                 </div>
-                <!-- <div class="grid_item grid_item3">  
+
+                 <div class="grid_item grid_item3">  
                     <Specifications :Specifications="voiture" />   
-                </div> -->
+                </div>
+                 
                 <div class="grid_item grid_item12"> 
                     <AppelAction :lang="langCatalogue" />  
                 </div>

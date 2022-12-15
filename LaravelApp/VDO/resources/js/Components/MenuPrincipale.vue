@@ -8,67 +8,37 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/inertia-vue3';
 import iconeBurger from '/resources/assets/icones/material-menu-white.svg';
 import MenuPrincipaleVue from '@/Components/MenuPrincipale.vue';
-import PiedPageVue  from '@/Components/PiedPage.vue';
 const showingNavigationDropdown = ref(false);
 
-defineProps({
-    lang: Object,
-});
+ const props = defineProps(['detailVoiture', 'active', 'lang']);
 </script>
 
 <template>
-    <div class="layout__conteneur">
 
-        <!-- Page Heading -->
-        <header class="header">
-            <nav class="header__navigation">
-                <div class="wrapper">
-                    <MenuPrincipaleVue :lang="lang"  />
-                    
-                </div>
-            </nav>
-        </header>
-    
-        <!-- Page Content -->
-        <main class="content">
-            <div class="wrapper-contenu">
-                <slot />
-            </div>
-        </main>
-    
-        <!-- Footer -->
-        <footer class="footer">
-
-            <PiedPageVue :lang="lang"  />
-            
-        </footer>
+    <input class="gachette" type="checkbox">
+    <a :href="route('accueil')" aria-label="Lien vers page d'accueil">
+        <LogoVersion2 :href="route('accueil')" class="header__logo"/>
+    </a>
+    <div class="header__conteneur">
+        <div class="header__liens">
+            <NavLink class="header__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
+            <!-- <NavLink class="header__lien" href="/contact">{{lang.lien_contact}}</NavLink> -->
+            <template v-if="$page.props.auth.user">
+                <NavLink class="header__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
+                <NavLink class="header__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
+            </template>
+            <template v-else>
+                <NavLink class="header__lien" :href="route('register')">{{lang.lien_inscription}}</NavLink>
+                <NavLink class="header__lien" :href="route('login')">{{lang.lien_connexion}}</NavLink>
+            </template>
+            <NavLink class="header__lang" :href="route('lang', 'en')">EN</NavLink>
+            <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
+        </div>
     </div>
+                
 </template>
+
 <style scoped>
-.layout__conteneur {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-}
-
-.header {
-    grid-row-start: 1;
-    grid-row-end: 2;
-}
-
-.content {
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.footer {
-    grid-row-start: 3;
-    grid-row-end: 4;
-}
-
-.header__navigation {
-    background-color: var(--couleur-secondaire);
-}
 
 .gachette {
     all: unset;
@@ -87,12 +57,6 @@ defineProps({
     font-weight: 700;
     width: 100%;
     height: 100%;
-}
-
-.header__langSelect {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 10px;
 }
 
 .header__conteneur {
@@ -121,36 +85,12 @@ defineProps({
     max-width: 200px;
 }
 
-.footer__logo {
-    min-width: 170px;
-    max-width: 200px;
-}
-
 
 input.gachette:not(:checked) ~ .header__conteneur {
     opacity: 0;
     pointer-events: none;
 }
 
-.footer__conteneur{
-    background-color: var(--couleur-secondaire);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-}
-
-.footer__joindre h4, .footer__liens h4 {
-    text-align: center;
-}
-
-.footer__liste-liens {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 @media (min-width: 900px) {
     html, body {
@@ -165,16 +105,39 @@ input.gachette:not(:checked) ~ .header__conteneur {
         grid-template-columns: 100%;
     }
 
+    input.gachette:not(:checked) ~ .header__conteneur {
+        opacity: 100%;
+        pointer-events: auto;
+    }
 
-    .wrapper {
+  
+    
+    .header__conteneur {
+        align-items: center;
         display: flex;
+        flex-direction: row;
+        font-family: var(--police-texte);
+        justify-content: flex-start;
+        opacity: 100%;
+        position: static;
+        margin-left: auto;
     }
 
-    .header__navigation {
-        background-color: var(--couleur-secondaire);
-        color: var(--couleur-blanc);
-        text-decoration: none;
+    .header__liens {
+        display: block;
+        font-size: 18px;
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: row;
     }
+
+    .gachette {
+        display: none;
+    }
+
+
     
 }
+
+
 </style>
