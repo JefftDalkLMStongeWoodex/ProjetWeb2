@@ -41,7 +41,16 @@ export default {
    
 }
 
+.tuile_contenu{
+    text-align: center;
+    width: 100%;
+    color: var(--couleur-principale);
+    font-size: 1.5rem ;
+    font-weight: bold;
+    padding-top: 0.8rem;
 
+
+}
 
 @media (min-width: 900px) {
 
@@ -50,20 +59,17 @@ export default {
        
     }
     
-    
-    
-    
-    
     .tuile_contenu{
-        text-align: center;
-        width: 100%;
-        color: var(--couleur-principale);
+       
         font-size: 2rem ;
-        font-weight: bold;
-        padding-top: 0.8rem;
+      
     
     
     }
+    
+    
+    
+
 
 }
 
