@@ -5,6 +5,7 @@
 :root {
     --couleur-principale: #EA7024;
     --couleur-secondaire: #0D0F21;
+    --couleur-secondaire-leger:  #0d0f21f3;
     --couleur-blanc: #ffffff;
     --couleur-blanc-opacite-50: rgba(255, 255, 255, 0.5);
     --couleur-blanc-opacite-30: rgba(255, 255, 255, 0.3);

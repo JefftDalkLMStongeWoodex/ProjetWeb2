@@ -25,6 +25,7 @@ class AuthenticatedSessionController extends Controller
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
             'langLogin' => $langLogin,
+            'langAppLayout' => Lang::get('app_layout'),
         ]);
     }
 

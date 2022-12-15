@@ -19,16 +19,17 @@
 <p> {{detailVoiture.description}} </p>
 
 <div class="Button_fiche">
-<PrimaryButton>
-    Reserver en ligne
-</PrimaryButton>
-<PrimaryButton>
-    Acheter en ligne
-</PrimaryButton>
+    <PrimaryButton>
+        {{lang.reserve}}
+    </PrimaryButton>
 
-<PrimaryButton>
-    Nous contacter
-</PrimaryButton>
+    <PrimaryButton>
+        {{lang.achat}}
+    </PrimaryButton>
+
+    <PrimaryButton>
+        {{lang.contacter}}
+    </PrimaryButton>
 </div>
 
 </template>
@@ -46,7 +47,6 @@
    margin-top: 1rem;
 
 }
-
 
 
 </style>
