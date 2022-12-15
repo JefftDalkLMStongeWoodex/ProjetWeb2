@@ -18,6 +18,7 @@ defineProps({
     etats: Object,
     voiture: Object,
 });
+
 </script>
 <template>
     <AppLayout :lang="langAppLayout">
@@ -30,7 +31,7 @@ defineProps({
                 </div>
                 <div class="grid_item grid_item2">   
                     <div> 
-                        <Fiche :detailVoiture="voiture"   />
+                        <Fiche :detailVoiture="voiture" :lang="langCatalogue" />
                     </div>
                 </div>
 
@@ -39,7 +40,7 @@ defineProps({
                 </div>
                  
                 <div class="grid_item grid_item12"> 
-                    <AppelAction/>  
+                    <AppelAction :lang="langCatalogue" />  
                 </div>
             </div>
         </section>  
@@ -76,12 +77,9 @@ defineProps({
   
 }
 
-
 .grid_item3{
     grid-column: col 1 / span 12;
 }
-
-
 
 .grid_item12{
     grid-column: col  / span 12;
@@ -108,8 +106,6 @@ defineProps({
     }
     
 }
-
-
 
 </style>
 
