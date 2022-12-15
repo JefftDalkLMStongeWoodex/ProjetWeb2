@@ -26,4 +26,10 @@ return [
     'telephoner'=> 'Telephoner',
     'discuter'=> 'Discuter',
     'specifications'=> 'spécifications',
+    'km'=> ' Kilometrage',
+    'carrosserie'=> ' Type de carrosserie',
+    'transmission'=> ' Transmission',
+    'carburant'=> ' Type de carburant',
+    'condition'=> 'Véhicle condition',
+    'motopropulseur'=> 'Motopropulseur',
 ];
