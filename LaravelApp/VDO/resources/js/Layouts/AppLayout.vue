@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import LogoVersion2 from '@/Components/LogoVersion2.vue';
 import NavLink from '@/Components/NavLink.vue';
-import Panier from '@/Components/Panier.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
@@ -16,38 +15,11 @@ defineProps({
     lang: Object,
 });
 </script>
-<script>
-export default {
-    data () {
-        return {
-            affichagePanier: false,
-            panier: {}
-        }
-    },
-    methods: {
-        afficherPanier () {
-            this.affichagePanier = !this.affichagePanier
-        },
-        ajouterAuPanier (voiture) {
-            console.log("Je t'ajoute au panier");
-        },
-        supprimerDuPanier (voiture) {
-            console.log("Je t'enlève du panier");
-        }
-    }
-}
-</script>
-
 <template>
     <div class="layout__conteneur">
         
         <!-- Page Heading -->
         <header class="header">
-            <Panier 
-                v-if="affichagePanier"
-                :panier="panier"
-                :afficherPanier="afficherPanier"
-            />
             <nav class="header__navigation">
                 <div class="wrapper">
                     <MenuPrincipaleVue :lang="lang"  />
@@ -140,10 +112,6 @@ export default {
     gap: 1em;
 }
 
-.header__cart {
-    cursor: pointer;
-}
-
 .header__logo {
     min-width: 170px;
     max-width: 200px;
@@ -153,7 +121,6 @@ export default {
     min-width: 170px;
     max-width: 200px;
 }
-
 
 input.gachette:not(:checked) ~ .header__conteneur {
     opacity: 0;
