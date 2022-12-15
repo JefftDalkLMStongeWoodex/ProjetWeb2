@@ -47,7 +47,7 @@ defineProps({
     
         <!-- Page Content -->
         <main class="content">
-            <div class="wrapper">
+            <div class="wrapper-contenu">
                 <slot />
             </div>
         </main>
@@ -174,6 +174,7 @@ input.gachette:not(:checked) ~ .header__conteneur {
     opacity: 0;
     pointer-events: none;
 }
+
 
 .footer__conteneur{
     background-color: var(--couleur-secondaire);
