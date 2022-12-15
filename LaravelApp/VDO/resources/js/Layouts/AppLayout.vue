@@ -15,10 +15,9 @@ defineProps({
     lang: Object,
 });
 </script>
-
 <template>
     <div class="layout__conteneur">
-
+        
         <!-- Page Heading -->
         <header class="header">
             <nav class="header__navigation">
@@ -28,19 +27,15 @@ defineProps({
                 </div>
             </nav>
         </header>
-    
         <!-- Page Content -->
         <main class="content">
             <div class="wrapper-contenu">
                 <slot />
             </div>
         </main>
-    
         <!-- Footer -->
         <footer class="footer">
-
             <PiedPageVue :lang="lang"  />
-            
         </footer>
     </div>
 </template>
@@ -49,6 +44,7 @@ defineProps({
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    position: static;
 }
 
 .header {
@@ -125,7 +121,6 @@ defineProps({
     min-width: 170px;
     max-width: 200px;
 }
-
 
 input.gachette:not(:checked) ~ .header__conteneur {
     opacity: 0;
