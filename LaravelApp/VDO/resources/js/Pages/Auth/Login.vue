@@ -11,6 +11,7 @@ defineProps({
     canResetPassword: Boolean,
     status: String,
     langLogin: Object,
+    langAppLayout: Object,
 });
 
 const form = useForm({
@@ -27,7 +28,8 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestLayout :lang="langAppLayout">
+        
         <Head :title="langLogin.login" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">

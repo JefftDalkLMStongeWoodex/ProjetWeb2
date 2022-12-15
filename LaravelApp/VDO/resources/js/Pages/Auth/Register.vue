@@ -25,7 +25,8 @@ const form = useForm({
 
 defineProps({
     villes: Object,
-    langRegister: Object
+    langRegister: Object,
+    langAppLayout: Object,
 })
 
 const submit = () => {
@@ -36,7 +37,8 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
+    <GuestLayout :lang="langAppLayout">
+        
         <Head title="Register" />
         <div class="mt-4 pb-8">
             <div>
