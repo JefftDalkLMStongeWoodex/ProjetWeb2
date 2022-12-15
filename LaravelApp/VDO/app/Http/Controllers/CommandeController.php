@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 use App\Models\voiture;
+use Lang;
 
 class CommandeController extends Controller
 {
@@ -44,6 +45,8 @@ class CommandeController extends Controller
             $voiture['prix'] *= 1.25;
         }
         return Inertia::render('Checkout', [
+            'langAppLayout' => Lang::get('app_layout'),
+            'langCheckout' => Lang::get('checkout'),
             'panier' => $panier
         ]);
     }
