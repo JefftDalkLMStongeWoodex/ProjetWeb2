@@ -43,6 +43,7 @@ class CommandeController extends Controller
         ]);
         foreach($panier as $voiture) {
             $voiture['prix'] *= 1.25;
+            $voiture['imagePrincipale'] = $voiture->imagePrincipale($voiture['id']);
         }
         return Inertia::render('Checkout', [
             'langAppLayout' => Lang::get('app_layout'),
