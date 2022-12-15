@@ -9,6 +9,7 @@ use App\Http\Controllers\VoitureController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\PanierAchatController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\CommandeController;
 
 use Illuminate\Support\Facades\Lang;
 
@@ -55,6 +56,8 @@ Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voi
 Route::get('/voiture/panier/{voiture}', [PanierAchatController::class, 'panier'])->name('voiture.panier');
 
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
+
+Route::get('/panier/achat/', [CommandeController::class, 'create'])->name('voiture.panier');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [

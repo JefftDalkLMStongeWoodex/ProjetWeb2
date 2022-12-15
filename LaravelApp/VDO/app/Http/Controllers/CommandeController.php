@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\commande;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 use App\Models\voiture;
 
@@ -32,7 +33,7 @@ class CommandeController extends Controller
             $voiture['prix_paye'] *= 1.25;
         }
         //
-        return Inertia::render('achat/create', [
+        return Inertia::render('Checkout', [
             'panier' => $panier
         ]);
     }
