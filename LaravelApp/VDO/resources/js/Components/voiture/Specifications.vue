@@ -8,7 +8,7 @@
 <template>
 
         <section class="wrapper specification"> 
-          <h1 style="">SPÉCIFICATIONS  </h1>
+          <h1 style="">  {{lang.specifications}}   </h1>
             <div class="grid  ">
                 <div class="grid_item grid_item1">                                 
                   <TuileIcon>
@@ -23,8 +23,14 @@
                       </template>
                     <!--  Contenu -->
                       <template #contenu>
+                        
+                      
                         <div class="texte__specification"></div>
-                       <p>{{Specifications.kilometrage}}   Km </p> 
+
+                   
+                       <p>{{Specifications.kilometrage}}  Km </p> 
+                 
+                      
                     </template>
                   </TuileIcon>              
                 </div>
@@ -41,7 +47,13 @@
                   <!--  Contenu -->
                     <template #contenu>
                       <div class="texte__specification"></div>
-                     <p>{{Specifications.corps.type}}    </p> 
+                      <template v-if="$page.props.lang.locale == 'en'">
+                        <p>{{Specifications.corps.type_en}} </p> 
+                       </template>
+                       <template v-else="$page.props.lang.locale == 'fr'">
+                        <p>{{Specifications.corps.type}}    </p> 
+                      </template>
+                  
                   </template>
                 </TuileIcon>              
 
@@ -61,8 +73,12 @@
                     <!--  Contenu -->
                       <template #contenu>
                         <div class="texte__specification"></div>
-                       
-                        <p>{{Specifications.transmission.type}}    </p> 
+                        <template v-if="$page.props.lang.locale == 'en'">
+                          <p>{{Specifications.transmission.type_en}}    </p> 
+                         </template>
+                         <template v-else="$page.props.lang.locale == 'fr'">
+                          <p>{{Specifications.transmission.type}}    </p> 
+                        </template>
                          
       
                       
@@ -86,7 +102,12 @@
                     <!--  Contenu -->
                       <template #contenu>
                         <div class="texte__specification"></div>
-                        <p>{{Specifications.carburant.type}}    </p> 
+                        <template v-if="$page.props.lang.locale == 'en'">
+                          <p>{{Specifications.carburant.type_en}}    </p> 
+                         </template>
+                         <template v-else="$page.props.lang.locale == 'fr'">
+                          <p>{{Specifications.carburant.type}}    </p> 
+                        </template>
                     </template>
                   </TuileIcon>              
                 </div>
@@ -104,7 +125,12 @@
                     <!--  Contenu -->
                       <template #contenu>
                         <div class="texte__specification"></div>
-                        <p>{{Specifications.etat.nom}}    </p> 
+                        <template v-if="$page.props.lang.locale == 'en'">
+                          <p>{{Specifications.etat.nom_en}}    </p> 
+                         </template>
+                         <template v-else="$page.props.lang.locale == 'fr'">
+                          <p>{{Specifications.etat.nom}}    </p> 
+                        </template>
                     </template>
                   </TuileIcon>              
     
@@ -124,7 +150,12 @@
                     <!--  Contenu -->
                       <template #contenu>
                         <div class="texte__specification"></div>
-                        <p>{{Specifications.groupe_motopropulseur.type}}    </p> 
+                        <template v-if="$page.props.lang.locale == 'en'">
+                          <p>{{Specifications.groupe_motopropulseur.type_en}}    </p> 
+                         </template>
+                         <template v-else="$page.props.lang.locale == 'fr'">
+                          <p>{{Specifications.groupe_motopropulseur.type}}    </p> 
+                        </template>
                     </template>
                   </TuileIcon>              
   

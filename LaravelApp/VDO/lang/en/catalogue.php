@@ -25,4 +25,5 @@ return [
     'question'=> 'You have questions ?',
     'telephoner'=> 'Call',
     'discuter'=> 'Discuss',
+    'specifications'=> 'specifications',
 ];
