@@ -27,12 +27,22 @@ class CommandeController extends Controller
      */
     public function create()
     {
-        //
-        $panier = Voiture::where('id','>',3);
+        $panier = Voiture::where('voitures.id','>', '5')
+        ->join('modeles', function($join) {
+            $join->on('voitures.modeles_id','=','modeles.id')->join('constructeurs', function($join){
+                $join->on('modeles.constructeurs_id','=','constructeurs.id');
+            });
+        })
+        ->get([
+            'voitures.id',
+            'voitures.prix_paye AS prix',
+            'voitures.annee',
+            'modeles.nom AS modeles',
+            'constructeurs.nom AS constructeurs',
+        ]);
         foreach($panier as $voiture) {
-            $voiture['prix_paye'] *= 1.25;
+            $voiture['prix'] *= 1.25;
         }
-        //
         return Inertia::render('Checkout', [
             'panier' => $panier
         ]);
