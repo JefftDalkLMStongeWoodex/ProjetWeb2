@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import Panier from '@/Components/Panier.vue';
 import LogoVersion2 from '@/Components/LogoVersion2.vue';
 import NavLink from '@/Components/NavLink.vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -15,6 +16,30 @@ defineProps({
     lang: Object,
 });
 </script>
+<script>
+export default {
+    data () {
+        return {
+            affichagePanier: false,
+            panier: JSON.parse(sessionStorage.getItem("panier"))
+        }
+    },
+    methods: {
+        afficherPanier () {
+            this.affichagePanier = !this.affichagePanier
+        },
+        ajouterAuPanier (voiture) {
+            console.log("Je t'ajoute au panier");
+        },
+        supprimerDuPanier (voiture) {
+            console.log("Je t'enlève du panier");
+        },
+        remplirPanier(panier) {
+
+        }
+    }
+}
+</script>
 <template>
     <div class="layout__conteneur">
         
@@ -22,8 +47,14 @@ defineProps({
         <header class="header">
             <nav class="header__navigation">
                 <div class="wrapper">
-                    <MenuPrincipaleVue :lang="lang"  />
-                    
+                    <MenuPrincipaleVue 
+                        :lang="lang"
+                        :afficherPanier="afficherPanier"
+                    />
+                    <Panier 
+                        v-if="affichagePanier"
+                        :afficherPanier="afficherPanier"
+                    />
                 </div>
             </nav>
         </header>
