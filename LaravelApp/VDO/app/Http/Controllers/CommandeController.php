@@ -8,6 +8,7 @@ use Inertia\Inertia;
 
 use App\Models\Voiture;
 use App\Models\Taxe;
+use App\Models\Province;
 use Lang;
 
 class CommandeController extends Controller
@@ -42,10 +43,8 @@ class CommandeController extends Controller
             'modeles.nom AS modeles',
             'constructeurs.nom AS constructeurs',
         ]);
-        $taxes = Taxe::join('provinces', function($join) {
-            $join->on('taxes.provinces_id', '=', 'provinces.id');
-        })
-        ->get();
+        $taxes = Taxe::all();
+        $provinces = Province::all();
         foreach($panier as $voiture) {
             $voiture['prix'] *= 1.25;
             $voiture['imagePrincipale'] = $voiture->imagePrincipale($voiture['id']);
@@ -54,7 +53,8 @@ class CommandeController extends Controller
             'langAppLayout' => Lang::get('app_layout'),
             'langCheckout' => Lang::get('checkout'),
             'panier' => $panier,
-            'taxes' => $taxes
+            'taxes' => $taxes,
+            'provinces' => $provinces
         ]);
     }
 
