@@ -36,7 +36,7 @@ defineProps({
                 </div>
 
                  <div class="grid_item grid_item3">  
-                    <Specifications :Specifications="voiture" />   
+                    <Specifications :Specifications="voiture" :lang="langCatalogue"   />   
                 </div>
                  
                 <div class="grid_item grid_item12"> 

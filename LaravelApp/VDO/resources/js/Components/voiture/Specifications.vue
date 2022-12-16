@@ -7,8 +7,8 @@
 
 <template>
 
-        <section class="wrapper specification"> 
-          <h1 style="">SPÉCIFICATIONS  </h1>
+        <section class="wrapper voitureSpecifications"> 
+          <h1 class="voitureSpecifications__titre">  {{lang.specifications}}   </h1>
             <div class="grid  ">
                 <div class="grid_item grid_item1">                                 
                   <TuileIcon>
@@ -23,8 +23,12 @@
                       </template>
                     <!--  Contenu -->
                       <template #contenu>
-                        <div class="texte__specification"></div>
-                       <p>{{Specifications.kilometrage}}   Km </p> 
+                        
+                   
+                      <h4 class="voitureSpecifications__valeur"><span>{{Specifications.kilometrage}}  Km </span> </h4> 
+                        <div class="voitureSpecifications__categorie"> {{lang.km}} </div>
+                 
+                      
                     </template>
                   </TuileIcon>              
                 </div>
@@ -41,7 +45,16 @@
                   <!--  Contenu -->
                     <template #contenu>
                       <div class="texte__specification"></div>
-                     <p>{{Specifications.corps.type}}    </p> 
+                      <template v-if="$page.props.lang.locale == 'en'">
+                        <h4 class="voitureSpecifications__valeur"><span>{{Specifications.corps.type_en}}</span> </h4> 
+                      
+                        <div class="voitureSpecifications__categorie"> Type de carrosserie</div>
+                       </template>
+                       <template v-else="$page.props.lang.locale == 'fr'">
+                        <h4 class="voitureSpecifications__valeur"><span>{{Specifications.corps.type}} </span> </h4> 
+                        <div class="voitureSpecifications__categorie"> {{lang.carrosserie}}</div>
+                      </template>
+                  
                   </template>
                 </TuileIcon>              
 
@@ -60,9 +73,22 @@
                       </template>
                     <!--  Contenu -->
                       <template #contenu>
+
+
+
+
+
                         <div class="texte__specification"></div>
+                        <template v-if="$page.props.lang.locale == 'en'">
                        
-                        <p>{{Specifications.transmission.type}}    </p> 
+                          <h4 class="voitureSpecifications__valeur"><span>{{Specifications.transmission.type_en}}  </span> </h4> 
+                          <div class="voitureSpecifications__categorie"> {{lang.transmission}}</div>
+                         </template>
+                         <template v-else="$page.props.lang.locale == 'fr'">
+                       
+                          <h4 class="voitureSpecifications__valeur"><span>{{Specifications.transmission.type}}  </span> </h4> 
+                          <div class="voitureSpecifications__categorie"> {{lang.transmission}}</div>
+                        </template>
                          
       
                       
@@ -85,8 +111,17 @@
                       </template>
                     <!--  Contenu -->
                       <template #contenu>
-                        <div class="texte__specification"></div>
-                        <p>{{Specifications.carburant.type}}    </p> 
+
+                        <template v-if="$page.props.lang.locale == 'en'">
+                       
+                          <h4 class="voitureSpecifications__valeur"><span>{{Specifications.carburant.type_en}}  </span> </h4> 
+                          <div class="voitureSpecifications__categorie"> {{lang.carburant}} </div>
+                         </template>
+                         <template v-else="$page.props.lang.locale == 'fr'">
+                       
+                          <h4 class="voitureSpecifications__valeur"><span>{{Specifications.carburant.type}}   </span> </h4> 
+                          <div class="voitureSpecifications__categorie"> {{lang.carburant}}  </div>
+                        </template>
                     </template>
                   </TuileIcon>              
                 </div>
@@ -103,8 +138,18 @@
                       </template>
                     <!--  Contenu -->
                       <template #contenu>
-                        <div class="texte__specification"></div>
-                        <p>{{Specifications.etat.nom}}    </p> 
+
+                        <template v-if="$page.props.lang.locale == 'en'">
+                       
+                          <h4 class="voitureSpecifications__valeur"><span>{{Specifications.etat.nom_en}}  </span> </h4> 
+                          <div class="voitureSpecifications__categorie">{{lang.condition}} </div>
+                         </template>
+                         <template v-else="$page.props.lang.locale == 'fr'">
+                       
+                          <h4 class="voitureSpecifications__valeur"><span>{{Specifications.etat.nom}}    </span> </h4> 
+                          <div class="voitureSpecifications__categorie"> {{lang.condition}} </div>
+                        </template>
+
                     </template>
                   </TuileIcon>              
     
@@ -123,8 +168,17 @@
                       </template>
                     <!--  Contenu -->
                       <template #contenu>
-                        <div class="texte__specification"></div>
-                        <p>{{Specifications.groupe_motopropulseur.type}}    </p> 
+
+                        <template v-if="$page.props.lang.locale == 'en'">
+                       
+                          <h4 class="voitureSpecifications__valeur"><span>{{Specifications.groupe_motopropulseur.type_en}}  </span> </h4> 
+                          <div class="voitureSpecifications__categorie">{{lang.motopropulseur}}</div>
+                         </template>
+                         <template v-else="$page.props.lang.locale == 'fr'">
+                       
+                          <h4 class="voitureSpecifications__valeur"><span>{{Specifications.groupe_motopropulseur.type}}  </span> </h4> 
+                          <div class="voitureSpecifications__categorie">{{lang.motopropulseur}}</div>
+                        </template>
                     </template>
                   </TuileIcon>              
   
@@ -138,25 +192,27 @@
 
 <style scoped>
 
-.specification h1{
+.voitureSpecifications__titre {
   text-align: center;
   
-
+  ;
 }
-.texte__specification p {
-font-size: large;
+.voitureSpecifications__categorie{
+  font-size: 0.75rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    color: #a1a2a8;
+    margin: 0;
 }
-svg {
- 
- padding: 0.1rem;
-
+.voitureSpecifications__valeur{
+  font-size: 1.5rem;
+    line-height: 1.25rem;
+    font-weight:bold;
+    margin: 0;
+    padding-bottom: 0.6rem;
+    
 }
 
-.specification{
-padding-top: 2rem;
-padding-bottom: 4rem;
-
-}
 .grid{
   display: grid;
   grid-template-columns: repeat(12, [col] 1fr);
