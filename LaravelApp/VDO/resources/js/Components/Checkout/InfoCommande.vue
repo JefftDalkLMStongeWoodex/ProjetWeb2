@@ -3,7 +3,8 @@ import { useForm } from '@inertiajs/inertia-vue3'
 import Select from '@/Components/Select.vue';
 const props = defineProps({
     taxes: Object,
-    provinces: Object
+    provinces: Object,
+    liste: Object
 })
 const form = useForm({
   provinces: ''
