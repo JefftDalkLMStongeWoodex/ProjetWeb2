@@ -5,6 +5,7 @@ import ListePanier from '@/Components/Checkout/ListePanier.vue'
 import InfoCommande from '@/Components/Checkout/InfoCommande.vue'
 const props = defineProps({
     panier: Object,
+    taxes: Object,
     langAppLayout: Object,
     langCheckout: Object,
 })
@@ -19,6 +20,7 @@ let commande = props.panier;
             />
             <InfoCommande
             :liste = "commande"
+            :taxes = "props.taxes"
             />
         </section>
     </AppLayout>

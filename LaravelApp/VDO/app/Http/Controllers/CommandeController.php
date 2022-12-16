@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\commande;
+use App\Models\Commande;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-use App\Models\voiture;
+use App\Models\Voiture;
+use App\Models\Taxe;
 use Lang;
 
 class CommandeController extends Controller
@@ -41,6 +42,10 @@ class CommandeController extends Controller
             'modeles.nom AS modeles',
             'constructeurs.nom AS constructeurs',
         ]);
+        $taxes = Taxe::join('provinces', function($join) {
+            $join->on('taxes.provinces_id', '=', 'provinces.id');
+        })
+        ->get();
         foreach($panier as $voiture) {
             $voiture['prix'] *= 1.25;
             $voiture['imagePrincipale'] = $voiture->imagePrincipale($voiture['id']);
@@ -48,7 +53,8 @@ class CommandeController extends Controller
         return Inertia::render('Checkout', [
             'langAppLayout' => Lang::get('app_layout'),
             'langCheckout' => Lang::get('checkout'),
-            'panier' => $panier
+            'panier' => $panier,
+            'taxes' => $taxes
         ]);
     }
 
