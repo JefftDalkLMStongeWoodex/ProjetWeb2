@@ -11,5 +11,15 @@ return[
     'explorer' => 'Explorer',
     'joindre_titre' => 'Nous joindre',
     'contact_titre' => 'Contactez-nous',
+    'accueil_trouver' => 'Trouver votre',
+    'accueil_prochaine' => 'prochaine voiture',
+    'accueil_occasion' => "d'occasion",
+    'accueil_recherche' => "RECHERCHER UNE VOITURE",
+    'accueil_modeDeVie' => 'Magasinez par mode de vie',
+    'accueil_famille' => 'Famille',
+    'accueil_horsRoute' => 'Hors route',
+    'accueil_ecolo' => 'Ecolo',
+    'accueil_temoignage' => 'Témoignages',
+    
 ];
 ?>
