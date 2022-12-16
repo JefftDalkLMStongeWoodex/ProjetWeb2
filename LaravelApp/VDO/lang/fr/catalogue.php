@@ -25,4 +25,5 @@ return [
     'question'=> 'Vous avez des questions ?',
     'telephoner'=> 'Telephoner',
     'discuter'=> 'Discuter',
+    'ajouter_panier' => 'Ajouter au panier'
 ];
