@@ -86,6 +86,8 @@ class ImageController extends Controller
             'image_principale' => $request->image_principale,
             'voitures_id' => $request->voitures_id,
         ]);
+
+        return redirect(route('image.index', $request->voitures_id));
     }
 
     /**
