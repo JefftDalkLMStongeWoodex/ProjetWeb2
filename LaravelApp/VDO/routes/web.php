@@ -90,3 +90,4 @@ Route::middleware('auth')->group(function() {
 });
 
 Route::get('test-courriel', [CommandeController::class, 'testCourriel']);
+Route::get('/voiture/fiche/{voiture}/PDF', [CommandeController::class, 'testPDF']);

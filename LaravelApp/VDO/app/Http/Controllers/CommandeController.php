@@ -11,6 +11,7 @@ use App\Models\Taxe;
 use App\Models\Province;
 use Lang;
 use Mail;
+use PDF;
 
 class CommandeController extends Controller
 {
@@ -117,13 +118,21 @@ class CommandeController extends Controller
 
     public function testCourriel() {
         $to_name = "Mathieu";
-        $to_email = "stng.mathieu@gmail.com";
+        $to_emails = ["vdomaisonneuve@gmail.com", "stng.mathieu@gmail.com"];
         $body = "Allo Mathieu, voici un courriel";
 
-        Mail::send('email', $data = ['name'=>$to_name, 'body'=>$body], function ($message) use ($to_name, $to_email) {
-            $message->to($to_email, $to_name)->subject("Courriel de test VDO");
+        Mail::send('email', $data = ['name'=>$to_name, 'body'=>$body], function ($message) use ($to_name, $to_emails) {
+            $message->to($to_emails, $to_name)->subject("Courriel de test VDO");
+
+            $pdf = PDF::loadView('facture', ['voiture' => 'Wow une voiture, bravo pour votre achat']);
+            $message->attachData($pdf->output(), 'facture.pdf');
         });
 
         return redirect("/");
+    }
+
+    public function testPDF(voiture $voiture) {
+        $pdf = PDF::loadView('facture', ['voiture' => 'Wow une voiture, bravo pour votre achat']);
+        return $pdf->download('facture.pdf');
     }
 }
