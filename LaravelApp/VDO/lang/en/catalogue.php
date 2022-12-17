@@ -25,6 +25,7 @@ return [
     'question'=> 'You have questions ?',
     'telephoner'=> 'Call',
     'discuter'=> 'Discuss',
+    'ajouter_panier' => 'Add to cart',
     'specifications'=> 'specifications',
     'km'=> ' Mileage',
     'carrosserie'=> ' body type',

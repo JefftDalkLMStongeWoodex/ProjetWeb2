@@ -75,6 +75,7 @@ class PanierAchatController extends Controller
     public function fiche(Voiture $voiture)
     {
         $voiture->modele;
+        $voiture->modele->constructeur;
         $voiture->corps;
         $voiture->transmission;
         $voiture->groupeMotopropulseur;
