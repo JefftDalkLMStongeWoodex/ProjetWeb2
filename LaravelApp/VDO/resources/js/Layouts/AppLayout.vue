@@ -127,7 +127,7 @@ input.gachette:not(:checked) ~ .header__conteneur {
     pointer-events: none;
 }
 
-.footer__conteneur{
+.footer__conteneur {
     background-color: var(--couleur-secondaire);
     color: white;
     display: flex;
@@ -159,8 +159,6 @@ input.gachette:not(:checked) ~ .header__conteneur {
         grid-template-rows: auto 1fr auto;
         grid-template-columns: 100%;
     }
-
-
     .wrapper {
         display: flex;
     }
@@ -169,6 +167,17 @@ input.gachette:not(:checked) ~ .header__conteneur {
         background-color: var(--couleur-secondaire);
         color: var(--couleur-blanc);
         text-decoration: none;
+    }
+    .footer__conteneur{
+        background-color: var(--couleur-secondaire);
+        display: flex;
+        flex-direction: row;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        padding-top: 0;
+        padding-bottom: 0;
     }
     
 }
