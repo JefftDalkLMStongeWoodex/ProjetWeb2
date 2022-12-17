@@ -43,6 +43,13 @@ Route::get('/', function () {
     ]);
 })->name('accueil');
 
+
+Route::get('/facturation', function () {
+    return Inertia::render('Facturation', [
+        'langDashboard' => Lang::get('dashboard'),
+    ]);
+})->name('facturation');
+
 // Route::get('/apropos', function () {return Inertia::render('APropos'); })->name('apropos');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
