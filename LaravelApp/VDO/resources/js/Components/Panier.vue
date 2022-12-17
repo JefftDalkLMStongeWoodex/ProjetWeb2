@@ -12,6 +12,7 @@ defineProps({
     langVoiture: Object,
     langDashboard: Object,
     afficherPanier: Function,
+    lang: Object
 })
 </script>
 <script>
@@ -43,7 +44,7 @@ defineProps({
 <template>
 <div class="panier_achat">
     <header>
-        <h4>Panier d'achat</h4>
+        <h4>{{lang.panier_titre}}</h4>
         <div class="fermerPanier" @click="afficherPanier">
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="white">
                 <path id="Icon_material-close" data-name="Icon material-close" d="M28.5,9.615,26.385,7.5,18,15.885,9.615,7.5,7.5,9.615,15.885,18,7.5,26.385,9.615,28.5,18,20.115,26.385,28.5,28.5,26.385,20.115,18Z" transform="translate(-7.5 -7.5)"/>
@@ -52,14 +53,14 @@ defineProps({
     </header>
     <div>
         <template v-if="panier == null">
-            <p>Le panier est vide. Vous pouvez ajouter une voiture au panier via la fiche de la voiture.</p>
+            <p>{{lang.panier_vide}}</p>
         </template>
         <template v-else>
             <table>
                 <thead>
-                    <th>Constructeur</th>
-                    <th>Modèle</th>
-                    <th>Année</th>
+                    <th>{{lang.constructeur}}</th>
+                    <th>{{lang.modele}}</th>
+                    <th>{{lang.annee}}</th>
                     <th>Prix</th>
                     <th></th>
                 </thead>
@@ -84,7 +85,7 @@ defineProps({
                 </tfoot>
             </table>
             <SecondaryButton>
-                <Link :href="route('voiture.panier')">Check out</Link>
+                <Link :href="route('voiture.panier')">{{lang.checkout}}</Link>
             </SecondaryButton>
         </template>
     </div>
