@@ -54,6 +54,7 @@ export default {
                     <Panier 
                         v-if="affichagePanier"
                         :afficherPanier="afficherPanier"
+                        :lang="lang"
                     />
                 </div>
             </nav>
