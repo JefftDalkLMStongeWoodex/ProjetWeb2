@@ -26,14 +26,18 @@ class VoitureController extends Controller
      */
     public function index()
     {
-        $langVoiture = Lang::get('voiture');
-        $modeleVoiture = new Voiture;
-        $voitures = $modeleVoiture->selectVoitureTableauDeBord(session()->get('locale'));
-        return Inertia::render('Dashboard/Voiture', [
-            'langVoiture' => $langVoiture,
-            'voitures' => $voitures,
-            'langDashboard' => Lang::get('dashboard'),
-        ]);
+        if (Auth::check() && Auth::user()->estEmploye()) {
+            $langVoiture = Lang::get('voiture');
+            $modeleVoiture = new Voiture;
+            $voitures = $modeleVoiture->selectVoitureTableauDeBord(session()->get('locale'));
+            return Inertia::render('Dashboard/Voiture', [
+                'langVoiture' => $langVoiture,
+                'voitures' => $voitures,
+                'langDashboard' => Lang::get('dashboard'),
+            ]);
+        } else {
+            return redirect(route("dashboard"));
+        }
     }
 
     /**
@@ -43,18 +47,22 @@ class VoitureController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Dashboard/VoitureAjout', [
-            'langVoiture' => Lang::get('voiture'),
-            'langDashboard' => Lang::get('dashboard'),
-            'modeles' => Modele::all(),
-            'corps' => Corps::all(),
-            'transmissions' => Transmission::all(),
-            'groupeMotopropulseurs' => GroupeMotopropulseur::all(),
-            'carburants' => Carburant::all(),
-            'etats' => Etat::all(),
-            'statuts' => StatutVoiture::all(),
-            'users' => User::all()
-        ]);
+        if (Auth::check() && Auth::user()->estEmploye()) {
+            return Inertia::render('Dashboard/VoitureAjout', [
+                'langVoiture' => Lang::get('voiture'),
+                'langDashboard' => Lang::get('dashboard'),
+                'modeles' => Modele::all(),
+                'corps' => Corps::all(),
+                'transmissions' => Transmission::all(),
+                'groupeMotopropulseurs' => GroupeMotopropulseur::all(),
+                'carburants' => Carburant::all(),
+                'etats' => Etat::all(),
+                'statuts' => StatutVoiture::all(),
+                'users' => User::all()
+            ]);
+        } else {
+            return redirect(route("dashboard"));
+        }
     }
 
     /**
@@ -65,41 +73,45 @@ class VoitureController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'modeles_id' => 'required|exists:modeles,id',
-            'annee' => 'int|min:1901|max:' . date("Y"),
-            'prix_paye' => 'required|numeric|min:0',
-            'date_arrivee' => 'date',
-            'kilometrage' => 'int|min:0',
-            'corps_id' => 'exists:corps,id',
-            'transmissions_id' => 'exists:transmissions,id',
-            'groupe_motopropulseurs_id' => 'exists:groupe_motopropulseurs,id',
-            'carburants_id' => 'exists:carburants,id',
-            'etats_id' => 'exists:etats,id',
-            'statut_voitures_id' => 'exists:statut_voitures,id',
-            'reservation_users_id' => 'exists:users,id|nullable|required_if:statut_voitures_id,2',
-            'description' => 'string|nullable',
-            'description_en' => 'string|nullable'
-        ]);
+        if (Auth::check() && Auth::user()->estEmploye()) {
+            $request->validate([
+                'modeles_id' => 'required|exists:modeles,id',
+                'annee' => 'int|min:1901|max:' . date("Y"),
+                'prix_paye' => 'required|numeric|min:0',
+                'date_arrivee' => 'date',
+                'kilometrage' => 'int|min:0',
+                'corps_id' => 'exists:corps,id',
+                'transmissions_id' => 'exists:transmissions,id',
+                'groupe_motopropulseurs_id' => 'exists:groupe_motopropulseurs,id',
+                'carburants_id' => 'exists:carburants,id',
+                'etats_id' => 'exists:etats,id',
+                'statut_voitures_id' => 'exists:statut_voitures,id',
+                'reservation_users_id' => 'exists:users,id|nullable|required_if:statut_voitures_id,2',
+                'description' => 'string|nullable',
+                'description_en' => 'string|nullable'
+            ]);
+        
+            $voiture = Voiture::create([
+                'modeles_id' => $request->modeles_id,
+                'annee' => $request->annee,
+                'prix_paye' => $request->prix_paye,
+                'date_arrivee' => $request->date_arrivee,
+                'kilometrage' => $request->kilometrage,
+                'corps_id' => $request->corps_id,
+                'transmissions_id' => $request->transmissions_id,
+                'groupe_motopropulseurs_id' => $request->groupe_motopropulseurs_id,
+                'carburants_id' => $request->carburants_id,
+                'etats_id' => $request->etats_id,
+                'statut_voitures_id' => $request->statut_voitures_id,
+                'reservation_users_id' => $request->reservation_users_id,
+                'description' => $request->description,
+                'description_en' => $request->description_en
+            ]);
 
-        $voiture = Voiture::create([
-            'modeles_id' => $request->modeles_id,
-            'annee' => $request->annee,
-            'prix_paye' => $request->prix_paye,
-            'date_arrivee' => $request->date_arrivee,
-            'kilometrage' => $request->kilometrage,
-            'corps_id' => $request->corps_id,
-            'transmissions_id' => $request->transmissions_id,
-            'groupe_motopropulseurs_id' => $request->groupe_motopropulseurs_id,
-            'carburants_id' => $request->carburants_id,
-            'etats_id' => $request->etats_id,
-            'statut_voitures_id' => $request->statut_voitures_id,
-            'reservation_users_id' => $request->reservation_users_id,
-            'description' => $request->description,
-            'description_en' => $request->description_en
-        ]);
-
-        return redirect(route('voiture.index'));
+            return redirect(route('voiture.index'));
+        } else {
+            return redirect(route("dashboard"));
+        }
     }
 
     /**
@@ -110,21 +122,25 @@ class VoitureController extends Controller
      */
     public function show(Voiture $voiture)
     {
-        $voiture->modele;
-        $voiture->corps;
-        $voiture->transmission;
-        $voiture->groupeMotopropulseur;
-        $voiture->carburant;
-        $voiture->etat;
-        $voiture->statut;
-        $voiture->utilisateur;
-        $erreurPrivilege = Session::get('erreurPrivilege');
-        return Inertia::render('Dashboard/VoitureDetail', [
-            'voiture' => $voiture,
-            'langVoiture' => Lang::get('voiture'),
-            'langDashboard' => Lang::get('dashboard'),
-            'erreurPrivilege' => $erreurPrivilege
-        ]);
+        if (Auth::check() && Auth::user()->estEmploye()) {
+            $voiture->modele;
+            $voiture->corps;
+            $voiture->transmission;
+            $voiture->groupeMotopropulseur;
+            $voiture->carburant;
+            $voiture->etat;
+            $voiture->statut;
+            $voiture->utilisateur;
+            $erreurPrivilege = Session::get('erreurPrivilege');
+            return Inertia::render('Dashboard/VoitureDetail', [
+                'voiture' => $voiture,
+                'langVoiture' => Lang::get('voiture'),
+                'langDashboard' => Lang::get('dashboard'),
+                'erreurPrivilege' => $erreurPrivilege
+            ]);
+        } else {
+            return redirect(route("dashboard"));
+        }
     }
 
     /**
@@ -135,19 +151,23 @@ class VoitureController extends Controller
      */
     public function edit(Voiture $voiture)
     {
-        return Inertia::render('Dashboard/VoitureModification', [
-            'voiture' => $voiture,
-            'langVoiture' => Lang::get('voiture'),
-            'langDashboard' => Lang::get('dashboard'),
-            'modeles' => Modele::all(),
-            'corps' => Corps::all(),
-            'transmissions' => Transmission::all(),
-            'groupeMotopropulseurs' => GroupeMotopropulseur::all(),
-            'carburants' => Carburant::all(),
-            'etats' => Etat::all(),
-            'statuts' => StatutVoiture::all(),
-            'users' => User::all()
-        ]);
+        if (Auth::check() && Auth::user()->estEmploye()) {
+            return Inertia::render('Dashboard/VoitureModification', [
+                'voiture' => $voiture,
+                'langVoiture' => Lang::get('voiture'),
+                'langDashboard' => Lang::get('dashboard'),
+                'modeles' => Modele::all(),
+                'corps' => Corps::all(),
+                'transmissions' => Transmission::all(),
+                'groupeMotopropulseurs' => GroupeMotopropulseur::all(),
+                'carburants' => Carburant::all(),
+                'etats' => Etat::all(),
+                'statuts' => StatutVoiture::all(),
+                'users' => User::all()
+            ]);
+        } else {
+            return redirect(route("dashboard"));
+        }
     }
 
     /**
@@ -159,41 +179,45 @@ class VoitureController extends Controller
      */
     public function update(Request $request, Voiture $voiture)
     {
-        $request->validate([
-            'modeles_id' => 'required|exists:modeles,id',
-            'annee' => 'int|min:1901|max:' . date("Y"),
-            'prix_paye' => 'required|numeric|min:0',
-            'date_arrivee' => 'date',
-            'kilometrage' => 'int|min:0',
-            'corps_id' => 'exists:corps,id',
-            'transmissions_id' => 'exists:transmissions,id',
-            'groupe_motopropulseurs_id' => 'exists:groupe_motopropulseurs,id',
-            'carburants_id' => 'exists:carburants,id',
-            'etats_id' => 'exists:etats,id',
-            'statut_voitures_id' => 'exists:statut_voitures,id',
-            'reservation_users_id' => 'exists:users,id|nullable|required_if:statut_voitures_id,2',
-            'description' => 'string|nullable',
-            'description_en' => 'string|nullable',
-        ]);
+        if (Auth::check() && Auth::user()->estEmploye()) {
+            $request->validate([
+                'modeles_id' => 'required|exists:modeles,id',
+                'annee' => 'int|min:1901|max:' . date("Y"),
+                'prix_paye' => 'required|numeric|min:0',
+                'date_arrivee' => 'date',
+                'kilometrage' => 'int|min:0',
+                'corps_id' => 'exists:corps,id',
+                'transmissions_id' => 'exists:transmissions,id',
+                'groupe_motopropulseurs_id' => 'exists:groupe_motopropulseurs,id',
+                'carburants_id' => 'exists:carburants,id',
+                'etats_id' => 'exists:etats,id',
+                'statut_voitures_id' => 'exists:statut_voitures,id',
+                'reservation_users_id' => 'exists:users,id|nullable|required_if:statut_voitures_id,2',
+                'description' => 'string|nullable',
+                'description_en' => 'string|nullable',
+            ]);
 
-        $voiture->update([
-            'modeles_id' => $request->modeles_id,
-            'annee' => $request->annee,
-            'prix_paye' => $request->prix_paye,
-            'date_arrivee' => $request->date_arrivee,
-            'kilometrage' => $request->kilometrage,
-            'corps_id' => $request->corps_id,
-            'transmissions_id' => $request->transmissions_id,
-            'groupe_motopropulseurs_id' => $request->groupe_motopropulseurs_id,
-            'carburants_id' => $request->carburants_id,
-            'etats_id' => $request->etats_id,
-            'statut_voitures_id' => $request->statut_voitures_id,
-            'reservation_users_id' => $request->reservation_users_id,
-            'description' => $request->description,
-            'description_en' => $request->description_en,
-        ]);
+            $voiture->update([
+                'modeles_id' => $request->modeles_id,
+                'annee' => $request->annee,
+                'prix_paye' => $request->prix_paye,
+                'date_arrivee' => $request->date_arrivee,
+                'kilometrage' => $request->kilometrage,
+                'corps_id' => $request->corps_id,
+                'transmissions_id' => $request->transmissions_id,
+                'groupe_motopropulseurs_id' => $request->groupe_motopropulseurs_id,
+                'carburants_id' => $request->carburants_id,
+                'etats_id' => $request->etats_id,
+                'statut_voitures_id' => $request->statut_voitures_id,
+                'reservation_users_id' => $request->reservation_users_id,
+                'description' => $request->description,
+                'description_en' => $request->description_en,
+            ]);
 
-        return redirect(route('voiture.show', $voiture->id));
+            return redirect(route('voiture.show', $voiture->id));
+        } else {
+            return redirect(route("dashboard"));
+        }
     }
 
     /**
@@ -204,11 +228,11 @@ class VoitureController extends Controller
      */
     public function destroy(Voiture $voiture)
     {
-        if (Auth::user()->privileges_id == 3) {
+        if (Auth::check() && Auth::user()->estAdmin()) {
             $voiture->delete();
             return redirect(route('voiture.index'));
         } else {
-            redirect(route('voiture.show', $voiture))->with(['erreurPrivilege' => 'Vous n\'avez pas les droits nécessaires pour effectuer cette action.']);
+            redirect(route('voiture.show', $voiture))->with(['erreurPrivilege' => true]);
         }
     }
 }

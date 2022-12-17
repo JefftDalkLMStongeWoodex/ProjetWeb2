@@ -49,4 +49,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function estAdmin () {
+        return $this->privileges_id == 3;
+    }
+
+    public function estEmploye () {
+        return ($this->privileges_id == 3 || $this->privileges_id == 2); 
+    }
 }
