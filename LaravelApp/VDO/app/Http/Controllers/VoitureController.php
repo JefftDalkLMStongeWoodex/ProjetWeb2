@@ -13,8 +13,9 @@ use App\Models\StatutVoiture;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-
+use Illuminate\Support\Facades\Auth;
 use Lang;
+use Session;
 
 class VoitureController extends Controller
 {
@@ -117,11 +118,12 @@ class VoitureController extends Controller
         $voiture->etat;
         $voiture->statut;
         $voiture->utilisateur;
-        
+        $erreurPrivilege = Session::get('erreurPrivilege');
         return Inertia::render('Dashboard/VoitureDetail', [
             'voiture' => $voiture,
             'langVoiture' => Lang::get('voiture'),
             'langDashboard' => Lang::get('dashboard'),
+            'erreurPrivilege' => $erreurPrivilege
         ]);
     }
 
@@ -202,6 +204,11 @@ class VoitureController extends Controller
      */
     public function destroy(Voiture $voiture)
     {
-        //
+        if (Auth::user()->privileges_id == 3) {
+            $voiture->delete();
+            return redirect(route('voiture.index'));
+        } else {
+            redirect(route('voiture.show', $voiture))->with(['erreurPrivilege' => 'Vous n\'avez pas les droits nécessaires pour effectuer cette action.']);
+        }
     }
 }

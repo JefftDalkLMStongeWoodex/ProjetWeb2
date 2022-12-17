@@ -1,15 +1,38 @@
 <script setup>
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
-import { Head, Link } from '@inertiajs/inertia-vue3';
+import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import SidebarVue from '@/Components/Sidebar.vue';
 import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
+import { onMounted } from 'vue'
 
 defineProps({
     voiture: Object,
     langVoiture: Object,
-    langDashboard: Object
+    langDashboard: Object,
+    erreurPrivilege: String
 })
+
+onMounted(() => {
+    const modal = document.querySelector('.modal-suppression')
+    const boutonOuvrirModal = document.querySelector('.ouvrir-modal')
+    const boutonFermerModal = document.querySelector('.fermer-modal')
+    boutonOuvrirModal.addEventListener('click', () => {
+        modal.showModal()
+    })
+
+    boutonFermerModal.addEventListener('click', () => {
+        modal.close()
+    })
+})
+
+const form = useForm();
+
+const supprimerVoiture = function (voiture) {
+    const modal = document.querySelector('.modal-suppression')
+    modal.close();
+    form.delete(route('voiture.destroy', voiture));
+};
 </script>
 <template>
     <Head :title="langVoiture.detail" />
@@ -20,6 +43,7 @@ defineProps({
         <div class="flex">    
             <div class="wrapper detail">
                 <h4 class="titre">{{ langVoiture.titre_detail.toUpperCase() }}</h4>
+                <p class="error">{{erreurPrivilege}}</p>
                 <hr>
                 <table class="fiche">
                     <template v-if="$page.props.lang.locale == 'en'">
@@ -171,11 +195,19 @@ defineProps({
                     <Link :href="route('voiture.edit', voiture)">
                     <SecondaryButton>{{langVoiture.modifier}}</SecondaryButton>
                     </Link>
-                    <Link>
-                    <DangerButton>{{langVoiture.supprimer}}</DangerButton>
-                    </Link>
+                    <DangerButton class="ouvrir-modal">{{langVoiture.supprimer}}</DangerButton>
                 </div>
-        </div>
+                <dialog class="modal-suppression" id="modal-suppression">
+                    <h2>Veuillez confirmer la suppression</h2>
+                    <p>Les changements effectués seront irréversibles. Voulez-vous poursuivre?</p>
+                    <footer>
+                        <form @submit.prevent="supprimerVoiture(voiture)" method="post">
+                            <SecondaryButton class="fermer-modal">Annuler</SecondaryButton>
+                            <DangerButton>Supprimer</DangerButton>
+                        </form>
+                    </footer>
+                </dialog>
+            </div>
         </div>
     </TableauDeBordLayout>
 </template>
@@ -211,7 +243,7 @@ defineProps({
 
 .lien-actions {
     display: flex;
-    gap: 15px;
+    gap: 0.8rem;
 }
 
 .lien-images {
@@ -230,6 +262,20 @@ p {
     color: var(--couleur-secondaire);
 }
 
+.modal-suppression {
+    border-radius: 8px;
+}
+
+.modal-suppression footer {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: flex-start;
+}
+
+.error {
+    color: red;
+}
+
 @media screen and (max-width: 742px) {
     .titre {
         font-family: var(--police-titre);
@@ -241,9 +287,6 @@ p {
     }
 }
 .detail{
-
     margin-bottom: 2rem;
-
 }
-
 </style>
