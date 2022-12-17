@@ -10,6 +10,7 @@ use App\Models\Voiture;
 use App\Models\Taxe;
 use App\Models\Province;
 use Lang;
+use Mail;
 
 class CommandeController extends Controller
 {
@@ -112,5 +113,17 @@ class CommandeController extends Controller
     public function destroy(commande $commande)
     {
         //
+    }
+
+    public function testCourriel() {
+        $to_name = "Mathieu";
+        $to_email = "stng.mathieu@gmail.com";
+        $body = "Allo Mathieu, voici un courriel";
+
+        Mail::send('email', $data = ['name'=>$to_name, 'body'=>$body], function ($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)->subject("Courriel de test VDO");
+        });
+
+        return redirect("/");
     }
 }

@@ -88,3 +88,5 @@ Route::middleware('auth')->group(function() {
     Route::get('/dashboard/images/ajout/{idVoiture}', [ImageController::class, 'create'])->name('image.create');
     Route::post('/dashboard/images/ajout/{idVoiture}', [ImageController::class, 'store'])->name('image.store');
 });
+
+Route::get('test-courriel', [CommandeController::class, 'testCourriel']);
