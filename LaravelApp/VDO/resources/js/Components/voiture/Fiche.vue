@@ -9,11 +9,22 @@
             prix () {
                 return this.detailVoiture.prix_paye * 1.25 
             }
+        }, 
+        methods: {
+            ajouterAuPanier () {
+                if (sessionStorage.getItem("panier") == null) {
+                    sessionStorage.setItem("panier", "[]")
+                }
+                let panier = JSON.parse(sessionStorage.panier)
+                panier = [...panier, this.detailVoiture]                
+                panier = JSON.stringify(panier)
+                sessionStorage.setItem("panier", panier)
+            }
         }
     }
 </script>
 <template>
-  <h3>  {{detailVoiture.modele.nom}}   {{detailVoiture.corps.type}}  </h3>
+  <h3>{{detailVoiture.modele.nom}} {{detailVoiture.corps.type}}</h3>
   <h4>{{prix}} $ </h4>
 
 <p> {{detailVoiture.description}} </p>
@@ -23,8 +34,8 @@
         {{lang.reserve}}
     </PrimaryButton>
 
-    <PrimaryButton>
-        {{lang.achat}}
+    <PrimaryButton @click="ajouterAuPanier">
+        {{lang.ajouter_panier}}
     </PrimaryButton>
 
     <PrimaryButton>

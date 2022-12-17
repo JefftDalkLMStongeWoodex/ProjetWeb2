@@ -25,6 +25,7 @@ return [
     'question'=> 'Vous avez des questions ?',
     'telephoner'=> 'Telephoner',
     'discuter'=> 'Discuter',
+    'ajouter_panier' => 'Ajouter au panier',
     'specifications'=> 'spécifications',
     'km'=> ' Kilometrage',
     'carrosserie'=> ' Type de carrosserie',
