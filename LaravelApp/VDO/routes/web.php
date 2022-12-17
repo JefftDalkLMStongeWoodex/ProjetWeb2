@@ -10,6 +10,7 @@ use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\PanierAchatController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\UtilisateurController;
 
 use Illuminate\Support\Facades\Lang;
 
@@ -87,6 +88,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/dashboard/images/{idVoiture}', [ImageController::class, 'index'])->name('image.index');
     Route::get('/dashboard/images/ajout/{idVoiture}', [ImageController::class, 'create'])->name('image.create');
     Route::post('/dashboard/images/ajout/{idVoiture}', [ImageController::class, 'store'])->name('image.store');
+});
+
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard/utilisateurs', [UtilisateurController::class, 'index'])->name('utilisateur.index');
+    Route::get('/dashboard/utilisateurs/detail/{utilisateur}', [UtilisateurController::class, 'show'])->name('utilisateur.show');
+    Route::get('/dashboard/utilisateurs/modifier/{utilisateur}', [UtilisateurController::class, 'edit'])->name('utilisateur.edit');
+    Route::put('/dashboard/utilisateurs/modifier/{utilisateur}', [UtilisateurController::class, 'update'])->name('utilisateur.update');
 });
 
 Route::get('test-courriel', [CommandeController::class, 'testCourriel']);
