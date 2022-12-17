@@ -16,39 +16,38 @@ export default {
 }
 </script>
 <template>
-    <div class="tuile_icon">
+    <div class="tuile__icon">
        <div class="icon">   <slot name="icon" /> </div>
-       <div class="tuile_contenu"> <slot name="contenu" /> </div>
+       <div class="tuile__contenu"> <slot name="contenu" /> </div>
     </div>
 </template>
 <style scoped>
 
-.tuile_icon{
+.tuile__icon{
     display: flex;
+    flex-flow: row;
+    gap: 1.25rem;
+    overflow: hidden;
+    max-height: 5rem;
     
 }
 
 .icon{
     background-color: var(--couleur-secondaire);
-    width: 25%;
-    padding: 0.65rem;
-    text-align: center;
-    font-size: 1.5rem;
-    color: white;
-    padding-left: 1rem;
-    margin: 0rem;
-    padding-top: 1.4rem;
+    width: 4rem;
+    min-height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
    
 }
 
-.tuile_contenu{
+.tuile__contenu{
+    color: var(--couleur-principale);
+    padding: 0.625rem 1.25rem 0.625rem 0;
     text-align: center;
     width: 100%;
-    color: var(--couleur-principale);
-    font-size: 1.5rem ;
-    font-weight: bold;
-    padding-top: 0.8rem;
-
 
 }
 
@@ -59,10 +58,11 @@ export default {
        
     }
     
-    .tuile_contenu{
+    .tuile__contenu{
        
         font-size: 2rem ;
-      
+        text-align: left;
+        min-width: 70%;
     
     
     }
