@@ -31,5 +31,9 @@ return[
     'detail_image' => 'Consult the images associated with this car',
     'modifier' => 'Update ',
     'supprimer' => 'Delete',
+    'modal_suppression_titre' => 'Please confirm deletion',
+    'modal_suppression_texte' => 'Changes made will be irreversible. Do you wish to continue?',
+    'annuler' => 'Cancel',
+    'erreur_privilege' => 'You don\'t have the necessary rights to perform this action.'
 ];
 ?>
