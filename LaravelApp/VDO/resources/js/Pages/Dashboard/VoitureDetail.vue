@@ -43,7 +43,7 @@ const supprimerVoiture = function (voiture) {
         <div class="flex">    
             <div class="wrapper detail">
                 <h4 class="titre">{{ langVoiture.titre_detail.toUpperCase() }}</h4>
-                <p class="error">{{erreurPrivilege}}</p>
+                <p v-if="erreurPrivilege" class="error">{{langVoiture.erreur_privilege}}</p>
                 <hr>
                 <table class="fiche">
                     <template v-if="$page.props.lang.locale == 'en'">
@@ -198,12 +198,12 @@ const supprimerVoiture = function (voiture) {
                     <DangerButton class="ouvrir-modal">{{langVoiture.supprimer}}</DangerButton>
                 </div>
                 <dialog class="modal-suppression" id="modal-suppression">
-                    <h2>Veuillez confirmer la suppression</h2>
-                    <p>Les changements effectués seront irréversibles. Voulez-vous poursuivre?</p>
+                    <h2>{{langVoiture.modal_suppression_titre}}</h2>
+                    <p>{{langVoiture.modal_suppression_texte}}</p>
                     <footer>
                         <form @submit.prevent="supprimerVoiture(voiture)" method="post">
-                            <SecondaryButton class="fermer-modal">Annuler</SecondaryButton>
-                            <DangerButton>Supprimer</DangerButton>
+                            <SecondaryButton class="fermer-modal">{{langVoiture.annuler}}</SecondaryButton>
+                            <DangerButton>{{langVoiture.supprimer}}</DangerButton>
                         </form>
                     </footer>
                 </dialog>
@@ -266,7 +266,7 @@ p {
     border-radius: 8px;
 }
 
-.modal-suppression footer {
+.modal-suppression footer form {
     display: flex;
     gap: 0.8rem;
     justify-content: flex-start;
