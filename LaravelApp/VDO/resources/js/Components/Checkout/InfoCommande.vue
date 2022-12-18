@@ -15,13 +15,20 @@ const form = useForm({
 </script>
 <script>
 export default{
-    methods: {
-        sousTotalVoitures () {
+    computed: {
+        sousTotalVoitures: function () {
             let total = 0
             for (let voiture of this.panier) {
                 total += voiture.prix
             }
             return total
+        }
+    },
+    methods: {
+        calculTaxe (taux) {
+            taux = parseFloat(taux)
+            console.log(typeof taux)
+            return this.sousTotalVoitures * taux
         }
     }
 }
@@ -33,14 +40,14 @@ export default{
                 <h4>Récapitulatif</h4>
                 <dd>
                     <dt>Montant voiture(s):</dt>
-                        <dl>{{sousTotalVoitures()}}</dl>
+                        <dl>{{sousTotalVoitures}}</dl>
                     <dt>Frais de livraison:</dt>
                         <dl></dl>
                     <dt>Sous-total:</dt>
                         <dl></dl>
                     <template v-for="taxe in taxes">
                         <dt>{{taxe.nom}} ({{taxe.taux}}%)</dt>
-                            <dl></dl>
+                            <dl>{{calculTaxe(taxe.taux)}}</dl>
                     </template>
                     <dt>Montant total:</dt>
                         <dl></dl>
