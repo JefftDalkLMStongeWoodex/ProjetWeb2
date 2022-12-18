@@ -20,6 +20,12 @@ return[
     'accueil_horsRoute' => 'Off Road',
     'accueil_ecolo' => 'Eco',
     'accueil_temoignage' => 'Testimonials',
-    
+    'panier_titre' => 'Cart',
+    'constructeur' => 'Make',
+    'modele' => 'Model',
+    'prix' => 'Price',
+    'annee' => 'Year',
+    'checkout' => 'Check out',
+    'panier_vide' => 'Your cart is empty. You can add cars from the product page'
 ];
 ?>

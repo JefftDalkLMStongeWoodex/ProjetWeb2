@@ -9,7 +9,11 @@ use Inertia\Inertia;
 use App\Models\Voiture;
 use App\Models\Taxe;
 use App\Models\Province;
+use App\Models\Ville;
 use Lang;
+use Mail;
+use PDF;
+use Auth;
 
 class CommandeController extends Controller
 {
@@ -28,33 +32,29 @@ class CommandeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $panier)
     {
-        $panier = Voiture::where('voitures.id','>', '5')
-        ->join('modeles', function($join) {
-            $join->on('voitures.modeles_id','=','modeles.id')->join('constructeurs', function($join){
-                $join->on('modeles.constructeurs_id','=','constructeurs.id');
-            });
-        })
-        ->get([
-            'voitures.id',
-            'voitures.prix_paye AS prix',
-            'voitures.annee',
-            'modeles.nom AS modeles',
-            'constructeurs.nom AS constructeurs',
-        ]);
-        $taxes = Taxe::all();
+        $user = Auth::user();
+        $panier = $panier->all();
+        $villes = Ville::all();
         $provinces = Province::all();
-        foreach($panier as $voiture) {
-            $voiture['prix'] *= 1.25;
-            $voiture['imagePrincipale'] = $voiture->imagePrincipale($voiture['id']);
+        $taxes = Taxe::all();
+        
+        $user_ville = $user->ville;
+        $user_province = $user_ville->province;
+        $user_taxes = $user_province->taxes;
+
+        foreach ($panier as &$voiture) {
+            $voiture["prix"] = $voiture["prix_paye"] * 1.25;
         }
+
         return Inertia::render('Checkout', [
             'langAppLayout' => Lang::get('app_layout'),
             'langCheckout' => Lang::get('checkout'),
             'panier' => $panier,
-            'taxes' => $taxes,
-            'provinces' => $provinces
+            'user_ville' => $user_ville,
+            'user_province' => $user_province,
+            'user_taxes' => $user_taxes
         ]);
     }
 
@@ -112,5 +112,25 @@ class CommandeController extends Controller
     public function destroy(commande $commande)
     {
         //
+    }
+
+    public function testCourriel() {
+        $to_name = "Mathieu";
+        $to_emails = ["vdomaisonneuve@gmail.com", "stng.mathieu@gmail.com"];
+        $body = "Allo Mathieu, voici un courriel";
+
+        Mail::send('email', $data = ['name'=>$to_name, 'body'=>$body], function ($message) use ($to_name, $to_emails) {
+            $message->to($to_emails, $to_name)->subject("Courriel de test VDO");
+
+            $pdf = PDF::loadView('facture', ['voiture' => 'Wow une voiture, bravo pour votre achat']);
+            $message->attachData($pdf->output(), 'facture.pdf');
+        });
+
+        return redirect("/");
+    }
+
+    public function testPDF(voiture $voiture) {
+        $pdf = PDF::loadView('facture', ['voiture' => 'Wow une voiture, bravo pour votre achat']);
+        return $pdf->download('facture.pdf');
     }
 }

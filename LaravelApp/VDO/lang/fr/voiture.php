@@ -31,5 +31,9 @@ return[
     'detail_image' => 'Consulter les images associées à cette voiture ',
     'modifier' => 'Modifier ',
     'supprimer' => 'supprimer',
+    'modal_suppression_titre' => 'Veuillez confirmer la suppression',
+    'modal_suppression_texte' => 'Les changements effectués seront irréversibles. Voulez-vous poursuivre?',
+    'annuler' => 'Annuler',
+    'erreur_privilege' => 'Vous n\'avez pas les droits nécessaires pour effectuer cette action.'
 ];
 ?>

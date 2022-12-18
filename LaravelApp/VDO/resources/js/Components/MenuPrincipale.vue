@@ -40,7 +40,6 @@ const props = defineProps(['detailVoiture', 'active', 'lang', 'afficherPanier'])
 </template>
 
 <style scoped>
-
 .gachette {
     all: unset;
     appearance: none;
@@ -48,7 +47,7 @@ const props = defineProps(['detailVoiture', 'active', 'lang', 'afficherPanier'])
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 1;
+    z-index: 2;
     cursor: pointer;
 }
 
@@ -72,6 +71,7 @@ const props = defineProps(['detailVoiture', 'active', 'lang', 'afficherPanier'])
     left: 0;
     background-color: var(--couleur-secondaire);
     overflow: auto;
+    z-index: 1;
 }
 
 .header__liens {
@@ -115,8 +115,6 @@ input.gachette:not(:checked) ~ .header__conteneur {
         pointer-events: auto;
     }
 
-  
-    
     .header__conteneur {
         align-items: center;
         display: flex;
@@ -139,10 +137,5 @@ input.gachette:not(:checked) ~ .header__conteneur {
     .gachette {
         display: none;
     }
-
-
-    
 }
-
-
 </style>

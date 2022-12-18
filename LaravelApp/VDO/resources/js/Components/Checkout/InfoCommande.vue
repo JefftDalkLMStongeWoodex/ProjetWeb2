@@ -4,52 +4,59 @@ import Select from '@/Components/Select.vue';
 const props = defineProps({
     taxes: Object,
     provinces: Object,
-    liste: Object
+    panier: Object
 })
+
 const form = useForm({
-  provinces: '',
-  modeExpedition: ''
+    provinces: '',
+    modeExpedition: ''
 })
+
 </script>
 <script>
 export default{
-    computed:{
-        getTotal() {
-            let total = 0;
-            for(let item of this.$props.liste) {
-                total += item.prix;
+    computed: {
+        sousTotalVoitures: function () {
+            let total = 0
+            for (let voiture of this.panier) {
+                total += voiture.prix
             }
             return total
-        },
-        // getTaxe() {
-        //     return this.$setup.form
-        // }
+        }
+    },
+    methods: {
+        calculTaxe (taux) {
+            taux = parseFloat(taux)
+            console.log(typeof taux)
+            return this.sousTotalVoitures * taux
+        }
     }
 }
 </script>
 <template>
     <aside class="infoCommande">
         <form action="" @submit.prevent="submit">
-
-            <div class="infoCommande__province"> 
-
-                <label for="provinces_id">
-                    Veuillez selectionner votre province:
-                </label>
-
-            
-                <Select
-                :options = "props.provinces"
-                colonneAffichee = 'nom'
-                v-model = "form.provinces"
-                name="provinces_id"
-                />
-
-           </div>
+            <div>
+                <h4>Récapitulatif</h4>
+                <dd>
+                    <dt>Montant voiture(s):</dt>
+                        <dl>{{sousTotalVoitures}}</dl>
+                    <dt>Frais de livraison:</dt>
+                        <dl></dl>
+                    <dt>Sous-total:</dt>
+                        <dl></dl>
+                    <template v-for="taxe in taxes">
+                        <dt>{{taxe.nom}} ({{taxe.taux}}%)</dt>
+                            <dl>{{calculTaxe(taxe.taux)}}</dl>
+                    </template>
+                    <dt>Montant total:</dt>
+                        <dl></dl>
+                </dd>
+            </div>
 
             <div class="infoCommande__reception">
 
-               <div class="infoCommande__receptionTitre"> Comment souhaité vous recevoir la commande? </div> 
+                <div class="infoCommande__receptionTitre"> Comment souhaité vous recevoir la commande? </div> 
                 <br>
             <!-- 
                 <input type="radio" name="modeExpedition" v-model="modeExpedition" id="livraison" value="1">
@@ -62,8 +69,7 @@ export default{
                 <label for="ramassage">
                     Ramassage aux concessionnaire
                 </label>
-                 -->
-                 
+
                 <div class="">
                     <label >
                         <input type="radio" name="reception" id="" class="radio_input" >
@@ -74,11 +80,13 @@ export default{
                         <div class="reception__tuile">Ramassage aux concessionnaire </div>
                     </label>
 
+
                     <div v-if="form.claimType === 'Option 1'">
                         <span>Show me </span>
                     </div>
 
                </div> 
+
 
             </div>
         </form>
