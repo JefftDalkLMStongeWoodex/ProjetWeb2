@@ -44,6 +44,13 @@ Route::get('/', function () {
     ]);
 })->name('accueil');
 
+
+Route::get('/facturation', function () {
+    return Inertia::render('Facturation', [
+        'langDashboard' => Lang::get('dashboard'),
+    ]);
+})->name('facturation');
+
 // Route::get('/apropos', function () {return Inertia::render('APropos'); })->name('apropos');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
@@ -54,7 +61,6 @@ Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('la
 
 Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voiture.index');
 
-Route::get('/voiture/panier/{voiture}', [PanierAchatController::class, 'panier'])->name('voiture.panier');
 
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
 

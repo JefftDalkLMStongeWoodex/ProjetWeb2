@@ -4,6 +4,8 @@ return[
     'logout' => 'Déconnexion',
     'titre' => 'Tableau de bord',
     'texte' => 'Vous êtes connectés!',
-    'utilisateurs' => 'Utilisateurs'
+    'utilisateurs' => 'Utilisateurs',
+    'lien_facture' => 'Voir la facture',
+    'factures' => 'Factures',
 ];
 ?>
