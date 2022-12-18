@@ -69,4 +69,8 @@ class User extends Authenticatable
             JOIN privileges ON users.privileges_id = privileges.id'
         );
     }
+
+    public function ville() {
+        return $this->hasOne('App\Models\Ville', 'id', 'villes_id');
+    }
 }
