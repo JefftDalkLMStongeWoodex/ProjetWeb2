@@ -49,13 +49,18 @@ const form = useForm({
                  -->
                 <div class="">
                     <label >
-                        <input type="radio" name="reception" id="" class="radio_input">
+                        <input type="radio" name="reception" id="" class="radio_input" >
                         <div class="reception__tuile"> Expédition au domicile </div>
                     </label>
                     <label >
                         <input type="radio" name="reception" id="" class="radio_input">
                         <div class="reception__tuile">Ramassage aux concessionnaire </div>
                     </label>
+
+                    <div v-if="form.claimType === 'Option 1'">
+                        <span>Show me </span>
+                    </div>
+
                </div> 
 
             </div>
@@ -109,7 +114,7 @@ const form = useForm({
     cursor: pointer;
     font-size: 1rem;
     font-weight: bolder;
-    background-color: var(--couleur-blanc);
+    background-color: rgba(255, 255, 255, 0) ;
     border-width: 0.15rem;
     border-color:    var(--couleur-principale);
     color:   var(--couleur-principale);
