@@ -55,6 +55,7 @@ export default {
                         v-if="affichagePanier"
                         :afficherPanier="afficherPanier"
                         :lang="lang"
+                        class="panier"
                     />
                 </div>
             </nav>
@@ -96,6 +97,10 @@ export default {
 
 .header__navigation {
     background-color: var(--couleur-secondaire);
+}
+
+.panier {
+    z-index: 3;
 }
 
 .gachette {
