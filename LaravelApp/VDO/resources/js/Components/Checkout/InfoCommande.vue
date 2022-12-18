@@ -58,7 +58,7 @@ export default{
 
                 <div class="infoCommande__receptionTitre"> Comment souhaité vous recevoir la commande? </div> 
                 <br>
-            <!-- 
+
                 <input type="radio" name="modeExpedition" v-model="modeExpedition" id="livraison" value="1">
 
                 <label for="livraison">
