@@ -10,40 +10,37 @@ const props = defineProps(['href', 'active', 'lang']);
 
 <template>
     <aside class="aside" :style="{ width: sidebarWidth }">
-   
         <div class="logo">
             <Link :href="route('accueil')">
                 <LogoVersion2 />
             </Link>
         </div>
         <div class="menu_laterale">
-
             <input class="gachette" type="checkbox">
-
             <nav class="nav header__conteneur ">
                 <NavLink :href="route('dashboard')" :active="route().current('dashboard') ">
-                 
                     <!--  Menu ferme  -->
                     <span v-if="collapsed"> <i class="fa fa-home" /> </span>
                     <!--  Menu ouvert -->
-                     <span v-else>   <i class="fa fa-home" />   {{lang.titre}}  </span>
-
-
+                    <span v-else>   <i class="fa fa-home" />   {{lang.titre}}  </span>
                 </NavLink>
-             
                 <NavLink :href="route('voiture.index')" >
                     <!--  Menu ferme  -->
                     <span v-if="collapsed">  <i class="fa fa-car" />  </span>
                     <!--  Menu ouvert -->
-                     <span v-else>      <i class="fa fa-car" />    {{lang.voiture}}    </span>
+                    <span v-else>      <i class="fa fa-car" />    {{lang.voiture}}    </span>
                 </NavLink>
-
+                <NavLink :href="route('utilisateur.index')" >
+                    <!--  Menu ferme  -->
+                    <span v-if="collapsed"><i class="fa fa-list"></i></span>
+                    <!--  Menu ouvert -->
+                    <span v-else><i class="fa fa-list"></i> {{lang.utilisateurs}}</span>
+                </NavLink>
                 <NavLink :href="route('profile.edit')">
-                     <!--  Menu ferme  -->
-                     <span v-if="collapsed"> <i class="fa fa-user" />   </span>
-                     <!--  Menu ouvert -->
-                      <span v-else>  <i class="fa fa-user" />  Profile </span>
-                   
+                    <!--  Menu ferme  -->
+                    <span v-if="collapsed"> <i class="fa fa-user" />   </span>
+                    <!--  Menu ouvert -->
+                    <span v-else>  <i class="fa fa-user" />  Profile </span>
                 </NavLink>
 
                 <NavLink :href="route('facturation')">
@@ -59,24 +56,17 @@ const props = defineProps(['href', 'active', 'lang']);
                     <!--  Menu ferme  -->
                     <span v-if="collapsed"> <i class="fa fa-plug" /> </span>
                     <!--  Menu ouvert -->
-                     <span v-else><i class="fa fa-plug" /> {{lang.logout}} </span>
-               </NavLink>
-
-               <NavLink class="header__lang  " :href="route('lang', 'en')">EN</NavLink>
-               <NavLink class="header__lang  " :href="route('lang', 'fr')">FR</NavLink>
-
-
+                    <span v-else><i class="fa fa-plug" /> {{lang.logout}} </span>
+                </NavLink>
+                <NavLink class="header__lang  " :href="route('lang', 'en')">EN</NavLink>
+                <NavLink class="header__lang  " :href="route('lang', 'fr')">FR</NavLink>
                 <span
-                class="collapse-icon"
-                :class="{ 'rotate-180': collapsed }"
-                @click="toggleSidebar"
-              >
-                <i class="fas fa-angle-double-left" />
-              </span>
-
-
-
-
+                    class="collapse-icon"
+                    :class="{ 'rotate-180': collapsed }"
+                    @click="toggleSidebar"
+                >
+                    <i class="fas fa-angle-double-left" />
+                </span>
             </nav>
         </div>
     </aside>

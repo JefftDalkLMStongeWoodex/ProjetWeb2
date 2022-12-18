@@ -13,4 +13,8 @@ class Province extends Model
         'nom',
         'nom_en'
     ];
+
+    public function taxes() {
+        return $this->hasMany('App\Models\Taxe', 'provinces_id', 'id');
+    }
 }
