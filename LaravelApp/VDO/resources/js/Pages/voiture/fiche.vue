@@ -87,17 +87,10 @@ defineProps({
 }
 
 @media screen and (max-width: 1020px){
-    .grid_item1{
-        grid-column: col /span 6;
+    .grid_item1, .grid_item2 {
+        grid-column: col / span 12;
     }
-
-    .grid_item2 {
-        grid-column: col 7 /span 6;
-    }
-    .grid_item3, .grid_item4, .grid_item12{
-        grid-column: col /span 12;
-    }
-
+    
 }
 
 @media screen  and (max-width: 600px){

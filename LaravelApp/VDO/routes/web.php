@@ -45,6 +45,15 @@ Route::get('/', function () {
 })->name('accueil');
 
 
+
+Route::get('/politique', function () {
+    return Inertia::render('Politique', [
+           'langAppLayout' => Lang::get('app_layout'),
+    ]);
+})->name('politque');
+
+
+
 Route::get('/facturation', function () {
     return Inertia::render('Facturation', [
         'langDashboard' => Lang::get('dashboard'),
