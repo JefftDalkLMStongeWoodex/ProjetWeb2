@@ -43,23 +43,31 @@ Route::get('/', function () {
     ]);
 })->name('accueil');
 
-
 Route::get('/facturation', function () {
     return Inertia::render('Facturation', [
         'langDashboard' => Lang::get('dashboard'),
     ]);
 })->name('facturation');
 
-// Route::get('/apropos', function () {return Inertia::render('APropos'); })->name('apropos');
+Route::get('/apropos', function () {
+    return Inertia::render('APropos',[
+        'langAppLayout' => Lang::get('app_layout'),
+    ]); 
+})->name('apropos');
+
+Route::get('/contact', function() { 
+    return Inertia::render('Contact', [
+        'langAppLayout' => Lang::get('app_layout'),
+    ]); 
+})->name('contact');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
 
-// Route::get('/contact', function() { return Inertia::render('Contact'); })->name('contact');
+
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
 
 Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voiture.index');
-
 
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
 
