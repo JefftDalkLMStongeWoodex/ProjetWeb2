@@ -10,8 +10,8 @@ defineProps({
     mustVerifyEmail: Boolean,
     status: Boolean,
     langProfil: Object,
-    langDashboard: Object
-
+    langDashboard: Object,
+    villes: Object,
 });
 
 
@@ -34,20 +34,19 @@ defineProps({
                             :status="status"
                             class="max-w-xl"
                             :lang="langProfil"
+                            :villes="villes"
                         />
                     </div>
 
                     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                         <UpdatePasswordForm class="max-w-xl" 
                         :lang="langProfil"
-                        
                         />
                     </div>
 
                     <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                         <DeleteUserForm class="max-w-xl" 
                         :lang="langProfil"
-                        
                         />
                     </div>
                 </div>
