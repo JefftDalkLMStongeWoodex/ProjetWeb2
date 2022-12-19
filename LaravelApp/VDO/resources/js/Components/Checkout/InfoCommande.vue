@@ -4,7 +4,8 @@ import Select from '@/Components/Select.vue';
 const props = defineProps({
     taxes: Object,
     provinces: Object,
-    panier: Object
+    panier: Object,
+    langCheckout: Object,
 })
 
 const form = useForm({
@@ -37,29 +38,29 @@ export default{
     <aside class="infoCommande">
         <form action="" @submit.prevent="submit">
             <div>
-                <h4>Récapitulatif</h4>
+                <h4>{{langCheckout.recapitulatif}}</h4>
                 <dd>
-                    <dt>Montant voiture(s):</dt>
+                    <dt>{{langCheckout.montantVoiture}}</dt>
                         <dl>{{sousTotalVoitures}}</dl>
-                    <dt>Frais de livraison:</dt>
+                    <dt>{{langCheckout.fraisLivraison}}</dt>
                         <dl></dl>
-                    <dt>Sous-total:</dt>
+                    <dt>{{langCheckout.sousTotal}}</dt>
                         <dl></dl>
                     <template v-for="taxe in taxes">
                         <dt>{{taxe.nom}} ({{taxe.taux}}%)</dt>
                             <dl>{{calculTaxe(taxe.taux)}}</dl>
                     </template>
-                    <dt>Montant total:</dt>
+                    <dt>{{langCheckout.montantTotal}}</dt>
                         <dl></dl>
                 </dd>
             </div>
 
             <div class="infoCommande__reception">
 
-                <div class="infoCommande__receptionTitre"> Comment souhaité vous recevoir la commande? </div> 
+                <div class="infoCommande__receptionTitre">{{langCheckout.commmentRecevoir}}</div> 
                 <br>
 
-                <input type="radio" name="modeExpedition" v-model="modeExpedition" id="livraison" value="1">
+                <!-- <input type="radio" name="modeExpedition" v-model="modeExpedition" id="livraison" value="1">
 
                 <label for="livraison">
                     Expédition au domicile
@@ -68,16 +69,16 @@ export default{
                 <input type="radio" name="modeExpedition" v-model="modeExpedition" id="ramassage" value="2">
                 <label for="ramassage">
                     Ramassage aux concessionnaire
-                </label>
+                </label> -->
 
                 <div class="">
                     <label >
                         <input type="radio" name="reception" id="" class="radio_input" >
-                        <div class="reception__tuile"> Expédition au domicile </div>
+                        <div class="reception__tuile">{{langCheckout.expedition}}</div>
                     </label>
                     <label >
                         <input type="radio" name="reception" id="" class="radio_input">
-                        <div class="reception__tuile">Ramassage aux concessionnaire </div>
+                        <div class="reception__tuile">{{langCheckout.ramassage}}</div>
                     </label>
 
 
