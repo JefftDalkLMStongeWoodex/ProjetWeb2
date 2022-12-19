@@ -63,6 +63,7 @@ Route::get('/contact', function() {
 })->name('contact');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
+Route::get('/catalogue/{recherche}', [CatalogueController::class, 'recherche'])->name('recherche');
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
 
