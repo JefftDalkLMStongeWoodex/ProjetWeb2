@@ -70,13 +70,13 @@ export default{
 }
 </script>
 <template>
-    <aside class="infoCommande">
+    <aside class="commande__aside">
         <form @submit.prevent="submit">
             <div class="erreur" v-if="form.errors.mode_paiements_id">{{ form.errors.mode_paiements_id }}</div>
             <div class="erreur" v-if="form.errors.mode_expeditions_id">{{ form.errors.mode_expeditions_id }}</div>
-            <div class="infoCommande__reception">
+            <div class="">
                 <div>
-                    <p class="infoCommande__receptionTitre">Choisissez un mode de paiement:</p>
+                    <p class="aside__titre">{{langCheckout.paiement_titre}}</p>
                     <div v-for="paiement of modePaiement">
                         <input 
                             type="radio" 
@@ -85,11 +85,21 @@ export default{
                             :value="paiement.id" 
                             v-model="form.mode_paiements_id"
                         />
-                        <label :for="paiement.id">{{paiement.nom}}</label>
+                        <label 
+                            v-if="$page.props.lang.locale == 'en'" :for="paiement.id"
+                        >
+                            {{paiement.nom_en}}
+                        </label>
+                        <label 
+                            v-else 
+                            :for="paiement.id"
+                        >
+                            {{paiement.nom}}
+                        </label>
                     </div>
                 </div>
                 <div>
-                    <p class="infoCommande__receptionTitre">Choisissez un mode d'expédition:</p>
+                    <p class="aside__titre">{{langCheckout.expedition_titre}}</p>
                     <div v-for="expedition of modeExpedition">
                         <template v-if="expedition.id == 1">
                             <input 
@@ -100,7 +110,18 @@ export default{
                                 v-model="form.mode_expeditions_id"
                                 @click="radioLivraison()"
                             />
-                            <label v-if="expedition.id == 1" :for="expedition.id">{{expedition.nom}} (frais de {{ montantLivraison }}$)</label>
+                            <label 
+                                v-if="$page.props.lang.locale == 'en'" 
+                                :for="expedition.id"
+                            >
+                                {{expedition.nom_en}} ({{langCheckout.label_frais}} {{ montantLivraison }}$)
+                            </label>
+                            <label 
+                                v-else
+                                :for="expedition.id"
+                            >
+                                {{expedition.nom}} ({{langCheckout.label_frais}} {{ montantLivraison }}$)
+                            </label>
                         </template>
                         <template v-else-if="expedition.id == 2">
                             <input 
@@ -111,34 +132,46 @@ export default{
                                 v-model="form.mode_expeditions_id"
                                 @click="radioRamassage()"
                             />
-                            <label :for="expedition.id">{{expedition.nom}}</label>
+                            <label 
+                                v-if="$page.props.lang.locale == 'en'" 
+                                :for="expedition.id"
+                            >
+                                {{expedition.nom_en}}
+                            </label>
+                            <label 
+                                v-else
+                                :for="expedition.id"
+                            >
+                                {{expedition.nom}}
+                            </label>
                         </template>
                     </div>
                 </div>
             </div>
-            <div>
-                <h4>{{langCheckout.recapitulatif}}</h4>
+            <div class="aside__recapitulatif">
+                <h4 class="aside__titre-recapitulatif">{{langCheckout.recapitulatif}}</h4>
                 <dl>
                     <dt>{{langCheckout.montantVoiture}}</dt>
-                    <dd>{{sousTotalVoitures}}</dd>
+                    <dd>{{sousTotalVoitures.toFixed(2)}}$</dd>
                     <template v-if="form.mode_expeditions_id == 1">
                         <dt>{{langCheckout.fraisLivraison}}</dt>
-                        <dd>{{montantLivraison}} $</dd>
+                        <dd>{{montantLivraison.toFixed(2)}}$</dd>
                     </template>
                     <template v-for="taxe in taxes">
-                        <dt>{{taxe.nom}} ({{taxe.taux}}%)</dt>
-                        <dd>{{calculTaxe(taxe.taux)}}</dd>
+                        <dt v-if="$page.props.lang.locale == 'en'">{{taxe.nom_en}} ({{taxe.taux}}%)</dt>
+                        <dt v-else>{{taxe.nom}} ({{taxe.taux}}%)</dt>
+                        <dd>{{calculTaxe(taxe.taux).toFixed(2)}}$</dd>
                     </template>
                     <dt>{{langCheckout.montantTotal}}</dt>
-                    <dd>{{ calculMontantTotal(livraison) }}</dd>
+                    <dd>{{ calculMontantTotal(livraison).toFixed(2)}}$</dd>
                 </dl>
             </div>
-            <small>En passant votre commande, vous acceptez nos <a :href="route('politique')" target="_blank">politiques de vente</a>.</small>
+            <small>{{langCheckout.politiques_message}}<a :href="route('politique')" target="_blank">{{langCheckout.politiques}}</a>.</small>
             <div v-if="form.mode_paiements_id == 15">
-                <PrimaryButton :disabled="form.processing">Payer via Paypal</PrimaryButton>
+                <PrimaryButton class="aside__cta" :disabled="form.processing">{{langCheckout.paiement_paypal}}</PrimaryButton>
             </div>
             <div v-else>
-                <PrimaryButton :disabled="form.processing">Passer la commande</PrimaryButton>
+                <PrimaryButton class="aside__cta" :disabled="form.processing">{{langCheckout.passer_commande}}</PrimaryButton>
             </div>
         </form>
     </aside>
@@ -164,19 +197,29 @@ export default{
 }
 
 .infoCommande__reception{
-    
     display: flex;
     flex-direction: column;
     padding: 1rem;
 }
 
-.infoCommande__receptionTitre{
+.aside__titre{
     font-size: 0.85rem ; 
     font-weight: bold ;  
     color: var(--couleur-principale);
+    padding-top: 1.2rem;
+    margin-bottom: 0.4rem;
 }
 
+.aside__cta {
+    margin-top: 0.4rem;
+}
 
+.aside__recapitulatif {
+    padding-bottom: 1.2rem;
+}
+.aside__titre-recapitulatif {
+    margin-bottom: 0.4rem;
+}
 
 .reception__tuile{
 
@@ -229,6 +272,10 @@ dl > dt {
     font-weight: bold;
 }
 
+dl > dd {
+    text-align: right;
+}
+
 .erreur {
     color: red;
     font-weight: bold;
@@ -240,5 +287,13 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+input[type=radio] {
+    margin-right: 0.2rem;
+}
+
+label {
+    text-transform: capitalize;
 }
 </style>

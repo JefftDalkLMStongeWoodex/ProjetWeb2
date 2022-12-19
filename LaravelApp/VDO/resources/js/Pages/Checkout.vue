@@ -24,6 +24,7 @@ const user = computed(() => usePage().props.value.auth.user)
 
 </script>
 <template>
+    <Head :title="langCheckout.passerCaisse" />
     <AppLayout :lang="langAppLayout">
         <body>
             <Head title="Checkout" />

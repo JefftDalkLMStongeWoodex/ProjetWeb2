@@ -32,5 +32,12 @@ return [
     'ramassage' => 'Ramassage aux concessionnaire',
     'commmentRecevoir' => '',
     'commmentRecevoir' => '',
+    'expedition_titre' => 'Choisissez un mode d\'expédition:',
+    'paiement_titre' => 'Choisissez un mode de paiement:',
+    'label_frais' => 'frais de ',
+    'paiement_paypal' => 'Payer via Paypal',
+    'passer_commande' => 'Passer la commande',
+    'politiques_message' => 'En passant votre commande, vous acceptez nos ',
+    'politiques' => 'politiques de vente',
 ];
 
