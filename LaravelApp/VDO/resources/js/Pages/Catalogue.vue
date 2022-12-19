@@ -6,6 +6,10 @@ import Tuiles from '@/Components/Tuiles.vue'
 import SectionFiltres from '@/Components/SectionFiltres.vue'
 import FiltreMinMax from '@/Components/FiltreMinMax.vue'
 import Select from '@/Components/Select.vue'
+import Pagination from '@/Components/Pagination.vue'
+
+
+
 const props = defineProps({
   langAppLayout: Object,
   langCatalogue: Object,
@@ -17,6 +21,7 @@ const props = defineProps({
   groupeMotopropulseurs: Object,
   carburants: Object,
   etats: Object,
+  paginer: Object, 
 })
 let voitures = props.voitures
 const clefTuiles = ref(0)
@@ -239,12 +244,25 @@ function hideFiltres(){
             </select>
           </div>
         </header>
+
+     
+
         <div class="catalogue__grille">
+           
           <Tuiles
-            :data = "voitures"
+            :data = "paginer.data"
             :key = "clefTuiles"
           />
+
+          
         </div>
+
+              <!--  Pagination -->
+              <pagination :paginer="paginer" />
+
+          
+
+
       </section>
     </section>
   </AppLayout>
