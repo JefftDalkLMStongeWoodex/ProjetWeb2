@@ -1,5 +1,7 @@
 <script setup>
   import PrimaryButton from '@/Components/PrimaryButton.vue';
+  import { Link } from '@inertiajs/inertia-vue3';
+
   const props = defineProps(['lang']);
 
 </script>
@@ -11,8 +13,8 @@
     <div class="titre">
       <h3> {{ lang.question }} </h3> </div> 
     <div class="Bouton_fiche"> 
-      <PrimaryButton> {{ lang.telephoner }} </PrimaryButton>
-    <PrimaryButton> {{ lang.discuter }}</PrimaryButton>
+      <PrimaryButton> <Link :href="route('contact')">     {{ lang.telephoner }}   </Link >   </PrimaryButton>
+    <PrimaryButton >  <Link :href="route('contact')">{{ lang.discuter }} </Link></PrimaryButton>
 
     </div>
 

@@ -69,18 +69,7 @@ class CatalogueController extends Controller
         }
         
         $paginer = $voitures;
-    
-
-       
- /*
-        $items = Item::paginate(15)->through(function ($item) {
-            return [
-                'id' => $item->id,
-                'anne' => $item->anne,
-                // etc
-            ];
-        });
-   */      
+        
         return Inertia::render('Catalogue', [
             'langAppLayout' => Lang::get('app_layout'),
             'langCatalogue' => Lang::get('catalogue'),
