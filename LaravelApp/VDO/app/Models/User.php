@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
+
 
 class User extends Authenticatable
 {
@@ -49,4 +51,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function estAdmin () {
+        return $this->privileges_id == 3;
+    }
+
+    public function estEmploye () {
+        return ($this->privileges_id == 3 || $this->privileges_id == 2); 
+    }
+
+    public function selectUtilisateurTableauDeBord($locale) {
+        $colonne_privilege = "";
+        ($locale == "en") ? ($colonne_privilege = "privileges.nom_en") : ($colonne_privilege = "privileges.nom");
+        return DB::select(
+            'SELECT users.id, name, first_name, email, telephone, telephone_portable, '. $colonne_privilege .' AS privilege
+            FROM users
+            JOIN privileges ON users.privileges_id = privileges.id'
+        );
+    }
+
+    public function ville() {
+        return $this->hasOne('App\Models\Ville', 'id', 'villes_id');
+    }
 }

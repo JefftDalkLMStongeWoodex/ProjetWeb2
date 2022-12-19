@@ -1,233 +1,89 @@
 <script setup>
-import { ref, computed } from 'vue'
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import DangerButton from '@/Components/DangerButton.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import SidebarVue from '@/Components/Sidebar.vue';
-import imgVoiture1 from '/resources/assets/kiaForte2015.jpg';
-import taxes from '@/Components/Taxes.vue';
+ import PrimaryButton from '@/Components/PrimaryButton.vue';
 
-defineProps({
-    voiture: Object,
-    langVoiture: Object,
-    langDashboard: Object
-})
-
+ 
 </script>
+
 <template>
-<div class="pannier_achat wrapper">
-
-     <div class="pannier__entete">
-
-        <h2> Pannier Achat  </h2>
-     </div>
-   
-    <div class="pannier__conteneur">
-
-        <table>
-                   <!-- col Titre table  -->
-                <tr>
+    <AppLayout :lang="langAppLayout">
+        <section>
+            <h1>Fiche Produit</h1>
+            <div class="grid">
+                <div class="grid_item grid_item1"> 
+                   
                 
-                    <th>Produit</th>
-                    <th>Quantite </th>
-                    <th>Sous-total</th>
-                </tr>
-               <tbody>
-                    <!-- col Table -->
-                    <tr>
-                        <td>   
-                                <div class="pannier_info">
-                            
-                                    <img :src="imgVoiture1" alt="voiture">
-                                        <div class="produit_info">
-                                            <p> nom du produit </p> 
-                                            <small> prix:{{voiture.prix_paye}}$</small> 
-                                            <br>
-                                                <a href="">Effacer</a>
-                                        </div>
-                                </div>
-                        </td>
-                        <td> <input type="number" value="1"> </td>
-                        <td> <p> {{voiture.prix_paye}}$</p></td>
-                    </tr>
+                </div>
+                <div class="grid_item grid_item2">   
+                    <div> 
+                    </div>
+                </div>
 
-
-            </tbody> 
-        </table>
-
-    </div>
-
-    <div class="pannier__entete"></div>
-
-
-    <div class="prix_total"> 
-            <table>
-                <tr>
-                    <td>Sous-total</td>
-                    <td>$200</td>
-                </tr>
-                <tr>
-                    <td>Taxe</td>
-                    <td>     <taxes :prix="voiture.prix_paye" /> </td>
-              
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td>$315</td>
-                </tr>
-            </table>
-            <!--   
-            <button> Passer à la caisse </button>
-            <button> Continuer vos achats  </button>
-            -->
-    </div>
-
-
-
-</div>
-
+                
+            </div>
+        </section>  
+    </AppLayout>
 </template>
+
 <style scoped>
 
-  .pannier_achat{
-    background-color: var(--couleur-secondaire);
-    padding-bottom: 100px;
-}
-.pannier__entete {
-    display: flex;
-}
-.pannier__entete  h2{
-    margin: 3rem auto ;
-    color: var(--couleur-principale);
 
+.grid{
+    display: grid;
+    grid-template-columns: repeat(12, [col] 1fr);
+    grid-auto-rows: minmax(50px, auto);
+    column-gap: 1em;
+    row-gap: 10px; 
+    margin: 2em ;
+    background-color: var(--couleur-secondaire-leger);
 }
 
-.pannier__conteneur tr:nth-of-type(even){
 
-    background-color: rgba(236, 140, 43, 0.288);
+.grid_item{
+    background-color: #eee; 
+    text-transform: uppercase;
+    padding: 1em;
+    font-size: 15px;
+     outline: 1px red dashed; 
+
+}
+.grid_item1  {
+    grid-column: col 1/ span 8;
+    min-height: 400px;
 }
 
-.pannier__conteneur table{
+.grid_item2 {
+    grid-column: col 9 / span 4;
+  
+}
 
-    width: 100%;
-    border-collapse: collapse;
+.grid_item3{
+    grid-column: col 9 / span 4;
+}
+
+.grid_item4{
+    grid-column: col 9 / span 4;
    
 }
 
-.pannier__conteneur th{
-
-    text-align: left;
-    padding: 5px 5px;
-    color: #fff;
-    background-color: var(--couleur-principale);
-    
- }
- .pannier__conteneur td input{
-
-    width: 2.5rem;
-    height: 1.875rem;
-    padding: 0.3rem;
-      
-   }
-   .pannier__conteneur td a{
-    color: red ;
-    font-size: large;
-   }
-
-   
-   .pannier__conteneur td p{
-    color: white;
-   
-   }
-
-   .pannier__conteneur td small{
-    color: white;
-   
-   }
-
-   .pannier_info{
-    display: flex ;
-   
+@media screen and (max-width: 1020px){
+    .grid_item1{
+        grid-column: col /span 6;
     }
 
-    .produit_info{
-        display: none ;
-       
-        }
-
-    .pannier_info img{
-        margin-top: 0;
-        margin-right: 0.62rem ;
-        width: 45%;
+    .grid_item2 {
+        grid-column: col 7 /span 6;
     }
-
-
-    .prix_total{
-       
-        display: flex;
-        justify-content: flex-end;
-        
-    }
-    
-    .prix_total table{
-        border-top: 3px solid ;
-        border-color: var(--couleur-principale);
-        color:  var(--couleur-blanc);
-        width: 100%;
-        max-width: 450px;
-    
-            
-    }
-
-
-    .prix_total tbody{
-       padding: 25px;
-    
-            
-    }
-
-    
-    td:last-child{
-      text-align: right;  
-    } 
-    
-    th:last-child{
-        text-align: right;  
-      } 
-
-
-
-    
-  @media (min-width: 900px) {
-    
-    .pannier_achat{
-       padding-bottom: 2rem;
-       height: 100vh;
-    
-    }
-
-    .pannier__entete  h2{
-        margin: 3rem auto ;
-        color: var(--couleur-principale);
-
-    }
-
-    .pannier__conteneur th{
-    padding: 10px 5px;
-    
-    }
-    .produit_info{
-        display: block ;
-       
-        }
-
-    .pannier_info img{
-        width: 15%;
+    .grid_item3, .grid_item4, .grid_item12{
+        grid-column: col /span 12;
     }
 
 }
 
-
-
+@media screen  and (max-width: 600px){
+    .grid_item1, .grid_item2 {
+        grid-column: col / span 12;
+    }
+    
+}
 
 </style>

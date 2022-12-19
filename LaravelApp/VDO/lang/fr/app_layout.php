@@ -21,6 +21,12 @@ return[
     'accueil_horsRoute' => 'Hors route',
     'accueil_ecolo' => 'Ecolo',
     'accueil_temoignage' => 'Témoignages',
-    
+    'panier_titre' => 'Panier d\'achat',
+    'constructeur' => 'Constructeur',
+    'modele' => 'Modèle',
+    'prix' => 'Prix',
+    'annee' => 'Année',
+    'checkout' => 'Passer la commande',
+    'panier_vide' => 'Le panier est vide. Vous pouvez ajouter une voiture au panier via la fiche de la voiture.'
 ];
 ?>
