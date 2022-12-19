@@ -73,7 +73,14 @@ Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voi
 
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
 
-Route::post('/panier/achat/', [CommandeController::class, 'create'])->name('voiture.panier');
+Route::get('/panier/achat/', [CommandeController::class, 'create'])->name('voiture.panier');
+Route::post('/panier/achat/', [CommandeController::class, 'store'])->name('commande.store');
+Route::get('/panier/achat/confirmation', function () {
+    return Inertia::render('ConfirmationAchat', [
+        'langAppLayout' => Lang::get('app_layout'),
+    ]);
+})->name('commande.confirmation');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [
