@@ -220,6 +220,11 @@ input.gachette:not(:checked) ~ .header__conteneur {
         padding-bottom: 0;
     }
 
+    .footer__liens,
+    .footer__joindre {
+        padding-top: 2rem;
+    }
+
     .footer__liste-liens{
         display: flex;
         flex-direction: column;    
