@@ -133,12 +133,13 @@ export default{
                     <dd>{{ calculMontantTotal(livraison) }}</dd>
                 </dl>
             </div>
+            <small>En passant votre commande, vous acceptez nos <a :href="route('politique')" target="_blank">politiques de vente</a>.</small>
             <div v-if="form.mode_paiements_id == 15">
-                    <PrimaryButton :disabled="form.processing">Payer via Paypal</PrimaryButton>
-                </div>
-                <div v-else>
-                    <PrimaryButton :disabled="form.processing">Passer la commande</PrimaryButton>
-                </div>
+                <PrimaryButton :disabled="form.processing">Payer via Paypal</PrimaryButton>
+            </div>
+            <div v-else>
+                <PrimaryButton :disabled="form.processing">Passer la commande</PrimaryButton>
+            </div>
         </form>
     </aside>
 </template>
@@ -233,4 +234,11 @@ dl > dt {
     font-weight: bold;
 }
 
+a {
+    color: var(--couleur-principale);
+}
+
+a:hover {
+    text-decoration: underline;
+}
 </style>
