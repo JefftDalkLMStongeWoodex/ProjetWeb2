@@ -27,17 +27,20 @@
  flex-direction: column;
   margin: auto 0 ;
   align-items: center;
-  background-color: var(--couleur-secondaire);
+  background-color: var(--couleur-secondaire-leger);
   color: var(--couleur-blanc);
-  padding: 5rem;
-
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  gap: 2rem;
 }
 
 .titre{
-  padding: 2rem;
+  margin: unset;
   text-align: center;
-  width: 100vw;
+}
 
+.titre > h3 {
+  margin: unset;
 }
 
 .Bouton_fiche {
