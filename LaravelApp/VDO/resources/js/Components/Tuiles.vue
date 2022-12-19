@@ -34,6 +34,9 @@ export default {
             </div>
         </Link>
     </slot>
+
+
+
 </template>
 <style scoped>
     .catalogue__grid__tuile__details {
