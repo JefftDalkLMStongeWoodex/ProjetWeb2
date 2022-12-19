@@ -214,7 +214,7 @@ input.gachette:not(:checked) ~ .header__conteneur {
         flex-direction: row;
         color: white;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         gap: 4rem;
         padding-top: 0;
         padding-bottom: 0;
