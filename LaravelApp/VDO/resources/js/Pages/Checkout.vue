@@ -14,12 +14,16 @@ const props = defineProps({
     langCheckout: Object,
     user_ville: Object,
     user_province: Object,
-    user_taxes: Object
+    user_taxes: Object,
+    modePaiement: Object,
+    modeExpedition: Object,
+    erreurs: Array
 })
 
 let commande = props.panier;
 
 const user = computed(() => usePage().props.value.auth.user)
+
 </script>
 <template>
     <AppLayout :lang="langAppLayout">
@@ -27,6 +31,11 @@ const user = computed(() => usePage().props.value.auth.user)
             <Head title="Checkout" />
             <section class="wrapper__checkout">
                 <h1>Passer à la caisse</h1>
+                <template v-if="$page.props.flash.erreurs_checkout">
+                    <p class="erreur" v-for="erreur in $page.props.flash.erreurs_checkout">
+                        {{erreur}}
+                    </p>
+                </template>
                 <div class="grid">
                     <div class="grid_item grid_item1"> 
                         <section>
@@ -75,7 +84,12 @@ const user = computed(() => usePage().props.value.auth.user)
                                 </thead>
                                 <tbody>
                                     <tr v-for="voiture in panier">
-                                        <td class="recapitulatif__conteneur-img"><img :src="`/storage/${voiture.images[0].chemin}`" :alt="(voiture.alt || voiture.alt_en)"></td>
+                                        <td class="recapitulatif__conteneur-img">
+                                            <template v-if="voiture.images != null">
+                                                <img :src="`/storage/${voiture.imagePrincipale[0].chemin}`" :alt="(voiture.alt || voiture.alt_en)">
+                                            </template>
+                                            <img v-else src="../../assets/kiaForte2015.jpg" class="vehicule-img" />
+                                        </td>
                                         <td>{{voiture.id}}</td>
                                         <td>{{voiture.modele.constructeur.nom}}</td>
                                         <td>{{voiture.modele.nom}}</td>
@@ -91,7 +105,9 @@ const user = computed(() => usePage().props.value.auth.user)
                         <InfoCommande
                             :panier = "panier"
                             :taxes = "user_taxes"
-                            :provinces = "props.provinces"
+                            :modePaiement = "modePaiement"
+                            :modeExpedition = "modeExpedition"
+                            :langCheckout = "langCheckout"
                         />
                     </div>
                 </div>
@@ -126,7 +142,7 @@ color: var(--couleur-principale);
 .grid_item {
    /* background-color: #eee; */
     background-color:  var(--couleur-secondaire);
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     padding: 1em;
     font-size: 15px;
 }
@@ -182,5 +198,10 @@ color: var(--couleur-principale);
 
 .recapitulatif__conteneur-img {
     width: 20%;
+}
+
+.erreur {
+    color: red;
+    font-weight: bold;
 }
 </style>
