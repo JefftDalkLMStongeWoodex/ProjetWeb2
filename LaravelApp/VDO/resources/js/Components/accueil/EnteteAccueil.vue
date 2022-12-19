@@ -81,7 +81,7 @@
   .image__entete {
     background-image: url("../../../assets/entete.jpg");
     background-repeat: no-repeat;
-    background-position: 30%;
+    background-position: 25%;
     background-size: cover;
     padding-top: 200px;
     padding-bottom: 650px;
