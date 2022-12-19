@@ -8,6 +8,7 @@ return[
     'lien_deconnexion' => 'Déconnexion',
     'lien_connexion' => 'Connexion',
     'lien_inscription' => 'Inscription',
+    'lien_politiques'=> 'Politiques de vente',
     'explorer' => 'Explorer',
     'joindre_titre' => 'Nous joindre',
     'contact_titre' => 'Contactez-nous',
