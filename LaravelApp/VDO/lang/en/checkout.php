@@ -1,4 +1,4 @@
 <?php
 return [
-    'test' => 'balls',
+    'mode_paiement' => 'How do you wish to receive your order?'
 ];

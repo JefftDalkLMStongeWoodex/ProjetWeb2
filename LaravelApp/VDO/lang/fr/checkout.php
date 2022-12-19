@@ -1,4 +1,5 @@
 <?php
 return [
-    'test' => 'couilles',
+    'mode_paiement' => 'Comment souhaitez-vous recevoir votre commande?'
+
 ];
