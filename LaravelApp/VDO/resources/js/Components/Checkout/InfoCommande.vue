@@ -85,12 +85,12 @@ export default{
                             :value="paiement.id" 
                             v-model="form.mode_paiements_id"
                         />
-                        <label 
+                        <label class="label"
                             v-if="$page.props.lang.locale == 'en'" :for="paiement.id"
                         >
                             {{paiement.nom_en}}
                         </label>
-                        <label 
+                        <label class="label"
                             v-else 
                             :for="paiement.id"
                         >
@@ -294,6 +294,10 @@ input[type=radio] {
 }
 
 label {
+    display: inline-block;
+}
+
+label::first-letter {
     text-transform: capitalize;
 }
 </style>
