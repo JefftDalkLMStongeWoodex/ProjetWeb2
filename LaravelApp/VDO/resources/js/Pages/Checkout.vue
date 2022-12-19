@@ -26,52 +26,52 @@ const user = computed(() => usePage().props.value.auth.user)
         <body>
             <Head title="Checkout" />
             <section class="wrapper__checkout">
-                <h1>Passer à la caisse</h1>
+                <h1>{{langCheckout.passerCaisse}}</h1>
                 <div class="grid">
                     <div class="grid_item grid_item1"> 
                         <section>
-                            <h5>Information client</h5>
-                            <strong>Vérifiez les informations. S'il y a des erreurs, veuillez les corriger dans le tableau de bord avant de passer votre commande.</strong>
+                            <h5>{{langCheckout.infoClient}}</h5>
+                            <strong>{{langCheckout.verifInfo}}</strong>
                             <dl class="information-utilisateur">
-                                <dt>Nom</dt>
+                                <dt>{{langCheckout.nom}}</dt>
                                 <dd>{{user.name}}</dd>
-                                <dt>Prénom</dt>
+                                <dt>{{langCheckout.prenom}}</dt>
                                 <dd>{{user.first_name}}</dd>
-                                <dt>Courriel</dt>
+                                <dt>{{langCheckout.courriel}}</dt>
                                 <dd>{{user.email}}</dd>
-                                <dt>Adresse</dt>
+                                <dt>{{langCheckout.adresse}}</dt>
                                 <dd>{{user.adresse}}</dd>
                                 <template v-if="$page.props.lang.locale == 'fr'">
-                                    <dt>Ville</dt>
+                                    <dt>{{langCheckout.ville}}</dt>
                                     <dd>{{user_ville.nom}}</dd>
-                                    <dt>Province</dt>
+                                    <dt>{{langCheckout.province}}</dt>
                                     <dd>{{user_province.nom}}</dd>
                                 </template>
                                 <template v-else>
-                                    <dt>Ville</dt>
+                                    <dt>{{langCheckout.ville}}</dt>
                                     <dd>{{user_ville.nom_en}}</dd>
-                                    <dt>Province</dt>
+                                    <dt>{{langCheckout.province}}</dt>
                                     <dd>{{user_province.nom_en}}</dd>
                                 </template>
-                                <dt>Code postal</dt>
+                                <dt>{{langCheckout.codePostal}}</dt>
                                 <dd>{{user.code_postal}}</dd>
-                                <dt>Téléphone (maison)</dt>
+                                <dt>{{langCheckout.telephone}}</dt>
                                 <dd>{{user.telephone}}</dd>
-                                <dt>Téléphone (cellulaire)</dt>
+                                <dt>{{langCheckout.cellulaire}}</dt>
                                 <dd>{{user.telephone_portable}}</dd>
                             </dl>
                         </section>
                         <section>
-                            <h5>Revoir les voitures</h5>
+                            <h5>{{langCheckout.revoirVoitures}}</h5>
                             <table class="recapitulatif">
                                 <thead>
-                                    <th>Image</th>
-                                    <th>ID</th>
-                                    <th>Constructeur</th>
-                                    <th>Modèle</th>
-                                    <th>Année</th>
-                                    <th>Kilométrage</th>
-                                    <th>Prix</th>
+                                    <th>{{langCheckout.image}}</th>
+                                    <th>{{langCheckout.id}}</th>
+                                    <th>{{langCheckout.constructeur}}</th>
+                                    <th>{{langCheckout.modele}}</th>
+                                    <th>{{langCheckout.annee}}</th>
+                                    <th>{{langCheckout.kilometrage}}</th>
+                                    <th>{{langCheckout.prix}}</th>
                                 </thead>
                                 <tbody>
                                     <tr v-for="voiture in panier">
@@ -92,6 +92,7 @@ const user = computed(() => usePage().props.value.auth.user)
                             :panier = "panier"
                             :taxes = "user_taxes"
                             :provinces = "props.provinces"
+                            :langCheckout = "$props.langCheckout"
                         />
                     </div>
                 </div>
