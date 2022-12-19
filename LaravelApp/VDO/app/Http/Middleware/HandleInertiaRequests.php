@@ -46,6 +46,12 @@ class HandleInertiaRequests extends Middleware
             'lang' => [
                 'locale' => session()->get('locale'),
             ],
+            'flash' => function () use ($request) {
+                return [
+                    'erreurs_checkout' => $request->session()->get('erreurs_checkout'),
+                    'succes_achat' => $request->session()->get('succes_achat')
+                ];
+            }
         ]);
     }
 }
