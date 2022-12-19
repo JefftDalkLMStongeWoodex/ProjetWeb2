@@ -72,6 +72,7 @@ Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voi
 
 
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
+Route::get('/voiture/reservation/{voiture}', [PanierAchatController::class, 'reservation'])->name('voiture.reservation');
 
 Route::post('/panier/achat/', [CommandeController::class, 'create'])->name('voiture.panier');
 
