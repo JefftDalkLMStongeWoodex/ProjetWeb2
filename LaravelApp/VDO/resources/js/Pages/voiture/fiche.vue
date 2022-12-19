@@ -23,7 +23,7 @@ defineProps({
 <template>
     <AppLayout :lang="langAppLayout">
         <section>
-            <h1>{{langCatalogue.titre_fiche}}</h1>
+            <h1 class="wrapper">{{langCatalogue.titre_fiche}}</h1>
             <div class="grid wrapper">
                 <div class="grid_item grid_item1"> 
                     <Gallerie :imagePrincipale="voiture.imagePrincipale[0]" :images="voiture.images" :lang="langCatalogue"/>
@@ -34,11 +34,9 @@ defineProps({
                         <Fiche :detailVoiture="voiture" :lang="langCatalogue" />
                     </div>
                 </div>
-
-                 <div class="grid_item grid_item3">  
+                <div class="grid_item grid_item3">  
                     <Specifications :Specifications="voiture" :lang="langCatalogue"   />   
                 </div>
-                 
             </div>
             <div class=""> 
                 <AppelAction :lang="langCatalogue" />  
