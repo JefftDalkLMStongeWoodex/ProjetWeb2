@@ -1,5 +1,5 @@
 <script setup>
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head, useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import EnteteAccueil from '@/Components/accueil/EnteteAccueil.vue';
 import ModeDeVie from '@/Components/accueil/ModeDeVie.vue';
@@ -11,13 +11,22 @@ defineProps({
     langAppLayout: Object,
 });
 </script>
+<script>
+export default {
+    data () {
+        return {
+            recherche: "",
+        }
+    }
+}
+</script>
 <template>
     <Head title="Accueil" />
     <AppLayout :lang="langAppLayout">
         
             <div class="grid">
                 <div class="entete">
-                    <EnteteAccueil :lang="langAppLayout" />
+                    <EnteteAccueil :lang="langAppLayout" :recherche="recherche"/>
                 </div>
 
                 <div class="mode wrapper">
