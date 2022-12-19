@@ -85,7 +85,7 @@ defineProps({
                 </tfoot>
             </table>
             <SecondaryButton>
-                <Link href="/panier/achat/" method="post" :data="panier" as="button">{{lang.checkout}}</Link>
+                <Link href="/panier/achat/" method="get" :data="panier" as="button">{{lang.checkout}}</Link>
             </SecondaryButton>
         </template>
     </div>
