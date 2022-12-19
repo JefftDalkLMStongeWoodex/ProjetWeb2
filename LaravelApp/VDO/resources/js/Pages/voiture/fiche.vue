@@ -47,9 +47,7 @@ defineProps({
     </AppLayout>
 </template>
 
-<style>
-
-
+<style scoped>
 .grid{
     display: grid;
     grid-template-columns: repeat(12, [col] 1fr);
