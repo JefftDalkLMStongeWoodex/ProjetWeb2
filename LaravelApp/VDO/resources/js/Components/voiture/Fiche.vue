@@ -19,7 +19,12 @@
                 panier = [...panier, this.detailVoiture]                
                 panier = JSON.stringify(panier)
                 sessionStorage.setItem("panier", panier)
+            },
+            reserverVoiture (id) {
+                console.log('balls');
+                window.location.replace(`/voiture/reservation/${id}`)
             }
+            
         }
     }
 </script>
@@ -30,7 +35,7 @@
 <p> {{detailVoiture.description}} </p>
 
 <div class="Button_fiche">
-    <PrimaryButton>
+    <PrimaryButton @click="reserverVoiture(detailVoiture.id)">
         {{lang.reserve}}
     </PrimaryButton>
 

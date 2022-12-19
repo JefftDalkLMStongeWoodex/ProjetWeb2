@@ -5,10 +5,6 @@ import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue';
 import TextInput from '@/Components/TextInput.vue';
 
-
-
-
-
 const props = defineProps({
     taxes: Object,
     provinces: Object,
@@ -121,19 +117,19 @@ export default{
                 </div>
             </div>
             <div>
-                <h4>Récapitulatif</h4>
+                <h4>{{langCheckout.recapitulatif}}</h4>
                 <dl>
-                    <dt>Voiture(s):</dt>
+                    <dt>{{langCheckout.montantVoiture}}</dt>
                     <dd>{{sousTotalVoitures}}</dd>
                     <template v-if="form.mode_expeditions_id == 1">
-                        <dt>Frais de livraison:</dt>
-                        <dd>{{montantLivraison}}$</dd>
+                        <dt>{{langCheckout.fraisLivraison}}</dt>
+                        <dd>{{montantLivraison}} $</dd>
                     </template>
                     <template v-for="taxe in taxes">
                         <dt>{{taxe.nom}} ({{taxe.taux}}%)</dt>
                         <dd>{{calculTaxe(taxe.taux)}}</dd>
                     </template>
-                    <dt>Montant total:</dt>
+                    <dt>{{langCheckout.montantTotal}}</dt>
                     <dd>{{ calculMontantTotal(livraison) }}</dd>
                 </dl>
             </div>
@@ -197,27 +193,23 @@ export default{
 } 
 
 .radio_input:checked+ .reception__tuile {
-
-   background-color: var(--couleur-principale);
-   color:  var(--couleur-blanc);
-
+    background-color: var(--couleur-principale);
+    color:  var(--couleur-blanc);
 }
+
 .radio_input{
-display: none; 
+    display: none; 
 }
 
 
 @media screen  and (max-width: 600px){
     .reception__tuile{
-       
         display: flex;
         padding: 0.5rem;
         margin: 1rem 0rem 1rem 0rem;
         cursor: pointer;
         font-size: 1rem;
-   
     } 
-    
 }
 
 dl {

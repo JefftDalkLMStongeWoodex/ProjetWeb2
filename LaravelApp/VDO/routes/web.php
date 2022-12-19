@@ -48,6 +48,7 @@ Route::get('/', function () {
 
 Route::get('/politique', function () {
     return Inertia::render('Politique', [
+           'langPolitque' => Lang::get('politique'),
            'langAppLayout' => Lang::get('app_layout'),
     ]);
 })->name('politque');
@@ -70,8 +71,8 @@ Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('la
 
 Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voiture.index');
 
-
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
+Route::get('/voiture/reservation/{voiture}', [PanierAchatController::class, 'reservation'])->name('voiture.reservation');
 
 Route::get('/panier/achat/', [CommandeController::class, 'create'])->name('voiture.panier');
 Route::post('/panier/achat/', [CommandeController::class, 'store'])->name('commande.store');

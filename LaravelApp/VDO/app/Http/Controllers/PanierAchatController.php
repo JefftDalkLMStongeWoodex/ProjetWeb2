@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 use Lang;
+use Auth;
 
 class PanierAchatController extends Controller
 {
@@ -94,6 +95,17 @@ class PanierAchatController extends Controller
             'langCatalogue' => Lang::get('catalogue'),
             'langAppLayout' => Lang::get('app_layout'),
         ]);
+    }
+
+    public function reservation(Voiture $voiture)
+    {
+        if(Auth::check()) {
+            $user = Auth::user();
+            $voiture->update(['statut_voitures_id'=>2,'reservation_users_id'=>$user->id]);
+        }
+        else {
+            return redirect(route("login"));
+        }
     }
 
 

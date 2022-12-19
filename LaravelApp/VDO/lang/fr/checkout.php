@@ -1,5 +1,36 @@
 <?php
 return [
-    'mode_paiement' => 'Comment souhaitez-vous recevoir votre commande?'
-
+    'mode_paiement' => 'Comment souhaitez-vous recevoir votre commande?',
+    'passerCaisse' => 'Passer à la caisse',
+    'infoClient' => 'Information du client',
+    'verifInfo' => "Vérifiez les informations. S'il y a des erreurs, veuillez les corriger dans le tableau de bord avant de passer votre commande.",
+    'nom' => 'Nom',
+    'prenom' => 'Prenom',
+    'courriel' => 'Courriel',
+    'adresse' => 'Adresse',
+    'ville' => 'Ville',
+    'province' => 'Province',
+    'codePostal' => 'Code Postal',
+    'telephone' => 'Téléphone (maison)',
+    'cellulaire' => 'Cellulaire',
+    'revoirVoitures' => 'Revoir les voitures',
+    'image' => 'Image',
+    'id' => 'Id',
+    'constructeur' => 'Constructeur',
+    'modèle' => 'Modèle',
+    'annee' => 'Année',
+    'kilometrage' => 'Kilométrage',
+    'prix' => 'Prix',
+    'recapitulatif' => "Récapitulatif",
+    "montantVoiture" => "Voiture(s):",
+    'fraisLivraison' => 'Frais de livraison:',
+    'recapitulatif' => "Récapitulatif",
+    'sousTotal' => "Sous-total:",
+    'montantTotal' => "Montant total:",
+    'commmentRecevoir' => 'Comment souhaité vous recevoir la commande?',
+    'expedition' => 'Expédition au domicile',
+    'ramassage' => 'Ramassage aux concessionnaire',
+    'commmentRecevoir' => '',
+    'commmentRecevoir' => '',
 ];
+
