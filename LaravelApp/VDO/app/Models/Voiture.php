@@ -92,4 +92,20 @@ class Voiture extends Model
             AND image_principale = 1'
         );
     }
+
+    public function vendue($idVoiture, $idCommande) {
+        $detailsUpdate = [
+            'statut_voitures_id' => 3,
+            'commandes_id' => $idCommande
+        ];
+
+        return DB::table('voitures')
+            ->where('id', $idVoiture)
+            ->update($detailsUpdate);
+    }
+
+    public function estDisponible($idVoiture) {
+        $voiture = Voiture::find($idVoiture);
+        return $voiture->statut_voitures_id == 1;
+    }
 }

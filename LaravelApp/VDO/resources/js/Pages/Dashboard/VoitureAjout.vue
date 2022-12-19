@@ -7,6 +7,7 @@ import { Head, useForm } from '@inertiajs/inertia-vue3';
 import Select from '@/Components/Select.vue';
 import SidebarVue from '@/Components/Sidebar.vue';
 import TableauDeBordLayout from '@/Layouts/TableauDeBord.vue';
+
 defineProps({
     modeles: Object,
     corps: Object,
@@ -274,10 +275,6 @@ textarea {
     width: 100%;
     margin-bottom: 2rem;
 }
-/* .titre-contenu {
-    text-align: center;
-    text-transform: uppercase;
-} */
 
 .titre {
     font-family: var(--police-titre);
@@ -285,7 +282,6 @@ textarea {
     color: var(--couleur-secondaire);
     padding: 1rem 0 ;
 }
-
 
 p {
     color:  var(--couleur-blanc);
