@@ -14,7 +14,7 @@ defineProps({
 
 <template>
     
-
+    <div class="layout__conteneur">
         <!-- Page Heading -->
         <header class="header">
             <nav class="header__navigation">
@@ -25,39 +25,48 @@ defineProps({
             </nav>
         </header>
 
-    <div class="conteneur ">
-        <div class="conteneur-formulaire  wrapper">
-            <div class="">
-               
-        
-                <div class="formulaire">
-                    <slot />
+        <!-- Contenu -->
+        <div class="conteneur content">
+            <div class="conteneur-formulaire  wrapper">
+                <div class="">
+                    <div class="formulaire">
+                        <slot />
+                    </div>
                 </div>
-        
+                <div class="image">
+                    <img :src="voitureFormulaire" alt="voiture formulaire de creation de compte">
+                </div>
             </div>
-    
-            <div class="image">
-                <img :src="voitureFormulaire" alt="voiture formulaire de creation de compte">
-            </div>
-    
-    
-
         </div>
-        
+
+        <!-- Footer -->
+        <footer class="footer">
+            <PiedPageVue :lang="lang"  />
+        </footer>
     </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-
-    <PiedPageVue :lang="lang"  />
-    
-</footer>
-
-
-
 </template>
 <style scoped>
+.layout__conteneur {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: static;
+}
 
+.header {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.content {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.footer {
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
 .conteneur{
     display: flex;
     background: var(--couleur-secondaire-leger)
