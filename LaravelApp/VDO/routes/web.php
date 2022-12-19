@@ -51,7 +51,7 @@ Route::get('/politique', function () {
            'langPolitque' => Lang::get('politique'),
            'langAppLayout' => Lang::get('app_layout'),
     ]);
-})->name('politque');
+})->name('politique');
 
 
 

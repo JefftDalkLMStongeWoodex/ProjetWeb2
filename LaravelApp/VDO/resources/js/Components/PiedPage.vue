@@ -24,7 +24,7 @@ const showingNavigationDropdown = ref(false);
             <h4>{{lang.explorer}}</h4>
             <div class="footer__liste-liens">
                 <NavLink class="footer__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
-                <NavLink class="footer__lien" :href="route('politque')">Politique </NavLink>
+                <NavLink class="footer__lien" :href="route('politique')">{{lang.lien_politiques}} </NavLink>
                 <template v-if="$page.props.auth.user">
                     <NavLink class="footer__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
                     <NavLink class="footer__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
