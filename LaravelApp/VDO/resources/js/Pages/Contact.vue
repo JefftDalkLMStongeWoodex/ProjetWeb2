@@ -13,182 +13,210 @@ defineProps({
   <AppLayout :lang="langAppLayout">
     <Head title="Contact" />
     <section class="">
-      <div class="box">
-        <div class="text">
-        <h1>Contact <span class="red">Us</span></h1>
-        <hr class="redline">
-        <p>Have Questions ? We have answers ( may be )</p>
-        </div>
-      </div>
-
-      <div class="wrapper">
-        <div class="touch">
-        <h2>Get in touch</h2>
-        <hr class="redline">
-      </div>
+      <h1 class="section__titre">Contact</h1>
   
-      <form action="" method="POST" name="contact-form">
-      <div class="container form-margin">
-        <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>     <div class="col-lg-4 col-md-4 col-sm-4">
-          <div class="form-group">
-        <input type="text" class="form-control" placeholder="First Name" ng-model="firstname" name="firstname" required>    
-          </div>
-        <div class="form-group">
-        <input type="text" class="form-control" placeholder="Company Name" ng-model="company" name="company" required>    
-          </div>
-        <div class="form-group">
-        <input type="text" class="form-control" placeholder="Phone" ng-model="phone" name="firstname" required>    
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <div class="form-group">
-        <input type="text" class="form-control" placeholder="Last Name" ng-model="lastname" name="lastname" required>    
-          </div>
-          <div class="form-group">
-        <input type="email" class="form-control" placeholder="E-mail" ng-model="email" name="email" required>    
-          </div>
-          <div class="form-group">
-        <input type="text" class="form-control" placeholder="Course" ng-model="course" name="course" required>    
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+  <div class="contact-wrapper">
+  <!-- Left contact page --> 
+    <form id="contact-form" class="form-horizontal" role="form">
+      <div class="form-group">
+        <div class="form-group__input">
+          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
         </div>
       </div>
-      
-      <div class="container">
-        <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-        <div class="col-lg-8 col-md-8 col-sm-8">
-          <div class="form-group">
-        <textarea class="form-control" rows="6" placeholder="Message" ng-model="message" name="message" required></textarea>
-      </div>  
-          <div class="pager">
-          <button type="submit" class="btn btn-success">SEND MESSAGE</button>
-          </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-      
-      </div>
-      </form>
-    <!--address-->
 
-  <div class="container address">
-    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-    <div class="col-lg-4 col-md-4 col-sm-4">
-      <h3>Our Address</h3>
-      <div class="redline-address"></div>
-      <p>3800 Sherbrooke St E</p>
-      <p>Montreal,</p>
-      <p>Quebec</p>
-      <p>H1X 2A2</p>
-      <div class="phone-e">
-      <p><span class="glyphicon glyphicon-envelope"> </span> info@vdoInc  /.com</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +91-97427 66186</p>
+      <div class="form-group">
+        <div class="form-group__input">
+          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
+        </div>
       </div>
-    </div>
-    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+
+      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message" required></textarea>
+      
+      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
+        <div class="alt-send-button">
+          <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
+        </div>
+      
+      </button>
+      
+    </form>
+    
+  <!-- Left contact page --> 
+    
+      <div class="direct-contact-container">
+
+        <ul class="contact-list">
+          <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">City, State</span></i></li>
+          
+          <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i></li>
+          
+          <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
+          
+        </ul>
+
+        <hr>
+        <div class="copyright">&copy; ALL OF THE RIGHTS RESERVED</div>
+      </div>
+    
+  </div>
+
       <!--map-->
       <div style="width: 100%"><iframe scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Coll%C3%A8ge%20de%20Maisonneuve,%203800%20Sherbrooke%20St%20E,%20Montreal,%20Quebec%20H1X%202A2+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="600" frameborder="0"><a href="https://www.maps.ie/distance-area-calculator.html">distance maps</a></iframe></div>
 
-    </div>
-    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 
-  </div>
-  
-  <div class="bottom-gap"></div>
-      </div>
       
       
     </section>
   </AppLayout>
 </template>
 <style scoped>
-.box{
-  background: url("../../assets/img8.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 500px;
-  color: white;
-  text-align:center;
-  z-index:1;
-}
-.text{
-    padding: 100px 0;
-}
-.box p{
-  font-size:18px;
-}
-.red{
-  color:var(--couleur-principale);
-}
-.redline{
-  width:100px;
-  height:3px;
-  background-color:var(--couleur-principale);
-  border:none;
-}
-.touch h2{
-  padding-top: 20px;
+.section__titre {
   text-align: center;
+  margin: 0 auto;
+  padding: 40px 0;
+  color: var(--couleur-secondaire);
+  text-transform: uppercase;
+  letter-spacing: 6px;
 }
-.form-margin{
-  margin-top: 40px;
+
+.contact-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  max-width: 840px;
 }
-.left{
-  text-align:left;
+
+/* Left contact page */
+.form-horizontal {
+  /*float: left;*/
+  /* max-width: 400px; */
 }
-h3{
-  font-variant:bold;
+
+.form-group__input {
+  display: flex;
 }
-.redline-address{
-  border:none;
-  height:3px;
-  background-color:var(--couleur-principale);
-  width:140px;
-  margin-bottom:20px;
+
+.form-control, 
+textarea {
+  max-width: 600px;
+  background-color: var(--couleur-secondaire);
+  /* color: var(--couleur-blanc); */
+  letter-spacing: 1px;
 }
-.address{
-  padding-top: 50px;
+
+.send-button {
+  margin-top: 15px;
+  height: 34px;
+  width: 400px;
+  overflow: hidden;
+  transition: all .2s ease-in-out;
 }
-.address p{
-  font-weight:bold;
-  color: #676565;
-  margin:3px;
+
+.alt-send-button {
+  width: 400px;
+  height: 34px;
+  transition: all .2s ease-in-out;
 }
-.phone-e{
-  padding:15px 0;
+
+.send-text {
+  display: block;
+  margin-top: 10px;
+  font: 700 12px 'Lato', sans-serif;
+  letter-spacing: 2px;
 }
-.logo img{
-  height:50px;
-  width:150px;
-  z-index:2;
-  float:left;
-  margin-top:10px;
+
+.alt-send-button:hover {
+  transform: translate3d(0px, -29px, 0px);
 }
-.bottom-gap{
-  margin-bottom:100px;
+
+/* Right Contact Page */
+.direct-contact-container {
+  max-width: 400px;
 }
-/*validation css*/
-input.ng-valid {
-  background-color:#dff0d8;
+
+/* Location, Phone, Email Section */
+.contact-list {
+  margin-left: -30px;
+  padding-right: 20px;
 }
-input.ng-invalid {
-    background-color:#f2dede;
+
+.list-item {
+  line-height: 4;
+  color:black;
 }
-input.ng-pristine{
-  background-color:white;
+
+.contact-text {
+  letter-spacing: 1.9px;
+  color: var(--couleur-secondaire);
 }
-textarea.ng-invalid {
-    background-color:#f2dede;
+
+.place {
+  margin-left: 62px;
 }
-textarea.ng-pristine{
-  background-color:white;
+
+.phone {
+  margin-left: 56px;
 }
-textarea.ng-valid {
-  background-color:#dff0d8;
+
+.gmail {
+  margin-left: 53px;
 }
+
+.contact-text a {
+  color: var(--couleur-secondaire);
+  transition-duration: 0.2s;
+}
+
+.contact-text a:hover {
+  color: var(--couleur-secondaire);
+  text-decoration: none;
+}
+
+/* @media screen and (max-width: 850px) {
+  .contact-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .direct-contact-container, .form-horizontal {
+    margin: 0 auto;
+  }  
+  
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 300px;
+  }    
+}
+
+@media screen and (max-width: 569px) {
+  .direct-contact-container, .form-wrapper {
+    float: none;
+    margin: 0 auto;
+  }  
+  .form-control, textarea {
+    
+    margin: 0 auto;
+  }
+ 
+  
+  .name, .email, textarea {
+    width: 280px;
+  } 
+  
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 280px;
+  }  
+ 
+}
+
+@media screen and (max-width: 410px) {
+  .send-button {
+    width: 99%;
+  }
+} */
+
 </style>
    
