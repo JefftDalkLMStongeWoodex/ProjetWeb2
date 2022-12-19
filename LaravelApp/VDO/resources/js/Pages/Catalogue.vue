@@ -8,8 +8,6 @@ import FiltreMinMax from '@/Components/FiltreMinMax.vue'
 import Select from '@/Components/Select.vue'
 import Pagination from '@/Components/Pagination.vue'
 
-
-
 const props = defineProps({
   langAppLayout: Object,
   langCatalogue: Object,
@@ -248,21 +246,11 @@ function hideFiltres(){
      
 
         <div class="catalogue__grille">
-           
           <Tuiles
-            :data = "paginer.data"
+            :data = "voitures"
             :key = "clefTuiles"
           />
-
-          
         </div>
-
-              <!--  Pagination -->
-              <pagination :paginer="paginer" />
-
-          
-
-
       </section>
     </section>
   </AppLayout>
