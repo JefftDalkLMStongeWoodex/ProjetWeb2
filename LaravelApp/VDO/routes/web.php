@@ -25,15 +25,6 @@ use Illuminate\Support\Facades\Lang;
 |
 */
 
-// Route::get('/homepage', function () {
-//     return Inertia::render('Homepage', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
 Route::get('/', function () {
     return Inertia::render('Accueil', [
         'canLogin' => Route::has('login'),
@@ -45,7 +36,6 @@ Route::get('/', function () {
 })->name('accueil');
 
 
-
 Route::get('/politique', function () {
     return Inertia::render('Politique', [
            'langPolitque' => Lang::get('politique'),
@@ -54,18 +44,25 @@ Route::get('/politique', function () {
 })->name('politique');
 
 
-
 Route::get('/facturation', function () {
     return Inertia::render('Facturation', [
         'langDashboard' => Lang::get('dashboard'),
     ]);
 })->name('facturation');
 
-// Route::get('/apropos', function () {return Inertia::render('APropos'); })->name('apropos');
+Route::get('/apropos', function () {
+    return Inertia::render('APropos',[
+        'langAppLayout' => Lang::get('app_layout'),
+    ]); 
+})->name('apropos');
+
+Route::get('/contact', function() { 
+    return Inertia::render('Contact', [
+        'langAppLayout' => Lang::get('app_layout'),
+    ]); 
+})->name('contact');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
-
-// Route::get('/contact', function() { return Inertia::render('Contact'); })->name('contact');
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
 

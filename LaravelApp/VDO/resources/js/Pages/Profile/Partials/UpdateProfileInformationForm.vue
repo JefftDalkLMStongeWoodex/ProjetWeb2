@@ -5,18 +5,27 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
 import { ref } from 'vue';
+import Select from '@/Components/Select.vue';
 
 const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
     lang:  Object,
+    villes: Object,
 });
 
 const user = usePage().props.value.auth.user;
 
 const form = useForm({
     name: user.name,
+    first_name: user.first_name,
     email: user.email,
+    anniversaire: user.anniversaire,
+    adresse: user.adresse,
+    code_postal: user.code_postal,
+    telephone: user.telephone,
+    telephone_portable: user.telephone_portable,
+    villes_id: user.villes_id,
 });
 </script>
 
@@ -45,6 +54,97 @@ const form = useForm({
                 />
 
                 <InputError class="mt-2" :message="form.errors.name" />
+            </div>
+
+            <div>
+                <InputLabel for="first_name" :value="lang.first_name" />
+
+                <TextInput
+                    id="first_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.first_name"
+                    required
+                    autofocus
+                    autocomplete="first_name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.first_name" />
+            </div>
+            
+            <div>
+                <InputLabel for="adresse" :value="lang.adresse" />
+
+                <TextInput
+                    id="adresse"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.adresse"
+                    required
+                    autofocus
+                    autocomplete="adresse"
+                />
+
+                <InputError class="mt-2" :message="form.errors.adresse" />
+            </div>
+
+            <div>
+                <InputLabel for="code_postal" :value="lang.code_postal" />
+
+                <TextInput
+                    id="code_postal"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.code_postal"
+                    required
+                    autofocus
+                    autocomplete="code_postal"
+                />
+
+                <InputError class="mt-2" :message="form.errors.code_postal" />
+            </div>
+
+            <div>
+                <InputLabel for="telephone" :value="lang.telephone" />
+
+                <TextInput
+                    id="telephone"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.telephone"
+                    required
+                    autofocus
+                    autocomplete="telephone"
+                />
+
+                <InputError class="mt-2" :message="form.errors.telephone" />
+            </div>
+
+            <div>
+                <InputLabel for="telephone_portable" :value="lang.telephone" />
+
+                <TextInput
+                    id="telephone_portable"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.telephone_portable"
+                    required
+                    autofocus
+                    autocomplete="telephone_portable"
+                />
+
+                <InputError class="mt-2" :message="form.errors.telephone_portable" />
+            </div>
+
+            <div>
+                <InputLabel for="villes_id" :value="lang.villes_id" />
+
+                <Select
+                :options = "$props.villes"
+                colonneAffichee = "nom"
+                />
+
+                <InputError class="mt-2" :message="form.errors.villes_id" />
             </div>
 
             <div>

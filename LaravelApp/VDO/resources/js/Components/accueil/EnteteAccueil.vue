@@ -24,7 +24,7 @@
         <input 
           type="search" 
           class="image__barre-recherche"
-          placeholder="Recherche par marque, modèle ou mots-clés"
+          :placeholder="lang.accueil_placerholder"
         >
       </div>
       
@@ -78,6 +78,14 @@
 
 @media only screen and (max-width: 600px) {
 
+  .image__entete {
+    background-image: url("../../../assets/entete.jpg");
+    background-repeat: no-repeat;
+    background-position: 25%;
+    background-size: cover;
+    padding-top: 200px;
+    padding-bottom: 650px;
+  }
   .image__barre-recherche {
     width: 25rem;
   }

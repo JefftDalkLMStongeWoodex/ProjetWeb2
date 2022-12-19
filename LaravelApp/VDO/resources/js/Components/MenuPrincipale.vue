@@ -21,20 +21,22 @@ const props = defineProps(['detailVoiture', 'active', 'lang', 'afficherPanier'])
     <div class="header__conteneur">
         <div class="header__liens">
             <NavLink class="header__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
-            <!-- <NavLink class="header__lien" href="/contact">{{lang.lien_contact}}</NavLink> -->
+            <NavLink class="header__lien" :href="route('apropos')">{{lang.lien_apropos}}</NavLink>
+            <NavLink class="header__lien" :href="route('contact')">{{lang.lien_contact}}</NavLink>
             <template v-if="$page.props.auth.user">
                 <NavLink class="header__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
                 <NavLink class="header__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
+                <NavLink class="header__lien" :href="route('profile.edit')" method="get" as="button" style="width: 30px;height: 30px;"><i style="width: 30px;height: 30px;" class="fa-solid fa-user"></i></NavLink>
             </template>
             <template v-else>
                 <NavLink class="header__lien" :href="route('register')">{{lang.lien_inscription}}</NavLink>
                 <NavLink class="header__lien" :href="route('login')">{{lang.lien_connexion}}</NavLink>
             </template>
-            <NavLink class="header__lang" :href="route('lang', 'en')">EN</NavLink>
-            <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
             <svg class="header__cart" @click="afficherPanier" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                 <path id="Icon_material-shopping-cart" data-name="Icon material-shopping-cart" d="M10.5,27a3,3,0,1,0,3,3A3,3,0,0,0,10.5,27ZM1.5,3V6h3L9.9,17.385,7.875,21.06A2.9,2.9,0,0,0,7.5,22.5a3.009,3.009,0,0,0,3,3h18v-3H11.13a.371.371,0,0,1-.375-.375l.045-.18L12.15,19.5H23.325a2.986,2.986,0,0,0,2.625-1.545L31.32,8.22a1.465,1.465,0,0,0,.18-.72A1.5,1.5,0,0,0,30,6H7.815L6.405,3Zm24,24a3,3,0,1,0,3,3A3,3,0,0,0,25.5,27Z" transform="translate(-1.5 -3)" fill="#fff"/>
             </svg>
+            <NavLink class="header__lang" :href="route('lang', 'en')">EN</NavLink>
+            <NavLink class="header__lang" :href="route('lang', 'fr')">FR</NavLink>
         </div>
     </div>
 </template>

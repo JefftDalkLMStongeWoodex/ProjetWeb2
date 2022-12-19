@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Lang;
+use App\Models\Ville;
 class ProfileController extends Controller
 {
     /**
@@ -24,6 +25,7 @@ class ProfileController extends Controller
             'status' => session('status'),
             'langProfil' => Lang::get('profil'),
             'langDashboard' => Lang::get('dashboard'),
+            'villes' => Ville::all(),
         ]);
     }
 

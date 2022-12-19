@@ -1,5 +1,6 @@
 <script setup>
  import PrimaryButton from '@/Components/PrimaryButton.vue';
+ import { Link } from '@inertiajs/inertia-vue3';
 
  const props = defineProps(['detailVoiture', 'active', 'lang']);
 </script>
@@ -29,10 +30,24 @@
     }
 </script>
 <template>
-  <h3>{{detailVoiture.modele.nom}} {{detailVoiture.corps.type}}</h3>
-  <h4>{{prix}} $ </h4>
+  
+  <template v-if="$page.props.lang.locale == 'en'">
+    <h3>  {{detailVoiture.annee}} {{detailVoiture.modele.constructeur.nom}} {{detailVoiture.corps.type_en}}</h3>
+    <h4>{{prix}} $ </h4>
 
-<p> {{detailVoiture.description}} </p>
+    <p> {{detailVoiture.description_en}} </p>
+   </template>
+   <template v-else="$page.props.lang.locale == 'fr'">
+    <h3>  {{detailVoiture.annee}} {{detailVoiture.modele.constructeur.nom}} {{detailVoiture.corps.type}}</h3>
+
+    <h4>{{prix}} $ </h4>
+
+    <p> {{detailVoiture.description}} </p>
+
+  </template>
+
+  
+
 
 <div class="Button_fiche">
     <PrimaryButton @click="reserverVoiture(detailVoiture.id)">
@@ -43,9 +58,9 @@
         {{lang.ajouter_panier}}
     </PrimaryButton>
 
-    <PrimaryButton>
-        {{lang.contacter}}
-    </PrimaryButton>
+    <Link :href="route('contact')">  <PrimaryButton>
+      {{lang.contacter}}
+    </PrimaryButton></Link> 
 </div>
 
 </template>
