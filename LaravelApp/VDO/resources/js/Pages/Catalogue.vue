@@ -139,7 +139,7 @@ function hideFiltres(){
 <template>
   <Head title="Catalogue" />
   <AppLayout :lang="langAppLayout">
-    <section class="catalogue">
+    <section class="catalogue wrapper">
       <aside class="catalogue__sidebar">
           <div class="filtreSidebar">
             <div class="filtreSidebar__entete">
@@ -225,7 +225,7 @@ function hideFiltres(){
       </aside>
       <section class="catalogue__contenu">
         <header>
-          <h4>Résultats</h4> 
+          <h4>{{langCatalogue.resultats}}</h4> 
           
           <div class="catalogue__contenu__tri">
             <select v-model.number="form.tri" @change="tri">

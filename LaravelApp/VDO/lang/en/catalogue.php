@@ -33,5 +33,5 @@ return [
     'carburant'=> ' Fuel Type',
     'condition'=> 'Vehicle condition',
     'motopropulseur'=> 'Powertrain',
-    
+    'resultats' => 'Results'
 ];
