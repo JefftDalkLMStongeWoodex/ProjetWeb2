@@ -18,6 +18,9 @@ use Lang;
 class CatalogueController extends Controller
 {
     //
+
+    //Dispatch::where('user_id', Auth::id())->paginate(10);
+
     function index(){
         $voitures = Voiture::where('statut_voitures_id', '1')
         ->join('modeles', function($join) {
@@ -40,6 +43,9 @@ class CatalogueController extends Controller
         ->join('etats', function($join) {
             $join->on('voitures.etats_id','=','etats.id');
         })
+        ->paginate(3, array('voitures.id', 'voitures.prix_paye AS prix', 'voitures.kilometrage','voitures.annee', 'modeles.nom AS modeles','constructeurs.nom AS constructeurs','carburants.type AS carburants','groupe_motopropulseurs.type AS groupeMotopropulseurs', 'transmissions.type AS transmissions','corps.type AS corps','etats.nom AS etats'));
+        
+    /*
         ->get([
             'voitures.id',
             'voitures.prix_paye AS prix',
@@ -52,7 +58,9 @@ class CatalogueController extends Controller
             'transmissions.type AS transmissions',
             'corps.type AS corps',
             'etats.nom AS etats',
-        ]);
+        ])
+*/
+        
 
         // On ajout un taux de 25% pour la  marge de profit
         foreach($voitures as $voiture) {
@@ -60,10 +68,26 @@ class CatalogueController extends Controller
             $voiture['imagePrincipale'] = $voiture->imagePrincipale($voiture['id']);
         }
         
+        $paginer = $voitures;
+    
+
+       
+ /*
+        $items = Item::paginate(15)->through(function ($item) {
+            return [
+                'id' => $item->id,
+                'anne' => $item->anne,
+                // etc
+            ];
+        });
+   */      
         return Inertia::render('Catalogue', [
             'langAppLayout' => Lang::get('app_layout'),
             'langCatalogue' => Lang::get('catalogue'),
             'voitures' => $voitures,
+            'paginer' => $paginer,
+
+            
             'modeles' => Modele::all(),
             'constructeurs' => Constructeur::all(),
             'corps' => Corps::all(),
