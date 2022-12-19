@@ -43,6 +43,10 @@ const tableau_th = [
     </TableauDeBordLayout>
 </template>
 <style scoped>
+body {
+    background-color: var(--couleur-secondaire);
+}
+
 .images__conteneur {
     background-color: var(--couleur-secondaire);
     border-left: var(--couleur-blanc-opacite-50) solid 1px;
@@ -51,5 +55,11 @@ const tableau_th = [
     font-family: var(--police-texte);
     padding: 3rem 2rem 0rem 2rem;
     width: 100%;
+}
+
+@media only screen and (min-width: 900px) {
+    .images__conteneur {
+        border-left: var(--couleur-blanc-opacite-50) solid 1px;
+    }
 }
 </style>
