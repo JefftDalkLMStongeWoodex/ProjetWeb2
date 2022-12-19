@@ -21,7 +21,8 @@ const props = defineProps(['detailVoiture', 'active', 'lang', 'afficherPanier'])
     <div class="header__conteneur">
         <div class="header__liens">
             <NavLink class="header__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
-            <!-- <NavLink class="header__lien" href="/contact">{{lang.lien_contact}}</NavLink> -->
+            <NavLink class="header__lien" :href="route('apropos')">{{lang.lien_apropos}}</NavLink>
+            <NavLink class="header__lien" :href="route('contact')">{{lang.lien_contact}}</NavLink>
             <template v-if="$page.props.auth.user">
                 <NavLink class="header__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
                 <NavLink class="header__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
