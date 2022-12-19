@@ -1,5 +1,6 @@
 <?php
 return [
+    'mode_paiement' => 'How do you wish to receive your order?',
     'passerCaisse' => 'Checkout',
     'infoClient' => 'Client information',
     'verifInfo' => 'Verify the informations. If there are any mistakes please correct them in the dashboard before ordering',
@@ -21,7 +22,7 @@ return [
     'kilometrage' => 'Kilometers',
     'prix' => 'Price',
     'recapitulatif' => "Summary",
-    "montantVoiture" => "Car summ:",
+    "montantVoiture" => "Car(s):",
     'fraisLivraison' => 'Shipping fee:',
     'sousTotal' => "Subtotal:",
     'montantTotal' => "Total amount:",

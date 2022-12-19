@@ -1,5 +1,6 @@
 <?php
 return [
+    'mode_paiement' => 'Comment souhaitez-vous recevoir votre commande?',
     'passerCaisse' => 'Passer à la caisse',
     'infoClient' => 'Information du client',
     'verifInfo' => "Vérifiez les informations. S'il y a des erreurs, veuillez les corriger dans le tableau de bord avant de passer votre commande.",
@@ -21,7 +22,7 @@ return [
     'kilometrage' => 'Kilométrage',
     'prix' => 'Prix',
     'recapitulatif' => "Récapitulatif",
-    "montantVoiture" => "Montant voiture(s):",
+    "montantVoiture" => "Voiture(s):",
     'fraisLivraison' => 'Frais de livraison:',
     'recapitulatif' => "Récapitulatif",
     'sousTotal' => "Sous-total:",
@@ -32,3 +33,4 @@ return [
     'commmentRecevoir' => '',
     'commmentRecevoir' => '',
 ];
+
