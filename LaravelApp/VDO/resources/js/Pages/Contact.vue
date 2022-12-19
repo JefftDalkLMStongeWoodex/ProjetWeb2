@@ -247,7 +247,7 @@ defineProps({
     align-items: center;
   }
 
-  .contact{
+  .contact {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }    
@@ -262,14 +262,12 @@ defineProps({
     align-items: center;
   }
 
-
   .form-horizontal__item__control {
     width: 20rem;
   } 
   
      .contact {
     margin-top: 60px;
-    /* max-width: 280px; */
   }  
 }
 
