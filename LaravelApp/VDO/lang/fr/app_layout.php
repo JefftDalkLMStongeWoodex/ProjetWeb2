@@ -21,6 +21,7 @@ return[
     'accueil_horsRoute' => 'Hors route',
     'accueil_ecolo' => 'Ecolo',
     'accueil_temoignage' => 'Témoignages',
+    'accueil_placerholder' => 'Recherche par marque, modèle ou mots-clés',
     'panier_titre' => 'Panier d\'achat',
     'constructeur' => 'Constructeur',
     'modele' => 'Modèle',

@@ -24,7 +24,7 @@
         <input 
           type="search" 
           class="image__barre-recherche"
-          placeholder="Recherche par marque, modèle ou mots-clés"
+          :placeholder="lang.accueil_placerholder"
         >
       </div>
       
