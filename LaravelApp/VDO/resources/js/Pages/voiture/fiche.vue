@@ -23,8 +23,8 @@ defineProps({
 <template>
     <AppLayout :lang="langAppLayout">
         <section>
-            <h1>Fiche Produit</h1>
-            <div class="grid">
+            <h1>{{langCatalogue.titre_fiche}}</h1>
+            <div class="grid wrapper">
                 <div class="grid_item grid_item1"> 
                     <Gallerie :imagePrincipale="voiture.imagePrincipale[0]" :images="voiture.images" :lang="langCatalogue"/>
                     <div> <img src="" alt=""></div>
@@ -39,9 +39,9 @@ defineProps({
                     <Specifications :Specifications="voiture" :lang="langCatalogue"   />   
                 </div>
                  
-                <div class="grid_item grid_item12"> 
-                    <AppelAction :lang="langCatalogue" />  
-                </div>
+            </div>
+            <div class=""> 
+                <AppelAction :lang="langCatalogue" />  
             </div>
         </section>  
     </AppLayout>
@@ -55,14 +55,16 @@ defineProps({
     grid-template-columns: repeat(12, [col] 1fr);
     grid-auto-rows: minmax(50px, auto);
     column-gap: 1em;
-    row-gap: 15px; 
+    row-gap: 15px;
 }
 
+.wrapper {
+    padding-bottom: 6rem; 
+}
 
 .grid_item{
     /* background-color: #eee; */
     text-transform: uppercase;
-    padding: 1em;
     font-size: 15px;
     /* outline: 1px red dashed; */
 
@@ -74,11 +76,11 @@ defineProps({
 
 .grid_item2 {
     grid-column: col 7 / span 6;
-  
 }
 
 .grid_item3{
     grid-column: col 1 / span 12;
+    padding-top: 3rem;
 }
 
 .grid_item12{

@@ -7,7 +7,7 @@
 
 <template>
 
-        <section class="wrapper voitureSpecifications"> 
+        <section class="voitureSpecifications"> 
           <h1 class="voitureSpecifications__titre">  {{lang.specifications}}   </h1>
             <div class="grid  ">
                 <div class="grid_item grid_item1">                                 
