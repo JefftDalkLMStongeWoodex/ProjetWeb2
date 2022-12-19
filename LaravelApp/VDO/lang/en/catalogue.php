@@ -33,5 +33,6 @@ return [
     'carburant'=> ' Fuel Type',
     'condition'=> 'Vehicle condition',
     'motopropulseur'=> 'Powertrain',
-    'resultats' => 'Results'
+    'resultats' => 'Results',
+    'titre_fiche' => 'Product page'
 ];
