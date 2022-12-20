@@ -42,16 +42,6 @@ const props = defineProps(['href', 'active', 'lang']);
                     <!--  Menu ouvert -->
                     <span v-else>  <i class="fa fa-user" /> {{lang.profil}}</span>
                 </NavLink>
-
-                <NavLink :href="route('facturation')">
-                     <!--  Menu ferme  -->
-                     <span v-if="collapsed"> <i class="fa-solid fa-file-invoice"></i>   </span>
-                     <!--  Menu ouvert -->
-                      <span v-else>  <i class="fa-solid fa-file-invoice"></i> {{lang.factures}} </span>
-                   
-                </NavLink>
-          
-
                 <NavLink :href="route('logout')" method="post" as="button">
                     <!--  Menu ferme  -->
                     <span v-if="collapsed"> <i class="fa fa-plug" /> </span>
