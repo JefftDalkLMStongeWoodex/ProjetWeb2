@@ -20,7 +20,7 @@
         <br> 
         {{lang.accueil_occasion}}
       </h2>
-      <div class="a">
+      <div class="image__input">
         <input 
           type="search" 
           class="image__barre-recherche"
@@ -76,7 +76,8 @@
   max-width: 31rem;
 }
 
-@media only screen and (max-width: 600px) {
+/* 
+@media only screen and (max-width: 500px) {
 
   .image__entete {
     background-image: url("../../../assets/entete.jpg");
@@ -86,12 +87,34 @@
     padding-top: 200px;
     padding-bottom: 650px;
   }
+} */
+
+@media only screen and (min-width: 320px) and (max-width: 500px) {
+
+  .image__entete {
+    background-image: url("../../../assets/entete.jpg");
+    background-repeat: no-repeat;
+    background-position: 25%;
+    background-size: cover;
+    padding-top: 200px;
+    padding-bottom: 300px;
+  }
   .image__barre-recherche {
-    width: 25rem;
+    width: 18rem;
   }
 
   .image__bouton {
-    max-width: 25rem;
+    max-width: 18rem;
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 700px) {
+  .image__barre-recherche {
+    width: 20rem;
+  }
+
+  .image__bouton {
+    max-width: 20rem;
   }
 }
 </style>
