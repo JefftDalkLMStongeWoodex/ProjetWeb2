@@ -99,7 +99,7 @@ input.gachette:not(:checked) ~ .header__conteneur {
 }
 
 
-@media (min-width: 900px) {
+@media (min-width: 1130px) {
     html, body {
         width: 100%;
         height: 100%;

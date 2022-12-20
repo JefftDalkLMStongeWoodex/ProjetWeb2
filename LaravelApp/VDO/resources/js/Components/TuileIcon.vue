@@ -17,8 +17,8 @@ export default {
 </script>
 <template>
     <div class="tuile__icon">
-       <div class="icon">   <slot name="icon" /> </div>
-       <div class="tuile__contenu"> <slot name="contenu" /> </div>
+        <div class="icon">   <slot name="icon" /> </div>
+        <div class="tuile__contenu"> <slot name="contenu" /> </div>
     </div>
 </template>
 <style scoped>
@@ -40,7 +40,6 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 1.25rem;
-   
 }
 
 .tuile__contenu{
@@ -48,30 +47,17 @@ export default {
     padding: 0.625rem 1.25rem 0.625rem 0;
     text-align: center;
     width: 100%;
-
 }
 
 @media (min-width: 900px) {
-
     .icon{
-        width: 20%;
-       
+        min-width: 70px;
     }
     
     .tuile__contenu{
-       
         font-size: 2rem ;
         text-align: left;
         min-width: 70%;
-    
-    
     }
-    
-    
-    
-
-
 }
-
-
 </style>

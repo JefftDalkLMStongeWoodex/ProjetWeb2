@@ -41,7 +41,7 @@ Route::get('/politique', function () {
            'langPolitque' => Lang::get('politique'),
            'langAppLayout' => Lang::get('app_layout'),
     ]);
-})->name('politque');
+})->name('politique');
 
 
 Route::get('/facturation', function () {
@@ -63,21 +63,23 @@ Route::get('/contact', function() {
 })->name('contact');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
+Route::get('/catalogue/{recherche}', [CatalogueController::class, 'recherche'])->name('recherche');
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
-
-Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voiture.index');
 
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
 Route::get('/voiture/reservation/{voiture}', [PanierAchatController::class, 'reservation'])->name('voiture.reservation');
 
-Route::get('/panier/achat/', [CommandeController::class, 'create'])->name('voiture.panier');
-Route::post('/panier/achat/', [CommandeController::class, 'store'])->name('commande.store');
-Route::get('/panier/achat/confirmation', function () {
-    return Inertia::render('ConfirmationAchat', [
-        'langAppLayout' => Lang::get('app_layout'),
-    ]);
-})->name('commande.confirmation');
+// Routes en lien avec le check out / création de commande
+Route::middleware('auth')->group(function () {
+    Route::get('/panier/achat/', [CommandeController::class, 'create'])->name('voiture.panier');
+    Route::post('/panier/achat/', [CommandeController::class, 'store'])->name('commande.store');
+    Route::get('/panier/achat/confirmation', function () {
+        return Inertia::render('ConfirmationAchat', [
+            'langAppLayout' => Lang::get('app_layout'),
+        ]);
+    })->name('commande.confirmation');
+});
 
 
 Route::get('/dashboard', function () {

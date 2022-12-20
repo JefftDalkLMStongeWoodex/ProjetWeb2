@@ -22,13 +22,13 @@ const props = defineProps(['href', 'active', 'lang']);
                     <!--  Menu ferme  -->
                     <span v-if="collapsed"> <i class="fa fa-home" /> </span>
                     <!--  Menu ouvert -->
-                    <span v-else>   <i class="fa fa-home" />   {{lang.titre}}  </span>
+                    <span v-else>   <i class="fa fa-home" /> {{lang.titre}}</span>
                 </NavLink>
                 <NavLink :href="route('voiture.index')" >
                     <!--  Menu ferme  -->
                     <span v-if="collapsed">  <i class="fa fa-car" />  </span>
                     <!--  Menu ouvert -->
-                    <span v-else>      <i class="fa fa-car" />    {{lang.voiture}}    </span>
+                    <span v-else>      <i class="fa fa-car" /> {{lang.voiture}}</span>
                 </NavLink>
                 <NavLink :href="route('utilisateur.index')" >
                     <!--  Menu ferme  -->
@@ -40,18 +40,8 @@ const props = defineProps(['href', 'active', 'lang']);
                     <!--  Menu ferme  -->
                     <span v-if="collapsed"> <i class="fa fa-user" />   </span>
                     <!--  Menu ouvert -->
-                    <span v-else>  <i class="fa fa-user" />  Profile </span>
+                    <span v-else>  <i class="fa fa-user" /> {{lang.profil}}</span>
                 </NavLink>
-
-                <NavLink :href="route('facturation')">
-                     <!--  Menu ferme  -->
-                     <span v-if="collapsed"> <i class="fa-solid fa-file-invoice"></i>   </span>
-                     <!--  Menu ouvert -->
-                      <span v-else>  <i class="fa-solid fa-file-invoice"></i> {{lang.factures}} </span>
-                   
-                </NavLink>
-          
-
                 <NavLink :href="route('logout')" method="post" as="button">
                     <!--  Menu ferme  -->
                     <span v-if="collapsed"> <i class="fa fa-plug" /> </span>

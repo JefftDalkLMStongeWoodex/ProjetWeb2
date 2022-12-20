@@ -29,4 +29,11 @@ return [
     'commmentRecevoir' => 'How would you like to receive the order?',
     'expedition' => 'Delivered to your home',
     'ramassage' => 'Picked up at the dealership',
+    'expedition_titre' => 'Choose a shipping method:',
+    'paiement_titre' => 'Choose a payment method:',
+    'label_frais' => 'fees of ',
+    'paiement_paypal' => 'Pay with Paypal',
+    'passer_commande' => 'Send order',
+    'politiques_message' => 'By ordering, you are agreeing to our ',
+    'politiques' => 'sales policies',
 ];

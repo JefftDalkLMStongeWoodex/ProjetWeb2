@@ -110,4 +110,8 @@
     grid-column: 1/7;
     text-align: center;
 }
+
+.auction__img {
+    object-fit: cover;
+}
 </style>

@@ -164,16 +164,6 @@ input.gachette:not(:checked) ~ .header__conteneur {
     pointer-events: none;
 }
 
-.footer__conteneur {
-    background-color: var(--couleur-secondaire);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-}
-
 .footer__joindre h4, .footer__liens h4 {
     text-align: center;
 }
@@ -204,18 +194,6 @@ input.gachette:not(:checked) ~ .header__conteneur {
         background-color: var(--couleur-secondaire);
         color: var(--couleur-blanc);
         text-decoration: none;
-    }
-    .footer__conteneur{
-        background-color: var(--couleur-secondaire);
-        display: flex;
-        flex-direction: row;
-        color: white;
-        justify-content: center;
-        align-items: center;
-        gap: 4rem;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    
+    }    
 }
 </style>

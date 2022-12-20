@@ -7,5 +7,6 @@ return[
     'utilisateurs' => 'Utilisateurs',
     'lien_facture' => 'Voir la facture',
     'factures' => 'Factures',
+    'profil' => 'Profil'
 ];
 ?>

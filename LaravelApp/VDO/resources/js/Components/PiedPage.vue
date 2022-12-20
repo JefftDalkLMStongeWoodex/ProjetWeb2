@@ -24,7 +24,7 @@ const showingNavigationDropdown = ref(false);
             <h4>{{lang.explorer}}</h4>
             <div class="footer__liste-liens">
                 <NavLink class="footer__lien" :href="route('catalogue')">{{lang.lien_catalogue}}</NavLink>
-                <NavLink class="footer__lien" :href="route('politque')">Politique </NavLink>
+                <NavLink class="footer__lien" :href="route('politique')">{{lang.lien_politiques}} </NavLink>
                 <template v-if="$page.props.auth.user">
                     <NavLink class="footer__lien" :href="route('dashboard')">{{lang.lien_tableau_de_bord}}</NavLink>
                     <NavLink class="footer__lien" :href="route('logout')" method="post" as="button">{{lang.lien_deconnexion}}</NavLink>
@@ -39,10 +39,9 @@ const showingNavigationDropdown = ref(false);
         <div class="footer__joindre">
             <h4>{{lang.joindre_titre}}</h4>
             <div class="footer__liste-liens">
-                <NavLink class="footer__lien" :href="route('catalogue')">{{lang.contact_titre}}</NavLink>
-            
-                <NavLink class="footer__lien" :href="route('catalogue')">(514) 584-4546</NavLink>
-                <NavLink class="footer__lien" :href="route('catalogue')">info@vdo.ca</NavLink>
+                <NavLink class="footer__lien" :href="route('contact')">{{lang.contact_titre}}</NavLink>
+                <span>(514) 584-4546</span>
+                <span>info@vdo.ca</span>
             </div>
         </div>   
     </div>
@@ -214,10 +213,15 @@ input.gachette:not(:checked) ~ .header__conteneur {
         flex-direction: row;
         color: white;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         gap: 4rem;
         padding-top: 0;
         padding-bottom: 0;
+    }
+
+    .footer__liens,
+    .footer__joindre {
+        padding-top: 2rem;
     }
 
     .footer__liste-liens{

@@ -33,4 +33,6 @@ return [
     'carburant'=> ' Type de carburant',
     'condition'=> 'Véhicle condition',
     'motopropulseur'=> 'Motopropulseur',
+    'resultats' => 'Résultats',
+    'titre_fiche' => 'Fiche de produit'
 ];

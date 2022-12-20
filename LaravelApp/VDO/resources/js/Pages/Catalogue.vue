@@ -8,8 +8,6 @@ import FiltreMinMax from '@/Components/FiltreMinMax.vue'
 import Select from '@/Components/Select.vue'
 import Pagination from '@/Components/Pagination.vue'
 
-
-
 const props = defineProps({
   langAppLayout: Object,
   langCatalogue: Object,
@@ -144,7 +142,7 @@ function hideFiltres(){
 <template>
   <Head title="Catalogue" />
   <AppLayout :lang="langAppLayout">
-    <section class="catalogue">
+    <section class="catalogue wrapper">
       <aside class="catalogue__sidebar">
           <div class="filtreSidebar">
             <div class="filtreSidebar__entete">
@@ -230,7 +228,7 @@ function hideFiltres(){
       </aside>
       <section class="catalogue__contenu">
         <header>
-          <h4>Résultats</h4> 
+          <h4>{{langCatalogue.resultats}}</h4> 
           
           <div class="catalogue__contenu__tri">
             <select v-model.number="form.tri" @change="tri">
@@ -248,21 +246,11 @@ function hideFiltres(){
      
 
         <div class="catalogue__grille">
-           
           <Tuiles
-            :data = "paginer.data"
+            :data = "voitures"
             :key = "clefTuiles"
           />
-
-          
         </div>
-
-              <!--  Pagination -->
-              <pagination :paginer="paginer" />
-
-          
-
-
       </section>
     </section>
   </AppLayout>
