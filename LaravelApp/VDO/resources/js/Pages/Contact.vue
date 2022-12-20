@@ -6,6 +6,7 @@ defineProps({
   canLogin: Boolean,
   canRegister: Boolean,
   langAppLayout: Object,
+  langContact: Object,
 });
 </script>
 
@@ -13,7 +14,7 @@ defineProps({
   <AppLayout :lang="langAppLayout">
     <Head title="Contact" />
     <section>
-      <h1 class="section__titre">Contactez-nous</h1>
+      <h1 class="section__titre">{{langContact.contact}}</h1>
       <div class="section__wrapper">
       <!-- Left contact page --> 
         <form class="form-horizontal">
@@ -21,7 +22,7 @@ defineProps({
               <input 
               type="text" 
               class="form-horizontal__item__control" 
-              placeholder="NOM" 
+              :placeholder="langContact.nom" 
               name="name" 
               required>
           </div>
@@ -29,7 +30,7 @@ defineProps({
               <input 
               type="email" 
               class="form-horizontal__item__control" 
-              placeholder="COURRIEL" 
+              :placeholder="langContact.courriel" 
               name="email"  
               required>
           </div>
@@ -37,7 +38,7 @@ defineProps({
           <textarea 
             class="form-horizontal__item__control"
             rows="10" 
-            placeholder="MESSAGE" 
+            :placeholder="langContact.message" 
             name="message"
           >
           </textarea>
@@ -49,7 +50,7 @@ defineProps({
             value="SEND">
             <div class="alt-send-button">
               <i class="fa fa-paper-plane"></i>
-              <span class="send-text">ENVOI</span>
+              <span class="send-text">{{langContact.envoi}}</span>
             </div>
           </button>
         </form>
@@ -71,7 +72,7 @@ defineProps({
           </ul>
           <hr>
           <div class="copyright">
-            &copy;TOUS LES DROITS RÉSERVÉS
+            &copy;{{langContact.droit}}
           </div>
         </div>
       </div>
@@ -79,34 +80,34 @@ defineProps({
 
     <section class="section">
       <div class="section__heures">
-        <h1>Heures d'ouvertures</h1>
+        <h1>{{langContact.heures}}</h1>
         <table class="section__heures__table">
           <tr>
-            <td>Lundi</td>
+            <td>{{langContact.lundi}}</td>
             <td>09:00-13:00, 14:00-18:00</td>
           </tr>
           <tr>
-            <td>Mardi</td>
+            <td>{{langContact.mardi}}</td>
             <td>09:00-13:00, 14:00-18:00</td>
           </tr>
           <tr>
-            <td>Mercredi</td>
+            <td>{{langContact.mercredi}}</td>
             <td>09:00-13:00, 14:00-18:00</td>
           </tr>
           <tr>
-            <td>Jeudi</td>
+            <td>{{langContact.jeudi}}</td>
             <td>09:00-12:00, 13:00-18:55</td>
           </tr>
           <tr>
-            <td>Vendredi</td>
+            <td>{{langContact.vendredi}}</td>
             <td>09:00-20:00</td>
           </tr>
           <tr>
-            <td>Samedi</td>
+            <td>{{langContact.samedi}}</td>
             <td>09:00-17:00</td>
           </tr>
           <tr>
-            <td>Dimanche</td>
+            <td>{{langContact.dimanche}}</td>
             <td>09:00-14:00</td>
           </tr>
         </table>
