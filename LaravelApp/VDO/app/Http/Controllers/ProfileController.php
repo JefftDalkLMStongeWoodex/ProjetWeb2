@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Lang;
 use App\Models\Ville;
+use App\Models\User;
 class ProfileController extends Controller
 {
     /**
@@ -39,7 +40,6 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:'.User::class,
             'first_name' => 'required|string|max:255',
             'anniversaire' => 'nullable|date',
             'adresse' => 'required|string|max:45',
