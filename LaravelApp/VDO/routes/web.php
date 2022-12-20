@@ -60,6 +60,7 @@ Route::get('/apropos', function () {
 Route::get('/contact', function() { 
     return Inertia::render('Contact', [
         'langAppLayout' => Lang::get('app_layout'),
+        'langContact' => Lang::get('contact'),
     ]); 
 })->name('contact');
 
