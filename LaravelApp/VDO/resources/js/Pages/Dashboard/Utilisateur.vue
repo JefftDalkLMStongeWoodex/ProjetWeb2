@@ -40,16 +40,25 @@ const tableau_th = [
     </TableauDeBordLayout>
 </template>
 <style scoped>
+body {
+    background-color: var(--couleur-secondaire);
+}
+
 .titre {
     font-family: var(--police-titre);
     text-transform: uppercase;
 }
 .utilisateurs__conteneur {
     background-color: var(--couleur-secondaire);
-    border-left: var(--couleur-blanc-opacite-50) solid 1px;
     color: var(--couleur-blanc);
     flex-grow: 1;
     font-family: var(--police-texte);
     padding: 3rem 2rem 0rem 2rem;
+}
+
+@media only screen and (min-width: 900px) {
+    .utilisateurs__conteneur {
+        border-left: var(--couleur-blanc-opacite-50) solid 1px;
+    }
 }
 </style>

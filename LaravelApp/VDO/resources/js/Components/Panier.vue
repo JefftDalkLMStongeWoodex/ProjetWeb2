@@ -61,7 +61,7 @@ defineProps({
                     <th>{{lang.constructeur}}</th>
                     <th>{{lang.modele}}</th>
                     <th>{{lang.annee}}</th>
-                    <th>Prix</th>
+                    <th>{{lang.prix}}</th>
                     <th></th>
                 </thead>
                 <tbody>
@@ -105,13 +105,15 @@ defineProps({
     padding-left: 1rem;
     padding-right: 1rem;
     z-index: 1;
-    border-left: 1px solid var(--couleur-blanc-opacite-30);
 }
 
 @media screen and (min-width: 900px) {
     .panier_achat {
         width: 40%;
+        border-left: 1px solid var(--couleur-blanc-opacite-30);
     }
+    
+
 }
 
 .panier_achat header {

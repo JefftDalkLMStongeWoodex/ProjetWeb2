@@ -104,76 +104,71 @@ class CommandeController extends Controller
                 $modeleVoiture->vendue($voiture["id"], $commande->id);
             }
 
+            //envoi de courriel
+            $to_name = Auth::user()->first_name . Auth::user()->last_name;
+            $to_email = Auth::user()->email;
+            $to_emails = ["vdomaisonneuve@gmail.com", $to_email];
+            $body = "Merci d'avoir fait affaire avec VDO inc. Veuillez trouver en pièce jointe une copie de votre facture. Vous devez vous présenter en succursale ou nous contacter par téléphone pour régler le paiement.
 
+            L'équipe de VEHICULES D’OCCASION INC";
+            
+            $villes = Ville::all();
+            $provinces = Province::all();
+            $taxes = Taxe::all();
+            $modePaiement = ModePaiement::all(); 
+            $modeExpedition = ModeExpedition::all();
+            $montantTotal = 0;
+            $montantApresTaxe = 0;
+
+            $user = Auth::user();
+            $user_nom_complet = $user->first_name . " " . $user->name;
+            $user_ville = $user->ville;
+            $user_province = $user_ville->province;
+            $user_taxes = $user_province->taxes;
+
+            $domVoitures = "<table border='1px'>";
+            for ($i=0; $i < count($panier); $i++) { 
+                $domVoitures .= "<tr>
+                <td>ID voiture: " . $panier[$i]['id'] . "</td>
+                <td>Année: " . $panier[$i]['annee'] . "</td>
+                <td>Prix: " . $panier[$i]['prix_paye'] * 1.25 . "</td></tr>
+                ";
+                $montantTotal += $panier[$i]['prix_paye'] * 1.25;
+            }
+            $domVoitures .= "</table>";
+
+            $domTaxes = "<ul>";
+            for ($i=0; $i < count($user_taxes); $i++) { 
+                $domTaxes .= "<li> " . $user_taxes[$i]["nom"] . ": " . $montantTotal * $user_taxes[$i]["taux"] . "</li>";
+                $montantApresTaxe += $montantTotal * $user_taxes[$i]["taux"];
+            }
+            $domTaxes .= "</ul>";
+
+
+            Mail::send('email', $data = [
+                'name'=>$to_name, 
+                'body'=>$body, 
+                'domTaxes' => $domTaxes
+            ], function ($message) use ($to_name, $to_emails, $domVoitures, $domTaxes, $montantTotal, $montantApresTaxe, $user) {
+                $message->to($to_emails, $to_name)->subject("Courriel de test VDO");
+                $pdf = PDF::loadView('facture', [
+                    'voiture' => 'Wow une voiture, bravo pour votre achat',
+                    'domVoitures' => $domVoitures,
+                    'domTaxes' => $domTaxes,
+                    'montantTotal' => $montantTotal,
+                    'user_nom' => $user->first_name . " " . $user->name,
+                    'user_adresse' => $user->adresse,
+                    'user_code_postal' => $user->code_postal,
+                    'user_telephone' => $user->telephone,
+                    'user_email' => $user->email,
+                    'montantApresTaxe' => $montantApresTaxe
+                ]);
+                $message->attachData($pdf->output(), 'facture.pdf');
+            });
 
             return Redirect::route('commande.confirmation')->with('succes_achat', 'L\'achat a été complété avec succès!');
         } else {
             return Redirect::back()->with('erreurs_checkout', $erreurs);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\commande  $commande
-     * @return \Illuminate\Http\Response
-     */
-    public function show(commande $commande)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\commande  $commande
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(commande $commande)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\commande  $commande
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, commande $commande)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\commande  $commande
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(commande $commande)
-    {
-        //
-    }
-
-    public function testCourriel() {
-        $to_name = "Mathieu";
-        $to_emails = ["vdomaisonneuve@gmail.com", "stng.mathieu@gmail.com"];
-        $body = "Allo Mathieu, voici un courriel";
-
-        Mail::send('email', $data = ['name'=>$to_name, 'body'=>$body], function ($message) use ($to_name, $to_emails) {
-            $message->to($to_emails, $to_name)->subject("Courriel de test VDO");
-
-            $pdf = PDF::loadView('facture', ['voiture' => 'Wow une voiture, bravo pour votre achat']);
-            $message->attachData($pdf->output(), 'facture.pdf');
-        });
-
-        return redirect("/");
-    }
-
-    public function testPDF(voiture $voiture) {
-        $pdf = PDF::loadView('facture', ['voiture' => 'Wow une voiture, bravo pour votre achat']);
-        return $pdf->download('facture.pdf');
     }
 }

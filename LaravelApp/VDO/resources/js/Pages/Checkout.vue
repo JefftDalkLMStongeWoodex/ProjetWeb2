@@ -1,7 +1,7 @@
 <script setup>
 import { Head, usePage } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
-import ListePanier from '@/Components/Checkout/ListePanier.vue'
+// import ListePanier from '@/Components/Checkout/ListePanier.vue'
 import InfoCommande from '@/Components/Checkout/InfoCommande.vue'
 import { computed } from 'vue'
 
@@ -20,12 +20,11 @@ const props = defineProps({
     erreurs: Array
 })
 
-let commande = props.panier;
-
 const user = computed(() => usePage().props.value.auth.user)
 
 </script>
 <template>
+    <Head :title="langCheckout.passerCaisse" />
     <AppLayout :lang="langAppLayout">
         <body>
             <Head title="Checkout" />
