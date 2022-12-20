@@ -67,8 +67,6 @@ Route::get('/catalogue/{recherche}', [CatalogueController::class, 'recherche'])-
 
 Route::get('/lang/{locale}', [LocalizationController::class, 'index'])->name('lang');
 
-Route::get('/voiture/index', [PanierAchatController::class, 'index'])->name('voiture.index');
-
 Route::get('/voiture/fiche/{voiture}', [PanierAchatController::class, 'fiche'])->name('voiture.fiche');
 Route::get('/voiture/reservation/{voiture}', [PanierAchatController::class, 'reservation'])->name('voiture.reservation');
 
