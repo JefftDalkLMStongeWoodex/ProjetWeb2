@@ -1,9 +1,19 @@
 <script setup>
   import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { useForm } from '@inertiajs/inertia-vue3';
+
 
   defineProps({
     lang: Object,
   });
+
+  const form = useForm({
+    recherche: '',
+  })
+
+  const submit = () => {
+    form.get(route('recherche', form.recherche));
+  }
 </script>
 
 <template>
@@ -20,19 +30,22 @@
         <br> 
         {{lang.accueil_occasion}}
       </h2>
-      <div class="image__input">
-        <input 
-          type="search" 
-          class="image__barre-recherche"
-          :placeholder="lang.accueil_placerholder"
-        >
-      </div>
-      
-      <div class="image__bouton">
-        <PrimaryButton>
-          {{lang.accueil_recherche}}
-        </PrimaryButton>
-      </div>
+      <form @submit.prevent="submit">
+        <div class="image__input">
+          <input 
+            type="search" 
+            class="image__barre-recherche"
+            :placeholder="lang.accueil_placerholder"
+            v-model="form.recherche"
+          >
+        </div>
+        
+        <div class="image__bouton">
+          <PrimaryButton :disabled="form.processing">
+            {{lang.accueil_recherche}}
+          </PrimaryButton>
+        </div>
+      </form>
     </div>
   </section>
 </template>
@@ -75,19 +88,6 @@
 .image__bouton {
   max-width: 31rem;
 }
-
-/* 
-@media only screen and (max-width: 500px) {
-
-  .image__entete {
-    background-image: url("../../../assets/entete.jpg");
-    background-repeat: no-repeat;
-    background-position: 25%;
-    background-size: cover;
-    padding-top: 200px;
-    padding-bottom: 650px;
-  }
-} */
 
 @media only screen and (min-width: 320px) and (max-width: 500px) {
 
