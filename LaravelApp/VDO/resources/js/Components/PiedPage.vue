@@ -39,10 +39,9 @@ const showingNavigationDropdown = ref(false);
         <div class="footer__joindre">
             <h4>{{lang.joindre_titre}}</h4>
             <div class="footer__liste-liens">
-                <NavLink class="footer__lien" :href="route('catalogue')">{{lang.contact_titre}}</NavLink>
-            
-                <NavLink class="footer__lien" :href="route('catalogue')">(514) 584-4546</NavLink>
-                <NavLink class="footer__lien" :href="route('catalogue')">info@vdo.ca</NavLink>
+                <NavLink class="footer__lien" :href="route('contact')">{{lang.contact_titre}}</NavLink>
+                <span>(514) 584-4546</span>
+                <span>info@vdo.ca</span>
             </div>
         </div>   
     </div>
