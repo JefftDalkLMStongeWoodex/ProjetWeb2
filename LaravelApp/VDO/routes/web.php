@@ -53,6 +53,7 @@ Route::get('/facturation', function () {
 Route::get('/apropos', function () {
     return Inertia::render('APropos',[
         'langAppLayout' => Lang::get('app_layout'),
+        'langApropos' => Lang::get('apropos'),
     ]); 
 })->name('apropos');
 
